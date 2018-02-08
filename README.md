@@ -1,2 +1,2 @@
-# WebRPG
-Web based RPG for Project2
+# TotallyWhine
+Web based Wine Retailer for Project2
