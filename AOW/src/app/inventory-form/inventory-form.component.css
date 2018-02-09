@@ -1,0 +1,39 @@
+#inv-form {
+    background-color: #C191DD;
+    color: #ffffff;
+    font-size: 28px;
+}
+
+.small-bars {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.full-button {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.full-button:active {
+
+}
+
+.inv-form-prepend {
+    width: 150px;
+    text-align: right;
+}
+
+.red-wine {
+    background-color: #6D2995;
+    color: #ffffff;
+}
+
+.container {
+    padding: 20px; 
+    border-radius: 60px;
+    text-align: center;
+}
+
+.def {
+    display: none;
+}

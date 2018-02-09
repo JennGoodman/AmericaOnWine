@@ -1,0 +1,58 @@
+<div class="container" id="inv-form">
+  <span>Please enter the details for the wine:</span>
+  <br>
+  <div class="input-group mb-3 small-bars">
+    <div class="input-group-prepend">
+      <span class="input-group-text red-wine inv-form-prepend">Name</span>
+    </div>
+    <input name="name" placeholder="What is the name of this product?" type="text" class="form-control" required aria-label="Name" aria-describedby="basic-addon1">
+  </div>
+  <div class="input-group mb-3 small-bars">
+    <div class="input-group-prepend">
+      <span class="input-group-text red-wine inv-form-prepend">Type of wine</span>
+    </div>
+    <select name="type" class="form-control" required aria-label="Type" aria-describedby="basic-addon1">
+      <option class="def" disable selected value>Select the type of wine this is</option>
+      <option value="italy">Red</option>
+      <option value="us">White</option>
+      <option value="france">Rosé</option>
+      <option value="china">Champagne</option>
+    </select>
+    </div>
+  <div class="input-group mb-3 small-bars">
+    <div class="input-group-prepend">
+      <span class="input-group-text red-wine inv-form-prepend">Wine Age</span>
+    </div>
+    <input name="age" max="2020" min="1800" placeholder="What year was this wine made?" type="number" class="form-control" aria-label="age" aria-describedby="basic-addon1">
+  </div>
+  <div class="input-group mb-3 small-bars">
+    <div class="input-group-prepend">
+      <span class="input-group-text red-wine inv-form-prepend">Country of Origin</span>
+    </div>
+    <select name="country" class="form-control" required aria-label="Country" aria-describedby="basic-addon1">
+      <option class="def" disable selected value>Select which country this wine was made in</option>
+      <option value="italy">Italy</option>
+      <option value="us">The United States</option>
+      <option value="france">France</option>
+      <option value="china">China</option>
+      <option value="spain">Spain</option>
+      <option value="argentina">Argetina</option>
+      <option value="chile">Chile</option>
+      <option value="sa">South Africa</option>
+      <option value="australia">Australia</option>
+      <option value="germany">Germany</option>
+      <option value="portugal">Portugal</option>
+      <option value="romania">Romania</option>
+      <option value="japan">Japan</option>
+      <option value="other">Other</option>
+    </select>
+    </div>
+      <div class="input-group mb-3 small-bars">
+        <div class="input-group-prepend">
+          <span class="input-group-text red-wine inv-form-prepend">Image URL</span>
+        </div>
+        <input name="imageUrl" placeholder="Please provide a URL for an image of the product" type="text" class="form-control" required aria-label="ImageUrl" aria-describedby="basic-addon1">
+      </div>
+
+      <button type="button" class="full-button red-wine btn btn-secondary">Submit New Inventory Item</button>
+</div>

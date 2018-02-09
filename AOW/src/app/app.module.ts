@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { InventoryFormComponent } from './inventory-form/inventory-form.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InventoryFormComponent
   ],
   imports: [
     BrowserModule,
