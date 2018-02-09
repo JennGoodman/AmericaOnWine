@@ -1,42 +1,42 @@
 <div class="container" id="inv-form">
-  <span>Please enter the details for the wine:</span>
-  <br>
+  <span id="big-text">Please enter the details for the wine:</span>
+  <br><br>
   <div class="input-group mb-3 small-bars">
     <div class="input-group-prepend">
       <span class="input-group-text red-wine inv-form-prepend">Name</span>
     </div>
-    <input name="name" placeholder="What is the name of this product?" type="text" class="form-control" required aria-label="Name" aria-describedby="basic-addon1">
+    <input name="name" placeholder="What is the name of this product?" type="text" class="form-control" required aria-label="Name" aria-describedby="basic-addon1" [(ngModel)]="invItem.name">
   </div>
   <div class="input-group mb-3 small-bars">
     <div class="input-group-prepend">
       <span class="input-group-text red-wine inv-form-prepend">Type of wine</span>
     </div>
-    <select name="type" class="form-control" required aria-label="Type" aria-describedby="basic-addon1">
-      <option class="def" disable selected value>Select the type of wine this is</option>
-      <option value="italy">Red</option>
-      <option value="us">White</option>
-      <option value="france">Rosé</option>
-      <option value="china">Champagne</option>
+    <select name="type" class="form-control" required aria-label="Type" aria-describedby="basic-addon1" [(ngModel)]="invItem.type">
+      <option value="def" *ngIf="invItem.type == 'def'">What type of wine is this?</option>
+      <option value="red">Red</option>
+      <option value="white">White</option>
+      <option value="rosé">Rosé</option>
+      <option value="champagne">Champagne</option>
     </select>
     </div>
-  <div class="input-group mb-3 small-bars">
-    <div class="input-group-prepend">
-      <span class="input-group-text red-wine inv-form-prepend">Wine Age</span>
+    <div class="input-group mb-3 small-bars">
+      <div class="input-group-prepend">
+        <span class="input-group-text red-wine inv-form-prepend">Wine Age</span>
+      </div>
+      <input name="year" max="2020" min="1800" placeholder="What year was this wine grown?" type="number" class="form-control" required aria-label="Year" aria-describedby="basic-addon1" [(ngModel)]="invItem.year">
     </div>
-    <input name="age" max="2020" min="1800" placeholder="What year was this wine made?" type="number" class="form-control" aria-label="age" aria-describedby="basic-addon1">
-  </div>
   <div class="input-group mb-3 small-bars">
     <div class="input-group-prepend">
       <span class="input-group-text red-wine inv-form-prepend">Country of Origin</span>
     </div>
-    <select name="country" class="form-control" required aria-label="Country" aria-describedby="basic-addon1">
-      <option class="def" disable selected value>Select which country this wine was made in</option>
+    <select name="country" class="form-control" required aria-label="Country" aria-describedby="basic-addon1" [(ngModel)]="invItem.country">
+      <option value="def" *ngIf="invItem.country == 'def'">What country does this wine come from?</option>
       <option value="italy">Italy</option>
       <option value="us">The United States</option>
       <option value="france">France</option>
       <option value="china">China</option>
       <option value="spain">Spain</option>
-      <option value="argentina">Argetina</option>
+      <option value="argentina">Argentina</option>
       <option value="chile">Chile</option>
       <option value="sa">South Africa</option>
       <option value="australia">Australia</option>
@@ -51,8 +51,10 @@
         <div class="input-group-prepend">
           <span class="input-group-text red-wine inv-form-prepend">Image URL</span>
         </div>
-        <input name="imageUrl" placeholder="Please provide a URL for an image of the product" type="text" class="form-control" required aria-label="ImageUrl" aria-describedby="basic-addon1">
+        <input name="imageUrl" placeholder="What is the URL for the image of this product?" type="text" class="form-control" required aria-label="ImageUrl" aria-describedby="basic-addon1" [(ngModel)]="invItem.url">
       </div>
 
-      <button type="button" class="full-button red-wine btn btn-secondary">Submit New Inventory Item</button>
+      <button type="button" class="full-button red-wine btn">Submit New Inventory Item</button>
+      <br>
+      <br>
 </div>

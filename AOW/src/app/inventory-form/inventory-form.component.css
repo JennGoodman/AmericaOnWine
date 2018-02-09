@@ -1,6 +1,9 @@
 #inv-form {
-    background-color: #C191DD;
+    background-color: #dddddd;
     color: #ffffff;
+}
+
+#big-text {
     font-size: 28px;
 }
 
@@ -12,10 +15,11 @@
 .full-button {
     width: 65%;
     margin: 0 auto;
+    border-color: #E1C5F2;
 }
 
 .full-button:active {
-
+    border-color:  #E1C5F2;
 }
 
 .inv-form-prepend {
@@ -24,13 +28,13 @@
 }
 
 .red-wine {
-    background-color: #6D2995;
+    background-color: #B87690;
     color: #ffffff;
 }
 
 .container {
     padding: 20px; 
-    border-radius: 60px;
+    border-radius: 20px;
     text-align: center;
 }
 

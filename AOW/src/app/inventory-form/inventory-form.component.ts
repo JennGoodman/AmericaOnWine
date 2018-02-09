@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { InventoryItem } from '../inventory-item';
 
 @Component({
   selector: 'app-inventory-form',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inventory-form.component.css']
 })
 export class InventoryFormComponent implements OnInit {
+  invItem: InventoryItem;
 
-  constructor() { }
+  constructor() {
+    this.invItem = new InventoryItem;
+   }
 
   ngOnInit() {
   }
