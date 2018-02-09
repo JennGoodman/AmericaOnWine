@@ -4,7 +4,7 @@ import { Headers, Http, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/map';
-
+/*
 @Injectable()
 export class ExampleService {
   private appUrl = 'http://example.com:8080/';
@@ -19,3 +19,4 @@ export class ExampleService {
       );
   }
 }
+*/

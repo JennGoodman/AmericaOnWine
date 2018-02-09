@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { InventoryItem } from '../inventory-item';
+import { InventoryItem } from '../../models/inventory-item';
 
 @Component({
   selector: 'app-inventory-form',
