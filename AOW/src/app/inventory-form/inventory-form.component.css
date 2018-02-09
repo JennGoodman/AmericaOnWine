@@ -18,10 +18,6 @@
     border-color: #E1C5F2;
 }
 
-.full-button:active {
-    border-color:  #E1C5F2;
-}
-
 .inv-form-prepend {
     width: 150px;
     text-align: right;
