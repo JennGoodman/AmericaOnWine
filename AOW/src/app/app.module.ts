@@ -6,7 +6,10 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { InventoryFormComponent } from './inventory-form/inventory-form.component';
-// import { CustomerRegisterAccountComponent } from './customer-register-account/customer-register-account.component';
+
+import { RetailHomeComponent } from './retail-home/retail-home.component';
+
+import { FileUploadService } from '../services/file-upload.service';
 import { LoginComponent } from './login/login.component';
 
 
@@ -15,14 +18,15 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     InventoryFormComponent,
     // CustomerRegisterAccountComponent,
-    LoginComponent
+    LoginComponent,
+    RetailHomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [FileUploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
