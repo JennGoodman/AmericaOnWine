@@ -1,0 +1,29 @@
+<div>
+  <h2>Registration</h2>
+
+  <form required>
+    <div>
+        <label> Email:</label>
+        <input  type="text" [(ngModel)]="email" name="name" required>
+    </div>
+    <div>
+      <label> Username:</label>
+      <input  type="text" [(ngModel)]="username" name="username" required>
+    </div>
+    <div>
+      <label> Password:</label>
+      <input  type="text" [(ngModel)]="password" name="password" required>
+    </div>
+    <div>
+      <label> Type of account:</label>
+      <select [(ngModel)]="accountType" name="accountType" required>
+          <option value="customer">Customer</option>
+          <option value="retailer">Retailer</option>
+        </select>
+    </div>
+    <div>
+        <!-- <button type="submit" (click)="register()">Register</button> -->
+        <button (click)="register()">Register</button>
+    </div>
+  </form>
+</div>
