@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { InventoryFormComponent } from './inventory-form/inventory-form.component';
 import { RetailHomeComponent } from './retail-home/retail-home.component';
 
+import { FileUploadService } from '../services/file-upload.service';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,7 @@ import { RetailHomeComponent } from './retail-home/retail-home.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [FileUploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

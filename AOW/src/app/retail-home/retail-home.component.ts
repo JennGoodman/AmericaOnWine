@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { FileUploadService } from '../../services/file-upload.service';
+
 @Component({
   selector: 'app-retail-home',
   templateUrl: './retail-home.component.html',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RetailHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fus : FileUploadService) { }
 
   ngOnInit() {
   }
+    fileInput(fileInput : any) {
+        this.fus.upload(fileInput);
+    }
 
 }
