@@ -1,6 +1,13 @@
 .wine-view {
-    display: inline;
+    display: table-cell;
+    width: 250px;
     background-color: #909090;
-    margin: 0 15px;
+    margin: 10px auto;
+    text-align: center;
+    padding: 20px; 
+    border-radius: 20px;
+}
+
+.row {
     text-align: center;
 }

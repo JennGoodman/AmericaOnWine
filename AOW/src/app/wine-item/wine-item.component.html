@@ -1,8 +1,8 @@
-<div class="container wine-view">
-  <div class="col-12 wine-view">
-    <div class="row wine-view"><img src="{{invItem.image}}"/></div>
-    <div class="row wine-view">{{invItem.name}}</div>
-    <div class="row wine-view">{{invItem.year}}</div>
-    <div class="row wine-view">{{invItem.type}} - {{invItem.subType}}</div>
-  </div>
+<div [style.background-color]="getColor()" class="container wine-view">
+    <br>
+    <img src="{{invItem.image}}"/><br>
+    <span>{{invItem.name}}</span><br>
+    <span>{{invItem.year}}</span><br>
+    <span>{{invItem.type}} - {{invItem.subType}}</span>
+    <br>
 </div>
