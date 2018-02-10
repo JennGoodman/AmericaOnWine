@@ -9,6 +9,9 @@ import { InventoryFormComponent } from './inventory-form/inventory-form.componen
 // import { CustomerRegisterAccountComponent } from './customer-register-account/customer-register-account.component';
 import { WineItemComponent } from './wine-item/wine-item.component';
 import { WineListComponent } from './wine-list/wine-list.component';
+import { RetailHomeComponent } from './retail-home/retail-home.component';
+
+import { FileUploadService } from '../services/file-upload.service';
 
 @NgModule({
   declarations: [
@@ -16,14 +19,15 @@ import { WineListComponent } from './wine-list/wine-list.component';
     InventoryFormComponent,
     // CustomerRegisterAccountComponent,
     WineItemComponent,
-    WineListComponent
+    WineListComponent,
+    RetailHomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [FileUploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
