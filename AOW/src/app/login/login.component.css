@@ -1,3 +1,7 @@
 .centerContents{
     text-align: center;
 }
+
+#loginContainer {
+    height: 100%;
+}
