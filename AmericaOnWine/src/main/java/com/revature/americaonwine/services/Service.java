@@ -1,4 +1,4 @@
-package com.revature.americaonwhine.services;
+package com.revature.americaonwine.services;
 
 public interface Service {
 

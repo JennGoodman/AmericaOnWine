@@ -1,4 +1,4 @@
-package com.revature.americaonwhine.util;
+package com.revature.americaonwine.util;
 
 public interface Util {
 

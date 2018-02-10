@@ -1,4 +1,4 @@
-package com.revature.americaonwhine.delegates;
+package com.revature.americaonwine.delegates;
 
 public interface Delegate {
 
