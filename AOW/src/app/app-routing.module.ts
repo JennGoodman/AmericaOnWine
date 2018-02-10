@@ -9,7 +9,7 @@ import { RetailHomeComponent } from './retail-home/retail-home.component';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: AppComponent,
+        component: AppComponent,
         pathMatch: 'full'
     },
     {
