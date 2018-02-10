@@ -4,35 +4,29 @@ import { InventoryFormComponent } from './inventory-form/inventory-form.componen
 import { WineListComponent } from './wine-list/wine-list.component';
 import { AppComponent } from './app.component';
 
-<<<<<<< HEAD
-const routes: Routes = [
-  {
-    path: 'retailer/form',
-    component: InventoryFormComponent
-  },
-  {
-    path: 'items',
-    component: WineListComponent
-  },
-  {
-    path: '',
-    component: AppComponent
-  }
-=======
 import { RetailHomeComponent } from './retail-home/retail-home.component';
 
 const routes: Routes = [
     {
-        path : '',
-        redirectTo : '/retail/home',
-        pathMatch : 'full'
+        path: '',
+        component: AppComponent,
+        pathMatch: 'full'
     },
     {
         path: 'retail/home',
         component: RetailHomeComponent,
         pathMatch : 'full'
+    },
+    {
+        path: 'retailer/form',
+        component: InventoryFormComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'items',
+        component: WineListComponent,
+        pathMatch: 'full'
     }
->>>>>>> d0b40ff703d3bf8572b6ac58bce64573b4e1156a
 ];
 
 @NgModule({

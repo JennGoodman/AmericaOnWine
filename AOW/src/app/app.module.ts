@@ -10,17 +10,19 @@ import { InventoryFormComponent } from './inventory-form/inventory-form.componen
 import { WineItemComponent } from './wine-item/wine-item.component';
 import { WineListComponent } from './wine-list/wine-list.component';
 import { RetailHomeComponent } from './retail-home/retail-home.component';
-
 import { FileUploadService } from '../services/file-upload.service';
+
+import { RetailItemViewComponent } from './retail-item-view/retail-item-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InventoryFormComponent,
+    RetailHomeComponent,
+    RetailItemViewComponent,
     // CustomerRegisterAccountComponent,
     WineItemComponent,
-    WineListComponent,
-    RetailHomeComponent
+    WineListComponent
   ],
   imports: [
     BrowserModule,
