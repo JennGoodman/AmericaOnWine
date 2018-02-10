@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { FileUploadService } from '../../services/file-upload.service';
 
+// import { RetailItemViewComponent } from '../retail-item-view.component';
+
 @Component({
   selector: 'app-retail-home',
   templateUrl: './retail-home.component.html',
