@@ -3,13 +3,15 @@ export class InventoryItem {
     year: number;
     type: string;
     country: string;
-    url: string;
+    image: any;
+    subType: string;
 
     constructor() {
         this.name = null;
         this.year = null;
         this.type = 'def';
         this.country = 'def';
-        this.url = null;
+        this.image = null;
+        this.subType = 'def';
     }
 }
