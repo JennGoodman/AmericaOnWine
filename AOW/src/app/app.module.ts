@@ -7,13 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { InventoryFormComponent } from './inventory-form/inventory-form.component';
 import { CustomerRegisterAccountComponent } from './customer-register-account/customer-register-account.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     InventoryFormComponent,
-    CustomerRegisterAccountComponent
+    CustomerRegisterAccountComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
