@@ -3,7 +3,7 @@ export class InventoryItem {
     year: number;
     type: string;
     country: string;
-    image: any;
+    image: File;
     subType: string;
 
     constructor() {
@@ -13,5 +13,14 @@ export class InventoryItem {
         this.country = 'def';
         this.image = null;
         this.subType = 'def';
+    }
+
+    setVals(name: string, year: number, type: string, country: string, subType: string) {
+        this.name = name;
+        this.year = year;
+        this.type = type;
+        this.country = country;
+        this.subType = subType;
+        return this;
     }
 }
