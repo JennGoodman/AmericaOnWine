@@ -24,16 +24,16 @@
 
 .wine-view {
     width: 200px;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
 }
 
 .wine-view:hover {
-    animation-name: expand;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    animation-fill-mode: forwards;
-}
-
-@keyframes expand {
-    from {width: 200px;}
-    to {width: 240px;}
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
 }
