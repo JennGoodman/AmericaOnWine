@@ -19,91 +19,107 @@ public class InventoryItem {
 	@GeneratedValue(generator="inventoryItemGen", strategy=GenerationType.SEQUENCE)
 	private int ID;
 	@Column
-	private String NAME;
-	private int BRAND_ID;
-	private int USER_ID;
-	private int COUNTRY_ID;
-	private int TYPE_ID;
-	private int SUB_TYPE_ID;
-	private int YEAR;
-	private double PRICE;
-	private LocalDate SUBMITTED;
-	private String DESCRIPTION;
-	private String IMAGE_URL;
-
-	public InventoryItem(int iD, String nAME, int bRAND_ID, int uSER_ID, int cOUNTRY_ID, int tYPE_ID, int sUB_TYPE_ID,
-			int yEAR, double pRICE, LocalDate sUBMITTED, String dESCRIPTION, String iMAGE_URL) {
-		super();
-		ID = iD;
-		NAME = nAME;
-		BRAND_ID = bRAND_ID;
-		USER_ID = uSER_ID;
-		COUNTRY_ID = cOUNTRY_ID;
-		TYPE_ID = tYPE_ID;
-		SUB_TYPE_ID = sUB_TYPE_ID;
-		YEAR = yEAR;
-		PRICE = pRICE;
-		SUBMITTED = sUBMITTED;
-		DESCRIPTION = dESCRIPTION;
-		IMAGE_URL = iMAGE_URL;
-	}
-	public InventoryItem() {
-		super();
-	}
+	private String name;
+	private int brand_id;
+	private int user_id;
+	private int country_id;
+	private int type_id;
+	private int sub_type_id;
+	private int year;
+	private double price;
+	private LocalDate submitted;
+	private String description;
+	private String image_url;
 	public int getID() {
 		return ID;
 	}
 	public void setID(int iD) {
 		ID = iD;
 	}
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("InventoryItem [ID=");
-		builder.append(ID);
-		builder.append(", NAME=");
-		builder.append(NAME);
-		builder.append(", BRAND_ID=");
-		builder.append(BRAND_ID);
-		builder.append(", USER_ID=");
-		builder.append(USER_ID);
-		builder.append(", COUNTRY_ID=");
-		builder.append(COUNTRY_ID);
-		builder.append(", TYPE_ID=");
-		builder.append(TYPE_ID);
-		builder.append(", SUB_TYPE_ID=");
-		builder.append(SUB_TYPE_ID);
-		builder.append(", YEAR=");
-		builder.append(YEAR);
-		builder.append(", PRICE=");
-		builder.append(PRICE);
-		builder.append(", SUBMITTED=");
-		builder.append(SUBMITTED);
-		builder.append(", DESCRIPTION=");
-		builder.append(DESCRIPTION);
-		builder.append(", IMAGE_URL=");
-		builder.append(IMAGE_URL);
-		builder.append("]");
-		return builder.toString();
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getBrand_id() {
+		return brand_id;
+	}
+	public void setBrand_id(int brand_id) {
+		this.brand_id = brand_id;
+	}
+	public int getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+	public int getCountry_id() {
+		return country_id;
+	}
+	public void setCountry_id(int country_id) {
+		this.country_id = country_id;
+	}
+	public int getType_id() {
+		return type_id;
+	}
+	public void setType_id(int type_id) {
+		this.type_id = type_id;
+	}
+	public int getSub_type_id() {
+		return sub_type_id;
+	}
+	public void setSub_type_id(int sub_type_id) {
+		this.sub_type_id = sub_type_id;
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	public LocalDate getSubmitted() {
+		return submitted;
+	}
+	public void setSubmitted(LocalDate submitted) {
+		this.submitted = submitted;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getImage_url() {
+		return image_url;
+	}
+	public void setImage_url(String image_url) {
+		this.image_url = image_url;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + BRAND_ID;
-		result = prime * result + COUNTRY_ID;
-		result = prime * result + ((DESCRIPTION == null) ? 0 : DESCRIPTION.hashCode());
 		result = prime * result + ID;
-		result = prime * result + ((IMAGE_URL == null) ? 0 : IMAGE_URL.hashCode());
-		result = prime * result + ((NAME == null) ? 0 : NAME.hashCode());
+		result = prime * result + brand_id;
+		result = prime * result + country_id;
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((image_url == null) ? 0 : image_url.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		long temp;
-		temp = Double.doubleToLongBits(PRICE);
+		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((SUBMITTED == null) ? 0 : SUBMITTED.hashCode());
-		result = prime * result + SUB_TYPE_ID;
-		result = prime * result + TYPE_ID;
-		result = prime * result + USER_ID;
-		result = prime * result + YEAR;
+		result = prime * result + sub_type_id;
+		result = prime * result + ((submitted == null) ? 0 : submitted.hashCode());
+		result = prime * result + type_id;
+		result = prime * result + user_id;
+		result = prime * result + year;
 		return result;
 	}
 	@Override
@@ -115,108 +131,93 @@ public class InventoryItem {
 		if (getClass() != obj.getClass())
 			return false;
 		InventoryItem other = (InventoryItem) obj;
-		if (BRAND_ID != other.BRAND_ID)
-			return false;
-		if (COUNTRY_ID != other.COUNTRY_ID)
-			return false;
-		if (DESCRIPTION == null) {
-			if (other.DESCRIPTION != null)
-				return false;
-		} else if (!DESCRIPTION.equals(other.DESCRIPTION))
-			return false;
 		if (ID != other.ID)
 			return false;
-		if (IMAGE_URL == null) {
-			if (other.IMAGE_URL != null)
+		if (brand_id != other.brand_id)
+			return false;
+		if (country_id != other.country_id)
+			return false;
+		if (description == null) {
+			if (other.description != null)
 				return false;
-		} else if (!IMAGE_URL.equals(other.IMAGE_URL))
+		} else if (!description.equals(other.description))
 			return false;
-		if (NAME == null) {
-			if (other.NAME != null)
+		if (image_url == null) {
+			if (other.image_url != null)
 				return false;
-		} else if (!NAME.equals(other.NAME))
+		} else if (!image_url.equals(other.image_url))
 			return false;
-		if (Double.doubleToLongBits(PRICE) != Double.doubleToLongBits(other.PRICE))
-			return false;
-		if (SUBMITTED == null) {
-			if (other.SUBMITTED != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!SUBMITTED.equals(other.SUBMITTED))
+		} else if (!name.equals(other.name))
 			return false;
-		if (SUB_TYPE_ID != other.SUB_TYPE_ID)
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
-		if (TYPE_ID != other.TYPE_ID)
+		if (sub_type_id != other.sub_type_id)
 			return false;
-		if (USER_ID != other.USER_ID)
+		if (submitted == null) {
+			if (other.submitted != null)
+				return false;
+		} else if (!submitted.equals(other.submitted))
 			return false;
-		if (YEAR != other.YEAR)
+		if (type_id != other.type_id)
+			return false;
+		if (user_id != other.user_id)
+			return false;
+		if (year != other.year)
 			return false;
 		return true;
 	}
-	public String getNAME() {
-		return NAME;
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("InventoryItem [ID=");
+		builder.append(ID);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", brand_id=");
+		builder.append(brand_id);
+		builder.append(", user_id=");
+		builder.append(user_id);
+		builder.append(", country_id=");
+		builder.append(country_id);
+		builder.append(", type_id=");
+		builder.append(type_id);
+		builder.append(", sub_type_id=");
+		builder.append(sub_type_id);
+		builder.append(", year=");
+		builder.append(year);
+		builder.append(", price=");
+		builder.append(price);
+		builder.append(", submitted=");
+		builder.append(submitted);
+		builder.append(", description=");
+		builder.append(description);
+		builder.append(", image_url=");
+		builder.append(image_url);
+		builder.append("]");
+		return builder.toString();
 	}
-	public void setNAME(String nAME) {
-		NAME = nAME;
+	public InventoryItem(int iD, String name, int brand_id, int user_id, int country_id, int type_id, int sub_type_id,
+			int year, double price, LocalDate submitted, String description, String image_url) {
+		super();
+		ID = iD;
+		this.name = name;
+		this.brand_id = brand_id;
+		this.user_id = user_id;
+		this.country_id = country_id;
+		this.type_id = type_id;
+		this.sub_type_id = sub_type_id;
+		this.year = year;
+		this.price = price;
+		this.submitted = submitted;
+		this.description = description;
+		this.image_url = image_url;
 	}
-	public int getBRAND_ID() {
-		return BRAND_ID;
+	public InventoryItem() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	public void setBRAND_ID(int bRAND_ID) {
-		BRAND_ID = bRAND_ID;
-	}
-	public int getUSER_ID() {
-		return USER_ID;
-	}
-	public void setUSER_ID(int uSER_ID) {
-		USER_ID = uSER_ID;
-	}
-	public int getCOUNTRY_ID() {
-		return COUNTRY_ID;
-	}
-	public void setCOUNTRY_ID(int cOUNTRY_ID) {
-		COUNTRY_ID = cOUNTRY_ID;
-	}
-	public int getTYPE_ID() {
-		return TYPE_ID;
-	}
-	public void setTYPE_ID(int tYPE_ID) {
-		TYPE_ID = tYPE_ID;
-	}
-	public int getSUB_TYPE_ID() {
-		return SUB_TYPE_ID;
-	}
-	public void setSUB_TYPE_ID(int sUB_TYPE_ID) {
-		SUB_TYPE_ID = sUB_TYPE_ID;
-	}
-	public int getYEAR() {
-		return YEAR;
-	}
-	public void setYEAR(int yEAR) {
-		YEAR = yEAR;
-	}
-	public double getPRICE() {
-		return PRICE;
-	}
-	public void setPRICE(double pRICE) {
-		PRICE = pRICE;
-	}
-	public LocalDate getSUBMITTED() {
-		return SUBMITTED;
-	}
-	public void setSUBMITTED(LocalDate sUBMITTED) {
-		SUBMITTED = sUBMITTED;
-	}
-	public String getDESCRIPTION() {
-		return DESCRIPTION;
-	}
-	public void setDESCRIPTION(String dESCRIPTION) {
-		DESCRIPTION = dESCRIPTION;
-	}
-	public String getIMAGE_URL() {
-		return IMAGE_URL;
-	}
-	public void setIMAGE_URL(String iMAGE_URL) {
-		IMAGE_URL = iMAGE_URL;
-	}
+	
 }
