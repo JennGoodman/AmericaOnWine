@@ -9,6 +9,7 @@ import { InventoryFormComponent } from './inventory-form/inventory-form.componen
 import { RetailHomeComponent } from './retail-home/retail-home.component';
 
 import { FileUploadService } from '../services/file-upload.service';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FileUploadService } from '../services/file-upload.service';
     AppComponent,
     InventoryFormComponent,
       //CustomerRegisterAccountComponent,
-    RetailHomeComponent
+    RetailHomeComponent,
+      NavbarComponent
   ],
   imports: [
     BrowserModule,
