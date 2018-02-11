@@ -258,3 +258,5 @@ insert into aow_sub_type (id, type_id, sub_type) values (1, 1, 'Moscato');
 
 insert into aow_inventory (id, name, brand_id, user_id, country_id, type_id, sub_type_id, volume, year, price, submitted, description) 
     values (1, 'Barefoot Moscato', 1, 1, 1, 1, 1, 1.5, 2017, 8.99, sysdate, 'It''s good Wine Bront!');
+
+-- Jenn Rocks!
