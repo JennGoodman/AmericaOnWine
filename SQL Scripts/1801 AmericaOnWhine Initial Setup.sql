@@ -42,9 +42,9 @@ drop sequence aow_inventory_tag_seq;
 
 create table aow_user (
     id          number(6)       primary key,
-    username    varchar2(50)    not null,
+    username    varchar2(50)    unique not null,
     password    varchar2(50)    not null,
-    email       varchar2(50)    not null,
+    email       varchar2(50)    unique not null,
     role        number(1)       not null,
     active      number(1)       not null,
     cancelled   number(1)       not null
@@ -55,20 +55,20 @@ create table aow_tag (
 );
 create table aow_country (
     id          number(6)       primary key,
-    country     varchar2(50)    not null
+    country     varchar2(50)    unique not null
 );
 create table aow_type (
     id          number(6)       primary key,
-    type        varchar2(50)    not null
+    type        varchar2(50)    unique not null
 );
 create table aow_sub_type (
     id          number(6)       primary key,
     type_id     number(6)       not null references aow_type(id),
-    sub_type    varchar2(50)    not null
+    sub_type    varchar2(50)    unique not null
 );
 create table aow_brand (
     id          number(6)       primary key,
-    brand       varchar2(50)    not null
+    brand       varchar2(50)    unique not null
 );
 create table aow_inventory (
     id          number(6)       primary key,
