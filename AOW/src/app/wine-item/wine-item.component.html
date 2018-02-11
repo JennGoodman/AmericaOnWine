@@ -1,8 +1,8 @@
-<div [style.background-color]="getColor()" class="container wine-view">
+<div [style.background-color]="getColor()" class="card wine-view">
+    <img class="card-img-top wine-img" src="http://www.conamiciwine.com/wp-content/uploads/2013/03/white_wine-glass.jpg"/><br>
+    <div class="card-body">{{invItem.name}}<br>
+    {{invItem.year}}<br>
+    {{invItem.type}} - {{invItem.subType}}<br>
     <br>
-    <img src="{{invItem.image}}"/><br>
-    <span>{{invItem.name}}</span><br>
-    <span>{{invItem.year}}</span><br>
-    <span>{{invItem.type}} - {{invItem.subType}}</span>
-    <br>
+    </div>
 </div>
