@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { InventoryFormComponent } from './inventory-form/inventory-form.component';
+import { WineListComponent } from './wine-list/wine-list.component';
+import { AppComponent } from './app.component';
 
 import { RetailHomeComponent } from './retail-home/retail-home.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
     {
-        path : '',
-        redirectTo : '/retail/home',
-        pathMatch : 'full'
+        path: '',
+        component: AppComponent,
+        pathMatch: 'full'
     },
     {
         path: 'retail/home',
@@ -18,6 +21,16 @@ const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'retail/form',
+        component: InventoryFormComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'items',
+        component: WineListComponent,
         pathMatch: 'full'
     }
 ];

@@ -6,7 +6,8 @@
     "module": "es2015",
     "types": [
         "node"
-    ]
+    ],
+    "experimentalDecorators": true
   },
   "exclude": [
     "test.ts",
