@@ -114,7 +114,7 @@ create table aow_inventory_audit (
 create table aow_transaction (
     id                  number(6)   primary key,
     order_number        number(6)   not null,
-    inventory_id  number(6)   not null references aow_inventory(id),
+    inventory_id        number(6)   not null references aow_inventory(id),
     quantity            number(3)   not null,
     user_id             number(6)   not null references aow_user(id),
     total               number(9,2) not null,
