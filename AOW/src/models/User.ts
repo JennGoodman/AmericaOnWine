@@ -6,6 +6,9 @@ export class User {
     role: number;
     active: number;
     cancelled: number;
+    ADMIN: number;
+    RETAILER: number;
+    CUSTOMER: number;
 
     constructor() {
       this.id = null;
@@ -15,5 +18,8 @@ export class User {
       this.role = null;
       this.active = null;
       this.cancelled = null;
+      const ADMIN = 0;
+      const RETAILER = 1;
+      const CUSTOMER = 2;
     }
   }
