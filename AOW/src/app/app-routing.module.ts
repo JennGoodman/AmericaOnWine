@@ -15,7 +15,7 @@ const routes: Routes = [
     {
         path: 'retail/home',
         component: RetailHomeComponent,
-        pathMatch: 'full'
+        pathMatch : 'full'
     },
     {
         path: 'retail/form',

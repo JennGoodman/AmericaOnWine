@@ -15,4 +15,12 @@ export class WineItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  getColor() {
+    switch (this.invItem.type) {
+      case 'Red': return '#d279a6';
+      case 'White': return '#ffff99';
+      case 'Rosé': return '#ffcce6';
+      case 'Champagne': return '#ffffcc';
+    }
+  }
 }

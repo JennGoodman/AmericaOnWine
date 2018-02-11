@@ -1,8 +1,8 @@
-<div class="container wine-view">
-  <div class="col-12 wine-view">
-    <div class="row wine-view"><img src="{{invItem.image}}"/></div>
-    <div class="row wine-view">{{invItem.name}}</div>
-    <div class="row wine-view">{{invItem.year}}</div>
-    <div class="row wine-view">{{invItem.type}} - {{invItem.subType}}</div>
-  </div>
+<div [style.background-color]="getColor()" class="card wine-view">
+    <img class="card-img-top wine-img" src="http://www.conamiciwine.com/wp-content/uploads/2013/03/white_wine-glass.jpg"/><br>
+    <div class="card-body">{{invItem.name}}<br>
+    {{invItem.year}}<br>
+    {{invItem.type}} - {{invItem.subType}}<br>
+    <br>
+    </div>
 </div>

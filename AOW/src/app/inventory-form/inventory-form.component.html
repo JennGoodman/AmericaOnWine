@@ -13,10 +13,10 @@
     </div>
     <select (change)="resetType()" name="type" class="form-control" required aria-label="Type" aria-describedby="basic-addon1" [(ngModel)]="invItem.type">
       <option value="def" *ngIf="invItem.type == 'def'">What type of wine is this?</option>
-      <option value="red">Red</option>
-      <option value="white">White</option>
-      <option value="rose">Rosé</option>
-      <option value="champagne">Champagne</option>
+      <option value="Red">Red</option>
+      <option value="White">White</option>
+      <option value="Rosé">Rosé</option>
+      <option value="Champagne">Champagne</option>
     </select>
     </div>
     <div *ngIf="invItem.type != 'def'"class="input-group mb-3 small-bars">
@@ -25,37 +25,37 @@
       </div>
       <select name="subType" class="form-control" required aria-label="SubType" aria-describedby="basic-addon1" [(ngModel)]="invItem.subType">
         <option value="def" *ngIf="invItem.subType == 'def'">What specific type of wine is this?</option>
-        <option *ngIf="invItem.type == 'white'" value="chardonnay">Chardonnay</option>
-        <option *ngIf="invItem.type == 'white'" value="sauvignon-blanc">Sauvignon Blanc</option>
-        <option *ngIf="invItem.type == 'white'" value="semillon">Semillon</option>
-        <option *ngIf="invItem.type == 'white'" value="riesling">Riesling</option>
-        <option *ngIf="invItem.type == 'white'" value="moscato">Moscato</option>
-        <option *ngIf="invItem.type == 'white'" value="gewurtz">Gewürztraminer</option>
-        <option *ngIf="invItem.type == 'white'" value="pinot-grigio">Pinot Grigio</option>
-        <option *ngIf="invItem.type == 'red'" value="syrah">Syrah</option>
-        <option *ngIf="invItem.type == 'red'" value="merlot">Merlot</option>
-        <option *ngIf="invItem.type == 'red'" value="cabernet-sauvignon">Cabernet Sauvignon</option>
-        <option *ngIf="invItem.type == 'red'" value="malbec">Malbec</option>
-        <option *ngIf="invItem.type == 'red'" value="pinot-noir">Pinot Noir</option>
-        <option *ngIf="invItem.type == 'red'" value="zinfandel">Zinfandel</option>
-        <option *ngIf="invItem.type == 'red'" value="sangiovese">Sangiovese</option>
-        <option *ngIf="invItem.type == 'red'" value="barbera">Barbera</option>
-        <option *ngIf="invItem.type == 'rose'" value="syrah-rose">Syrah Rosé</option>
-        <option *ngIf="invItem.type == 'rose'" value="grenache">Grenache Rosé</option>
-        <option *ngIf="invItem.type == 'rose'" value="cabernet-sauvignon-rose">Cabernet Sauvignon Rosé</option>
-        <option *ngIf="invItem.type == 'rose'" value="tempranillo">Tempranillo Rosé</option>
-        <option *ngIf="invItem.type == 'rose'" value="provence">Provence Rosé</option>
-        <option *ngIf="invItem.type == 'rose'" value="zinfandel-rose">Zinfandel Rosé</option>
-        <option *ngIf="invItem.type == 'rose'" value="sangiovese-rose">Sangiovese Rosé</option>
-        <option *ngIf="invItem.type == 'rose'" value="tavel">Tavel Rosé</option>
-        <option *ngIf="invItem.type == 'rose'" value="pinot-noir-rose">Pinot Noir Rosé</option>
-        <option *ngIf="invItem.type == 'rose'" value="mourvedre">Mourvèdre Rosé</option>
-        <option *ngIf="invItem.type == 'champagne'" value="blanc-de-blanc">Blanc de Blancs</option>
-        <option *ngIf="invItem.type == 'champagne'" value="blanc-de-noirs">Blance de Noirs</option>
-        <option *ngIf="invItem.type == 'champagne'" value="brut">Brut</option>
-        <option *ngIf="invItem.type == 'champagne'" value="demi-sec">Demi-Sec</option>
-        <option *ngIf="invItem.type == 'champagne'" value="extra-dry">Extra-Dry</option>
-        <option *ngIf="invItem.type == 'champagne'" value="rose-champagne">Rosé Champagne</option>
+        <option *ngIf="invItem.type == 'White'" value="Chardonnay">Chardonnay</option>
+        <option *ngIf="invItem.type == 'White'" value="Sauvignon Blanc">Sauvignon Blanc</option>
+        <option *ngIf="invItem.type == 'White'" value="Semillon">Semillon</option>
+        <option *ngIf="invItem.type == 'White'" value="Riesling">Riesling</option>
+        <option *ngIf="invItem.type == 'White'" value="Moscato">Moscato</option>
+        <option *ngIf="invItem.type == 'White'" value="Gewürztraminer">Gewürztraminer</option>
+        <option *ngIf="invItem.type == 'White'" value="Pinot Grigio">Pinot Grigio</option>
+        <option *ngIf="invItem.type == 'Red'" value="Syrah">Syrah</option>
+        <option *ngIf="invItem.type == 'Red'" value="Merlot">Merlot</option>
+        <option *ngIf="invItem.type == 'Red'" value="Cabernet Sauvignon">Cabernet Sauvignon</option>
+        <option *ngIf="invItem.type == 'Red'" value="Malbec">Malbec</option>
+        <option *ngIf="invItem.type == 'Red'" value="Pinot Noir">Pinot Noir</option>
+        <option *ngIf="invItem.type == 'Red'" value="Zinfandel">Zinfandel</option>
+        <option *ngIf="invItem.type == 'Red'" value="Sangiovese">Sangiovese</option>
+        <option *ngIf="invItem.type == 'Red'" value="Barbera">Barbera</option>
+        <option *ngIf="invItem.type == 'Rosé'" value="Syrah Rosé">Syrah Rosé</option>
+        <option *ngIf="invItem.type == 'Rosé'" value="Grenache Rosé">Grenache Rosé</option>
+        <option *ngIf="invItem.type == 'Rosé'" value="Cabernet Sauvignon Rosé">Cabernet Sauvignon Rosé</option>
+        <option *ngIf="invItem.type == 'Rosé'" value="Tempranillo Rosé">Tempranillo Rosé</option>
+        <option *ngIf="invItem.type == 'Rosé'" value="Provence Rosé">Provence Rosé</option>
+        <option *ngIf="invItem.type == 'Rosé'" value="Zinfandel Rosé">Zinfandel Rosé</option>
+        <option *ngIf="invItem.type == 'Rosé'" value="Sangiovese Rosé">Sangiovese Rosé</option>
+        <option *ngIf="invItem.type == 'Rosé'" value="Tavel Rosé">Tavel Rosé</option>
+        <option *ngIf="invItem.type == 'Rosé'" value="Pinot Noir Rosé">Pinot Noir Rosé</option>
+        <option *ngIf="invItem.type == 'Rosé'" value="Mourvèdre Rosé">Mourvèdre Rosé</option>
+        <option *ngIf="invItem.type == 'Champagne'" value="Blanc de Blancs">Blanc de Blancs</option>
+        <option *ngIf="invItem.type == 'Champagne'" value="Blanc de Noirs">Blance de Noirs</option>
+        <option *ngIf="invItem.type == 'Champagne'" value="Brut">Brut</option>
+        <option *ngIf="invItem.type == 'Champagne'" value="Demi-sec">Demi-Sec</option>
+        <option *ngIf="invItem.type == 'Champagne'" value="Extra-dry">Extra-Dry</option>
+        <option *ngIf="invItem.type == 'Champagne'" value="Rosé-champagne">Rosé Champagne</option>
       </select>
       </div>
     <div class="input-group mb-3 small-bars">
