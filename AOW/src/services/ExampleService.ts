@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-//import { Headers, Http, RequestOptions } from '@angular/http'; <-- Depricated
+// import { Headers, Http, RequestOptions } from '@angular/http'; <-- Depricated
 
 
 import { Observable } from 'rxjs/Observable';

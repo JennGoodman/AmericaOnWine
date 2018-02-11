@@ -11,6 +11,9 @@ import { WineItemComponent } from './wine-item/wine-item.component';
 import { WineListComponent } from './wine-list/wine-list.component';
 import { RetailHomeComponent } from './retail-home/retail-home.component';
 import { FileUploadService } from '../services/file-upload.service';
+import { UserService } from '../services/user.service';
+import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { RetailItemViewComponent } from './retail-item-view/retail-item-view.component';
 
@@ -18,6 +21,7 @@ import { RetailItemViewComponent } from './retail-item-view/retail-item-view.com
   declarations: [
     AppComponent,
     InventoryFormComponent,
+    LoginComponent,
     RetailHomeComponent,
     RetailItemViewComponent,
     // CustomerRegisterAccountComponent,
@@ -25,11 +29,16 @@ import { RetailItemViewComponent } from './retail-item-view/retail-item-view.com
     WineListComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [FileUploadService],
+  providers: [
+    HttpClientModule,
+    FileUploadService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

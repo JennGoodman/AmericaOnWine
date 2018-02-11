@@ -5,6 +5,7 @@ import { WineListComponent } from './wine-list/wine-list.component';
 import { AppComponent } from './app.component';
 
 import { RetailHomeComponent } from './retail-home/retail-home.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
     {
@@ -16,6 +17,11 @@ const routes: Routes = [
         path: 'retail/home',
         component: RetailHomeComponent,
         pathMatch : 'full'
+    },
+    {
+        path: 'login',
+        component: LoginComponent,
+        pathMatch: 'full'
     },
     {
         path: 'retail/form',
