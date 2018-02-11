@@ -1,13 +1,6 @@
 .wine-view {
     display: table-cell;
-    /*width: 300px;
-    background-color: #909090;
-    margin: 10px auto;*/
     text-align: center;
-    /*
-    padding: 10px; 
-    border-radius: 10px;
-    */
 }
 
 .row {
@@ -36,4 +29,13 @@
     -ms-transform: scale(1.05);
     -o-transform: scale(1.05);
     transform: scale(1.05);
+}
+
+.add {
+    font-size: 28px;
+}
+
+.to-cart {
+    width: 35%;
+    text-align: center;
 }

@@ -13,6 +13,7 @@ import { RetailHomeComponent } from './retail-home/retail-home.component';
 import { FileUploadService } from '../services/file-upload.service';
 
 import { RetailItemViewComponent } from './retail-item-view/retail-item-view.component';
+import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RetailItemViewComponent } from './retail-item-view/retail-item-view.com
     RetailItemViewComponent,
     // CustomerRegisterAccountComponent,
     WineItemComponent,
-    WineListComponent
+    WineListComponent,
+    BigWineItemComponent
   ],
   imports: [
     BrowserModule,

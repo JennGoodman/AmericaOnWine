@@ -1,8 +1,9 @@
-<div [style.background-color]="getColor()" [style.color]="textColor()" id="beaker" class="card wine-view">
+<div (click)="viewItem()" [style.background-color]="getColor()" [style.color]="textColor()" id="beaker" class="card wine-view">
     <img class="card-img-top wine-img" src="http://www.conamiciwine.com/wp-content/uploads/2013/03/white_wine-glass.jpg"/><br>
     <div class="card-body">{{invItem.name}}<br>
     {{invItem.year}}<br>
     {{invItem.type}} - {{invItem.subType}}<br>
+    <span class="add" (click)="addToCart($event)">+</span> <input class="to-cart" type="number" max=999 min=1 value=1>
     <br>
     </div>
 </div>
