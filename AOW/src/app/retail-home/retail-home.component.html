@@ -1,5 +1,5 @@
-<app-retail-item-view></app-retail-item-view>
-<app-retail-item-view></app-retail-item-view>
-<app-retail-item-view></app-retail-item-view>
-<app-retail-item-view></app-retail-item-view>
-<app-retail-item-view></app-retail-item-view>
+<div>
+    <div *ngFor="let item of items">
+    <app-retail-item-view [invItem]="item"></app-retail-item-view>
+    </div>
+</div>

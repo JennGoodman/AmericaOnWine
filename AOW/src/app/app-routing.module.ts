@@ -18,7 +18,7 @@ const routes: Routes = [
         pathMatch : 'full'
     },
     {
-        path: 'retailer/form',
+        path: 'retail/form',
         component: InventoryFormComponent,
         pathMatch: 'full'
     },
