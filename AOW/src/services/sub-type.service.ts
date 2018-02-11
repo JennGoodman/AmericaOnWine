@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 
 import { Config } from '../aow.config';
 
-import { SubType } from '../models/subType';
+import { SubType } from '../models/SubType';
 
 @Injectable()
 export class SubTypeService {
