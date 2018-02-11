@@ -12,6 +12,7 @@ export class Inventory {
     country: Country;
     type: Type;
     sub_type: SubType;
+    volume: number;
     year: number;
     price: number;
     submitted: Date;
@@ -26,6 +27,7 @@ export class Inventory {
       this.country = null;
       this.type = null;
       this.sub_type = null;
+      this.volume = null;
       this.year = null;
       this.price = null;
       this.submitted = null;

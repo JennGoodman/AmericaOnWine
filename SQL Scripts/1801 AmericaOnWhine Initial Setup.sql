@@ -78,6 +78,7 @@ create table aow_inventory (
     country_id  number(6)       not null references aow_country(id),
     type_id     number(6)       not null references aow_type(id),
     sub_type_id number(6)       not null references aow_sub_type(id),
+    volume      number(5,2)     not null,
     year        number(4)       not null,
     price       number(8,2)     not null,
     submitted   Date            not null,
@@ -100,6 +101,8 @@ create table aow_inventory_audit (
     new_type_id     number(6),
     old_sub_type_id number(6),
     new_sub_type_id number(6),
+    new_volume      number(5,2),
+    old_volume      number(5,2),
     old_year        number(4),
     new_year        number(4),
     old_price       number(8,2),
@@ -160,6 +163,7 @@ begin
             new_country_id,
             new_type_id,
             new_sub_type_id,
+            new_volume,
             new_year,
             new_price,
             new_submitted,
@@ -174,6 +178,7 @@ begin
             :new.country_id,
             :new.type_id,
             :new.sub_type_id,
+            :new.volume,
             :new.year,
             :new.price,
             :new.submitted,
@@ -190,6 +195,7 @@ begin
             new_country_id,     old_country_id,
             new_type_id,        old_type_id,
             new_sub_type_id,    old_sub_type_id,
+            new_volume,         old_volume,
             new_year,           old_year,
             new_price,          old_price,
             new_submitted,      old_submitted,
@@ -203,6 +209,7 @@ begin
             :new.user_id,       :old.user_id,
             :new.country_id,    :old.country_id,
             :new.type_id,       :old.type_id,
+            :new.volume,        :old.volume,
             :new.sub_type_id,   :old.sub_type_id,
             :new.year,          :old.year,
             :new.price,         :old.price,
@@ -218,7 +225,7 @@ end;
 ********************************************************************************/
 
 create or replace view aow_inventory_view as (
-    select i.id, name, brand, user_id, country, type, sub_type, year, price, submitted, description, image_url
+    select i.id, name, brand, user_id, country, type, sub_type, volume, year, price, submitted, description, image_url
         from aow_inventory i
             join aow_brand b
                 on b.id = i.brand_id
@@ -249,5 +256,5 @@ insert into aow_type (id, type) values (1, 'White');
 
 insert into aow_sub_type (id, type_id, sub_type) values (1, 1, 'Moscato');
 
-insert into aow_inventory (id, name, brand_id, user_id, country_id, type_id, sub_type_id, year, price, submitted, description) 
-    values (1, 'Barefoot Moscato', 1, 1, 1, 1, 1, 2017, 8.99, sysdate, 'It''s good Wine Bront!');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, type_id, sub_type_id, volume, year, price, submitted, description) 
+    values (1, 'Barefoot Moscato', 1, 1, 1, 1, 1, 1.5, 2017, 8.99, sysdate, 'It''s good Wine Bront!');
