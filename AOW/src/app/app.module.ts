@@ -10,7 +10,9 @@ import { InventoryFormComponent } from './inventory-form/inventory-form.componen
 import { RetailHomeComponent } from './retail-home/retail-home.component';
 
 import { FileUploadService } from '../services/file-upload.service';
+import { UserService } from '../services/user.service';
 import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,11 +24,16 @@ import { LoginComponent } from './login/login.component';
     RetailHomeComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [FileUploadService],
+  providers: [
+    HttpClientModule,
+    FileUploadService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
