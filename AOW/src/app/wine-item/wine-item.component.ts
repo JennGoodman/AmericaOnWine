@@ -17,10 +17,17 @@ export class WineItemComponent implements OnInit {
 
   getColor() {
     switch (this.invItem.type) {
-      case 'Red': return '#d279a6';
+      case 'Red': return '#660033';
       case 'White': return '#ffff99';
       case 'Rosé': return '#ffcce6';
-      case 'Champagne': return '#ffffcc';
+      case 'Champagne': return '#ffffe6';
+    }
+  }
+
+  textColor() {
+    switch (this.invItem.type) {
+      case 'Red': return '#ffffff';
+      default: return '#000000';
     }
   }
 }
