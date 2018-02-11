@@ -14,7 +14,7 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'retail/home',
+        path: 'retailer/home',
         component: RetailHomeComponent,
         pathMatch : 'full'
     },
@@ -24,7 +24,7 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'retail/form',
+        path: 'retailer/form',
         component: InventoryFormComponent,
         pathMatch: 'full'
     },
