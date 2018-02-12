@@ -1,10 +1,10 @@
-<div>
+<!-- <div>
   <h2>Registration</h2>
 
-  <form required>
+  <form method="post" action="register"required>
     <div>
-        <label> Email:</label>
-        <input  type="text" [(ngModel)]="email" name="name" required>
+        <label > Email:</label>
+        <input  type="text" [(ngModel)]="email" name="email" required>
     </div>
     <div>
       <label> Username:</label>
@@ -22,8 +22,36 @@
         </select>
     </div>
     <div>
-        <!-- <button type="submit" (click)="register()">Register</button> -->
         <button (click)="register()">Register</button>
+    </div>
+  </form>
+</div> -->
+
+<div>
+  <h2>Registration</h2>
+
+  <form method="post" action="register"required>
+    <div>
+        <label > Email:</label>
+        <input id="emailInput" #emailInput type="text" name="email" required>
+    </div>
+    <div>
+      <label> Username:</label>
+      <input id="usernameInput" #usernameInput type="text" name="username" required>
+    </div>
+    <div>
+      <label> Password:</label>
+      <input id="passwordInput" #passwordInput type="text" name="password" required>
+    </div>
+    <div>
+      <label> Type of account:</label>
+      <select id="accountTypeInput" #accountTypeInput  name="accountType" required>
+          <option value="customer">Customer</option>
+          <option value="retailer">Retailer</option>
+        </select>
+    </div>
+    <div>
+        <button (click)="register(emailInput.value, usernameInput.value, passwordInput.value, accountTypeInput.value)">Register</button>
     </div>
   </form>
 </div>

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 
-declare var require : any;
+declare var require: any;
 require('aws-sdk/dist/aws-sdk');
 
 @Injectable()
 export class FileUploadService {
 
-    private aws : any;
-    private bucket : any;
+    private aws: any;
+    private bucket: any;
 
     constructor() {
         this.aws = (<any>window).AWS;
@@ -23,8 +23,8 @@ export class FileUploadService {
 
     upload(fileInput: any) {
         // Grab the file from the event triggerer
-        let file = fileInput.target.files[0];
-        let params = {Key: file.name, Body: file};
+        const file = fileInput.target.files[0];
+        const params = {Key: file.name, Body: file};
         this.bucket.upload(params, (err, data) => console.log(err, data));
     }
 }
