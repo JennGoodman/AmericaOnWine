@@ -1,9 +1,9 @@
 export class Type {
     id: number;
-    type: string;
+    name: string;
 
     constructor() {
       this.id = null;
-      this.type = null;
+      this.name = null;
     }
   }

@@ -9,16 +9,16 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "aow_country")
+@Table(name = "aow_name")
 public class Country {
 
 	@Id
-	@SequenceGenerator(name = "countryGen", sequenceName = "aow_country_seq", allocationSize = 1)
-	@GeneratedValue(generator = "countryGen", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "nameGen", sequenceName = "aow_name_seq", allocationSize = 1)
+	@GeneratedValue(generator = "nameGen", strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column
 	private String abbrev;
-	private String country;
+	private String name;
 
 	public Country() {
 	}
@@ -40,16 +40,16 @@ public class Country {
 	}
 
 	public String getCountry() {
-		return country;
+		return name;
 	}
 
-	public void setCountry(String country) {
-		this.country = country;
+	public void setCountry(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "Country [id=" + id + ", abbrev=" + abbrev + ", country=" + country + "]";
+		return "Country [id=" + id + ", abbrev=" + abbrev + ", name=" + name + "]";
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class Country {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((abbrev == null) ? 0 : abbrev.hashCode());
-		result = prime * result + ((country == null) ? 0 : country.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + id;
 		return result;
 	}
@@ -76,10 +76,10 @@ public class Country {
 				return false;
 		} else if (!abbrev.equals(other.abbrev))
 			return false;
-		if (country == null) {
-			if (other.country != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!country.equals(other.country))
+		} else if (!name.equals(other.name))
 			return false;
 		if (id != other.id)
 			return false;

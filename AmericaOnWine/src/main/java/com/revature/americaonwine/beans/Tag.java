@@ -9,24 +9,24 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "aow_tag")
+@Table(name = "aow_name")
 public class Tag {
 
 	@Id
-	@SequenceGenerator(name = "tagGen", sequenceName = "aow_tag_seq", allocationSize = 1)
-	@GeneratedValue(generator = "tagGen", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "nameGen", sequenceName = "aow_name_seq", allocationSize = 1)
+	@GeneratedValue(generator = "nameGen", strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column
-	private String tag;
+	private String name;
 
 	public Tag() {
 
 	}
 
-	public Tag(int id, String tag) {
+	public Tag(int id, String name) {
 		super();
 		this.id = id;
-		this.tag = tag;
+		this.name = name;
 	}
 
 	public int getId() {
@@ -38,16 +38,16 @@ public class Tag {
 	}
 
 	public String getTag() {
-		return tag;
+		return name;
 	}
 
-	public void setTag(String tag) {
-		this.tag = tag;
+	public void setTag(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "Tag [id=" + id + ", tag=" + tag + "]";
+		return "Tag [id=" + id + ", name=" + name + "]";
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class Tag {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
-		result = prime * result + ((tag == null) ? 0 : tag.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
 
@@ -70,10 +70,10 @@ public class Tag {
 		Tag other = (Tag) obj;
 		if (id != other.id)
 			return false;
-		if (tag == null) {
-			if (other.tag != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!tag.equals(other.tag))
+		} else if (!name.equals(other.name))
 			return false;
 		return true;
 	}

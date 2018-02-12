@@ -1,11 +1,11 @@
 export class Country {
     id: number;
     abbrev: string;
-    country: string;
+    name: string;
 
     constructor() {
       this.id = null;
       this.abbrev = null;
-      this.country = null;
+      this.name = null;
     }
   }
