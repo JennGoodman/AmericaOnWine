@@ -13,7 +13,7 @@ public class RequestHelper implements Delegate {
 	
 	@Override
 	public void process(HttpServletRequest req, HttpServletResponse resp) {
-		String path = req.getRequestURI().substring(req.getContextPath().length() + 1);
+		String path = req.getRequestURI().substring(req.getContextPath().length());
 		if (req.getMethod() == "POST" || req.getMethod() == "PUT" || req.getMethod() == "GET")
 			switch (path){
 			case "retailer": 

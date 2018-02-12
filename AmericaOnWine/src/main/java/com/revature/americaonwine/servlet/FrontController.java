@@ -19,7 +19,7 @@ public class FrontController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		String path = req.getRequestURI().substring(req.getContextPath().length() + 1);
+		String path = req.getRequestURI().substring(req.getContextPath().length());
 		if (path.contains("static")) {
 			super.doGet(req, resp);
 		}
@@ -31,7 +31,7 @@ public class FrontController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
-		String path = req.getRequestURI().substring(req.getContextPath().length() + 1);
+		String path = req.getRequestURI().substring(req.getContextPath().length());
 		if (path.contains("static")) {
 			super.doPost(req, resp);
 		}
@@ -43,7 +43,7 @@ public class FrontController extends HttpServlet {
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
-		String path = req.getRequestURI().substring(req.getContextPath().length() + 1);
+		String path = req.getRequestURI().substring(req.getContextPath().length());
 		if (path.contains("static")) {
 			super.doPut(req, resp);
 		}
