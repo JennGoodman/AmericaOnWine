@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { User } from '../../models/User';
-import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AccountAccessService } from '../../services/account-access.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginFailed: boolean;
   loggedInUser: User;
-  constructor(private service: UserService, private router: Router) {
+  constructor(private service: AccountAccessService, private router: Router) {
     this.loginFailed = false;
   }
 
@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
       this.loggedInUser = resp as User;
       if (this.loggedInUser == null) {
         this.loginFailed = true;
+        localStorage.setItem('user', JSON.stringify(this.loggedInUser));
       } else {
         // Redirect to home
         this.router.navigate(['']);
