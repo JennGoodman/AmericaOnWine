@@ -40,7 +40,8 @@ public class UserHibernate implements UserDao {
 			return true;
 			
 		} catch(Exception e) {
-			tx.rollback();
+			if (tx != null)
+				tx.rollback();
 			e.printStackTrace();
 			return false;
 		} finally {
@@ -107,7 +108,8 @@ public class UserHibernate implements UserDao {
 			tx.commit();
 			return true;
 		} catch (NonUniqueObjectException e) {
-			tx.rollback();
+			if (tx != null)
+				tx.rollback();
 			return false;
 		}
 	}
