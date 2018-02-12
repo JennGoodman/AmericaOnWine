@@ -14,6 +14,8 @@ public class RequestHelper implements Delegate {
 	@Override
 	public void process(HttpServletRequest req, HttpServletResponse resp) {
 		String path = req.getRequestURI().substring(req.getContextPath().length());
+		
+		addCorsHeaders(req.getRequestURI(), resp);
 		if (req.getMethod() == "POST" || req.getMethod() == "PUT" || req.getMethod() == "GET")
 			switch (path){
 			case "retailer": 
@@ -33,4 +35,14 @@ public class RequestHelper implements Delegate {
 	}
 	
 
+		private void addCorsHeaders(String reqUri, HttpServletResponse resp) {
+			log.trace("adding headers");
+			resp.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+			resp.addHeader("Vary", "Origin");
+			resp.addHeader("Access-Control-Allow-Credentials", "true");
+			resp.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+			resp.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+			resp.addHeader("Access-Control-Max-Age", "1728000");
+			resp.addHeader("Produces", "application/json");	
+		}
 }
