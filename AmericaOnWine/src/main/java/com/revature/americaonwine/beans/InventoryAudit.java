@@ -18,32 +18,57 @@ public class InventoryAudit {
 	@SequenceGenerator(name = "inventory_auditGen", sequenceName = "aowInventory_auditSeq", allocationSize = 1)
 	@GeneratedValue(generator = "inventory_auditGen", strategy = GenerationType.SEQUENCE)
 	private int id;
-	@Column
+	@Column(name="old_id")
 	private int oldId;
+	@Column(name="new_id")
 	private int newId;
+	@Column(name="old_name")
 	private String oldName;
+	@Column(name="new_name")
 	private String newName;
+	@Column(name="old_brand_id")
 	private int oldBrandId;
+	@Column(name="new_brand_id")
 	private int newBrandId;
+	@Column(name="old_user_id")
 	private int oldUserId;
+	@Column(name="new_user_id")
 	private int newUserId;
+	@Column(name="old_country_id")
 	private int oldCountryId;
+	@Column(name="new_country_id")
 	private int newCountryId;
+	@Column(name="old_type_id")
 	private int oldTypeId;
+	@Column(name="new_type_id")
 	private int newTypeId;
+	@Column(name="old_sub_type_id")
 	private int oldSubTypeId;
+	@Column(name="new_sub_type_id")
 	private int newSubTypeId;
+	@Column(name="old_volume")
 	private float oldVolume;
+	@Column(name="new_volume")
 	private float newVolume;
+	@Column(name="old_year")
 	private int oldYear;
+	@Column(name="new_year")
 	private int newYear;
+	@Column(name="old_price")
 	private float oldPrice;
+	@Column(name="new_price")
 	private float newPrice;
+	@Column(name="old_submitted")
 	private LocalDate oldSubmitted;
+	@Column(name="new_submitted")
 	private LocalDate newSubmitted;
+	@Column(name="old_description")
 	private String oldDescription;
+	@Column(name="new_description")
 	private String newDescription;
+	@Column(name="old_image_url")
 	private String oldImageUrl;
+	@Column(name="new_image_url")
 	private String newImageUrl;
 
 	public InventoryAudit() {
