@@ -114,14 +114,15 @@ public class UserHibernate implements UserDao {
 
 	@Override
 	public boolean cancelUser(User u) {
-		// TODO Auto-generated method stub
-		return false;
+		u.setCancelled(1);
+		return updateUser(u);
 	}
 
 	@Override
 	public boolean cancelUser(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		User u = getUser(id);
+		u.setCancelled(1);
+		return updateUser(u);
 	}
 
 }

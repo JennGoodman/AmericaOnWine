@@ -217,7 +217,5 @@ public class InventoryItem {
 	}
 	public InventoryItem() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	
 }
