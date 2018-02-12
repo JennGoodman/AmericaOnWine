@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 
@@ -10,12 +11,20 @@ import { InventoryFormComponent } from './inventory-form/inventory-form.componen
 import { WineItemComponent } from './wine-item/wine-item.component';
 import { WineListComponent } from './wine-list/wine-list.component';
 import { RetailHomeComponent } from './retail-home/retail-home.component';
+import { LoginComponent } from './login/login.component';
+import { RetailItemViewComponent } from './retail-item-view/retail-item-view.component';
+
+
 import { FileUploadService } from '../services/file-upload.service';
 import { UserService } from '../services/user.service';
-import { LoginComponent } from './login/login.component';
-import { HttpClientModule } from '@angular/common/http';
-
-import { RetailItemViewComponent } from './retail-item-view/retail-item-view.component';
+import { AccountAccessService } from '../services/account-access.service';
+import { BrandService } from '../services/brand.service';
+import { CountryService } from '../services/country.service';
+import { InventoryService } from '../services/inventory.service';
+import { SubTypeService } from '../services/sub-type.service';
+import { TagService } from '../services/tag.service';
+import { TransactionService } from '../services/transaction.service';
+import { TypeService } from '../services/type.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +46,15 @@ import { RetailItemViewComponent } from './retail-item-view/retail-item-view.com
   providers: [
     HttpClientModule,
     FileUploadService,
-    UserService
+    UserService,
+    AccountAccessService,
+    BrandService,
+    CountryService,
+    InventoryService,
+    SubTypeService,
+    TagService,
+    TransactionService,
+    TypeService
   ],
   bootstrap: [AppComponent]
 })
