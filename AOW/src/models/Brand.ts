@@ -1,9 +1,9 @@
 export class Brand {
     id: number;
-    brand: string;
+    name: string;
 
     constructor() {
       this.id = null;
-      this.brand = null;
+      this.name = null;
     }
   }

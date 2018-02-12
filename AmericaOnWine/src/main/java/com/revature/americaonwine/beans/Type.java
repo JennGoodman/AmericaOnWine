@@ -1,25 +1,31 @@
 package com.revature.americaonwine.beans;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="aow_type")
+@Table(name = "aow_name")
 public class Type {
 
 	@Id
-	@SequenceGenerator(name="typeGen", sequenceName="aow_type_seq", allocationSize=1)
-	@GeneratedValue(generator="typeGen", strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "nameGen", sequenceName = "aow_name_seq", allocationSize = 1)
+	@GeneratedValue(generator = "nameGen", strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column
-	private String type;
+	private String name;
 
 	public Type() {
 	}
 
-	public Type(int id, String type) {
+	public Type(int id, String name) {
 		super();
 		this.id = id;
-		this.type = type;
+		this.name = name;
 	}
 
 	public int getId() {
@@ -31,23 +37,23 @@ public class Type {
 	}
 
 	public String getType() {
-		return type;
+		return name;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setType(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "Type [id=" + id + ", type=" + type + "]";
+		return "Type [id=" + id + ", name=" + name + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + id;
 		return result;
 	}
@@ -61,10 +67,10 @@ public class Type {
 		if (getClass() != obj.getClass())
 			return false;
 		Type other = (Type) obj;
-		if (type == null) {
-			if (other.type != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!type.equals(other.type))
+		} else if (!name.equals(other.name))
 			return false;
 		if (id != other.id)
 			return false;
