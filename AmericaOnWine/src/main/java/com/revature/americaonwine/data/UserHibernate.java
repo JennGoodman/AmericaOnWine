@@ -65,7 +65,7 @@ public class UserHibernate implements UserDao {
 		query.select(root).where(builder.equal(root.get("username"), username));
 		Query<User> q = su.createQuery(query);
 		List<User> users = q.getResultList();
-		if (users != null && users.size() > 0)
+		if (users != null && !users.isEmpty())
 			return users.get(0);
 		else
 			return null;
@@ -80,7 +80,7 @@ public class UserHibernate implements UserDao {
 		query.select(root).where(builder.equal(root.get("email"), email));
 		Query<User> q = su.createQuery(query);
 		List<User> users = q.getResultList();
-		if (users != null && users.size() > 0)
+		if (users != null && !users.isEmpty())
 			return users.get(0);
 		else
 			return null;
@@ -94,8 +94,7 @@ public class UserHibernate implements UserDao {
 		Root<User> root = query.from(User.class);
 		query.select(root);
 		Query<User> q = su.createQuery(query);
-		List<User> users = q.getResultList();
-		return users;
+		return q.getResultList();
 	}
 
 	@Override
