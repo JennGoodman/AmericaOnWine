@@ -1,25 +1,31 @@
 package com.revature.americaonwine.beans;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="aow_brand")
+@Table(name = "aow_name")
 public class Brand {
 
 	@Id
-	@SequenceGenerator(name="brandGen", sequenceName="aow_brand_seq", allocationSize=1)
-	@GeneratedValue(generator="brandGen", strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "nameGen", sequenceName = "aow_name_seq", allocationSize = 1)
+	@GeneratedValue(generator = "nameGen", strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column
-	private String brand;
+	private String name;
 
 	public Brand() {
 	}
 
-	public Brand(int id, String brand) {
+	public Brand(int id, String name) {
 		super();
 		this.id = id;
-		this.brand = brand;
+		this.name = name;
 	}
 
 	public int getId() {
@@ -31,23 +37,23 @@ public class Brand {
 	}
 
 	public String getBrand() {
-		return brand;
+		return name;
 	}
 
-	public void setBrand(String brand) {
-		this.brand = brand;
+	public void setBrand(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "Brand [id=" + id + ", brand=" + brand + "]";
+		return "Brand [id=" + id + ", name=" + name + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + id;
 		return result;
 	}
@@ -61,10 +67,10 @@ public class Brand {
 		if (getClass() != obj.getClass())
 			return false;
 		Brand other = (Brand) obj;
-		if (brand == null) {
-			if (other.brand != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!brand.equals(other.brand))
+		} else if (!name.equals(other.name))
 			return false;
 		if (id != other.id)
 			return false;

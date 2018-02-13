@@ -1,25 +1,26 @@
 package com.revature.americaonwine.beans;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="aow_country")
+@Table(name = "aow_name")
 public class Country {
 
 	@Id
-	@SequenceGenerator(name="countryGen", sequenceName="aow_country_seq", allocationSize=1)
-	@GeneratedValue(generator="countryGen", strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "nameGen", sequenceName = "aow_name_seq", allocationSize = 1)
+	@GeneratedValue(generator = "nameGen", strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column
-	private String country;
+	private String abbrev;
+	private String name;
 
 	public Country() {
-	}
-
-	public Country(int id, String country) {
-		super();
-		this.id = id;
-		this.country = country;
 	}
 
 	public int getId() {
@@ -30,24 +31,33 @@ public class Country {
 		this.id = id;
 	}
 
-	public String getCountry() {
-		return country;
+	public String getAbbrev() {
+		return abbrev;
 	}
 
-	public void setCountry(String country) {
-		this.country = country;
+	public void setAbbrev(String abbrev) {
+		this.abbrev = abbrev;
+	}
+
+	public String getCountry() {
+		return name;
+	}
+
+	public void setCountry(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "Country [id=" + id + ", country=" + country + "]";
+		return "Country [id=" + id + ", abbrev=" + abbrev + ", name=" + name + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((country == null) ? 0 : country.hashCode());
+		result = prime * result + ((abbrev == null) ? 0 : abbrev.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + id;
 		return result;
 	}
@@ -61,10 +71,15 @@ public class Country {
 		if (getClass() != obj.getClass())
 			return false;
 		Country other = (Country) obj;
-		if (country == null) {
-			if (other.country != null)
+		if (abbrev == null) {
+			if (other.abbrev != null)
 				return false;
-		} else if (!country.equals(other.country))
+		} else if (!abbrev.equals(other.abbrev))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
 			return false;
 		if (id != other.id)
 			return false;
