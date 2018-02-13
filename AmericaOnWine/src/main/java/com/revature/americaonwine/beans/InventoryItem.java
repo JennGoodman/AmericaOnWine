@@ -11,7 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "aowInventory")
+@Table(name = "aow_Inventory")
 public class InventoryItem {
 	@Id
 	@SequenceGenerator(name = "inventoryItemGen", sequenceName = "aowInventory_seq", allocationSize = 1)
