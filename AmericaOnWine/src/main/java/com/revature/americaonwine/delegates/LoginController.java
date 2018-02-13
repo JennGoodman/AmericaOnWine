@@ -44,5 +44,17 @@ public class LoginController {
 			return om.writeValueAsString(fromDB);
 		}
 	}
-
+	
+	@RequestMapping(method=RequestMethod.GET)
+	@ResponseBody
+	public String getPage(HttpSession s) {
+		if ((User) s.getAttribute("user") != null) {
+			try {
+				return om.writeValueAsString("Got To Home");
+			} catch (JsonProcessingException e) {
+				log.error(e.getMessage());
+			}
+		}
+		return "Stuff";
+	}
 }
