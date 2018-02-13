@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import com.revature.americaonwine.beans.Brand;
+import com.revature.americaonwine.beans.Country;
 import com.revature.americaonwine.util.HibernateUtil;
 
 public class BrandSpring implements BrandDao {
@@ -21,9 +23,11 @@ public class BrandSpring implements BrandDao {
 	}
 
 	@Override
-	public List<?> getAll() {
+	public List<Brand> getAll() {
 		log.trace(this.getClass() + " Called: getAll()");
-		return s.createQuery("From com.revature.beans.Brand").list();
+		String query = "from com.revature.beans.Brand";
+		Query<Brand> q = s.createQuery(query, Brand.class);
+		return q.getResultList();
 	}
 
 	@Override

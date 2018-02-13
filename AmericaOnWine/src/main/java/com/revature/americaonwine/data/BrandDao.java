@@ -20,7 +20,7 @@ public interface BrandDao {
 	 * 
 	 * @return List<Brand> of brands
 	 */
-	public List<?> getAll();
+	public List<Brand> getAll();
 
 	/**
 	 * Updates an existing brand in the database.

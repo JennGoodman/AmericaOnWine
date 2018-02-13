@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import com.revature.americaonwine.beans.Country;
 import com.revature.americaonwine.util.HibernateUtil;
@@ -21,9 +22,11 @@ public class CountrySpring implements CountryDao {
 	}
 
 	@Override
-	public List<?> getAll() {
+	public List<Country> getAll() {
 		log.trace(this.getClass() + " Called: getAll()");
-		return s.createQuery("From com.revature.beans.Country").list();
+		String query = "from com.revature.beans.Country";
+		Query<Country> q = s.createQuery(query, Country.class);
+		return q.getResultList();
 	}
 
 	@Override

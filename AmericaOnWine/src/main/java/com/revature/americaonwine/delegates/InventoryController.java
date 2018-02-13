@@ -1,9 +1,5 @@
 package com.revature.americaonwine.delegates;
 
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.services.InventoryService;
@@ -27,14 +24,14 @@ public class InventoryController {
 	
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
-	public InventoryItem addInventory(@RequestBody InventoryItem inv, HttpSession session) throws JSONProcessingException {
-		return inv;
+	public String addInventory(@RequestBody InventoryItem inv) throws JsonProcessingException {
+		return om.writeValueAsString(inv);
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
 	@ResponseBody
-	public List<InventoryItem> getAll(HttpSession session) throws JSONProcessingException {
-		
+	public String getAll() throws JsonProcessingException {
+		return om.writeValueAsString(is.getAll());
 	}
 
 }

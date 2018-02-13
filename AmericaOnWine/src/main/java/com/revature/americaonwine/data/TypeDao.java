@@ -20,7 +20,7 @@ public interface TypeDao {
 	 * 
 	 * @return List<Type> of types
 	 */
-	public List<?> getAll();
+	public List<Type> getAll();
 
 	/**
 	 * Updates an existing type in the database.

@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
+import com.revature.americaonwine.beans.Country;
 import com.revature.americaonwine.beans.SubType;
 import com.revature.americaonwine.util.HibernateUtil;
 
@@ -21,9 +23,11 @@ public class SubTypeSpring implements SubTypeDao {
 	}
 
 	@Override
-	public List<?> getAll() {
+	public List<SubType> getAll() {
 		log.trace(this.getClass() + " Called: getAll()");
-		return s.createQuery("From com.revature.beans.SubType").list();
+		String query = "from com.revature.beans.SubType";
+		Query<SubType> q = s.createQuery(query, SubType.class);
+		return q.getResultList();
 	}
 
 	@Override

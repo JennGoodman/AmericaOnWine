@@ -20,7 +20,7 @@ public interface CountryDao {
 	 * 
 	 * @return List<Country> of countries
 	 */
-	public List<?> getAll();
+	public List<Country> getAll();
 
 	/**
 	 * Updates an existing country in the database.

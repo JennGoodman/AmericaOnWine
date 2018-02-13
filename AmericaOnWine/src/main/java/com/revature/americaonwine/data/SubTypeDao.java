@@ -20,7 +20,7 @@ public interface SubTypeDao {
 	 * 
 	 * @return List<SubType> of subTypes
 	 */
-	public List<?> getAll();
+	public List<SubType> getAll();
 
 	/**
 	 * Updates an existing subType in the database.

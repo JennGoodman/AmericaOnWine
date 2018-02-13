@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
+import com.revature.americaonwine.beans.Country;
 import com.revature.americaonwine.beans.Type;
 import com.revature.americaonwine.util.HibernateUtil;
 
@@ -21,9 +23,11 @@ public class TypeSpring implements TypeDao {
 	}
 
 	@Override
-	public List<?> getAll() {
+	public List<Type> getAll() {
 		log.trace(this.getClass() + " Called: getAll()");
-		return s.createQuery("From com.revature.beans.Type").list();
+		String query = "from com.revature.beans.Type";
+		Query<Type> q = s.createQuery(query, Type.class);
+		return q.getResultList();
 	}
 
 	@Override
