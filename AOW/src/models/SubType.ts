@@ -2,12 +2,12 @@ import { Type } from './Type';
 
 export class SubType {
     id: number;
-    subType: string;
+    name: string;
     type: Type;
 
     constructor() {
       this.id = null;
-      this.subType = null;
+      this.name = null;
       this.type = null;
     }
   }

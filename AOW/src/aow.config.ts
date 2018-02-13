@@ -5,9 +5,10 @@ export class Config {
     defaultHeaders: HttpHeaders;
 
     constructor() {
-        this.appURL = 'http://18.217.53.157:8080/AmericaOnWine/';
+        this.appURL = 'http://18.219.46.59:8080/americaonwine/';
         this.defaultHeaders = new HttpHeaders();
         this.defaultHeaders.append('Content-Type', 'application/json');
-        this.defaultHeaders.append('enctype', 'multipart/form-data');
+        this.defaultHeaders.append('Access-Control-Allow-Origin', '*');
+        //this.defaultHeaders.append('enctype', 'multipart/form-data');
     }
   }

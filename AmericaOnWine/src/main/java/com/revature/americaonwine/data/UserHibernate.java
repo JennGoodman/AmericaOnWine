@@ -11,10 +11,12 @@ import org.hibernate.NonUniqueObjectException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Component;
 
 import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.util.HibernateUtil;
 
+@Component
 public class UserHibernate implements UserDao {
 
 	private static Logger log = Logger.getLogger(UserHibernate.class);
@@ -40,7 +42,8 @@ public class UserHibernate implements UserDao {
 			return true;
 			
 		} catch(Exception e) {
-			tx.rollback();
+			if (tx != null)
+				tx.rollback();
 			e.printStackTrace();
 			return false;
 		} finally {
@@ -107,21 +110,23 @@ public class UserHibernate implements UserDao {
 			tx.commit();
 			return true;
 		} catch (NonUniqueObjectException e) {
-			tx.rollback();
+			if (tx != null)
+				tx.rollback();
 			return false;
 		}
 	}
 
 	@Override
 	public boolean cancelUser(User u) {
-		// TODO Auto-generated method stub
-		return false;
+		u.setCancelled(1);
+		return updateUser(u);
 	}
 
 	@Override
 	public boolean cancelUser(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		User u = getUser(id);
+		u.setCancelled(1);
+		return updateUser(u);
 	}
 
 }

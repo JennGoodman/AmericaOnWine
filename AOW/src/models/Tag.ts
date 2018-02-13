@@ -1,9 +1,9 @@
 export class Tag {
     id: number;
-    tag: string;
+    name: string;
 
     constructor() {
       this.id = null;
-      this.tag = null;
+      this.name = null;
     }
   }
