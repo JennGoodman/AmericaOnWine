@@ -11,13 +11,13 @@ export class User {
     CUSTOMER: number;
 
     constructor() {
-      this.id = null;
-      this.username = null;
-      this.password = null;
-      this.email = null;
-      this.role = null;
-      this.active = null;
-      this.cancelled = null;
+      this.id = 0;
+      this.username = '';
+      this.password = '';
+      this.email = '';
+      this.role = 0;
+      this.active = 0;
+      this.cancelled = 0;
       const ADMIN = 0;
       const RETAILER = 1;
       const CUSTOMER = 2;
