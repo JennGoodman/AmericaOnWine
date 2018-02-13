@@ -17,7 +17,7 @@ export class BigWineItemComponent implements OnInit {
   }
 
   routeBack() {
-    this.router.navigate(['/item/']);
+    this.router.navigate(['/items/']);
   }
 
 }
