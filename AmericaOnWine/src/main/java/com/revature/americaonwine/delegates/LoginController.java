@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,9 +21,9 @@ import com.revature.americaonwine.services.LoginService;
 // @CrossOrigin(origins="http//localhost:8080")
 // @CrossOrigin(origins= {"50.207.204.190", "http://localhost:4200", "http://localhost:8080", ""})
 @CrossOrigin(origins="*")
-@RequestMapping(value="/login", headers="Accept=application/json")
+@RequestMapping(value="/login", headers="Accept=application/json, text/plain", consumes= MediaType.APPLICATION_JSON_VALUE)
 public class LoginController {
-	
+
 	private Logger log = Logger.getLogger(LoginController.class);
 	
 	@Autowired
