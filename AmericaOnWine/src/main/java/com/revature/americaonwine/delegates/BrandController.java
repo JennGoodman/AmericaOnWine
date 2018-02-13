@@ -12,8 +12,8 @@ import com.revature.americaonwine.services.WineFormHibernate;
 import com.revature.americaonwine.services.WineFormService;
 
 @Controller
-@CrossOrigin(origins="*", allowedHeaders = "*")
-@RequestMapping(value="/brand")
+@CrossOrigin(origins="*")
+@RequestMapping(value="/brand", headers="Accept=application/json, text/plain")
 public class BrandController {
 	private WineFormService wfs = new WineFormHibernate();
 	private ObjectMapper om = new ObjectMapper();
