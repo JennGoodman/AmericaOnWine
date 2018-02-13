@@ -27,9 +27,17 @@ public class LoginHibernate implements LoginService {
 	}
 
 	@Override
-	public User register(User u) {
-		// TODO Auto-generated method stub
-		return null;
+	public User register(User user) {
+		User email = ud.getUserByEmail(user.getEmail());
+		User username = ud.getUserByUsername(user.getUsername());
+		if(email == null) {
+			return null;
+		}else if(username == null) {
+			return null;
+		}else {
+			ud.insertUser(user);
+		}
+		return user;
 	}
 
 }

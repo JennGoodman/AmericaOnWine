@@ -15,11 +15,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class RegisterComponent implements OnInit {
-
+  fieldsIncomplete: boolean;
+  registerFailed: boolean;
   check: User[];
   userRegistered: User;
   found: boolean;
   constructor(private service: UserService, private router: Router) { 
+    this.fieldsIncomplete = false;
+    this.found = false;
+    this.registerFailed = false;
   }
 
   ngOnInit() {
@@ -30,7 +34,8 @@ export class RegisterComponent implements OnInit {
     password: string,
     accountType: String){
     if(email=="" || username=="" || password=="" || accountType==""){
-      alert("Need to fill out all the fields");
+      //alert("Need to fill out all the fields");
+      this.fieldsIncomplete = true;
     }
     else{
       const user: User =new User();
@@ -51,61 +56,38 @@ export class RegisterComponent implements OnInit {
       console.log(user);
 
       //check current user accounts so that there is no duplicate
-      this.service.getAll().subscribe(resp => {
-        this.check = resp as User[];
-        for(let a of this.check){
-          if(a.username === user.username){
-            this.found = true;
+      // this.service.getAll().subscribe(resp => {
+      //   this.check = resp as User[];
+      //   for(let a of this.check){
+      //     if(a.username === user.username){
+      //       this.found = true;
             
-          }
-        }
-      });
+      //     }
+      //   }
+      // });
 
       //tell yous username is taken if found
-      if(this.found){
-        alert("Username is taken, try again");
-      }
+      // if(this.found){
+      //   alert("Username is taken, try again");
+      // }
       //creates a new userand redirects them to proper home page
-      else {
+      //else {
         this.service.add(user).subscribe(resp => {
           this.userRegistered = resp as User;
           if (this.userRegistered == null) {
-            alert("Registration failed");
+            this.registerFailed = true;
           } else {
             if(accountType === 'retailer'){
               //go to retailer home page
               this.router.navigate(['retailer/home']);
             } else{
               //go to customer home page
-              //this.router.navigate(['customer/home']);
+              this.router.navigate(['items']);
             } 
           }
         });
-      }
+      //}
+    } 
     }
-      
-    }
-
-  // register(){
-  //   if(this.email==null || this.username==null || this.password==null || this.accountType==null){
-  //     alert("Need to fill out all the fields");
-  //   }
-  //   else{
-  //     this.user.id =1;
-  //     this.user.email=this.email;
-  //     this.user.username=this.username;
-  //     this.user.password=this.password;
-  //     if(this.accountType === 'customer'){
-  //       this.user.role = 1;
-  //     } 
-  //     else {
-  //       this.user.role = 2;
-  //     }
-  //     this.user.active=0;
-  //     this.user.cancelled=0;
-  //   }
-  //     console.log(this.user);
-  //   }
-    
   }
 

@@ -1,32 +1,3 @@
-<!-- <div>
-  <h2>Registration</h2>
-
-  <form method="post" action="register"required>
-    <div>
-        <label > Email:</label>
-        <input  type="text" [(ngModel)]="email" name="email" required>
-    </div>
-    <div>
-      <label> Username:</label>
-      <input  type="text" [(ngModel)]="username" name="username" required>
-    </div>
-    <div>
-      <label> Password:</label>
-      <input  type="text" [(ngModel)]="password" name="password" required>
-    </div>
-    <div>
-      <label> Type of account:</label>
-      <select [(ngModel)]="accountType" name="accountType" required>
-          <option value="customer">Customer</option>
-          <option value="retailer">Retailer</option>
-        </select>
-    </div>
-    <div>
-        <button (click)="register()">Register</button>
-    </div>
-  </form>
-</div> -->
-
 <div>
   <h2>Registration</h2>
 
@@ -49,6 +20,12 @@
           <option value="customer">Customer</option>
           <option value="retailer">Retailer</option>
         </select>
+    </div>
+    <div *ngIf="fieldsIncomplete">
+      Need to fill out all fields
+    </div>
+    <div *ngIf="registerFailed">
+      Registration Failed
     </div>
     <div>
         <button (click)="register(emailInput.value, usernameInput.value, passwordInput.value, accountTypeInput.value)">Register</button>
