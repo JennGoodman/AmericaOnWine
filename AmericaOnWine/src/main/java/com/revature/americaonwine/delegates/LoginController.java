@@ -34,7 +34,7 @@ public class LoginController {
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
 	public String login(@RequestBody User fromWeb, HttpSession session) throws JsonProcessingException {
-		
+		log.trace("Got Request body and is : " + fromWeb);
 		User fromDB = ls.login(fromWeb.getUsername(), fromWeb.getPassword());
 		if (fromDB != null) {
 			log.trace(" User form DB is not null and is: " + fromDB);
@@ -45,5 +45,17 @@ public class LoginController {
 			return om.writeValueAsString(fromDB);
 		}
 	}
-
+	
+	@RequestMapping(method=RequestMethod.GET)
+	@ResponseBody
+	public String getPage(HttpSession s) {
+		if ((User) s.getAttribute("user") != null) {
+			try {
+				return om.writeValueAsString("Got To Home");
+			} catch (JsonProcessingException e) {
+				log.error(e.getMessage());
+			}
+		}
+		return "Stuff";
+	}
 }
