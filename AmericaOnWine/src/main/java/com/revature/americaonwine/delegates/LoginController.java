@@ -16,8 +16,9 @@ import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.services.LoginService;
 
 @Controller
-//@CrossOrigin(origins="http//localhost:8080")
-@CrossOrigin(origins="18.219.46.59:8080")
+// @CrossOrigin(origins="http//localhost:8080")
+// @CrossOrigin(origins= {"50.207.204.190", "http://localhost:4200", "http://localhost:8080", ""})
+@CrossOrigin(origins="*", allowedHeaders = "*")
 @RequestMapping(value="/login")
 public class LoginController {
 	
