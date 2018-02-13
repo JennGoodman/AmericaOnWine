@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  user: User;
+  constructor(ls: WindowLocalStorage) {
+    this.user = JSON.parse(ls.localStorage.getItem('user'));
+   }
 
   ngOnInit() {
   }

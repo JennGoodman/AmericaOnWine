@@ -13,6 +13,14 @@ export class InventoryFormComponent implements OnInit {
     this.invItem = new InventoryItem;
    }
 
+   resetType() {
+     this.invItem.subType = 'def';
+   }
+
+   addWine() {
+     return;
+   }
+
   ngOnInit() {
   }
 
