@@ -38,6 +38,11 @@ const routes: Routes = [
         path: 'item',
         component: BigWineItemComponent,
         pathMatch: 'full'
+    },
+    {
+        path: 'form',
+        component: InventoryFormComponent,
+        pathMatch: 'full'
     }
 ];
 

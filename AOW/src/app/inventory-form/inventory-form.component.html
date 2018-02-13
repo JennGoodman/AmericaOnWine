@@ -9,53 +9,40 @@
   </div>
   <div class="input-group mb-3 small-bars">
     <div class="input-group-prepend">
-      <span class="input-group-text red-wine inv-form-prepend">Type of wine</span>
+      <span class="input-group-text red-wine inv-form-prepend">Brand</span>
     </div>
-    <select (change)="resetType()" name="type" class="form-control" required aria-label="Type" aria-describedby="basic-addon1" [(ngModel)]="invItem.type">
-      <option value="def" *ngIf="invItem.type == 'def'">What type of wine is this?</option>
-      <option value="Red">Red</option>
-      <option value="White">White</option>
-      <option value="Rosé">Rosé</option>
-      <option value="Champagne">Champagne</option>
+    <select (change)="changeBrand()" name="brand" class="form-control" required aria-label="Brand" aria-describedby="basic-addon1" [(ngModel)]="invItem.brand">
+      <option selected value=null *ngIf="brandChanged == false">What brand of wine is this?</option>
+      <option *ngFor="let brand of brandList" [value]="brand">{{brand.name}}</option>
     </select>
     </div>
-    <div *ngIf="invItem.type != 'def'"class="input-group mb-3 small-bars">
+  <div class="input-group mb-3 small-bars">
+    <div class="input-group-prepend">
+      <span class="input-group-text red-wine inv-form-prepend">Type of wine</span>
+    </div>
+    <select (change)="resetType()" name="type" class="form-control" required aria-label="Type" aria-describedby="basic-addon1" [(ngModel)]="curType">
+      <option selected value="def" *ngIf="curType == 'def'">What type of wine is this?</option>
+      <option *ngFor="let type of typeList" [value]="type">{{type.name}}</option>
+    </select>
+    </div>
+    <div *ngIf="curType != 'def'" class="input-group mb-3 small-bars">
       <div class="input-group-prepend">
         <span class="input-group-text red-wine inv-form-prepend">Specific Type</span>
       </div>
-      <select name="subType" class="form-control" required aria-label="SubType" aria-describedby="basic-addon1" [(ngModel)]="invItem.subType">
-        <option value="def" *ngIf="invItem.subType == 'def'">What specific type of wine is this?</option>
-        <option *ngIf="invItem.type == 'White'" value="Chardonnay">Chardonnay</option>
-        <option *ngIf="invItem.type == 'White'" value="Sauvignon Blanc">Sauvignon Blanc</option>
-        <option *ngIf="invItem.type == 'White'" value="Semillon">Semillon</option>
-        <option *ngIf="invItem.type == 'White'" value="Riesling">Riesling</option>
-        <option *ngIf="invItem.type == 'White'" value="Moscato">Moscato</option>
-        <option *ngIf="invItem.type == 'White'" value="Gewürztraminer">Gewürztraminer</option>
-        <option *ngIf="invItem.type == 'White'" value="Pinot Grigio">Pinot Grigio</option>
-        <option *ngIf="invItem.type == 'Red'" value="Syrah">Syrah</option>
-        <option *ngIf="invItem.type == 'Red'" value="Merlot">Merlot</option>
-        <option *ngIf="invItem.type == 'Red'" value="Cabernet Sauvignon">Cabernet Sauvignon</option>
-        <option *ngIf="invItem.type == 'Red'" value="Malbec">Malbec</option>
-        <option *ngIf="invItem.type == 'Red'" value="Pinot Noir">Pinot Noir</option>
-        <option *ngIf="invItem.type == 'Red'" value="Zinfandel">Zinfandel</option>
-        <option *ngIf="invItem.type == 'Red'" value="Sangiovese">Sangiovese</option>
-        <option *ngIf="invItem.type == 'Red'" value="Barbera">Barbera</option>
-        <option *ngIf="invItem.type == 'Rosé'" value="Syrah Rosé">Syrah Rosé</option>
-        <option *ngIf="invItem.type == 'Rosé'" value="Grenache Rosé">Grenache Rosé</option>
-        <option *ngIf="invItem.type == 'Rosé'" value="Cabernet Sauvignon Rosé">Cabernet Sauvignon Rosé</option>
-        <option *ngIf="invItem.type == 'Rosé'" value="Tempranillo Rosé">Tempranillo Rosé</option>
-        <option *ngIf="invItem.type == 'Rosé'" value="Provence Rosé">Provence Rosé</option>
-        <option *ngIf="invItem.type == 'Rosé'" value="Zinfandel Rosé">Zinfandel Rosé</option>
-        <option *ngIf="invItem.type == 'Rosé'" value="Sangiovese Rosé">Sangiovese Rosé</option>
-        <option *ngIf="invItem.type == 'Rosé'" value="Tavel Rosé">Tavel Rosé</option>
-        <option *ngIf="invItem.type == 'Rosé'" value="Pinot Noir Rosé">Pinot Noir Rosé</option>
-        <option *ngIf="invItem.type == 'Rosé'" value="Mourvèdre Rosé">Mourvèdre Rosé</option>
-        <option *ngIf="invItem.type == 'Champagne'" value="Blanc de Blancs">Blanc de Blancs</option>
-        <option *ngIf="invItem.type == 'Champagne'" value="Blanc de Noirs">Blance de Noirs</option>
-        <option *ngIf="invItem.type == 'Champagne'" value="Brut">Brut</option>
-        <option *ngIf="invItem.type == 'Champagne'" value="Demi-sec">Demi-Sec</option>
-        <option *ngIf="invItem.type == 'Champagne'" value="Extra-dry">Extra-Dry</option>
-        <option *ngIf="invItem.type == 'Champagne'" value="Rosé-champagne">Rosé Champagne</option>
+      <select (change)="changeType()" name="subType" class="form-control" required aria-label="SubType" aria-describedby="basic-addon1" [(ngModel)]="invItem.subType">
+        <option selected value=null *ngIf="typeChanged == false">What specific type of wine is this?</option>
+        <div *ngIf="curType == 'Red'">
+          <option *ngFor="let sub of redSubtypeList" value="sub">{{sub.name}}</option>
+        </div>
+        <div *ngIf="curType == 'White'">
+          <option *ngFor="let sub of whiteSubtypeList" value="sub">{{sub.name}}</option>
+        </div>
+        <div *ngIf="curType == 'Champagne'">
+          <option *ngFor="let sub of champSubtypeList" value="sub">{{sub.name}}</option>
+        </div>
+        <div *ngIf="curType == 'Rosé'">
+          <option *ngFor="let sub of roseSubtypeList" value="sub">{{sub.name}}</option>
+        </div>
       </select>
       </div>
     <div class="input-group mb-3 small-bars">
@@ -64,27 +51,38 @@
       </div>
       <input name="year" max="2020" min="1800" placeholder="What year was this wine grown?" type="number" class="form-control" required aria-label="Year" aria-describedby="basic-addon1" [(ngModel)]="invItem.year">
     </div>
+    <div class="input-group mb-3 small-bars">
+      <div class="input-group-prepend">
+        <span class="input-group-text red-wine inv-form-prepend">Volume</span>
+      </div>
+      <input name="vol" min="0" placeholder="How much wine per product (in mL)?" type="number" class="form-control" required aria-label="vol" aria-describedby="basic-addon1" [(ngModel)]="invItem.volume">
+    </div>
+    <div class="input-group mb-3 small-bars">
+      <div class="input-group-prepend">
+        <span class="input-group-text red-wine inv-form-prepend">Quantity</span>
+      </div>
+      <input name="quantity" min="0" placeholder="How much of this product do you have to sell?" type="number" class="form-control" required aria-label="quantity" aria-describedby="basic-addon1" [(ngModel)]="invItem.quantity">
+    </div>
   <div class="input-group mb-3 small-bars">
     <div class="input-group-prepend">
       <span class="input-group-text red-wine inv-form-prepend">Country of Origin</span>
     </div>
-    <select name="country" class="form-control" required aria-label="Country" aria-describedby="basic-addon1" [(ngModel)]="invItem.country">
-      <option value="def" *ngIf="invItem.country == 'def'">What country does this wine come from?</option>
-      <option value="italy">Italy</option>
-      <option value="us">The United States</option>
-      <option value="france">France</option>
-      <option value="china">China</option>
-      <option value="spain">Spain</option>
-      <option value="argentina">Argentina</option>
-      <option value="chile">Chile</option>
-      <option value="sa">South Africa</option>
-      <option value="australia">Australia</option>
-      <option value="germany">Germany</option>
-      <option value="portugal">Portugal</option>
-      <option value="romania">Romania</option>
-      <option value="japan">Japan</option>
-      <option value="other">Other</option>
+    <select (change)="changeCountry()" name="country" class="form-control" required aria-label="Country" aria-describedby="basic-addon1" [(ngModel)]="invItem.country">
+      <option selected value=null *ngIf="countryChanged == false">What country does this wine come from?</option>
+      <option *ngFor="let country of countryList" [value]="country">{{country.name}}</option>
     </select>
+    </div>
+    <div class="input-group mb-3 small-bars">
+      <div class="input-group-prepend">
+        <span class="input-group-text red-wine inv-form-prepend">Price</span>
+      </div>
+      <input name="price" min="0" placeholder="How much will this product cost (in USD)?" type="number" class="form-control" required aria-label="price" aria-describedby="basic-addon1" [(ngModel)]="invItem.price">
+    </div>
+    <div class="input-group mb-3 small-bars">
+      <div class="input-group-prepend">
+        <span class="input-group-text red-wine tall-text inv-form-prepend">Description</span>
+      </div>
+      <textarea id="desc-text" placeholder="What is the long-form description of the product?" class="form-control tall-text" [(ngModel)]="invItem.description"></textarea>
     </div>
       <div class="input-group mb-3 small-bars">
         <div class="input-group-prepend">
