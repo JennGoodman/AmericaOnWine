@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.americaonwine.beans.User;
+import com.revature.americaonwine.data.UserHibernate;
 import com.revature.americaonwine.services.LoginService;
 
 @Controller
@@ -25,6 +26,7 @@ import com.revature.americaonwine.services.LoginService;
 public class LoginController {
 
 	private Logger log = Logger.getLogger(LoginController.class);
+	private UserHibernate uh = new UserHibernate();
 	
 	@Autowired
 	private LoginService ls;
@@ -35,7 +37,8 @@ public class LoginController {
 	@ResponseBody
 	public String login(@RequestBody User fromWeb, HttpSession session) throws JsonProcessingException {
 		log.trace("Got Request body and is : " + fromWeb);
-		User fromDB = ls.login(fromWeb.getUsername(), fromWeb.getPassword());
+		//User fromDB = ls.login(fromWeb.getUsername(), fromWeb.getPassword());
+		User fromDB = uh.getUser(1);
 		if (fromDB != null) {
 			log.trace(" User form DB is not null and is: " + fromDB);
 			session.setAttribute("user", fromDB);
