@@ -9,12 +9,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "aow_name")
+@Table(name = "aow_tag")
 public class Tag {
 
 	@Id
-	@SequenceGenerator(name = "nameGen", sequenceName = "aow_name_seq", allocationSize = 1)
-	@GeneratedValue(generator = "nameGen", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "tagGen", sequenceName = "aow_tag_seq", allocationSize = 1)
+	@GeneratedValue(generator = "tagGen", strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column
 	private String name;
@@ -37,11 +37,11 @@ public class Tag {
 		this.id = id;
 	}
 
-	public String getTag() {
+	public String getName() {
 		return name;
 	}
 
-	public void setTag(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

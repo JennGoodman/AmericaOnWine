@@ -7,36 +7,35 @@ import com.revature.americaonwine.beans.Country;
 public interface CountryDao {
 
 	/**
-	 * Add country to the database.
+	 * Save country to the database.
 	 * 
-	 * @param country
-	 *            String to be inserted into the table
-	 * @return the id of the country added
+	 * @param Country
+	 *            to be added to the database
+	 * @return Country added
 	 */
-	public int addCountry(String country);
+	public Country save(Country country);
 
 	/**
 	 * Get list of all countries in the database
 	 * 
 	 * @return List<Country> of countries
 	 */
-	public List<Country> getAllCountries();
+	public List<?> getAll();
 
 	/**
-	 * Updates an existing country in the db by ID.
+	 * Updates an existing country in the database.
 	 * 
-	 * @param id
-	 *            of the country to be updated
-	 * @return true if successful, false otherwise
+	 * @param Country
+	 *            to be updated
+	 * @return Country updated
 	 */
-	public boolean updateCountry(int id);
+	public Country update(Country country);
 
 	/**
-	 * Deletes an existing country in the db by ID.
+	 * Deletes an existing country from the database.
 	 * 
-	 * @param id
-	 *            of the country to be deleted
-	 * @return true if successful, false otherwise
+	 * @param Country
+	 *            to be deleted
 	 */
-	public boolean deleteCountry(int id);
+	public void delete(Country country);
 }
