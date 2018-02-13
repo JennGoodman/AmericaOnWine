@@ -4,7 +4,7 @@
     {{invItem.brand.brand}}<br>
     {{invItem.country.country}}<br>
     {{invItem.year}}<br>
-    {{invItem.type.type}} - {{invItem.sub_type.subType}}<br>
+    {{invItem.sub_type.type.name}} - {{invItem.sub_type.subType}}<br>
     ${{invItem.price}} - {{invItem.volume}} mL<br>
     <span class="add" (click)="addToCart($event)">+</span> <input class="to-cart" type="number" max=999 min=1 value=1>
     <br>

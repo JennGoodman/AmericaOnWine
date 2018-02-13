@@ -14,7 +14,7 @@ export class WineItemComponent implements OnInit {
   }
 
   getColor() {
-    switch (this.invItem.type.type) {
+    switch (this.invItem.sub_type.type.name) {
       case 'Red': return '#660033';
       case 'White': return '#ffff99';
       case 'Rosé': return '#ffcce6';
@@ -26,7 +26,7 @@ export class WineItemComponent implements OnInit {
   }
 
   textColor() {
-    switch (this.invItem.type.type) {
+    switch (this.invItem.sub_type.type.name) {
       case 'Red': return '#ffffff';
       default: return '#000000';
     }

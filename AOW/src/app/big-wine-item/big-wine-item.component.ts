@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Inventory } from '../../models/Inventory';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-big-wine-item',
@@ -10,9 +11,13 @@ export class BigWineItemComponent implements OnInit {
 
   invItem: Inventory = JSON.parse(localStorage.getItem('Item'));
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  routeBack() {
+    this.router.navigate(['/item/']);
   }
 
 }

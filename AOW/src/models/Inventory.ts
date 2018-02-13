@@ -39,13 +39,12 @@ export class Inventory {
       this.id = id;
       this.name = name;
       this.brand = new Brand();
-      this.brand.brand = brand;
+      this.brand.name = brand;
       this.country = new Country();
-      this.country.country = country;
-      this.type = new Type();
-      this.type.type = type;
+      this.country.name = country;
       this.sub_type = new SubType();
-      this.sub_type.subType = subtype;
+      this.sub_type.name = subtype;
+      this.sub_type.type.name = type;
       this.volume = volume;
       this.year = year;
       this.price = price;
