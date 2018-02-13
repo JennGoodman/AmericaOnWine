@@ -256,5 +256,4 @@ public class InventoryItem {
 		 * Not yet Implemented
 		 */
 	}
-
 }

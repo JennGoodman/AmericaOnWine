@@ -27,7 +27,6 @@ public class User {
 	private int cancelled;
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public User(int id, String username, String password, String email, Roles role, int active, int cancelled) {
 		super();
@@ -148,6 +147,5 @@ public class User {
 			return false;
 		return true;
 	}
-	
-	
+
 }
