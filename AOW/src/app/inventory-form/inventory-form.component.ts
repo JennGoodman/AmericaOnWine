@@ -86,7 +86,7 @@ export class InventoryFormComponent implements OnInit {
      this.invItem.id = 0;
      this.invItem.user = JSON.parse(localStorage.getItem('user'));
      this.invItem.submitted = new Date();
-     const img = document.getElementById('img-input');
+     const img = <HTMLInputElement> document.getElementById('img-input');
      this.invItem.imageUrl = 'https://americaonwine.s3.amazonaws.com/' + img.files[0].name;
 
      let nulled = false;
