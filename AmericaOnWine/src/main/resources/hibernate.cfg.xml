@@ -20,7 +20,7 @@
 		
 		<!-- Annotations! -->
 		<mapping class="com.revature.americaonwine.beans.User"></mapping>
-		<mapping class="con.revature.americaonwine.beans.InventoryItem"></mapping>
+		<mapping class="com.revature.americaonwine.beans.InventoryItem"></mapping>
 		
 	</session-factory>
 </hibernate-configuration>
