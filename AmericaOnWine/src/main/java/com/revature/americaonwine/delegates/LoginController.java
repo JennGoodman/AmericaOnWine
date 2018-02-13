@@ -33,7 +33,7 @@ public class LoginController {
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseBody
 	public String login(@RequestBody User fromWeb, HttpSession session) throws JsonProcessingException {
-		
+		log.trace("Got Request body and is : " + fromWeb);
 		User fromDB = ls.login(fromWeb.getUsername(), fromWeb.getPassword());
 		if (fromDB != null) {
 			log.trace(" User form DB is not null and is: " + fromDB);
