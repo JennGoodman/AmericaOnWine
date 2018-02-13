@@ -34,4 +34,24 @@ export class Inventory {
       this.description = null;
       this.imageUrl = null;
     }
+
+    setVals(id: number, name: string, brand: string, country: string, type: string,
+       subtype: string, volume: number, year: number, price: number, description: string, image: string) {
+      this.id = id;
+      this.name = name;
+      this.brand = new Brand();
+      this.brand.brand = brand;
+      this.country = new Country();
+      this.country.country = country;
+      this.type = new Type();
+      this.type.type = type;
+      this.sub_type = new SubType();
+      this.sub_type.subType = subtype;
+      this.volume = volume;
+      this.year = year;
+      this.price = price;
+      this.description = description;
+      this.imageUrl = image;
+      return this;
   }
+}

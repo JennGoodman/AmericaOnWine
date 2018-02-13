@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { InventoryItem } from '../../models/inventory-item';
+import { Router } from '@angular/router';
+import { Inventory } from '../../models/Inventory';
 
 @Component({
   selector: 'app-wine-item',
@@ -7,13 +8,13 @@ import { InventoryItem } from '../../models/inventory-item';
   styleUrls: ['./wine-item.component.css']
 })
 export class WineItemComponent implements OnInit {
-  @Input() invItem: InventoryItem;
+  @Input() invItem: Inventory;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   getColor() {
-    switch (this.invItem.type) {
+    switch (this.invItem.type.type) {
       case 'Red': return '#660033';
       case 'White': return '#ffff99';
       case 'Rosé': return '#ffcce6';
@@ -25,7 +26,7 @@ export class WineItemComponent implements OnInit {
   }
 
   textColor() {
-    switch (this.invItem.type) {
+    switch (this.invItem.type.type) {
       case 'Red': return '#ffffff';
       default: return '#000000';
     }
@@ -38,8 +39,8 @@ export class WineItemComponent implements OnInit {
     return;
   }
 
-  viewItem(e) {
-    console.log('this is a stub, showing individual items has not been implemented');
-    return;
+  viewItem() {
+    localStorage.setItem('item', JSON.stringify(this.invItem));
+    this.router.navigate(['/item/']);
   }
 }
