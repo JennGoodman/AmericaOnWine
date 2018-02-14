@@ -25,7 +25,7 @@ import com.revature.americaonwine.services.LoginService;
 @Controller
 //@CrossOrigin(origins= "http://localhost:4200")
 @CrossOrigin(origins="*")
-@RequestMapping(value="/register", headers="Accept=application/json, text/plain", consumes= MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value="/register", headers="Accept=application/json, text/plain")
 public class RegisterController {
 	
 	    @Autowired

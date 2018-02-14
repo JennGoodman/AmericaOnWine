@@ -9,6 +9,7 @@ export class Config {
         this.defaultHeaders = new HttpHeaders();
         this.defaultHeaders.append('Content-Type', 'application/json');
         this.defaultHeaders.append('Access-Control-Allow-Origin', '*');
-        //this.defaultHeaders.append('enctype', 'multipart/form-data');
+        this.defaultHeaders.append('Accept', 'application/json');
+        // this.defaultHeaders.append('enctype', 'multipart/form-data');
     }
   }

@@ -37,3 +37,8 @@
 .def {
     display: none;
 }
+
+.tall-text {
+    height: 100px;
+    resize: none;
+}

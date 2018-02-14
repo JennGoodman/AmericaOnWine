@@ -14,6 +14,7 @@ import { RetailHomeComponent } from './retail-home/retail-home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { RetailItemViewComponent } from './retail-item-view/retail-item-view.component';
+import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
 
 
 import { FileUploadService } from '../services/file-upload.service';
@@ -26,7 +27,7 @@ import { SubTypeService } from '../services/sub-type.service';
 import { TagService } from '../services/tag.service';
 import { TransactionService } from '../services/transaction.service';
 import { TypeService } from '../services/type.service';
-import { CustomerHomeComponent } from './customer-home/customer-home.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CustomerHomeComponent } from './customer-home/customer-home.component';
     // CustomerRegisterAccountComponent,
     WineItemComponent,
     WineListComponent,
-    CustomerHomeComponent
+    BigWineItemComponent,
+    HomeComponent
   ],
   imports: [
     HttpClientModule,

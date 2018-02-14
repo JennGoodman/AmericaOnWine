@@ -21,6 +21,7 @@ public class Country {
 	private String name;
 
 	public Country() {
+		super();
 	}
 
 	public int getId() {
@@ -81,8 +82,6 @@ public class Country {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (id != other.id)
-			return false;
-		return true;
+		return (id == other.id);
 	}
 }

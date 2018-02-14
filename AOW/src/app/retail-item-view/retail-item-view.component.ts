@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Injectable } from '@angular/core';
 
 import { InventoryItem } from '../../models/inventory-item';
+import { Inventory } from '../../models/Inventory';
 
 @Component({
   selector: 'app-retail-item-view',
@@ -9,7 +10,7 @@ import { InventoryItem } from '../../models/inventory-item';
 })
 @Injectable()
 export class RetailItemViewComponent implements OnInit {
-    @Input() invItem: InventoryItem;
+    @Input() invItem: Inventory;
     constructor() { }
     ngOnInit() {}
     editPressed(): void {
