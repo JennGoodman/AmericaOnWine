@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/User';
+import { AccountAccessService } from '../../services/account-access.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +12,7 @@ export class NavbarComponent implements OnInit {
 
   user: User;
 
-  constructor() {
+  constructor(private service: AccountAccessService, private router: Router) {
     this.user = JSON.parse(localStorage.getItem('user'));
     // this.user = new User;
     // this.user.username = 'bob';
@@ -19,4 +21,11 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  logout() {
+    this.service.logout().subscribe(resp => {
+      const result = resp as string;
+      localStorage.removeItem('user');
+      this.router.navigate(['login']);
+    });
+  }
 }
