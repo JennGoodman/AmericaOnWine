@@ -1,5 +1,7 @@
 package com.revature.americaonwine.delegates;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -37,8 +39,7 @@ public class LoginController {
 	@ResponseBody
 	public String login(@RequestBody User fromWeb, HttpSession session) throws JsonProcessingException {
 		log.trace("Got Request body and is : " + fromWeb);
-		//User fromDB = ls.login(fromWeb.getUsername(), fromWeb.getPassword());
-		User fromDB = uh.getUser(1);
+		User fromDB = ls.login(fromWeb.getUsername(), fromWeb.getPassword());
 		if (fromDB != null) {
 			log.trace(" User form DB is not null and is: " + fromDB);
 			session.setAttribute("user", fromDB);

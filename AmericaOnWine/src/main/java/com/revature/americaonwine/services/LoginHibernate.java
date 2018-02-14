@@ -20,8 +20,8 @@ public class LoginHibernate implements LoginService {
 		User u = ud.getUserByUsername(username);
 		log.trace("Recieved user " + u.toString());
 		if (u != null && u.getPassword().equals(password) )
-			return null;
-		else return u;
+			return u;
+		else return null;
 	}
 
 	@Override
