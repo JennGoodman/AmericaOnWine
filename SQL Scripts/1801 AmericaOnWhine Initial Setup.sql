@@ -506,11 +506,11 @@ insert into aow_sub_type (id, type_id, name) values (2, 2, 'Merlot');
 insert into aow_sub_type (id, type_id, name) values (3, 3, 'Rose');
 
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description) 
-    values (1, 'Barefoot Moscato', 1, 1, 1, 1, 1.5, 2017, 8.99, 5, sysdate, 'It''s good Wine Bront!');
+    values (1, 'Barefoot Moscato', 1, 2, 1, 1, 1.5, 2017, 8.99, 5, sysdate, 'It''s good Wine Bront!');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description) 
-    values (2, 'Barefoot Rose', 1, 1, 1, 2, 1.5, 2017, 8.99, 6, sysdate, 'It''s good Wine Bront!');
+    values (2, 'Barefoot Rose', 1, 1, 2, 2, 1.5, 2017, 8.99, 6, sysdate, 'It''s good Wine Bront!');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description) 
-    values (3, 'Barefoot Merlot', 1, 1, 3, 1, 1.5, 2017, 8.99, 100, sysdate, 'It''s good Wine Bront!');
+    values (3, 'Barefoot Merlot', 1, 2, 3, 1, 1.5, 2017, 8.99, 100, sysdate, 'It''s good Wine Bront!');
 
 insert into aow_transaction (id, order_number, inventory_id, quantity, user_id, rating, transaction_date, comments) 
     values (1, 1, 1, 1, 2, 1, sysdate, 'Comments? Your wine sucks!');
