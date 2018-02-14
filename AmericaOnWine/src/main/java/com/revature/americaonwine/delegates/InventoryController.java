@@ -25,13 +25,13 @@ public class InventoryController {
 	
 	private ObjectMapper om = new ObjectMapper();
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	@ResponseBody
 	public String addInventory(@RequestBody InventoryItem inv) throws JsonProcessingException {
 		return om.writeValueAsString(inv);
 	}
 	
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	@ResponseBody
 	public String getAll(HttpSession ses) throws JsonProcessingException {
 		User u = (User) ses.getAttribute("user");
