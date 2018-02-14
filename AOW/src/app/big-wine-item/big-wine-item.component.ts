@@ -18,6 +18,27 @@ export class BigWineItemComponent implements OnInit {
 
   routeBack() {
     this.router.navigate(['/items/']);
+    document.getElementsByTagName('body')[0].style.background = '#ffffff';
+  }
+
+  setColor() {
+    if (this.invItem && this.invItem.subType && this.invItem.subType.type) {
+      switch (this.invItem.subType.type.type) {
+        case 'Red': return '#660033';
+        case 'White': return '#ffff99';
+        case 'Rosé': return '#ffcce6';
+        case 'Champagne': return '#ffffe6';
+      }
+    }
+  }
+
+  textColor() {
+    if (this.invItem && this.invItem.subType && this.invItem.subType.type) {
+      switch (this.invItem.subType.type.type) {
+        case 'Red': return '#ffffff';
+        default: return '#000000';
+      }
+    }
   }
 
 }

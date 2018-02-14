@@ -1,16 +1,23 @@
-<span (click)="routeBack()"><<</span><br>
-<div class="left-side">
-    <img src="{{invItem.imageUrl}}" class="big-wine-img">
-</div>
-<div class="right-side">
-    {{invItem.name}}<br>
-    {{invItem.brand.brand}}<br>
-    {{invItem.country.country}}<br>
-    {{invItem.subType.type.type}}<br>
-    {{invItem.subType.subType}}<br>
-    {{invItem.year}}<br>
-    {{invItem.description}}<br>
-    {{invItem.volume}} L<br>
-    ${{invItem.price}}<br>
-    {{invItem.quantity}} available<br>
+<div class="full-color" [style.background-color]="setColor()" [style.color]="textColor()">
+        <div id="route" (click)="routeBack()">
+                <<
+        </div>
+            <br>
+            <div class="left-side">
+                <img src="{{invItem.imageUrl}}" class="big-wine-img">
+            </div>
+            <div class="right-side">
+                <br>
+                <br> {{invItem.name}}
+                <br> {{invItem.brand.brand}}
+                <br> {{invItem.country.country}}
+                <br> {{invItem.subType.type.type}}
+                <br> {{invItem.subType.subType}}
+                <br> {{invItem.year}}
+                <br> {{invItem.description}}
+                <br> {{invItem.volume}} L
+                <br> ${{invItem.price}}
+                <br> {{invItem.quantity}} available
+                <br>
+            </div>
 </div>
