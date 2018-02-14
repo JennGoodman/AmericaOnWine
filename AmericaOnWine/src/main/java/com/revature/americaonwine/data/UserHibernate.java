@@ -7,6 +7,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Hibernate;
 import org.hibernate.NonUniqueObjectException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -70,14 +71,18 @@ public class UserHibernate implements UserDao {
 		Query<User> q = su.createQuery(query);
 		List<User> users = q.getResultList();
 		for (User user : users) {
-			log.trace(user + "is in users");
+			log.trace(user.getUsername() + " is in users");
 		}
 		if (users != null && users.size() > 0) {
 			log.trace("Found at least one user");
-			return users.get(0);
+			log.trace("Getting user " + Hibernate.getClass(users.get(0)));
+			User user = (User) Hibernate.unproxy(users.get(0));
+			su.close();
+			return user;
 		}
 		else {
 			log.trace("Found nothing. NOTHING");
+			su.close();
 			return null;
 		}
 	}
