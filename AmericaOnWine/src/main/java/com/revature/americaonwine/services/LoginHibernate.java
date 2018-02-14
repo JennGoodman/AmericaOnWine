@@ -16,12 +16,10 @@ public class LoginHibernate implements LoginService {
 	
 	@Override
 	public User login(String username, String password) {
-		log.trace("Attempting to login; Username: " + username + "; Password: " + password);
 		User u = ud.getUserByUsername(username);
-		log.trace("Recieved user " + u.toString());
 		if (u != null && u.getPassword().equals(password) )
-			return u;
-		else return null;
+			return null;
+		else return u;
 	}
 
 	@Override
@@ -31,9 +29,18 @@ public class LoginHibernate implements LoginService {
 	}
 
 	@Override
-	public User register(User u) {
-		// TODO Auto-generated method stub
-		return null;
+	public User register(User user) {
+		log.trace("Attempting to register; User: " + user);
+		User email = ud.getUserByEmail(user.getEmail());
+		User username = ud.getUserByUsername(user.getUsername());
+		if(email == null) {
+			return null;
+		}else if(username == null) {
+			return null;
+		}else {
+			ud.insertUser(user);
+		}
+		return user;
 	}
 
 }

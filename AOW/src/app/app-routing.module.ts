@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { RetailHomeComponent } from './retail-home/retail-home.component';
 import { LoginComponent } from './login/login.component';
 import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
     {
@@ -22,6 +23,11 @@ const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'register',
+        component: RegisterComponent,
         pathMatch: 'full'
     },
     {
@@ -44,6 +50,7 @@ const routes: Routes = [
         component: InventoryFormComponent,
         pathMatch: 'full'
     }
+    
 ];
 
 @NgModule({
