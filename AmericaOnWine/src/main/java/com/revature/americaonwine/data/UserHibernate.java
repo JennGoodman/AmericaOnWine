@@ -44,7 +44,7 @@ public class UserHibernate implements UserDao {
 		} catch(Exception e) {
 			if (tx != null)
 				tx.rollback();
-			e.printStackTrace();
+			log.warn(e.getMessage());
 			return false;
 		} finally {
 			session.close();
