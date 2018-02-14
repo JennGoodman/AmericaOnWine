@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { CustomerHomeComponent } from './customer-home/customer-home.component';
 
 const routes: Routes = [
     {
@@ -49,6 +50,11 @@ const routes: Routes = [
     {
         path: 'form',
         component: InventoryFormComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'customer/home',
+        component: CustomerHomeComponent,
         pathMatch: 'full'
     }
 ];

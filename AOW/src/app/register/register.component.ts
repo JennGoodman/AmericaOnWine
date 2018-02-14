@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
     this.fieldsIncomplete = false;
     this.found = false;
     this.registerFailed = false;
+    this.userRegistered = null;
   }
 
   ngOnInit() {
@@ -56,38 +57,26 @@ export class RegisterComponent implements OnInit {
       user.cancelled=0;
       console.log(user);
 
-      //check current user accounts so that there is no duplicate
-      // this.service.getAll().subscribe(resp => {
-      //   this.check = resp as User[];
-      //   for(let a of this.check){
-      //     if(a.username === user.username){
-      //       this.found = true;
-
-      //     }
-      //   }
-      // });
-
-      //tell yous username is taken if found
-      // if(this.found){
-      //   alert("Username is taken, try again");
-      // }
-      //creates a new userand redirects them to proper home page
-      //else {
         this.service.register(user).subscribe(resp => {
           this.userRegistered = resp as User;
+          console.log(this.userRegistered);
           if (this.userRegistered == null) {
             this.registerFailed = true;
+            console.log(this.registerFailed);
           } else {
             if(accountType === 'retailer'){
+              console.log(" " +accountType + " 1");
               //go to retailer home page
+              localStorage.setItem('user', JSON.stringify(this.userRegistered));
               this.router.navigate(['retailer/home']);
             } else{
+              console.log(" " +accountType + " 2");
               //go to customer home page
+              localStorage.setItem('user', JSON.stringify(this.userRegistered));
               this.router.navigate(['']);
             }
           }
         });
-      //}
     }
     }
   }

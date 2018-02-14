@@ -29,6 +29,7 @@ import { TagService } from '../services/tag.service';
 import { TransactionService } from '../services/transaction.service';
 import { TypeService } from '../services/type.service';
 import { HomeComponent } from './home/home.component';
+import { CustomerHomeComponent } from './customer-home/customer-home.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HomeComponent } from './home/home.component';
     WineItemComponent,
     WineListComponent,
     BigWineItemComponent,
-    HomeComponent
+    HomeComponent,
+    CustomerHomeComponent
   ],
   imports: [
     HttpClientModule,

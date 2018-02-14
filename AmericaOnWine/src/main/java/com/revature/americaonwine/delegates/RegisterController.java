@@ -37,10 +37,10 @@ public class RegisterController {
 		public String register(@RequestBody User fromWeb, HttpSession session) throws JsonProcessingException {
 			log.trace("Got Request body and is : " + fromWeb);
 			User fromDB = ser.register(fromWeb);
-			
+			log.trace(fromDB);
 			if(fromDB != null) {
 				log.trace("Didn't find user in the DB, valid user");
-				fromDB = ser.register(fromWeb);
+				//fromDB = ser.register(fromWeb);
 				session.setAttribute("user", fromDB);
 				return om.writeValueAsString(fromDB);
 			}
