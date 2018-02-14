@@ -2,39 +2,149 @@ package com.revature.americaonwine.beans;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
 @Table(name = "aow_Inventory")
 public class InventoryItem {
 	@Id
-	@SequenceGenerator(name = "inventoryItemGen", sequenceName = "aowInventory_seq", allocationSize = 1)
+	@SequenceGenerator(name = "inventoryItemGen", sequenceName = "aow_inventory_seq", allocationSize = 1)
 	@GeneratedValue(generator = "inventoryItemGen", strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column
 	private String name;
-	@Column(name = "brand_id")
-	private int brandId;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "brand_id")
+	private Brand brand;
 	@Column(name = "user_id")
 	private int userId;
-	@Column(name = "country_id")
-	private int countryId;
-	@Column(name = "type_id")
-	private int typeId;
-	@Column(name = "sub_type_id")
-	private int subTypeId;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "country_id")
+	private Country country;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "sub_type_id")
+	private SubType subType;
 	private int year;
 	private double price;
 	private LocalDate submitted;
 	private String description;
 	@Column(name = "image_url")
 	private String imageUrl;
+	private int quantity;
+	private double volume;
+
+	public InventoryItem(int id, String name, Brand brand, int userId, Country country, SubType subType, int year,
+			double price, LocalDate submitted, String description, String imageUrl, int quantity, double volume) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.brand = brand;
+		this.userId = userId;
+		this.country = country;
+		this.subType = subType;
+		this.year = year;
+		this.price = price;
+		this.submitted = submitted;
+		this.description = description;
+		this.imageUrl = imageUrl;
+		this.quantity = quantity;
+		this.volume = volume;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
+		result = prime * result + ((country == null) ? 0 : country.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(price);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + quantity;
+		result = prime * result + ((subType == null) ? 0 : subType.hashCode());
+		result = prime * result + ((submitted == null) ? 0 : submitted.hashCode());
+		result = prime * result + userId;
+		temp = Double.doubleToLongBits(volume);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + year;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		InventoryItem other = (InventoryItem) obj;
+		if (brand == null) {
+			if (other.brand != null)
+				return false;
+		} else if (!brand.equals(other.brand))
+			return false;
+		if (country == null) {
+			if (other.country != null)
+				return false;
+		} else if (!country.equals(other.country))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (id != other.id)
+			return false;
+		if (imageUrl == null) {
+			if (other.imageUrl != null)
+				return false;
+		} else if (!imageUrl.equals(other.imageUrl))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+			return false;
+		if (quantity != other.quantity)
+			return false;
+		if (subType == null) {
+			if (other.subType != null)
+				return false;
+		} else if (!subType.equals(other.subType))
+			return false;
+		if (submitted == null) {
+			if (other.submitted != null)
+				return false;
+		} else if (!submitted.equals(other.submitted))
+			return false;
+		if (userId != other.userId)
+			return false;
+		if (Double.doubleToLongBits(volume) != Double.doubleToLongBits(other.volume))
+			return false;
+		if (year != other.year)
+			return false;
+		return true;
+	}
 
 	public int getId() {
 		return id;
@@ -52,12 +162,12 @@ public class InventoryItem {
 		this.name = name;
 	}
 
-	public int getBrandId() {
-		return brandId;
+	public Brand getBrand() {
+		return brand;
 	}
 
-	public void setBrandId(int brandId) {
-		this.brandId = brandId;
+	public void setBrand(Brand brand) {
+		this.brand = brand;
 	}
 
 	public int getUserId() {
@@ -68,28 +178,20 @@ public class InventoryItem {
 		this.userId = userId;
 	}
 
-	public int getCountryId() {
-		return countryId;
+	public Country getCountry() {
+		return country;
 	}
 
-	public void setCountryId(int countryId) {
-		this.countryId = countryId;
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 
-	public int getTypeId() {
-		return typeId;
+	public SubType getSubType() {
+		return subType;
 	}
 
-	public void setTypeId(int typeId) {
-		this.typeId = typeId;
-	}
-
-	public int getSubTypeId() {
-		return subTypeId;
-	}
-
-	public void setSubTypeId(int subTypeId) {
-		this.subTypeId = subTypeId;
+	public void setSubType(SubType subType) {
+		this.subType = subType;
 	}
 
 	public int getYear() {
@@ -132,121 +234,20 @@ public class InventoryItem {
 		this.imageUrl = imageUrl;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		result = prime * result + brandId;
-		result = prime * result + countryId;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(price);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + subTypeId;
-		result = prime * result + ((submitted == null) ? 0 : submitted.hashCode());
-		result = prime * result + typeId;
-		result = prime * result + userId;
-		result = prime * result + year;
-		return result;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		InventoryItem other = (InventoryItem) obj;
-		if (id != other.id)
-			return false;
-		if (brandId != other.brandId)
-			return false;
-		if (countryId != other.countryId)
-			return false;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (imageUrl == null) {
-			if (other.imageUrl != null)
-				return false;
-		} else if (!imageUrl.equals(other.imageUrl))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
-			return false;
-		if (subTypeId != other.subTypeId)
-			return false;
-		if (submitted == null) {
-			if (other.submitted != null)
-				return false;
-		} else if (!submitted.equals(other.submitted))
-			return false;
-		if (typeId != other.typeId)
-			return false;
-		if (userId != other.userId)
-			return false;
-		if (year != other.year)
-			return false;
-		return true;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("InventoryItem [ID=");
-		builder.append(id);
-		builder.append(", name=");
-		builder.append(name);
-		builder.append(", brandId=");
-		builder.append(brandId);
-		builder.append(", userId=");
-		builder.append(userId);
-		builder.append(", countryId=");
-		builder.append(countryId);
-		builder.append(", typeId=");
-		builder.append(typeId);
-		builder.append(", subTypeId=");
-		builder.append(subTypeId);
-		builder.append(", year=");
-		builder.append(year);
-		builder.append(", price=");
-		builder.append(price);
-		builder.append(", submitted=");
-		builder.append(submitted);
-		builder.append(", description=");
-		builder.append(description);
-		builder.append(", imageUrl=");
-		builder.append(imageUrl);
-		builder.append("]");
-		return builder.toString();
+	public double getVolume() {
+		return volume;
 	}
 
-	public InventoryItem(int id, String name, int brandId, int userId, int countryId, int typeId, int subTypeId,
-			int year, double price, LocalDate submitted, String description, String imageUrl) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.brandId = brandId;
-		this.userId = userId;
-		this.countryId = countryId;
-		this.typeId = typeId;
-		this.subTypeId = subTypeId;
-		this.year = year;
-		this.price = price;
-		this.submitted = submitted;
-		this.description = description;
-		this.imageUrl = imageUrl;
+	public void setVolume(double volume) {
+		this.volume = volume;
 	}
 
 	public InventoryItem() {
