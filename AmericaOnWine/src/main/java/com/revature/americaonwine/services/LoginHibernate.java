@@ -25,12 +25,6 @@ public class LoginHibernate implements LoginService {
 	}
 
 	@Override
-	public boolean logout() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public User register(User u) {
 		// TODO Auto-generated method stub
 		return null;
