@@ -17,8 +17,8 @@
         </a>
       </li>
       <ng-container *ngIf="user">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="retailer/home">Retailer
+        <li class="nav-item active" *ngIf="user.role == 1">
+          <a class="nav-link" routerLink="retailer/home" >Retailer
             <span class="sr-only">(current)</span>
           </a>
         </li>
