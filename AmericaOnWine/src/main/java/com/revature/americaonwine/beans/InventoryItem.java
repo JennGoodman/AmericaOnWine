@@ -26,15 +26,15 @@ public class InventoryItem {
 	private int id;
 	@Column
 	private String name;
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "brand_id")
 	private Brand brand;
 	@Column(name = "user_id")
 	private int userId;
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "country_id")
 	private Country country;
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "sub_type_id")
 	private SubType subType;
 	private int year;
@@ -43,9 +43,11 @@ public class InventoryItem {
 	private String description;
 	@Column(name = "image_url")
 	private String imageUrl;
+	private int quantity;
+	private double volume;
 
 	public InventoryItem(int id, String name, Brand brand, int userId, Country country, SubType subType, int year,
-			double price, LocalDate submitted, String description, String imageUrl) {
+			double price, LocalDate submitted, String description, String imageUrl, int quantity, double volume) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -58,13 +60,8 @@ public class InventoryItem {
 		this.submitted = submitted;
 		this.description = description;
 		this.imageUrl = imageUrl;
-	}
-
-	@Override
-	public String toString() {
-		return "InventoryItem [id=" + id + ", name=" + name + ", brand=" + brand + ", userId=" + userId + ", country="
-				+ country + ", subType=" + subType + ", year=" + year + ", price=" + price + ", submitted=" + submitted
-				+ ", description=" + description + ", imageUrl=" + imageUrl + "]";
+		this.quantity = quantity;
+		this.volume = volume;
 	}
 
 	@Override
@@ -80,9 +77,12 @@ public class InventoryItem {
 		long temp;
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + quantity;
 		result = prime * result + ((subType == null) ? 0 : subType.hashCode());
 		result = prime * result + ((submitted == null) ? 0 : submitted.hashCode());
 		result = prime * result + userId;
+		temp = Double.doubleToLongBits(volume);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + year;
 		return result;
 	}
@@ -125,6 +125,8 @@ public class InventoryItem {
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
+		if (quantity != other.quantity)
+			return false;
 		if (subType == null) {
 			if (other.subType != null)
 				return false;
@@ -136,6 +138,8 @@ public class InventoryItem {
 		} else if (!submitted.equals(other.submitted))
 			return false;
 		if (userId != other.userId)
+			return false;
+		if (Double.doubleToLongBits(volume) != Double.doubleToLongBits(other.volume))
 			return false;
 		if (year != other.year)
 			return false;
@@ -228,6 +232,22 @@ public class InventoryItem {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public double getVolume() {
+		return volume;
+	}
+
+	public void setVolume(double volume) {
+		this.volume = volume;
 	}
 
 	public InventoryItem() {

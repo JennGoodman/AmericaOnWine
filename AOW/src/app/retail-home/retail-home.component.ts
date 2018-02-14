@@ -15,7 +15,8 @@ import { InventoryService } from '../../services/inventory.service';
 export class RetailHomeComponent implements OnInit {
 
   constructor(private fus: FileUploadService, private invService: InventoryService) {
-    this.invService.getAll().subscribe(items => {
+      this.invService.getAll().subscribe(items => {
+      console.log(items);
       this.items = items;
     });
   }

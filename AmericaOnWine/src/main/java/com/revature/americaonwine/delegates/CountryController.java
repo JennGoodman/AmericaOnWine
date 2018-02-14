@@ -18,7 +18,7 @@ public class CountryController {
 	private WineFormService wfs = new WineFormHibernate();
 	private ObjectMapper om = new ObjectMapper();
 
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	@ResponseBody
 	public String getCountries() throws JsonProcessingException {
 		return om.writeValueAsString(wfs.getCountries());

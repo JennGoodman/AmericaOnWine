@@ -1,0 +1,10 @@
+.left-side {
+    float: left;
+    width: 50%;
+}
+
+.right-side {
+    float: right;
+    text-align: left;
+    width: 50%;
+}

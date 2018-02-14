@@ -1,8 +1,16 @@
-<span (click)="routeBack()"><<</span>
-<div class="col-md-4">
+<span (click)="routeBack()"><<</span><br>
+<div class="left-side">
     <img src="{{invItem.imageUrl}}" class="big-wine-img">
 </div>
-<div class="col-md-8">
+<div class="right-side">
     {{invItem.name}}<br>
-    {{invItem.brand}}<br>
+    {{invItem.brand.brand}}<br>
+    {{invItem.country.country}}<br>
+    {{invItem.subType.type.type}}<br>
+    {{invItem.subType.subType}}<br>
+    {{invItem.year}}<br>
+    {{invItem.description}}<br>
+    {{invItem.volume}} L<br>
+    ${{invItem.price}}<br>
+    {{invItem.quantity}} available<br>
 </div>

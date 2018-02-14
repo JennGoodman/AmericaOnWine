@@ -1,11 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import {NgForm} from '@angular/forms';  
+import {NgForm} from '@angular/forms';
 
 
 import { User } from '../../models/User';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AccountAccessService } from '../../services/account-access.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
   check: User[];
   userRegistered: User;
   found: boolean;
-  constructor(private service: UserService, private router: Router) { 
+  constructor(private service: AccountAccessService, private router: Router) {
     this.fieldsIncomplete = false;
     this.found = false;
     this.registerFailed = false;
@@ -47,7 +48,7 @@ export class RegisterComponent implements OnInit {
       if(accountType === 'customer'){
         user.role = 2;
         user.active=1;
-      } 
+      }
       else {
         user.role = 1;
         user.active=0;
@@ -61,7 +62,7 @@ export class RegisterComponent implements OnInit {
       //   for(let a of this.check){
       //     if(a.username === user.username){
       //       this.found = true;
-            
+
       //     }
       //   }
       // });
@@ -72,7 +73,7 @@ export class RegisterComponent implements OnInit {
       // }
       //creates a new userand redirects them to proper home page
       //else {
-        this.service.add(user).subscribe(resp => {
+        this.service.register(user).subscribe(resp => {
           this.userRegistered = resp as User;
           if (this.userRegistered == null) {
             this.registerFailed = true;
@@ -82,12 +83,12 @@ export class RegisterComponent implements OnInit {
               this.router.navigate(['retailer/home']);
             } else{
               //go to customer home page
-              this.router.navigate(['customer/home']);
-            } 
+              this.router.navigate(['']);
+            }
           }
         });
       //}
-    } 
+    }
     }
   }
 
