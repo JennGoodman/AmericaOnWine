@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Brand {
 
 	@Id
-	@SequenceGenerator(name = "nameGen", sequenceName = "aow_name_seq", allocationSize = 1)
+	@SequenceGenerator(name = "nameGen", sequenceName = "aow_brand_seq", allocationSize = 1)
 	@GeneratedValue(generator = "nameGen", strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column
@@ -31,11 +31,11 @@ public class Brand {
 		this.id = id;
 	}
 
-	public String getBrand() {
+	public String getName() {
 		return name;
 	}
 
-	public void setBrand(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
