@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class BigWineItemComponent implements OnInit {
 
-  invItem: Inventory = JSON.parse(localStorage.getItem('Item'));
+  invItem: Inventory = JSON.parse(localStorage.getItem('item'));
 
   constructor(private router: Router) { }
 
