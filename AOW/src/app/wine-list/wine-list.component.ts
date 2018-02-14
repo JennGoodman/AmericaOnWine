@@ -15,10 +15,9 @@ export class WineListComponent implements OnInit {
   constructor(private invService: InventoryService) {
     this.invService.getAll().subscribe(items => {
       this.items = items;
-      console.log(items);
     });
     if (localStorage.getItem('user') != null) {
-      this.isCustomer = JSON.parse(localStorage.getItem('user')).role === 0;
+      this.isCustomer = JSON.parse(localStorage.getItem('user')).role === 2;
     } else {
       this.isCustomer = true;
     }
