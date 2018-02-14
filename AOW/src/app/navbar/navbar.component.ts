@@ -18,7 +18,8 @@ export class NavbarComponent implements OnInit {
 
   loadUser() {
     this.user = JSON.parse(localStorage.getItem('user'));
-    console.log('Constructor Ran: ' + this.user);
+    console.log('Constructor Ran: ');
+    console.log(this.user);
   }
 
   ngOnInit() {
@@ -30,7 +31,6 @@ export class NavbarComponent implements OnInit {
       localStorage.removeItem('user');
       this.user = null;
         this.router.navigate(['login']);
-        location.reload();
     });
   }
 }

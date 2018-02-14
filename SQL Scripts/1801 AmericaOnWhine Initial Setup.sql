@@ -240,10 +240,6 @@ create or replace view aow_inventory_view as (
    Populate Tables
 ********************************************************************************/
 
-insert into aow_user (id, username, password, email, role, active, cancelled) values (1, 'admin', 'admin', 'admin@admin.net', 0, 1, 0);
-insert into aow_user (id, username, password, email, role, active, cancelled) values (2, 'retailer', 'retailer', 'retailer@retailer.net', 1, 1, 0);
-insert into aow_user (id, username, password, email, role, active, cancelled) values (3, 'customer', 'customer', 'customer@customer.net', 2, 1, 0);
-
 insert into aow_country (id, abbrev, name) values (1, 'AF', 'Afghanistan');
 insert into aow_country (id, abbrev, name) values (2, 'AL', 'Albania');
 insert into aow_country (id, abbrev, name) values (3, 'DZ', 'Algeria');
@@ -490,6 +486,10 @@ insert into aow_country (id, abbrev, name) values (243, 'ZR', 'Zaire');
 insert into aow_country (id, abbrev, name) values (244, 'ZM', 'Zambia');
 insert into aow_country (id, abbrev, name) values (245, 'ZW', 'Zimbabwe');
 
+insert into aow_user (id, username, password, email, role, active, cancelled) values (1, 'admin', 'admin', 'admin@admin.net', 0, 1, 0);
+insert into aow_user (id, username, password, email, role, active, cancelled) values (2, 'retailer', 'retailer', 'retailer@retailer.net', 1, 1, 0);
+insert into aow_user (id, username, password, email, role, active, cancelled) values (3, 'customer', 'customer', 'customer@customer.net', 2, 1, 0);
+
 insert into aow_brand (id, name) values (1, 'Barefoot');
 insert into aow_brand (id, name) values (2, 'Max''s Favorites');
 insert into aow_brand (id, name) values (3, 'H');
@@ -499,18 +499,51 @@ insert into aow_brand (id, name) values (6, 'My Wine');
 
 insert into aow_type (id, name) values (1, 'White');
 insert into aow_type (id, name) values (2, 'Red');
-insert into aow_type (id, name) values (3, 'Rose');
+insert into aow_type (id, name) values (3, 'Rosé');
+insert into aow_type (id, name) values (4, 'Champagne');
 
-insert into aow_sub_type (id, type_id, name) values (1, 1, 'Moscato');
-insert into aow_sub_type (id, type_id, name) values (2, 2, 'Merlot');
-insert into aow_sub_type (id, type_id, name) values (3, 3, 'Rose');
+insert into aow_sub_type (id, type_id, name) values (1, 1, 'Sauvignon Blanc');
+insert into aow_sub_type (id, type_id, name) values (2, 1, 'Semillon');
+insert into aow_sub_type (id, type_id, name) values (3, 1, 'Riesling');
+insert into aow_sub_type (id, type_id, name) values (4, 1, 'Moscato');
+insert into aow_sub_type (id, type_id, name) values (5, 1, 'Gewürztraminer');
+insert into aow_sub_type (id, type_id, name) values (6, 1, 'Pinot Grigio');
 
-insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description) 
-    values (1, 'Barefoot Moscato', 1, 2, 1, 1, 1.5, 2017, 8.99, 5, sysdate, 'It''s good Wine Bront!');
-insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description) 
-    values (2, 'Barefoot Rose', 1, 1, 2, 2, 1.5, 2017, 8.99, 6, sysdate, 'It''s good Wine Bront!');
-insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description) 
-    values (3, 'Barefoot Merlot', 1, 2, 3, 1, 1.5, 2017, 8.99, 100, sysdate, 'It''s good Wine Bront!');
+insert into aow_sub_type (id, type_id, name) values (7, 2, 'Syrah');
+insert into aow_sub_type (id, type_id, name) values (8, 2, 'Merlot');
+insert into aow_sub_type (id, type_id, name) values (9, 2, 'Cabernet Sauvignon');
+insert into aow_sub_type (id, type_id, name) values (10, 2, 'Malbec');
+insert into aow_sub_type (id, type_id, name) values (11, 2, 'Pinot Noir');
+insert into aow_sub_type (id, type_id, name) values (12, 2, 'Zinfandel');
+insert into aow_sub_type (id, type_id, name) values (13, 2, 'Sangiovese');
+insert into aow_sub_type (id, type_id, name) values (14, 2, 'Barbera');
+
+
+insert into aow_sub_type (id, type_id, name) values (15, 3, 'Syrah Rosé');
+insert into aow_sub_type (id, type_id, name) values (16, 3, 'Grenache Rosé');
+insert into aow_sub_type (id, type_id, name) values (17, 3, 'Cabernet Sauvignon Rosé');
+insert into aow_sub_type (id, type_id, name) values (18, 3, 'Tempranillo Rosé');
+insert into aow_sub_type (id, type_id, name) values (19, 3, 'Provence Rosé');
+insert into aow_sub_type (id, type_id, name) values (20, 3, 'Zinfandel Rosé');
+insert into aow_sub_type (id, type_id, name) values (21, 3, 'Sangiovese Rosé');
+insert into aow_sub_type (id, type_id, name) values (22, 3, 'Tavel Rosé');
+insert into aow_sub_type (id, type_id, name) values (23, 3, 'Pinot Noir Rosé');
+insert into aow_sub_type (id, type_id, name) values (24, 3, 'Mourvèdre Rosé');
+
+
+insert into aow_sub_type (id, type_id, name) values (25, 4, 'Blanc de Blancs');
+insert into aow_sub_type (id, type_id, name) values (26, 4, 'Blance de Noirs');
+insert into aow_sub_type (id, type_id, name) values (27, 4, 'Brut');
+insert into aow_sub_type (id, type_id, name) values (28, 4, 'Demi-Sec');
+insert into aow_sub_type (id, type_id, name) values (29, 4, 'Extra-Dry');
+insert into aow_sub_type (id, type_id, name) values (30, 4, 'Rosé Champagne');
+
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description, image_url) 
+    values (1, 'Barefoot Moscato', 1, 2, 1, 1, 1.5, 2017, 8.99, 5, sysdate, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description, image_url) 
+    values (2, 'Barefoot Rosé', 1, 1, 2, 2, 1.5, 2017, 8.99, 6, sysdate, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description, image_url) 
+    values (3, 'Barefoot Merlot', 1, 2, 3, 8, 1.5, 2017, 8.99, 100, sysdate, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
 
 insert into aow_transaction (id, order_number, inventory_id, quantity, user_id, rating, transaction_date, comments) 
     values (1, 1, 1, 1, 2, 1, sysdate, 'Comments? Your wine sucks!');
