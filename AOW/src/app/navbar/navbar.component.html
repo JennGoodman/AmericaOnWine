@@ -30,10 +30,10 @@
       </div>
     </ul>
     <div *ngIf="user; else elseBlock">
-      <button class="btn btn-outling-info btn-sm">Log Out [{{user.username}}]</button>
+      <button class="btn btn-outline-info btn-sm">Log Out [{{user.username}}]</button>
     </div>
     <ng-template #elseBlock>
-      <button class="btn btn-outling-info btn-sm" routerLink="login">Log In</button>
+      <button class="btn btn-outline-info btn-sm" routerLink="login">Log In</button>
     </ng-template>
   </div>
 </nav>
