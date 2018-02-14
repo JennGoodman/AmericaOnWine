@@ -20,12 +20,7 @@ public class Brand {
 	private String name;
 
 	public Brand() {
-	}
-
-	public Brand(int id, String name) {
 		super();
-		this.id = id;
-		this.name = name;
 	}
 
 	public int getId() {
@@ -72,8 +67,6 @@ public class Brand {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (id != other.id)
-			return false;
-		return true;
+		return (id == other.id);
 	}
 }

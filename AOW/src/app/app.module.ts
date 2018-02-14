@@ -13,6 +13,7 @@ import { WineListComponent } from './wine-list/wine-list.component';
 import { RetailHomeComponent } from './retail-home/retail-home.component';
 import { LoginComponent } from './login/login.component';
 import { RetailItemViewComponent } from './retail-item-view/retail-item-view.component';
+import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
 
 
 import { FileUploadService } from '../services/file-upload.service';
@@ -25,6 +26,7 @@ import { SubTypeService } from '../services/sub-type.service';
 import { TagService } from '../services/tag.service';
 import { TransactionService } from '../services/transaction.service';
 import { TypeService } from '../services/type.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { TypeService } from '../services/type.service';
     RetailItemViewComponent,
     // CustomerRegisterAccountComponent,
     WineItemComponent,
-    WineListComponent
+    WineListComponent,
+    BigWineItemComponent,
+    HomeComponent
   ],
   imports: [
     HttpClientModule,

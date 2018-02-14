@@ -2,6 +2,7 @@ import { User } from './User';
 import { Brand } from './Brand';
 import { Country } from './Country';
 import { SubType } from './SubType';
+import { Type } from './Type';
 
 export class Inventory {
     id: number;
@@ -33,4 +34,4 @@ export class Inventory {
       this.description = null;
       this.imageUrl = null;
     }
-  }
+}

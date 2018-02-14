@@ -27,4 +27,9 @@ export class FileUploadService {
         const params = {Key: file.name, Body: file};
         this.bucket.upload(params, (err, data) => console.log(err, data));
     }
+
+    uploadFile(infile: File) {
+        const params = {Key: infile.name, Body: infile};
+        this.bucket.upload(params, (err, data) => console.log(err, data));
+    }
 }

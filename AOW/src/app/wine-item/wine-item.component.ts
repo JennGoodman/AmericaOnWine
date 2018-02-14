@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { InventoryItem } from '../../models/inventory-item';
+import { Router } from '@angular/router';
+import { Inventory } from '../../models/Inventory';
 
 @Component({
   selector: 'app-wine-item',
@@ -7,20 +8,54 @@ import { InventoryItem } from '../../models/inventory-item';
   styleUrls: ['./wine-item.component.css']
 })
 export class WineItemComponent implements OnInit {
-  @Input() invItem: InventoryItem;
+  @Input() invItem: Inventory;
 
-  constructor() {
-   }
+  @Input() isCustomer: boolean;
+
+  constructor(private router: Router) { }
+
+  getColor() {
+    if (this.invItem && this.invItem.sub_type && this.invItem.sub_type.type) {
+      switch (this.invItem.sub_type.type.name) {
+        case 'Red': return '#660033';
+        case 'White': return '#ffff99';
+        case 'Rosé': return '#ffcce6';
+        case 'Champagne': return '#ffffe6';
+      }
+    }
+  }
 
   ngOnInit() {
   }
 
-  getColor() {
-    switch (this.invItem.type) {
-      case 'Red': return '#d279a6';
-      case 'White': return '#ffff99';
-      case 'Rosé': return '#ffcce6';
-      case 'Champagne': return '#ffffcc';
+  textColor() {
+    if (this.invItem && this.invItem.sub_type && this.invItem.sub_type.type) {
+      switch (this.invItem.sub_type.type.name) {
+        case 'Red': return '#ffffff';
+        default: return '#000000';
+      }
     }
+  }
+
+  addToCart(e) {
+    e.stopPropagation();
+
+    console.log('this is a stub, adding to cart has not been implemented');
+    return;
+  }
+
+  viewItem() {
+    if (this.isCustomer) {
+      localStorage.setItem('item', JSON.stringify(this.invItem));
+      this.router.navigate(['/item/']);
+    }
+  }
+
+  editPressed(): void {
+    console.log('[---] Edit Pressed!!');
+  }
+
+  removePressed(): void {
+      console.log('[---] Remove Pressed!!');
   }
 }

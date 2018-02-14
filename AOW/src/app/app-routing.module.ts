@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { RetailHomeComponent } from './retail-home/retail-home.component';
 import { LoginComponent } from './login/login.component';
+import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
 
 const routes: Routes = [
     {
@@ -31,6 +32,16 @@ const routes: Routes = [
     {
         path: 'items',
         component: WineListComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'item',
+        component: BigWineItemComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'form',
+        component: InventoryFormComponent,
         pathMatch: 'full'
     }
 ];
