@@ -84,11 +84,11 @@ public class SubType {
 		this.id = id;
 	}
 
-	public String getSubType() {
+	public String getName() {
 		return name;
 	}
 
-	public void setSubType(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
