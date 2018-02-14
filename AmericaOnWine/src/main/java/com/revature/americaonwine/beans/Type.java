@@ -9,7 +9,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "aow_name")
+@Table(name = "aow_type")
 public class Type {
 
 	@Id
@@ -20,6 +20,7 @@ public class Type {
 	private String name;
 
 	public Type() {
+		super();
 	}
 
 	public Type(int id, String name) {

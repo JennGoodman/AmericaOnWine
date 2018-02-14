@@ -50,23 +50,23 @@ export class InventoryFormComponent implements OnInit {
     this.subtypes.getAll().subscribe(items => {
       const stl = items;
       this.redSubtypeList = stl.filter((sub) => {
-        return sub.type.name === 'Red';
+        return sub.type.type === 'Red';
       });
       this.whiteSubtypeList = stl.filter((sub) => {
-        return sub.type.name === 'White';
+        return sub.type.type === 'White';
       });
       this.roseSubtypeList = stl.filter((sub) => {
-        return sub.type.name === 'Rosé';
+        return sub.type.type === 'Rosé';
       });
       this.champSubtypeList = stl.filter((sub) => {
-        return sub.type.name === 'Champagne';
+        return sub.type.type === 'Champagne';
       });
 
     });
    }
 
    resetType() {
-     this.invItem.sub_type = null;
+     this.invItem.subType = null;
      this.typeChanged = false;
    }
 
@@ -78,7 +78,7 @@ export class InventoryFormComponent implements OnInit {
      this.countryChanged = true;
    }
 
-   changeSubtype() {
+   changeType() {
      this.typeChanged = true;
    }
 
