@@ -74,12 +74,14 @@ public class UserHibernate implements UserDao {
 		}
 		if (users != null && users.size() > 0) {
 			log.trace("Found at least one user");
-			log.trace("Getting user " + users.get(0).getPassword());
+			log.trace("Getting user " + users.get(0).getActive());
+			su.close();
 			// User user = users.get(0);
 			return users.get(0);
 		}
 		else {
 			log.trace("Found nothing. NOTHING");
+			su.close();
 			return null;
 		}
 	}
