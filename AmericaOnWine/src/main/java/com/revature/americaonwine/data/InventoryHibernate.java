@@ -1,12 +1,14 @@
 package com.revature.americaonwine.data;
 
 import java.util.List;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import com.revature.americaonwine.beans.InventoryItem;
@@ -52,7 +54,9 @@ public class InventoryHibernate implements InventoryDao {
 	@Override
 	public InventoryItem addItem(InventoryItem item) {
 		log.trace("Saving new inventory item: \n" + item);
+		Transaction t = s.getTransaction();
 		s.save(item);
+		t.commit();
 		return item;
 	}
 

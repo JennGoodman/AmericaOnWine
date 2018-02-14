@@ -1,3 +1,4 @@
+<br>
 <div class="container" id="inv-form">
   <span id="big-text">Please enter the details for the wine:</span>
   <br><br>
@@ -32,16 +33,16 @@
       <select (change)="changeType()" name="subType" class="form-control" required aria-label="SubType" aria-describedby="basic-addon1" [(ngModel)]="invItem.subType">
         <option selected value=null *ngIf="typeChanged == false">What specific type of wine is this?</option>
         <ng-container *ngIf="curType == 'Red'">
-          <option *ngFor="let sub of redSubtypeList" value="sub">{{sub.subType}}</option>
+          <option *ngFor="let sub of redSubtypeList" [value]="sub">{{sub.subType}}</option>
         </ng-container>
         <ng-container *ngIf="curType == 'White'">
-          <option *ngFor="let sub of whiteSubtypeList" value="sub">{{sub.subType}}</option>
+          <option *ngFor="let sub of whiteSubtypeList" [value]="sub">{{sub.subType}}</option>
         </ng-container>
         <ng-container *ngIf="curType == 'Champagne'">
-          <option *ngFor="let sub of champSubtypeList" value="sub">{{sub.subType}}</option>
+          <option *ngFor="let sub of champSubtypeList" [value]="sub">{{sub.subType}}</option>
         </ng-container>
         <ng-container *ngIf="curType == 'Rosé'">
-          <option *ngFor="let sub of roseSubtypeList" value="sub">{{sub.subType}}</option>
+          <option *ngFor="let sub of roseSubtypeList" [value]="sub">{{sub.subType}}</option>
         </ng-container>
       </select>
       </div>
