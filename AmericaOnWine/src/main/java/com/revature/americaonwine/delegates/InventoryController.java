@@ -14,8 +14,8 @@ import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.services.InventoryService;
 
 @Controller
-@CrossOrigin(origins="*", allowedHeaders = "*")
-@RequestMapping(value="/inventory")
+@CrossOrigin(origins="*")
+@RequestMapping(value="/inventory", headers="Accept=application/json, text/plain")
 public class InventoryController {
 	@Autowired
 	private InventoryService is;
