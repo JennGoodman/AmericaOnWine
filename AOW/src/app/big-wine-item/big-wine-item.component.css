@@ -8,3 +8,20 @@
     text-align: left;
     width: 50%;
 }
+
+.big-wine-img {
+    width: 40%;
+    height: auto;
+    margin: 25px 35px 0px 50%;
+    border: 1px solid black;
+}
+
+.full-color {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+#route {
+    font-size: 30px;
+}
