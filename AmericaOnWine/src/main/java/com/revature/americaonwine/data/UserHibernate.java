@@ -70,11 +70,12 @@ public class UserHibernate implements UserDao {
 		Query<User> q = su.createQuery(query);
 		List<User> users = q.getResultList();
 		for (User user : users) {
-			log.trace(user.getUsername() + "is in users");
+			log.trace(user.getUsername() + " is in users");
 		}
 		if (users != null && users.size() > 0) {
 			log.trace("Found at least one user");
-			log.trace("Getting user " + users.get(0).getUsername());
+			log.trace("Getting user " + users.get(0).getPassword());
+			// User user = users.get(0);
 			return users.get(0);
 		}
 		else {
