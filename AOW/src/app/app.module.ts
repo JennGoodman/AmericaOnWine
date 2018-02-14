@@ -11,6 +11,7 @@ import { InventoryFormComponent } from './inventory-form/inventory-form.componen
 import { WineItemComponent } from './wine-item/wine-item.component';
 import { WineListComponent } from './wine-list/wine-list.component';
 import { RetailHomeComponent } from './retail-home/retail-home.component';
+import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { RetailItemViewComponent } from './retail-item-view/retail-item-view.component';
 import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
@@ -33,6 +34,7 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     InventoryFormComponent,
+    RegisterComponent,
     RetailHomeComponent,
     NavbarComponent,
     LoginComponent,

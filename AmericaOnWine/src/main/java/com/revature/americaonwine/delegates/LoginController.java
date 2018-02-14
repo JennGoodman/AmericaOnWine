@@ -34,14 +34,21 @@ public class LoginController {
 	@ResponseBody
 	public String login(@RequestBody User fromWeb, HttpSession session) throws JsonProcessingException {
 		log.trace("Got Request body and is : " + fromWeb);
-		User fromDB = ls.login(fromWeb.getUsername(), fromWeb.getPassword());
-		if (fromDB != null) {
-			log.trace(" User form DB is not null and is: " + fromDB);
-			session.setAttribute("user", fromDB);
-			return om.writeValueAsString(fromDB);
-		} else {
-			log.trace(" Did  not find user in the DB");
-			return om.writeValueAsString(fromDB);
+		if ((User) session.getAttribute("user") != null) {
+			// this needs to change.
+			return om.writeValueAsString(session.getAttribute("user"));
+		} 
+		else {
+			User fromDB = ls.login(fromWeb.getUsername(), fromWeb.getPassword());
+			log.trace("User is : " + fromDB);
+			if (fromDB != null) {
+				log.trace(" User form DB is not null and is: " + fromDB);
+				session.setAttribute("user", fromDB);
+				return om.writeValueAsString(fromDB);
+			} else {
+				log.trace(" Did  not find user in the DB");
+				return om.writeValueAsString(fromDB);
+			}
 		}
 	}
 	

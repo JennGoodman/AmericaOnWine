@@ -1,0 +1,13 @@
+<<<<<<< HEAD
+Manifest-Version: 1.0
+Built-By: Mick
+Build-Jdk: 1.8.0_05
+Created-By: Maven Integration for Eclipse
+
+=======
+Manifest-Version: 1.0
+Built-By: neptu
+Build-Jdk: 1.8.0_161
+Created-By: Maven Integration for Eclipse
+
+>>>>>>> 0525422df60a5bd6dcfe5d1a6c89113cad09b25a

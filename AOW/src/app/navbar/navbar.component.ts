@@ -29,7 +29,8 @@ export class NavbarComponent implements OnInit {
       const result = resp as string;
       localStorage.removeItem('user');
       this.user = null;
-      this.router.navigate(['']);
+        this.router.navigate(['login']);
+        location.reload();
     });
   }
 }

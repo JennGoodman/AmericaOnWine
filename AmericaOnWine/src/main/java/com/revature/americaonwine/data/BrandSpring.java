@@ -25,7 +25,7 @@ public class BrandSpring implements BrandDao {
 	@Override
 	public List<Brand> getAll() {
 		log.trace(this.getClass() + " Called: getAll()");
-		String query = "from com.revature.beans.Brand";
+		String query = "from com.revature.americaonwine.beans.Brand";
 		Query<Brand> q = s.createQuery(query, Brand.class);
 		return q.getResultList();
 	}

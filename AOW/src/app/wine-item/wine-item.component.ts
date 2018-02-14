@@ -15,8 +15,8 @@ export class WineItemComponent implements OnInit {
   constructor(private router: Router) { }
 
   getColor() {
-    if (this.invItem && this.invItem.sub_type && this.invItem.sub_type.type) {
-      switch (this.invItem.sub_type.type.name) {
+    if (this.invItem && this.invItem.subType && this.invItem.subType.type) {
+      switch (this.invItem.subType.type.type) {
         case 'Red': return '#660033';
         case 'White': return '#ffff99';
         case 'Rosé': return '#ffcce6';
@@ -29,8 +29,8 @@ export class WineItemComponent implements OnInit {
   }
 
   textColor() {
-    if (this.invItem && this.invItem.sub_type && this.invItem.sub_type.type) {
-      switch (this.invItem.sub_type.type.name) {
+    if (this.invItem && this.invItem.subType && this.invItem.subType.type) {
+      switch (this.invItem.subType.type.type) {
         case 'Red': return '#ffffff';
         default: return '#000000';
       }
@@ -47,6 +47,7 @@ export class WineItemComponent implements OnInit {
   viewItem() {
     if (this.isCustomer) {
       localStorage.setItem('item', JSON.stringify(this.invItem));
+      console.log(localStorage.getItem('item'));
       this.router.navigate(['/item/']);
     }
   }

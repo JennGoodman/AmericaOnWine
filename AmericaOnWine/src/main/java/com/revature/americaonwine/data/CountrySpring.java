@@ -24,7 +24,7 @@ public class CountrySpring implements CountryDao {
 	@Override
 	public List<Country> getAll() {
 		log.trace(this.getClass() + " Called: getAll()");
-		String query = "from com.revature.beans.Country";
+		String query = "from com.revature.americaonwine.beans.Country";
 		Query<Country> q = s.createQuery(query, Country.class);
 		return q.getResultList();
 	}

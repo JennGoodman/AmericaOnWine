@@ -25,7 +25,7 @@ public class SubTypeSpring implements SubTypeDao {
 	@Override
 	public List<SubType> getAll() {
 		log.trace(this.getClass() + " Called: getAll()");
-		String query = "from com.revature.beans.SubType";
+		String query = "from com.revature.americaonwine.beans.SubType";
 		Query<SubType> q = s.createQuery(query, SubType.class);
 		return q.getResultList();
 	}

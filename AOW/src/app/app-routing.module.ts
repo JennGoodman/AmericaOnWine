@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { RetailHomeComponent } from './retail-home/retail-home.component';
 import { LoginComponent } from './login/login.component';
 import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: AppComponent,
+        component: HomeComponent,
         pathMatch: 'full'
     },
     {
@@ -22,6 +24,11 @@ const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'register',
+        component: RegisterComponent,
         pathMatch: 'full'
     },
     {
