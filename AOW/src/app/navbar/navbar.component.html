@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #660033">
   <a class="navbar-brand" routerLink="">America On Wine</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04"
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -11,7 +11,7 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <div *ngIf="user">
+      <ng-container *ngIf="user">
         <li class="nav-item active" *ngIf="user.role == 2">
           <a class="nav-link" routerLink="items">Items
             <span class="sr-only">(current)</span>
@@ -37,13 +37,13 @@
             <span class="sr-only">(current)</span>
           </a>
         </li>
-      </div>
+      </ng-container>
     </ul>
     <div *ngIf="user; else elseBlock">
-      <button class="btn btn-outline-info btn-sm" routerLink="logout">Log Out [{{user.username}}]</button>
+      <button class="btn btn-outline btn-sm" routerLink="logout">Log Out [{{user.username}}]</button>
     </div>
     <ng-template #elseBlock>
-      <button class="btn btn-outline-warning btn-sm" routerLink="login">Log In</button>
+      <button class="btn btn-outline btn-sm" routerLink="login">Log In</button>
     </ng-template>
   </div>
 </nav>

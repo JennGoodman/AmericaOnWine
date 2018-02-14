@@ -520,3 +520,5 @@ insert into aow_transaction (id, order_number, inventory_id, quantity, user_id, 
     values (3, 1, 3, 1, 2, 2, sysdate, 'Comments? Your wine sucks!');
 
 -- Jenn Rocks!
+
+commit;

@@ -3,7 +3,8 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { FileUploadService } from '../../services/file-upload.service';
 
 // import { RetailItemViewComponent } from '../retail-item-view.component';
-import { InventoryItem } from '../../models/inventory-item';
+import { Inventory } from '../../models/Inventory';
+import { InventoryService } from '../../services/inventory.service';
 
 @Component({
   selector: 'app-retail-home',
@@ -13,13 +14,18 @@ import { InventoryItem } from '../../models/inventory-item';
 @Injectable()
 export class RetailHomeComponent implements OnInit {
 
-  constructor(private fus : FileUploadService) { }
-  items: InventoryItem[] = [new InventoryItem().setVals('Delicious', 1900, 'red', 'france', 'syrah'),
-                            new InventoryItem().setVals('Tasty', 1975, 'white', 'italy', 'zinfandel')];
+  constructor(private fus: FileUploadService, private invService: InventoryService) {
+    this.invService.getAll().subscribe(items => {
+      this.items = items;
+    });
+  }
+
+  items: Inventory[] = [];
   ngOnInit() {
   }
-    fileInput(fileInput : any) {
-        this.fus.upload(fileInput);
-    }
+
+  fileInput(fileInput: any) {
+    this.fus.upload(fileInput);
+  }
 
 }

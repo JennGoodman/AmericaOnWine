@@ -21,19 +21,21 @@ export class LoginComponent implements OnInit {
   }
 
   login(username: string, password: string) {
+    console.log(username + ' ' + password);
     this.loginFailed = false;
     const user: User = new User();
     user.username = username;
     user.password = password;
+    console.log(JSON.stringify(user));
 
     this.service.login(user).subscribe(resp => {
       this.loggedInUser = resp as User;
       if (this.loggedInUser == null) {
         this.loginFailed = true;
-        localStorage.setItem('user', JSON.stringify(this.loggedInUser));
       } else {
         // Redirect to home
-        this.router.navigate(['']);
+        localStorage.setItem('user', JSON.stringify(this.loggedInUser));
+        this.router.navigate(['form']);
       }
     });
   }

@@ -1,14 +1,15 @@
 package com.revature.americaonwine.beans;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
 @Table(name = "aow_user")
 public class User {
@@ -21,14 +22,14 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
-	@Enumerated(EnumType.ORDINAL)
-	private Roles role;
+	private int role;
 	private int active;
 	private int cancelled;
 	public User() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-	public User(int id, String username, String password, String email, Roles role, int active, int cancelled) {
+	public User(int id, String username, String password, String email, int role, int active, int cancelled) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -62,10 +63,10 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Roles getRole() {
+	public int getRole() {
 		return role;
 	}
-	public void setRole(Roles role) {
+	public void setRole(int role) {
 		this.role = role;
 	}
 	public int getActive() {
@@ -109,7 +110,7 @@ public class User {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((role == null) ? 0 : role.hashCode());
+		result = prime * result + role;
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -147,5 +148,5 @@ public class User {
 			return false;
 		return true;
 	}
-
+	
 }

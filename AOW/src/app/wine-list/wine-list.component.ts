@@ -1,5 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { InventoryItem } from '../../models/inventory-item';
+import { Inventory } from '../../models/Inventory';
+import { InventoryService } from '../../services/inventory.service';
 
 @Component({
   selector: 'app-wine-list',
@@ -8,22 +9,19 @@ import { InventoryItem } from '../../models/inventory-item';
 })
 @Injectable()
 export class WineListComponent implements OnInit {
-  items: InventoryItem[] = [new InventoryItem().setVals('Delicious', 1900, 'Red', 'France', 'Syrah'),
-                            new InventoryItem().setVals('Tasty', 1975, 'White', 'Italy', 'Zinfandel'),
-                            new InventoryItem().setVals('Delicious', 1900, 'Red', 'France', 'Syrah'),
-                            new InventoryItem().setVals('Tasty', 1975, 'White', 'Italy', 'Zinfandel'),
-                            new InventoryItem().setVals('Delicious', 1900, 'Red', 'France', 'Syrah'),
-                            new InventoryItem().setVals('Tasty', 1975, 'White', 'Italy', 'Zinfandel'),
-                            new InventoryItem().setVals('Delicious', 1900, 'Red', 'France', 'Syrah'),
-                            new InventoryItem().setVals('Tasty', 1975, 'White', 'Italy', 'Zinfandel'),
-                            new InventoryItem().setVals('Delicious', 1900, 'Red', 'France', 'Syrah'),
-                            new InventoryItem().setVals('Tasty', 1975, 'Rosé', 'Italy', 'Zinfandel'),
-                            new InventoryItem().setVals('Delicious', 1900, 'Red', 'France', 'Syrah'),
-                            new InventoryItem().setVals('Tasty', 1975, 'White', 'Italy', 'Zinfandel'),
-                            new InventoryItem().setVals('Delicious', 1900, 'Champagne', 'France', 'Syrah'),
-                            new InventoryItem().setVals('Tasty', 1975, 'White', 'Italy', 'Zinfandel')];
+  items: Inventory[] = [];
+  isCustomer: boolean;
 
-  constructor() { }
+  constructor(private invService: InventoryService) {
+    this.invService.getAll().subscribe(items => {
+      this.items = items;
+    });
+    if (localStorage.getItem('user') != null) {
+      this.isCustomer = JSON.parse(localStorage.getItem('user')).role === 0;
+    } else {
+      this.isCustomer = true;
+    }
+  }
 
   ngOnInit() {
   }

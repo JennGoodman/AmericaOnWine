@@ -61,6 +61,7 @@ public class UserHibernate implements UserDao {
 
 	@Override
 	public User getUserByUsername(String username) {
+		log.trace("Attempting to search for user with username " + username);
 		Session su = hu.getSession();
 		CriteriaBuilder builder = su.getCriteriaBuilder();
 		CriteriaQuery<User> query = builder.createQuery(User.class);
@@ -68,10 +69,17 @@ public class UserHibernate implements UserDao {
 		query.select(root).where(builder.equal(root.get("username"), username));
 		Query<User> q = su.createQuery(query);
 		List<User> users = q.getResultList();
-		if (users != null && users.size() > 0)
+		for (User user : users) {
+			log.trace(user + "is in users");
+		}
+		if (users != null && users.size() > 0) {
+			log.trace("Found at least one user");
 			return users.get(0);
-		else
+		}
+		else {
+			log.trace("Found nothing. NOTHING");
 			return null;
+		}
 	}
 
 	@Override
@@ -83,7 +91,7 @@ public class UserHibernate implements UserDao {
 		query.select(root).where(builder.equal(root.get("email"), email));
 		Query<User> q = su.createQuery(query);
 		List<User> users = q.getResultList();
-		if (users != null && users.size() > 0)
+		if (users != null && !users.isEmpty())
 			return users.get(0);
 		else
 			return null;
@@ -97,8 +105,7 @@ public class UserHibernate implements UserDao {
 		Root<User> root = query.from(User.class);
 		query.select(root);
 		Query<User> q = su.createQuery(query);
-		List<User> users = q.getResultList();
-		return users;
+		return q.getResultList();
 	}
 
 	@Override
@@ -114,6 +121,7 @@ public class UserHibernate implements UserDao {
 				tx.rollback();
 			return false;
 		}
+		
 	}
 
 	@Override
