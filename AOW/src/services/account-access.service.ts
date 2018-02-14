@@ -18,6 +18,10 @@ export class AccountAccessService {
 
   login(user: User): Observable<User> {
     const body = JSON.stringify(user);
+    console.log('The body is ' + body);
+    console.log('Headers are ');
+    console.log(this.config.defaultHeaders);
+    console.log('App URL is ' + this.config.appURL);
     return this.http.post(this.config.appURL + 'login', body, {
       headers: this.config.defaultHeaders, withCredentials: true
     }).map(

@@ -2,10 +2,13 @@ package com.revature.americaonwine.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.data.InventoryDao;
 import com.revature.americaonwine.data.InventoryHibernate;
 
+@Component
 public class InventoryItemHibernate implements InventoryService {
 	
 	private InventoryDao id = new InventoryHibernate();
