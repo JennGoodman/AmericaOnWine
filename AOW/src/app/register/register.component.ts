@@ -82,7 +82,7 @@ export class RegisterComponent implements OnInit {
               this.router.navigate(['retailer/home']);
             } else{
               //go to customer home page
-              this.router.navigate(['items']);
+              this.router.navigate(['customer/home']);
             } 
           }
         });

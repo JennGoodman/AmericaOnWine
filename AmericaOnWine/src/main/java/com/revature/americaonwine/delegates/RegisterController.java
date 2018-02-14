@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.MediaType;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,8 +23,9 @@ import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.services.LoginService;
 
 @Controller
-@CrossOrigin(origins= "http://localhost:4200")
-@RequestMapping(value="/register")
+//@CrossOrigin(origins= "http://localhost:4200")
+@CrossOrigin(origins="*")
+@RequestMapping(value="/register", headers="Accept=application/json, text/plain", consumes= MediaType.APPLICATION_JSON_VALUE)
 public class RegisterController {
 	
 	    @Autowired
