@@ -25,15 +25,14 @@ import com.revature.americaonwine.services.LoginService;
 @Controller
 //@CrossOrigin(origins= "http://localhost:4200")
 @CrossOrigin(origins="*")
-@RequestMapping(value="/register", headers="Accept=application/json, text/plain")
+@RequestMapping(headers="Accept=application/json, text/plain")
 public class RegisterController {
-	
 	private Logger log = Logger.getLogger(RegisterController.class);
 	    @Autowired
 		private LoginService ser;
 		private ObjectMapper om = new ObjectMapper();
 		
-		@RequestMapping(method=RequestMethod.POST)
+		@RequestMapping(value="/register", method=RequestMethod.POST)
 		@ResponseBody
 		public String register(@RequestBody User fromWeb, HttpSession session) throws JsonProcessingException {
 			log.trace("Got Request body and is : " + fromWeb);

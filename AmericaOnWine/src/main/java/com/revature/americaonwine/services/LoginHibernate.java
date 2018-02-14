@@ -31,15 +31,16 @@ public class LoginHibernate implements LoginService {
 	@Override
 	public User register(User user) {
 		log.trace("Attempting to register; User: " + user);
-		User email = ud.getUserByEmail(user.getEmail());
-		User username = ud.getUserByUsername(user.getUsername());
-		if(email == null) {
-			return null;
-		}else if(username == null) {
-			return null;
-		}else {
-			ud.insertUser(user);
-		}
+//		User email = ud.getUserByEmail(user.getEmail());
+//		User username = ud.getUserByUsername(user.getUsername());
+//		if(email == null) {
+//			return null;
+//		}else if(username == null) {
+//			return null;
+//		}else {
+//			ud.insertUser(user);
+//		}
+		ud.insertUser(user);
 		return user;
 	}
 
