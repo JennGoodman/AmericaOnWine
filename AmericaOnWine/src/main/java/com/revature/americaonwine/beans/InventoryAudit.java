@@ -18,60 +18,61 @@ public class InventoryAudit {
 	@SequenceGenerator(name = "inventory_auditGen", sequenceName = "aowInventory_auditSeq", allocationSize = 1)
 	@GeneratedValue(generator = "inventory_auditGen", strategy = GenerationType.SEQUENCE)
 	private int id;
-	@Column(name="old_id")
+	@Column(name = "old_id")
 	private int oldId;
-	@Column(name="new_id")
+	@Column(name = "new_id")
 	private int newId;
-	@Column(name="old_name")
+	@Column(name = "old_name")
 	private String oldName;
-	@Column(name="new_name")
+	@Column(name = "new_name")
 	private String newName;
-	@Column(name="old_brand_id")
+	@Column(name = "old_brand_id")
 	private int oldBrandId;
-	@Column(name="new_brand_id")
+	@Column(name = "new_brand_id")
 	private int newBrandId;
-	@Column(name="old_user_id")
+	@Column(name = "old_user_id")
 	private int oldUserId;
-	@Column(name="new_user_id")
+	@Column(name = "new_user_id")
 	private int newUserId;
-	@Column(name="old_country_id")
+	@Column(name = "old_country_id")
 	private int oldCountryId;
-	@Column(name="new_country_id")
+	@Column(name = "new_country_id")
 	private int newCountryId;
-	@Column(name="old_type_id")
+	@Column(name = "old_type_id")
 	private int oldTypeId;
-	@Column(name="new_type_id")
+	@Column(name = "new_type_id")
 	private int newTypeId;
-	@Column(name="old_sub_type_id")
+	@Column(name = "old_sub_type_id")
 	private int oldSubTypeId;
-	@Column(name="new_sub_type_id")
+	@Column(name = "new_sub_type_id")
 	private int newSubTypeId;
-	@Column(name="old_volume")
+	@Column(name = "old_volume")
 	private float oldVolume;
-	@Column(name="new_volume")
+	@Column(name = "new_volume")
 	private float newVolume;
-	@Column(name="old_year")
+	@Column(name = "old_year")
 	private int oldYear;
-	@Column(name="new_year")
+	@Column(name = "new_year")
 	private int newYear;
-	@Column(name="old_price")
+	@Column(name = "old_price")
 	private float oldPrice;
-	@Column(name="new_price")
+	@Column(name = "new_price")
 	private float newPrice;
-	@Column(name="old_submitted")
+	@Column(name = "old_submitted")
 	private LocalDate oldSubmitted;
-	@Column(name="new_submitted")
+	@Column(name = "new_submitted")
 	private LocalDate newSubmitted;
-	@Column(name="old_description")
+	@Column(name = "old_description")
 	private String oldDescription;
-	@Column(name="new_description")
+	@Column(name = "new_description")
 	private String newDescription;
-	@Column(name="old_image_url")
+	@Column(name = "old_image_url")
 	private String oldImageUrl;
-	@Column(name="new_image_url")
+	@Column(name = "new_image_url")
 	private String newImageUrl;
 
 	public InventoryAudit() {
+		super();
 	}
 
 	public int getId() {
@@ -293,14 +294,14 @@ public class InventoryAudit {
 	@Override
 	public String toString() {
 		return "InventoryAudit [id=" + id + ", oldId=" + oldId + ", newId=" + newId + ", oldName=" + oldName
-				+ ", newName=" + newName + ", oldBrandId=" + oldBrandId + ", newBrandId=" + newBrandId
-				+ ", oldUserId=" + oldUserId + ", newUserId=" + newUserId + ", oldCountryId=" + oldCountryId
-				+ ", newCountryId=" + newCountryId + ", oldTypeId=" + oldTypeId + ", newTypeId=" + newTypeId
-				+ ", oldSubTypeId=" + oldSubTypeId + ", newSubTypeId=" + newSubTypeId + ", oldVolume="
-				+ oldVolume + ", newVolume=" + newVolume + ", oldYear=" + oldYear + ", newYear=" + newYear
-				+ ", oldPrice=" + oldPrice + ", newPrice=" + newPrice + ", oldSubmitted=" + oldSubmitted
-				+ ", newSubmitted=" + newSubmitted + ", oldDescription=" + oldDescription + ", newDescription="
-				+ newDescription + ", oldImageUrl=" + oldImageUrl + ", newImageUrl=" + newImageUrl + "]";
+				+ ", newName=" + newName + ", oldBrandId=" + oldBrandId + ", newBrandId=" + newBrandId + ", oldUserId="
+				+ oldUserId + ", newUserId=" + newUserId + ", oldCountryId=" + oldCountryId + ", newCountryId="
+				+ newCountryId + ", oldTypeId=" + oldTypeId + ", newTypeId=" + newTypeId + ", oldSubTypeId="
+				+ oldSubTypeId + ", newSubTypeId=" + newSubTypeId + ", oldVolume=" + oldVolume + ", newVolume="
+				+ newVolume + ", oldYear=" + oldYear + ", newYear=" + newYear + ", oldPrice=" + oldPrice + ", newPrice="
+				+ newPrice + ", oldSubmitted=" + oldSubmitted + ", newSubmitted=" + newSubmitted + ", oldDescription="
+				+ oldDescription + ", newDescription=" + newDescription + ", oldImageUrl=" + oldImageUrl
+				+ ", newImageUrl=" + newImageUrl + "]";
 	}
 
 	@Override
@@ -422,8 +423,6 @@ public class InventoryAudit {
 			return false;
 		if (Float.floatToIntBits(oldVolume) != Float.floatToIntBits(other.oldVolume))
 			return false;
-		if (oldYear != other.oldYear)
-			return false;
-		return true;
+		return (oldYear == other.oldYear);
 	}
 }
