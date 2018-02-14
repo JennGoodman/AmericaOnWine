@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { RetailItemViewComponent } from './retail-item-view/retail-item-view.component';
 import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
 
+import { NavbarComponent } from './navbar/navbar.component';
 
 import { FileUploadService } from '../services/file-upload.service';
 import { UserService } from '../services/user.service';
@@ -32,10 +33,11 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     InventoryFormComponent,
+    RetailHomeComponent,
+    NavbarComponent,
     LoginComponent,
     RetailHomeComponent,
     RetailItemViewComponent,
-    // CustomerRegisterAccountComponent,
     WineItemComponent,
     WineListComponent,
     BigWineItemComponent,
