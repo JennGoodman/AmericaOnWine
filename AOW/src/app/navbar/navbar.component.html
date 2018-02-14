@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #660033">
   <a class="navbar-brand" routerLink="">America On Wine</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04"
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -11,29 +11,28 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <ng-container *ngIf="user">
-        <li class="nav-item active" *ngIf="user.role == 2">
-          <a class="nav-link" routerLink="items">Items
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active" *ngIf="user.role == 1">
-          <a class="nav-link" routerLink="retailer/home">Retailer
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active" *ngIf="user.role == 1">
-          <a class="nav-link" routerLink="retailer/form">Retailer Form
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-      </ng-container>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="items">Items
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="retailer/home">Retailer
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="retailer/form">Retailer Form
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="form">Inventory
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
     </ul>
-    <div *ngIf="user; else elseBlock">
-      <button class="btn btn-outline btn-sm" (click)="logout()">Log Out [{{user.username}}]</button>
-    </div>
-    <ng-template #elseBlock>
-      <button class="btn btn-outline btn-sm" routerLink="login">Log In</button>
-    </ng-template>
+    <button class="btn btn-outline btn-sm" routerLink="login">Log In</button>&nbsp;
+    <button class="btn btn-outline btn-sm" (click)="logout()">Log Out</button>
   </div>
 </nav>

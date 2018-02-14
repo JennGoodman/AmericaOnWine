@@ -13,8 +13,13 @@ export class NavbarComponent implements OnInit {
   user: User;
 
   constructor(private service: AccountAccessService, private router: Router) {
+    addEventListener('click', this.loadUser);
+  }
+
+  loadUser() {
     this.user = JSON.parse(localStorage.getItem('user'));
-   }
+    console.log('Constructor Ran: ' + this.user);
+  }
 
   ngOnInit() {
   }
