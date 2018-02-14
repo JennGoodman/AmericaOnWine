@@ -7,6 +7,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Hibernate;
 import org.hibernate.NonUniqueObjectException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -74,9 +75,8 @@ public class UserHibernate implements UserDao {
 		}
 		if (users != null && users.size() > 0) {
 			log.trace("Found at least one user");
-			log.trace("Getting user " + users.get(0).getActive());
+			log.trace("Getting user " + Hibernate.getClass(users.get(0)));
 			su.close();
-			// User user = users.get(0);
 			return users.get(0);
 		}
 		else {
