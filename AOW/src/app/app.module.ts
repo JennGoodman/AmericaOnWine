@@ -26,6 +26,7 @@ import { SubTypeService } from '../services/sub-type.service';
 import { TagService } from '../services/tag.service';
 import { TransactionService } from '../services/transaction.service';
 import { TypeService } from '../services/type.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { TypeService } from '../services/type.service';
     // CustomerRegisterAccountComponent,
     WineItemComponent,
     WineListComponent,
-    BigWineItemComponent
+    BigWineItemComponent,
+    HomeComponent
   ],
   imports: [
     HttpClientModule,

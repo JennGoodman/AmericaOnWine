@@ -6,7 +6,14 @@
     {{invItem.year}}<br>
     {{invItem.sub_type.type.name}} - {{invItem.sub_type.subType}}<br>
     ${{invItem.price}} - {{invItem.volume}} mL<br>
-    <span class="add" (click)="addToCart($event)">+</span> <input class="to-cart" type="number" max=999 min=1 value=1>
+    <div *ngIf="isCustomer == true">
+        <span class="add" (click)="addToCart($event)">+</span>
+        <input class="to-cart" type="number" max=999 min=1 value=1>
+    </div>
+    <div *ngIf="isCustomer == false">
+        <button (click)='editPressed()' class="btn btn-outline-info btn-sm">Edit</button>
+        <button (click)='removePressed()' class="btn btn-outline-info btn-sm">Remove</button>
+    </div>
     <br>
     </div>
 </div>

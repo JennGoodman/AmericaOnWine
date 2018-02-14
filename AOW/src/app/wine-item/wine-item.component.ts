@@ -10,8 +10,9 @@ import { Inventory } from '../../models/Inventory';
 export class WineItemComponent implements OnInit {
   @Input() invItem: Inventory;
 
-  constructor(private router: Router) {
-  }
+  @Input() isCustomer: boolean;
+
+  constructor(private router: Router) { }
 
   getColor() {
     if (this.invItem && this.invItem.sub_type && this.invItem.sub_type.type) {
@@ -44,7 +45,17 @@ export class WineItemComponent implements OnInit {
   }
 
   viewItem() {
-    localStorage.setItem('item', JSON.stringify(this.invItem));
-    this.router.navigate(['/item/']);
+    if (this.isCustomer) {
+      localStorage.setItem('item', JSON.stringify(this.invItem));
+      this.router.navigate(['/item/']);
+    }
+  }
+
+  editPressed(): void {
+    console.log('[---] Edit Pressed!!');
+  }
+
+  removePressed(): void {
+      console.log('[---] Remove Pressed!!');
   }
 }

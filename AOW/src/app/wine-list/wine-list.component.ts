@@ -10,11 +10,17 @@ import { InventoryService } from '../../services/inventory.service';
 @Injectable()
 export class WineListComponent implements OnInit {
   items: Inventory[] = [];
+  isCustomer: boolean;
 
   constructor(private invService: InventoryService) {
     this.invService.getAll().subscribe(items => {
       this.items = items;
     });
+    if (localStorage.getItem('user')) {
+      this.isCustomer = JSON.parse(localStorage.getItem('user')).role === 0;
+    } else {
+      this.isCustomer = true;
+    }
   }
 
   ngOnInit() {
