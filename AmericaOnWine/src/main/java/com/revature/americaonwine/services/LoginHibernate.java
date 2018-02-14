@@ -18,14 +18,8 @@ public class LoginHibernate implements LoginService {
 	public User login(String username, String password) {
 		User u = ud.getUserByUsername(username);
 		if (u != null && u.getPassword().equals(password) )
-			return null;
-		else return u;
-	}
-
-	@Override
-	public boolean logout() {
-		// TODO Auto-generated method stub
-		return false;
+			return u;
+		else return null;
 	}
 
 	@Override
