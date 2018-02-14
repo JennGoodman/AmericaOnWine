@@ -76,8 +76,9 @@ public class UserHibernate implements UserDao {
 		if (users != null && users.size() > 0) {
 			log.trace("Found at least one user");
 			log.trace("Getting user " + Hibernate.getClass(users.get(0)));
+			User user = (User) Hibernate.unproxy(users.get(0));
 			su.close();
-			return users.get(0);
+			return user;
 		}
 		else {
 			log.trace("Found nothing. NOTHING");
