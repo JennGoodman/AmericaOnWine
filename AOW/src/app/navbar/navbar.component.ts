@@ -13,16 +13,18 @@ export class NavbarComponent implements OnInit {
   user: User;
 
   constructor(private service: AccountAccessService, private router: Router) {
-    addEventListener('click', this.loadUser);
+    this.loadUser();
   }
 
   loadUser() {
     this.user = JSON.parse(localStorage.getItem('user'));
-    console.log('Constructor Ran: ');
-    console.log(this.user);
   }
 
   ngOnInit() {
+  }
+
+  login() {
+    this.router.navigate(['login']);
   }
 
   logout() {
@@ -30,7 +32,7 @@ export class NavbarComponent implements OnInit {
       const result = resp as string;
       localStorage.removeItem('user');
       this.user = null;
-        this.router.navigate(['login']);
+      this.router.navigate(['login']);
     });
   }
 }

@@ -518,7 +518,6 @@ insert into aow_sub_type (id, type_id, name) values (12, 2, 'Zinfandel');
 insert into aow_sub_type (id, type_id, name) values (13, 2, 'Sangiovese');
 insert into aow_sub_type (id, type_id, name) values (14, 2, 'Barbera');
 
-
 insert into aow_sub_type (id, type_id, name) values (15, 3, 'Syrah Rosé');
 insert into aow_sub_type (id, type_id, name) values (16, 3, 'Grenache Rosé');
 insert into aow_sub_type (id, type_id, name) values (17, 3, 'Cabernet Sauvignon Rosé');
@@ -541,9 +540,9 @@ insert into aow_sub_type (id, type_id, name) values (30, 4, 'Rosé Champagne');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description, image_url) 
     values (1, 'Barefoot Moscato', 1, 2, 1, 1, 1.5, 2017, 8.99, 5, sysdate, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description, image_url) 
-    values (2, 'Barefoot Rosé', 1, 1, 2, 2, 1.5, 2017, 8.99, 6, sysdate, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+    values (2, 'Barefoot Rosé', 2, 1, 2, 17, 1.5, 2017, 8.99, 6, sysdate, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description, image_url) 
-    values (3, 'Barefoot Merlot', 1, 2, 3, 8, 1.5, 2017, 8.99, 100, sysdate, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+    values (3, 'Barefoot Merlot', 5, 2, 3, 8, 1.5, 2017, 8.99, 100, sysdate, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
 
 insert into aow_transaction (id, order_number, inventory_id, quantity, user_id, rating, transaction_date, comments) 
     values (1, 1, 1, 1, 2, 1, sysdate, 'Comments? Your wine sucks!');
