@@ -24,7 +24,7 @@ import com.revature.americaonwine.services.LoginService;
 // @CrossOrigin(origins="http//localhost:8080")
 // @CrossOrigin(origins= {"50.207.204.190", "http://localhost:4200", "http://localhost:8080", ""})
 @CrossOrigin(origins="*")
-@RequestMapping(value="/login", headers="Accept=application/json, text/plain", consumes= MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value="/login", headers="Accept=application/json, text/plain")
 public class LoginController {
 
 	private Logger log = Logger.getLogger(LoginController.class);
