@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.revature.americaonwine.beans.InventoryItem;
+import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.data.InventoryDao;
 import com.revature.americaonwine.data.InventoryHibernate;
 
@@ -21,6 +22,11 @@ public class InventoryItemHibernate implements InventoryService {
 	@Override
 	public InventoryItem add(InventoryItem i) {
 		return id.addItem(i);
+	}
+
+	@Override
+	public Object getForUser(User u) {
+		return id.getItemsForUser(u);
 	}
 
 }
