@@ -1,12 +1,9 @@
 package com.revature.americaonwine.delegates;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,25 +14,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.americaonwine.beans.User;
-import com.revature.americaonwine.data.UserHibernate;
 import com.revature.americaonwine.services.LoginService;
 
 @Controller
 // @CrossOrigin(origins="http//localhost:8080")
 // @CrossOrigin(origins= {"50.207.204.190", "http://localhost:4200", "http://localhost:8080", ""})
 @CrossOrigin(origins="*")
-@RequestMapping(value="/login", headers="Accept=application/json, text/plain")
+@RequestMapping(headers="Accept=application/json, text/plain")
 public class LoginController {
 
 	private Logger log = Logger.getLogger(LoginController.class);
-	private UserHibernate uh = new UserHibernate();
 	
 	@Autowired
 	private LoginService ls;
 	
 	private ObjectMapper om = new ObjectMapper();
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(value="/login", method=RequestMethod.POST)
 	@ResponseBody
 	public String login(@RequestBody User fromWeb, HttpSession session) throws JsonProcessingException {
 		log.trace("Got Request body and is : " + fromWeb);
@@ -50,16 +45,11 @@ public class LoginController {
 		}
 	}
 	
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	@ResponseBody
-	public String getPage(HttpSession s) {
-		if ((User) s.getAttribute("user") != null) {
-			try {
-				return om.writeValueAsString("Got To Home");
-			} catch (JsonProcessingException e) {
-				log.error(e.getMessage());
-			}
-		}
-		return "Stuff";
+	public String logout(HttpSession session) {
+		log.trace("Logout called");
+		session.invalidate();
+		return null;
 	}
 }

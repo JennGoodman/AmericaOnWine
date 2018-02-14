@@ -42,5 +42,5 @@ public class LoginHibernate implements LoginService {
 		}
 		return user;
 	}
-
+	
 }
