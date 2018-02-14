@@ -10,7 +10,7 @@ export class Inventory {
     brand: Brand;
     user: User;
     country: Country;
-    sub_type: SubType;
+    subType: SubType;
     volume: number;
     year: number;
     price: number;
@@ -25,7 +25,7 @@ export class Inventory {
       this.brand = null;
       this.user = null;
       this.country = null;
-      this.sub_type = null;
+      this.subType = null;
       this.volume = null;
       this.year = null;
       this.price = null;

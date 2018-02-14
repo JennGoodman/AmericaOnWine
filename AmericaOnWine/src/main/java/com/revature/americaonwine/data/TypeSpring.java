@@ -25,7 +25,7 @@ public class TypeSpring implements TypeDao {
 	@Override
 	public List<Type> getAll() {
 		log.trace(this.getClass() + " Called: getAll()");
-		String query = "from com.revature.beans.Type";
+		String query = "from com.revature.americaonwine.beans.Type";
 		Query<Type> q = s.createQuery(query, Type.class);
 		return q.getResultList();
 	}

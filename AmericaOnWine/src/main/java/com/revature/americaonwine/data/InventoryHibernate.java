@@ -28,7 +28,8 @@ public class InventoryHibernate implements InventoryDao {
 		CriteriaQuery<InventoryItem> query = critBuilder.createQuery(InventoryItem.class);
 		Root<InventoryItem> root = query.from(InventoryItem.class);
 		if (user.getRole() == Roles.numericalRepresentation(Roles.RETAILER)) {
-			query.select(root).where(critBuilder.equal(root.get("user_id"), user.getId()));
+			log.warn("User is retailer and getting his it3mz");
+			query.select(root).where(critBuilder.equal(root.get("userId"), user.getId()));
 		}
 		Query<InventoryItem> q = s.createQuery(query);
 		List<InventoryItem> items = q.getResultList();
@@ -57,11 +58,13 @@ public class InventoryHibernate implements InventoryDao {
 
 	@Override
 	public List<InventoryItem> getAll() {
-		log.trace("Getting all inventory items.");
-		String query = "from com.revature.americaonwine.beans.InventoryItem";
-		Query<InventoryItem> q = s.createQuery(query, InventoryItem.class);
-		List<InventoryItem> invList = q.getResultList();
-		return invList;
+		log.trace("Getting all inventory items.");		
+		CriteriaBuilder builder = s.getCriteriaBuilder();
+		CriteriaQuery<InventoryItem> query = builder.createQuery(InventoryItem.class);
+		Root<InventoryItem> root = query.from(InventoryItem.class);
+		query.select(root);
+		Query<InventoryItem> q = s.createQuery(query);
+		return q.getResultList();
 	}
 
 }

@@ -6,6 +6,7 @@ import {NgForm} from '@angular/forms';
 import { User } from '../../models/User';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AccountAccessService } from '../../services/account-access.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
   check: User[];
   userRegistered: User;
   found: boolean;
-  constructor(private service: UserService, private router: Router) { 
+  constructor(private service: AccountAccessService, private router: Router) { 
     this.fieldsIncomplete = false;
     this.found = false;
     this.registerFailed = false;
@@ -72,7 +73,7 @@ export class RegisterComponent implements OnInit {
       // }
       //creates a new userand redirects them to proper home page
       //else {
-        this.service.add(user).subscribe(resp => {
+        this.service.register(user).subscribe(resp => {
           this.userRegistered = resp as User;
           if (this.userRegistered == null) {
             this.registerFailed = true;
