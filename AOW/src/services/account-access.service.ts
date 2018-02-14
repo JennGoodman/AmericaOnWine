@@ -29,11 +29,11 @@ export class AccountAccessService {
     );
   }
 
-  logout(): Observable<boolean> {
+  logout(): Observable<string> {
     return this.http.get(this.config.appURL + 'logout', {
       headers: this.config.defaultHeaders, withCredentials: true
     }).map(
-      resp => resp as boolean
+      resp => resp as string
     );
   }
 
