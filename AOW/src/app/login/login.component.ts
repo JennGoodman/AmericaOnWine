@@ -32,10 +32,10 @@ export class LoginComponent implements OnInit {
       this.loggedInUser = resp as User;
       if (this.loggedInUser == null) {
         this.loginFailed = true;
-        localStorage.setItem('user', JSON.stringify(this.loggedInUser));
       } else {
         // Redirect to home
-        this.router.navigate(['']);
+        localStorage.setItem('user', JSON.stringify(this.loggedInUser));
+        this.router.navigate(['form']);
       }
     });
   }
