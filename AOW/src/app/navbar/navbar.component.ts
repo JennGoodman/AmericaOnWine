@@ -23,6 +23,7 @@ export class NavbarComponent implements OnInit {
     this.service.logout().subscribe(resp => {
       const result = resp as string;
       localStorage.removeItem('user');
+      this.user = null;
       this.router.navigate(['login']);
     });
   }

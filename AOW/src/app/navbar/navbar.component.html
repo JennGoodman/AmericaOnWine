@@ -40,7 +40,7 @@
       </ng-container>
     </ul>
     <div *ngIf="user; else elseBlock">
-      <button class="btn btn-outline btn-sm" routerLink="logout">Log Out [{{user.username}}]</button>
+      <button class="btn btn-outline btn-sm" (click)="logout()">Log Out [{{user.username}}]</button>
     </div>
     <ng-template #elseBlock>
       <button class="btn btn-outline btn-sm" routerLink="login">Log In</button>
