@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 
 import { RetailHomeComponent } from './retail-home/retail-home.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent} from './register/register.component'
+import { RegisterComponent} from './register/register.component';
+import { CustomerHomeComponent} from './customer-home/customer-home.component';
 
 const routes: Routes = [
     {
@@ -38,7 +39,13 @@ const routes: Routes = [
         path: 'items',
         component: WineListComponent,
         pathMatch: 'full'
+    },
+    {
+        path: 'customer/home',
+        component: CustomerHomeComponent,
+        pathMatch: 'full'
     }
+    
 ];
 
 @NgModule({

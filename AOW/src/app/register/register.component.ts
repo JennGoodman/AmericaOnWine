@@ -46,12 +46,12 @@ export class RegisterComponent implements OnInit {
       user.password=password;
       if(accountType === 'customer'){
         user.role = 2;
+        user.active=1;
       } 
       else {
         user.role = 1;
+        user.active=0;
       }
-      //need to update values for active and cancelled
-      user.active=0;
       user.cancelled=0;
       console.log(user);
 
