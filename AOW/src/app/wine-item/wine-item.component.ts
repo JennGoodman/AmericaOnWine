@@ -14,11 +14,13 @@ export class WineItemComponent implements OnInit {
   }
 
   getColor() {
-    switch (this.invItem.sub_type.type.name) {
-      case 'Red': return '#660033';
-      case 'White': return '#ffff99';
-      case 'Rosé': return '#ffcce6';
-      case 'Champagne': return '#ffffe6';
+    if (this.invItem && this.invItem.sub_type && this.invItem.sub_type.type) {
+      switch (this.invItem.sub_type.type.name) {
+        case 'Red': return '#660033';
+        case 'White': return '#ffff99';
+        case 'Rosé': return '#ffcce6';
+        case 'Champagne': return '#ffffe6';
+      }
     }
   }
 
@@ -26,9 +28,11 @@ export class WineItemComponent implements OnInit {
   }
 
   textColor() {
-    switch (this.invItem.sub_type.type.name) {
-      case 'Red': return '#ffffff';
-      default: return '#000000';
+    if (this.invItem && this.invItem.sub_type && this.invItem.sub_type.type) {
+      switch (this.invItem.sub_type.type.name) {
+        case 'Red': return '#ffffff';
+        default: return '#000000';
+      }
     }
   }
 
