@@ -5,7 +5,7 @@
     {{invItem.country.country}}<br>
     {{invItem.year}}<br>
     {{invItem.subType.type.type}} - {{invItem.subType.subType}}<br>
-    ${{invItem.price}} - {{invItem.volume}} mL<br>
+    ${{invItem.price}} - {{invItem.volume}} L<br>
     <div *ngIf="isCustomer == true">
         <span class="add" (click)="addToCart($event)">+</span>
         <input class="to-cart" type="number" max=999 min=1 value=1>
