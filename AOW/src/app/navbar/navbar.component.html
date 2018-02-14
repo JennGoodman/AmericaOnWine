@@ -11,39 +11,28 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <ng-container *ngIf="user">
-        <li class="nav-item active" *ngIf="user.role == 2">
-          <a class="nav-link" routerLink="items">Items
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active" *ngIf="user.role == 1">
-          <a class="nav-link" routerLink="retailer/home">Retailer
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active" *ngIf="user.role == 1">
-          <a class="nav-link" routerLink="retailer/form">Retailer Form
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active" *ngIf="user.role == 3">
-          <a class="nav-link" routerLink="items">Wine List
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active" *ngIf="user.role == 3">
-          <a class="nav-link" routerLink="form">Inventory
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-      </ng-container>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="items">Items
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="retailer/home">Retailer
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="retailer/form">Retailer Form
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="form">Inventory
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
     </ul>
-    <div *ngIf="user; else elseBlock">
-      <button class="btn btn-outline btn-sm" (click)="logout()">Log Out [{{user.username}}]</button>
-    </div>
-    <ng-template #elseBlock>
-      <button class="btn btn-outline btn-sm" routerLink="login">Log In</button>
-    </ng-template>
+    <button class="btn btn-outline btn-sm" routerLink="login">Log In</button>&nbsp;
+    <button class="btn btn-outline btn-sm" (click)="logout()">Log Out</button>
   </div>
 </nav>

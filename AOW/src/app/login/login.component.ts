@@ -42,6 +42,6 @@ export class LoginComponent implements OnInit {
 
   register() {
     // redirect to registration page
-    this.router.navigate(['']);
+    this.router.navigate(['items']);
   }
 }
