@@ -2,6 +2,7 @@ package com.revature.americaonwine.services;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.revature.americaonwine.beans.InventoryItem;
@@ -12,6 +13,7 @@ import com.revature.americaonwine.data.InventoryHibernate;
 @Component
 public class InventoryItemHibernate implements InventoryService {
 	
+	private Logger log = Logger.getLogger(InventoryItemHibernate.class);
 	private InventoryDao id = new InventoryHibernate();
 
 	@Override
@@ -21,6 +23,7 @@ public class InventoryItemHibernate implements InventoryService {
 
 	@Override
 	public InventoryItem add(InventoryItem i) {
+		log.trace(i);
 		return id.addItem(i);
 	}
 

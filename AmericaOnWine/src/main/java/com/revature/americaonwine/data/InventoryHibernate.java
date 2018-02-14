@@ -53,6 +53,7 @@ public class InventoryHibernate implements InventoryDao {
 
 	@Override
 	public InventoryItem addItem(InventoryItem item) {
+		log.trace(item);
 		log.trace("Saving new inventory item: \n" + item);
 		Transaction t = s.getTransaction();
 		s.save(item);

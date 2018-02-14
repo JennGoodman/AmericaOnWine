@@ -14,7 +14,7 @@
     </div>
     <select (change)="changeBrand()" name="brand" class="form-control" required aria-label="Brand" aria-describedby="basic-addon1" [(ngModel)]="invItem.brand">
       <option selected disabled value=null>What brand of wine is this?</option>
-      <option *ngFor="let brand of brandList" [value]="brand">{{brand.brand}}</option>
+      <option *ngFor="let brand of brandList" [value]="brand">{{brand.name}}</option>
     </select>
     </div>
   <div class="input-group mb-3 small-bars">
@@ -33,16 +33,16 @@
       <select (change)="changeType()" name="subType" class="form-control" required aria-label="SubType" aria-describedby="basic-addon1" [(ngModel)]="invItem.subType">
         <option selected disabled value=null>What specific type of wine is this?</option>
         <ng-container *ngIf="curType == 'Red'">
-          <option *ngFor="let sub of redSubtypeList" [value]="sub">{{sub.subType}}</option>
+          <option *ngFor="let sub of redSubtypeList" [value]="sub">{{sub.name}}</option>
         </ng-container>
         <ng-container *ngIf="curType == 'White'">
-          <option *ngFor="let sub of whiteSubtypeList" [value]="sub">{{sub.subType}}</option>
+          <option *ngFor="let sub of whiteSubtypeList" [value]="sub">{{sub.name}}</option>
         </ng-container>
         <ng-container *ngIf="curType == 'Champagne'">
-          <option *ngFor="let sub of champSubtypeList" [value]="sub">{{sub.subType}}</option>
+          <option *ngFor="let sub of champSubtypeList" [value]="sub">{{sub.name}}</option>
         </ng-container>
         <ng-container *ngIf="curType == 'Rosé'">
-          <option *ngFor="let sub of roseSubtypeList" [value]="sub">{{sub.subType}}</option>
+          <option *ngFor="let sub of roseSubtypeList" [value]="sub">{{sub.name}}</option>
         </ng-container>
       </select>
       </div>
@@ -70,7 +70,7 @@
     </div>
     <select (change)="changeCountry()" name="country" class="form-control" required aria-label="Country" aria-describedby="basic-addon1" [(ngModel)]="invItem.country">
       <option selected value=null disabled>What country does this wine come from?</option>
-      <option *ngFor="let country of countryList" [value]="country">{{country.country}}</option>
+      <option *ngFor="let country of countryList" [value]="country">{{country.name}}</option>
     </select>
     </div>
     <div class="input-group mb-3 small-bars">

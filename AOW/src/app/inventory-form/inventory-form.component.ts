@@ -87,7 +87,7 @@ export class InventoryFormComponent implements OnInit {
      this.invItem.user = JSON.parse(localStorage.getItem('user'));
      this.invItem.submitted = new Date();
      const img = <HTMLInputElement> document.getElementById('img-input');
-     this.invItem.imageUrl = 'https://americaonwine.s3.amazonaws.com/' + img.files[0].name;
+     this.invItem.imageUrl = 'https://americaonwine.s3.amazonaws.com/' + (img.files[0] ? img.files[0].name : '');
 
      let nulled = false;
      for (const i in this.invItem) {
@@ -101,7 +101,9 @@ export class InventoryFormComponent implements OnInit {
        console.log('SOMETHING WAS NULL!');
      } else {
       this.fileService.uploadFile(img.files[0]);
-      this.invService.add(this.invItem);
+      this.invService.add(this.invItem).subscribe(item => {
+        console.log(item);
+      });
      }
    }
 
