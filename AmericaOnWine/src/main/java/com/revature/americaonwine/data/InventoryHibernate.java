@@ -28,7 +28,7 @@ public class InventoryHibernate implements InventoryDao {
 		CriteriaQuery<InventoryItem> query = critBuilder.createQuery(InventoryItem.class);
 		Root<InventoryItem> root = query.from(InventoryItem.class);
 		if (user.getRole() == Roles.numericalRepresentation(Roles.RETAILER)) {
-			log.warn("User is retailer and getting his it3mz");
+			log.warn("User is retailer and grabbing it3mz for him");
 			query.select(root).where(critBuilder.equal(root.get("userId"), user.getId()));
 		}
 		Query<InventoryItem> q = s.createQuery(query);
