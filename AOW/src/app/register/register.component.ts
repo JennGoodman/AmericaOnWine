@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import {NgForm} from '@angular/forms';  
+import {NgForm} from '@angular/forms';
 
 
 import { User } from '../../models/User';
@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
   check: User[];
   userRegistered: User;
   found: boolean;
-  constructor(private service: AccountAccessService, private router: Router) { 
+  constructor(private service: AccountAccessService, private router: Router) {
     this.fieldsIncomplete = false;
     this.found = false;
     this.registerFailed = false;
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
       if(accountType === 'customer'){
         user.role = 2;
         user.active=1;
-      } 
+      }
       else {
         user.role = 1;
         user.active=0;
@@ -62,7 +62,7 @@ export class RegisterComponent implements OnInit {
       //   for(let a of this.check){
       //     if(a.username === user.username){
       //       this.found = true;
-            
+
       //     }
       //   }
       // });
@@ -83,12 +83,12 @@ export class RegisterComponent implements OnInit {
               this.router.navigate(['retailer/home']);
             } else{
               //go to customer home page
-              this.router.navigate(['customer/home']);
-            } 
+              this.router.navigate(['']);
+            }
           }
         });
       //}
-    } 
+    }
     }
   }
 
