@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Type {
 
 	@Id
-	@SequenceGenerator(name = "nameGen", sequenceName = "aow_name_seq", allocationSize = 1)
+	@SequenceGenerator(name = "nameGen", sequenceName = "aow_type_seq", allocationSize = 1)
 	@GeneratedValue(generator = "nameGen", strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column
@@ -37,7 +37,7 @@ public class Type {
 		this.id = id;
 	}
 
-	public String getType() {
+	public String getName() {
 		return name;
 	}
 
