@@ -83,6 +83,7 @@ create table aow_inventory (
     price       number(8,2)     not null,
     quantity    number(6)       not null,
     submitted   Date            not null,
+    status      number(1)       not null,
     description varchar2(256),
     image_url   varchar2(256)
 );
@@ -110,6 +111,8 @@ create table aow_inventory_audit (
     old_quantity    number(6),
     old_submitted   date,
     new_submitted   date,
+    old_status      number(1),
+    new_status      number(1),
     old_description varchar2(256),
     new_description varchar2(256),
     old_image_url   varchar2(256),
@@ -167,6 +170,7 @@ begin
             new_price,
             new_quantity,
             new_submitted,
+            new_status,
             new_description,
             new_image_url
         ) values (
@@ -182,6 +186,7 @@ begin
             :new.price,
             :new.quantity,
             :new.submitted,
+            :new.status,
             :new.description,
             :new.image_url
         );
@@ -199,6 +204,7 @@ begin
             new_price,          old_price,
             new_quantity,       old_quantity,
             new_submitted,      old_submitted,
+            new_status,         old_status,
             new_description,    old_description,
             new_image_url,      old_image_url
         ) values (
@@ -214,6 +220,7 @@ begin
             :new.price,         :old.price,
             :new.quantity,      :old.quantity,
             :new.submitted,     :old.submitted,
+            :new.status,        :old.status,
             :new.description,   :old.description,
             :new.image_url,     :old.image_url
         );
@@ -226,7 +233,7 @@ end;
 
 create or replace view aow_inventory_view as (
     select i.id, i.name, b.name as brand, user_id, c.name as country, st.name as sub_type, 
-            volume, year, price, quantity, submitted, description, image_url
+            volume, year, price, quantity, submitted, status, description, image_url
         from aow_inventory i
             join aow_brand b
                 on b.id = i.brand_id
@@ -489,6 +496,7 @@ insert into aow_country (id, abbrev, name) values (245, 'ZW', 'Zimbabwe');
 insert into aow_user (id, username, password, email, role, active, cancelled) values (1, 'admin', 'admin', 'admin@admin.net', 0, 1, 0);
 insert into aow_user (id, username, password, email, role, active, cancelled) values (2, 'retailer', 'retailer', 'retailer@retailer.net', 1, 1, 0);
 insert into aow_user (id, username, password, email, role, active, cancelled) values (3, 'customer', 'customer', 'customer@customer.net', 2, 1, 0);
+insert into aow_user (id, username, password, email, role, active, cancelled) values (4, 'retail', 'retail', 'ret@rd.ed', 1, 1, 0);
 
 insert into aow_brand (id, name) values (1, 'Barefoot');
 insert into aow_brand (id, name) values (2, 'Max''s Favorites');
@@ -514,7 +522,7 @@ insert into aow_sub_type (id, type_id, name) values (8, 2, 'Merlot');
 insert into aow_sub_type (id, type_id, name) values (9, 2, 'Cabernet Sauvignon');
 insert into aow_sub_type (id, type_id, name) values (10, 2, 'Malbec');
 insert into aow_sub_type (id, type_id, name) values (11, 2, 'Pinot Noir');
-insert into aow_sub_type (id, type_id, name) values (12, 2, 'Zinfandel');
+insert into aow_sub_type (id, type_id, name) values (12, 1, 'Zinfandel');
 insert into aow_sub_type (id, type_id, name) values (13, 2, 'Sangiovese');
 insert into aow_sub_type (id, type_id, name) values (14, 2, 'Barbera');
 
@@ -537,12 +545,26 @@ insert into aow_sub_type (id, type_id, name) values (28, 4, 'Demi-Sec');
 insert into aow_sub_type (id, type_id, name) values (29, 4, 'Extra-Dry');
 insert into aow_sub_type (id, type_id, name) values (30, 4, 'Rosé Champagne');
 
-insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description, image_url) 
-    values (1, 'Barefoot Moscato', 1, 2, 1, 1, 1.5, 2017, 8.99, 5, sysdate, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
-insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description, image_url) 
-    values (2, 'Barefoot Rosé', 2, 1, 2, 17, 1.5, 2017, 8.99, 6, sysdate, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
-insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, description, image_url) 
-    values (3, 'Barefoot Merlot', 5, 2, 3, 8, 1.5, 2017, 8.99, 100, sysdate, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (1, 'Barefoot Champagne', 1, 2, 1, 30, 1.5, 2017, 8.99, 5, sysdate, 2, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (2, 'Barefoot Rosé', 2, 1, 2, 17, 1.5, 2017, 8.99, 6, sysdate, 2, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (3, 'Barefoot Merlot', 5, 2, 3, 7, 1.5, 2017, 8.99, 100, sysdate, 2, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (4, 'Max''s Brew', 3, 4, 4, 10, .5, 2018, 9.99, 12, sysdate, 2, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (5, 'HooKed''s Hooch', 4, 2, 5, 11, 1.0, 2002, 29.99, 18, sysdate, 2, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (6, 'H-House', 5, 2, 6, 5, 2.0, 2001, 8.99,54, sysdate, 2, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (7, 'Werk It', 6, 2, 25, 24, 1.0, 2000, 42.89, 42, sysdate, 2, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (8, 'New Wine', 5, 4, 200, 20, 1.0, 1995, 38.29, 18, sysdate, 2, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (9, 'Robot Oil', 4, 4, 79, 27, 1.0, 1800, 10.99, 12, sysdate, 1, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (10, 'Broken Pages', 3, 2, 68, 30, 1.0, 2018, 99.01, 2, sysdate, 1, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
 
 insert into aow_transaction (id, order_number, inventory_id, quantity, user_id, rating, transaction_date, comments) 
     values (1, 1, 1, 1, 2, 1, sysdate, 'Comments? Your wine sucks!');
@@ -551,6 +573,4 @@ insert into aow_transaction (id, order_number, inventory_id, quantity, user_id, 
 insert into aow_transaction (id, order_number, inventory_id, quantity, user_id, rating, transaction_date, comments) 
     values (3, 1, 3, 1, 2, 2, sysdate, 'Comments? Your wine sucks!');
 
--- Jenn Rocks!
-
-commit;
+commit; -- Jenn Rocks!
