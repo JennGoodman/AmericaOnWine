@@ -1,6 +1,5 @@
 package com.revature.americaonwine.beans;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -41,6 +40,7 @@ public class InventoryItem {
 	private int year;
 	private double price;
 	private Date submitted;
+	private int status;
 	private String description;
 	@Column(name = "image_url")
 	private String imageUrl;
@@ -48,7 +48,8 @@ public class InventoryItem {
 	private double volume;
 
 	public InventoryItem(int id, String name, Brand brand, int userId, Country country, SubType subType, int year,
-			double price, Date submitted, String description, String imageUrl, int quantity, double volume) {
+			double price, Date submitted, int status, String description, String imageUrl, int quantity,
+			double volume) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -59,18 +60,31 @@ public class InventoryItem {
 		this.year = year;
 		this.price = price;
 		this.submitted = submitted;
+		this.status = status;
 		this.description = description;
 		this.imageUrl = imageUrl;
 		this.quantity = quantity;
 		this.volume = volume;
 	}
 
+	public InventoryItem() {
+		super();
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "InventoryItem [id=" + id + ", name=" + name + ", brand=" + brand + ", userId=" + userId + ", country="
 				+ country + ", subType=" + subType + ", year=" + year + ", price=" + price + ", submitted=" + submitted
-				+ ", description=" + description + ", imageUrl=" + imageUrl + ", quantity=" + quantity + ", volume="
-				+ volume + "]";
+				+ ", status=" + status + ", description=" + description + ", imageUrl=" + imageUrl + ", quantity="
+				+ quantity + ", volume=" + volume + "]";
 	}
 
 	@Override
@@ -87,6 +101,7 @@ public class InventoryItem {
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + quantity;
+		result = prime * result + status;
 		result = prime * result + ((subType == null) ? 0 : subType.hashCode());
 		result = prime * result + ((submitted == null) ? 0 : submitted.hashCode());
 		result = prime * result + userId;
@@ -135,6 +150,8 @@ public class InventoryItem {
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
 		if (quantity != other.quantity)
+			return false;
+		if (status != other.status)
 			return false;
 		if (subType == null) {
 			if (other.subType != null)
@@ -257,13 +274,5 @@ public class InventoryItem {
 
 	public void setVolume(double volume) {
 		this.volume = volume;
-	}
-
-	public InventoryItem() {
-		super();
-		// TODO Auto-generated constructor stub
-		/*
-		 * Not yet Implemented
-		 */
 	}
 }

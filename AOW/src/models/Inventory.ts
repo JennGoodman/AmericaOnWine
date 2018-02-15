@@ -16,6 +16,7 @@ export class Inventory {
     price: number;
     quantity: number;
     submitted: Date;
+    status: number;
     description: string;
     imageUrl: string;
 
@@ -31,6 +32,7 @@ export class Inventory {
       this.price = null;
       this.quantity = null;
       this.submitted = null;
+      this.status = null;
       this.description = null;
       this.imageUrl = null;
     }
