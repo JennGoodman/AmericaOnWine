@@ -36,7 +36,9 @@ public class InventoryController {
 	public String getAll(HttpSession ses) throws JsonProcessingException {
 		User u = (User) ses.getAttribute("user");
 		if(u == null) {
-			return om.writeValueAsString(is.getAll());
+			u = new User();
+			u.setRole(0);
+			return om.writeValueAsString(is.getForUser(u));
 		} else {
 			return om.writeValueAsString(is.getForUser(u));
 		}

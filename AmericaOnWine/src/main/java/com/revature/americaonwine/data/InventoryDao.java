@@ -24,4 +24,6 @@ public interface InventoryDao {
 	
 	public List<InventoryItem> getAll();
 	
+	public boolean removeItemByUser(User user, InventoryItem item);
+	
 }
