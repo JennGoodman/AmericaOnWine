@@ -11,6 +11,7 @@ import org.hibernate.NonUniqueObjectException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.beans.Roles;
@@ -19,7 +20,8 @@ import com.revature.americaonwine.util.HibernateUtil;
 
 public class InventoryHibernate implements InventoryDao {
 	
-	private HibernateUtil hu = HibernateUtil.getInstance();
+	@Autowired
+	private HibernateUtil hu;
 	private Logger log = Logger.getLogger(InventoryHibernate.class);
 
 	@Override
@@ -54,6 +56,7 @@ public class InventoryHibernate implements InventoryDao {
 
 	@Override
 	public InventoryItem updateItemByUser(InventoryItem item) {
+		Session s = hu.getSession();
 		Transaction tx = null;
 		tx = s.getTransaction();
 		try 

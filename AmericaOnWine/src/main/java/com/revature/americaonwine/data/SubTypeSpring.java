@@ -5,15 +5,18 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import com.revature.americaonwine.beans.Country;
 import com.revature.americaonwine.beans.SubType;
 import com.revature.americaonwine.util.HibernateUtil;
 
 public class SubTypeSpring implements SubTypeDao {
 
+	@Autowired
+	HibernateUtil hu;
+	
 	Logger log = Logger.getLogger(this.getClass());
-	Session s = HibernateUtil.getInstance().getSession();
+	Session s = hu.getSession();
 
 	@Override
 	public SubType save(SubType subType) {

@@ -5,14 +5,18 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.revature.americaonwine.beans.Country;
 import com.revature.americaonwine.util.HibernateUtil;
 
 public class CountrySpring implements CountryDao {
 
+	@Autowired
+	HibernateUtil hu;
+	
 	Logger log = Logger.getLogger(this.getClass());
-	Session s = HibernateUtil.getInstance().getSession();
+	Session s = hu.getSession();
 
 	@Override
 	public Country save(Country country) {

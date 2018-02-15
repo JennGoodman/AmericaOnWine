@@ -12,6 +12,7 @@ import org.hibernate.NonUniqueObjectException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.revature.americaonwine.beans.User;
@@ -21,7 +22,9 @@ import com.revature.americaonwine.util.HibernateUtil;
 public class UserHibernate implements UserDao {
 
 	private static Logger log = Logger.getLogger(UserHibernate.class);
-	private static HibernateUtil hu = HibernateUtil.getInstance();
+	
+	@Autowired
+	HibernateUtil hu;
 	
 	@Override
 	public boolean insertUser(User u) {

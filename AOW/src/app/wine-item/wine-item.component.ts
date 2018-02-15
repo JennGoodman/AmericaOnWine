@@ -55,12 +55,11 @@ export class WineItemComponent implements OnInit {
 
   editPressed(e): void {
     console.log('[---] Edit Pressed!!');
-    console.log(e);
-    // this.is.update(e.target)
-
+    console.log(this.invItem);
   }
 
   removePressed(): void {
-      console.log('[---] Remove Pressed!!');
+    this.is.delete(this.invItem)
+    .subscribe( resp => console.log(resp as Inventory));
   }
 }

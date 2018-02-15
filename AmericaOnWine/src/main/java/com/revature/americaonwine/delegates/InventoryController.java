@@ -57,6 +57,7 @@ public class InventoryController {
 		}
 	}
 	
+	@CrossOrigin
 	@RequestMapping(value="inventory/edit",method=RequestMethod.POST, produces= {"application/json; charset=UTF-8"})
 	@ResponseBody
 	public String editInventory(HttpSession sess, @RequestBody InventoryItem inv) throws JsonProcessingException {
@@ -69,6 +70,7 @@ public class InventoryController {
 		return null;
 	}
 	
+	@CrossOrigin
 	@RequestMapping(value="/inventory/remove", method=RequestMethod.POST, produces= {"application/json; charset=UTF-8"})
 	@ResponseBody
 	public String removeInventory(HttpSession sess, @RequestBody InventoryItem inv) throws JsonProcessingException {

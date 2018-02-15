@@ -4,14 +4,18 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.revature.americaonwine.beans.Tag;
 import com.revature.americaonwine.util.HibernateUtil;
 
 public class TagSpring implements TagDao {
 
+	@Autowired
+	HibernateUtil hu;
+	
 	Logger log = Logger.getLogger(this.getClass());
-	Session s = HibernateUtil.getInstance().getSession();
+	Session s = hu.getSession();
 
 	@Override
 	public Tag save(Tag tag) {
