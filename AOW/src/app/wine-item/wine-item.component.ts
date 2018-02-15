@@ -54,8 +54,9 @@ export class WineItemComponent implements OnInit {
   }
 
   editPressed(e): void {
-    console.log('[---] Edit Pressed!!');
-    console.log(this.invItem);
+    localStorage.setItem("invItemClicked", JSON.stringify(this.invItem));
+    this.router.navigate(['/retailer/form']);
+    location.reload();
   }
 
   removePressed(): void {

@@ -15,12 +15,12 @@ public interface InventoryDao {
 	public boolean addItemByUser(User user, InventoryItem item);
 	
 	// update item by user 
-	public InventoryItem updateItemByUser(InventoryItem item);
+	public InventoryItem updateItem(InventoryItem item);
 	
 	public InventoryItem addItem(InventoryItem item);
 	
 	public List<InventoryItem> getAll();
 	
-	public InventoryItem removeItemByUser(InventoryItem item);
+	public InventoryItem removeItem(InventoryItem item);
 	
 }

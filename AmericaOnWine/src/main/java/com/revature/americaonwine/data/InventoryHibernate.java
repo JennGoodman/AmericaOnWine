@@ -38,9 +38,10 @@ public class InventoryHibernate implements InventoryDao {
 			query.select(root).where(critBuilder.and(critBuilder.greaterThanOrEqualTo(root.get("quantity"), 0), 
 					critBuilder.equal(root.get("userId"), user.getId())));
 		} 
-		else 
+		else if (user.getRole() == Roles.numericalRepresentation(Roles.CUSTOMER))
 		{
-			query.select(root).where(critBuilder.greaterThan(root.get("quantity"), 0));
+			query.select(root).where(critBuilder.and(critBuilder.greaterThan(root.get("quantity"), 0),
+					critBuilder.equal(root.get("status"), 2)));
 		}
 		Query<InventoryItem> q = s.createQuery(query);
 		List<InventoryItem> items = q.getResultList();
@@ -55,7 +56,7 @@ public class InventoryHibernate implements InventoryDao {
 	}
 
 	@Override
-	public InventoryItem updateItemByUser(InventoryItem item) {
+	public InventoryItem updateItem(InventoryItem item) {
 		Session s = hu.getSession();
 		Transaction tx = null;
 		tx = s.getTransaction();
@@ -100,9 +101,9 @@ public class InventoryHibernate implements InventoryDao {
 	}
 
 	@Override
-	public InventoryItem removeItemByUser(InventoryItem item) {
+	public InventoryItem removeItem(InventoryItem item) {
 		item.setQuantity(-1);
-		return updateItemByUser(item);
+		return updateItem(item);
 	}
 
 }
