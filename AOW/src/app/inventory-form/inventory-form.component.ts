@@ -10,6 +10,7 @@ import { BrandService } from '../../services/brand.service';
 import { Brand } from '../../models/Brand';
 import { FileUploadService } from '../../services/file-upload.service';
 import { InventoryService } from '../../services/inventory.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inventory-form',
@@ -32,10 +33,12 @@ export class InventoryFormComponent implements OnInit {
   curSubType: string = null;
   curCountry: string = null;
   curBrand: string = null;
+  error = false;
 
 
   constructor(private countries: CountryService, private types: TypeService, private subtypes: SubTypeService,
-     private brands: BrandService, private fileService: FileUploadService, private invService: InventoryService) {
+     private brands: BrandService, private fileService: FileUploadService, private invService: InventoryService,
+     private router: Router) {
     this.invItem = new Inventory;
 
     this.countries.getAll().subscribe(items => {
@@ -73,7 +76,7 @@ export class InventoryFormComponent implements OnInit {
    }
 
    resetType() {
-     this.invItem.subType = null;
+     this.curSubType = null;
      this.typeChanged = false;
      console.log(this.curType);
    }
@@ -92,7 +95,7 @@ export class InventoryFormComponent implements OnInit {
 
    addWine() {
      this.invItem.id = Math.floor((Math.random() * 1000));
-     this.invItem.userId = JSON.parse(localStorage.getItem('user')).id;
+     this.invItem.userId = JSON.parse(localStorage.getItem('user')) ? JSON.parse(localStorage.getItem('user')).id : null;
      console.log(this.invItem.userId);
      this.invItem.submitted = new Date();
 
@@ -135,11 +138,13 @@ export class InventoryFormComponent implements OnInit {
 
      if (nulled) {
        console.log('SOMETHING WAS NULL!');
+       this.error = true;
      } else {
       this.fileService.uploadFile(img.files[0]);
       this.invService.add(this.invItem).subscribe(item => {
         console.log(item);
       });
+      this.router.navigate(['']);
      }
    }
 

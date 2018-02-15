@@ -1,4 +1,3 @@
-<br>
 <div class="container" id="inv-form">
   <span id="big-text">Please enter the details for the wine:</span>
   <br><br>
@@ -79,7 +78,7 @@
       </div>
       <input name="price" min="0" placeholder="How much will this product cost (in USD)?" type="number" class="form-control" required aria-label="price" aria-describedby="basic-addon1" [(ngModel)]="invItem.price">
     </div>
-    <div class="input-group mb-3 small-bars">
+    <div class="input-group mb-3 small-bars tall-text">
       <div class="input-group-prepend">
         <span class="input-group-text red-wine tall-text inv-form-prepend">Description</span>
       </div>
@@ -89,10 +88,11 @@
         <div class="input-group-prepend">
           <span class="input-group-text red-wine inv-form-prepend">Image</span>
         </div>
-        <input id="img-input" name="image" placeholder="What does this product look like?" type="file" accept=".jpg,.png" class="form-control" required aria-label="Image" aria-describedby="basic-addon1" [(ngModel)]="invItem.image">
+        <input id="img-input" name="image" placeholder="What does this product look like?" type="file" accept=".jpg,.png,.jpeg" class="form-control" required aria-label="Image" aria-describedby="basic-addon1" [(ngModel)]="invItem.image">
       </div>
 
       <button (click)="addWine()" type="button" class="full-button red-wine btn">Submit New Inventory Item</button>
       <br>
+      <div id="error-text" *ngIf="error"><br>There was an error in the info you inputted. Please ensure everything is correct and that you are logged in.</div>
       <br>
 </div>
