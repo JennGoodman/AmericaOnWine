@@ -1,7 +1,7 @@
 .wine-view {
     display: table-cell;
     text-align: center;
-    width: 250px;
+    width: 275px;
     -webkit-transition: .2s ease-in-out;
     -moz-transition: .2s ease-in-out;
     -o-transition: .2s ease-in-out;

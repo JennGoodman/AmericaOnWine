@@ -8,7 +8,7 @@ export class Inventory {
     id: number;
     name: string;
     brand: Brand;
-    user: User;
+    userId: number;
     country: Country;
     subType: SubType;
     volume: number;
@@ -16,6 +16,7 @@ export class Inventory {
     price: number;
     quantity: number;
     submitted: Date;
+    status: number;
     description: string;
     imageUrl: string;
 
@@ -23,7 +24,7 @@ export class Inventory {
       this.id = null;
       this.name = null;
       this.brand = null;
-      this.user = null;
+      this.userId = null;
       this.country = null;
       this.subType = null;
       this.volume = null;
@@ -31,6 +32,7 @@ export class Inventory {
       this.price = null;
       this.quantity = null;
       this.submitted = null;
+      this.status = null;
       this.description = null;
       this.imageUrl = null;
     }

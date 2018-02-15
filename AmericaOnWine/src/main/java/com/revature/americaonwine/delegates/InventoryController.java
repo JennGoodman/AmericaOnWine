@@ -2,6 +2,7 @@ package com.revature.americaonwine.delegates;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,17 +24,26 @@ public class InventoryController {
 	@Autowired
 	private InventoryService is;
 	
+	private Logger log = Logger.getLogger(InventoryController.class);
 	private ObjectMapper om = new ObjectMapper();
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	@ResponseBody
-	public String addInventory(@RequestBody InventoryItem inv) throws JsonProcessingException {
-		return om.writeValueAsString(inv);
+	public String addInventory(@RequestBody InventoryItem inv, HttpSession ses) throws JsonProcessingException {
+		User u = (User) ses.getAttribute("user");
+		log.trace(u);
+		if(u != null) {
+			inv.setUserId(u.getId());
+		}
+		log.trace("addInventory called, requested inventory item is ");
+		log.trace(inv.toString());
+		return om.writeValueAsString(is.add(inv));
 	}
 	
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	@ResponseBody
 	public String getAll(HttpSession ses) throws JsonProcessingException {
+		log.trace("what");
 		User u = (User) ses.getAttribute("user");
 		if(u == null) {
 			return om.writeValueAsString(is.getAll());

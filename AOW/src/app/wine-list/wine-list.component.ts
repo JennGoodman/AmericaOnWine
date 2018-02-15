@@ -22,6 +22,7 @@ export class WineListComponent implements OnInit {
     } else {
       this.isCustomer = true;
     }
+    console.log(this.isCustomer);
   }
 
   ngOnInit() {
