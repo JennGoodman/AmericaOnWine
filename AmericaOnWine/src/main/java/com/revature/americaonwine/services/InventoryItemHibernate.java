@@ -23,7 +23,6 @@ public class InventoryItemHibernate implements InventoryService {
 
 	@Override
 	public InventoryItem add(InventoryItem i) {
-		log.trace(i);
 		return id.addItem(i);
 	}
 

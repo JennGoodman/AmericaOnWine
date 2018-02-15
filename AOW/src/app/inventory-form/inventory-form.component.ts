@@ -29,6 +29,9 @@ export class InventoryFormComponent implements OnInit {
   brandChanged = false;
   countryChanged = false;
   typeChanged = false;
+  curSubType: string = null;
+  curCountry: string = null;
+  curBrand: string = null;
 
 
   constructor(private countries: CountryService, private types: TypeService, private subtypes: SubTypeService,
@@ -37,29 +40,33 @@ export class InventoryFormComponent implements OnInit {
 
     this.countries.getAll().subscribe(items => {
       this.countryList = items;
+      console.log(items);
     });
 
     this.types.getAll().subscribe(items => {
       this.typeList = items;
+      console.log(items);
     });
 
     this.brands.getAll().subscribe(items => {
       this.brandList = items;
+      console.log(items);
     });
 
     this.subtypes.getAll().subscribe(items => {
       const stl = items;
+      console.log(stl);
       this.redSubtypeList = stl.filter((sub) => {
-        return sub.type.type === 'Red';
+        return sub.type.name === 'Red';
       });
       this.whiteSubtypeList = stl.filter((sub) => {
-        return sub.type.type === 'White';
+        return sub.type.name === 'White';
       });
       this.roseSubtypeList = stl.filter((sub) => {
-        return sub.type.type === 'Rosé';
+        return sub.type.name === 'Rosé';
       });
       this.champSubtypeList = stl.filter((sub) => {
-        return sub.type.type === 'Champagne';
+        return sub.type.name === 'Champagne';
       });
 
     });
@@ -68,6 +75,7 @@ export class InventoryFormComponent implements OnInit {
    resetType() {
      this.invItem.subType = null;
      this.typeChanged = false;
+     console.log(this.curType);
    }
 
    changeBrand() {
@@ -83,9 +91,37 @@ export class InventoryFormComponent implements OnInit {
    }
 
    addWine() {
-     this.invItem.id = 0;
-     this.invItem.user = JSON.parse(localStorage.getItem('user'));
+     this.invItem.id = Math.floor((Math.random() * 1000));
+     this.invItem.userId = JSON.parse(localStorage.getItem('user')).id;
+     console.log(this.invItem.userId);
      this.invItem.submitted = new Date();
+
+    this.invItem.brand = this.brandList.filter((item) => {
+       return this.curBrand === item.name;
+     })[0];
+
+    this.invItem.country = this.countryList.filter((item) => {
+      return this.curCountry === item.name;
+    })[0];
+
+    if (this.curType === 'Red') {
+      this.invItem.subType = this.redSubtypeList.filter((item) => {
+        return this.curSubType === item.name;
+      })[0];
+    }  else if (this.curType === 'White') {
+      this.invItem.subType = this.whiteSubtypeList.filter((item) => {
+        return this.curSubType === item.name;
+      })[0];
+    } else if (this.curType === 'Rosé') {
+      this.invItem.subType = this.roseSubtypeList.filter((item) => {
+        return this.curSubType === item.name;
+      })[0];
+    } else if (this.curType === 'Champagne') {
+      this.invItem.subType = this.champSubtypeList.filter((item) => {
+        return this.curSubType === item.name;
+      })[0];
+    }
+
      const img = <HTMLInputElement> document.getElementById('img-input');
      this.invItem.imageUrl = 'https://americaonwine.s3.amazonaws.com/' + (img.files[0] ? img.files[0].name : '');
 

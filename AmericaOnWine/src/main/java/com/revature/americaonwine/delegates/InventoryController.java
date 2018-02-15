@@ -29,7 +29,12 @@ public class InventoryController {
 	
 	@RequestMapping(method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	@ResponseBody
-	public String addInventory(@RequestBody InventoryItem inv) throws JsonProcessingException {
+	public String addInventory(@RequestBody InventoryItem inv, HttpSession ses) throws JsonProcessingException {
+		User u = (User) ses.getAttribute("user");
+		log.trace(u);
+		if(u != null) {
+			inv.setUserId(u.getId());
+		}
 		log.trace("addInventory called, requested inventory item is ");
 		log.trace(inv.toString());
 		return om.writeValueAsString(is.add(inv));

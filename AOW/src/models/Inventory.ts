@@ -8,7 +8,7 @@ export class Inventory {
     id: number;
     name: string;
     brand: Brand;
-    user: User;
+    userId: number;
     country: Country;
     subType: SubType;
     volume: number;
@@ -22,11 +22,10 @@ export class Inventory {
     constructor() {
       this.id = null;
       this.name = null;
-      this.brand = new Brand();
-      this.user = null;
-      this.country = new Country();
-      this.subType = new SubType();
-      this.subType.type = new Type();
+      this.brand = null;
+      this.userId = null;
+      this.country = null;
+      this.subType = null;
       this.volume = null;
       this.year = null;
       this.price = null;

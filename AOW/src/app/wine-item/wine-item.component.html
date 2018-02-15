@@ -1,10 +1,10 @@
 <div (click)="viewItem()" [style.background-color]="getColor()" [style.color]="textColor()" id="beaker" class="card wine-view">
     <img class="card-img-top wine-img" src="{{invItem.imageUrl}}"/><br>
     <div class="card-body">{{invItem.name}}<br>
-    {{invItem.brand.brand}}<br>
-    {{invItem.country.country}}<br>
+    {{invItem.brand.name}}<br>
+    {{invItem.country.name}}<br>
     {{invItem.year}}<br>
-    {{invItem.subType.type.type}} - {{invItem.subType.subType}}<br>
+    {{invItem.subType.type.name}} - {{invItem.subType.name}}<br>
     ${{invItem.price}} - {{invItem.volume}} L<br>
     <div *ngIf="isCustomer == true">
         <span class="add" (click)="addToCart($event)">+</span>
