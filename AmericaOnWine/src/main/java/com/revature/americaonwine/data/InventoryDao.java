@@ -14,16 +14,13 @@ public interface InventoryDao {
 	// post item by user
 	public boolean addItemByUser(User user, InventoryItem item);
 	
-	// post multiple items by user
-	//public int addItemsByUser(User user, List<InventoryItem>items);
-
 	// update item by user 
-	public boolean updateItemByUser(User user, InventoryItem item);
+	public InventoryItem updateItemByUser(InventoryItem item);
 	
 	public InventoryItem addItem(InventoryItem item);
 	
 	public List<InventoryItem> getAll();
 	
-	public boolean removeItemByUser(User user, InventoryItem item);
+	public InventoryItem removeItemByUser(InventoryItem item);
 	
 }

@@ -17,13 +17,16 @@ import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.services.InventoryService;
 
 @Controller
-@CrossOrigin(origins="*")
+@CrossOrigin
 @RequestMapping(value="/inventory", headers="Accept=application/json, text/plain")
 public class InventoryController {
 	@Autowired
 	private InventoryService is;
+	@Autowired
+	private User user;
 	
-	private ObjectMapper om = new ObjectMapper();
+	@Autowired
+	private ObjectMapper om;
 	
 	@RequestMapping(method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	@ResponseBody
@@ -36,12 +39,34 @@ public class InventoryController {
 	public String getAll(HttpSession ses) throws JsonProcessingException {
 		User u = (User) ses.getAttribute("user");
 		if(u == null) {
-			u = new User();
-			u.setRole(0);
-			return om.writeValueAsString(is.getForUser(u));
+			user.setRole(0);
+			return om.writeValueAsString(is.getForUser(user));
 		} else {
 			return om.writeValueAsString(is.getForUser(u));
 		}
 	}
-
+	
+	@RequestMapping(value="inventory/edit",method=RequestMethod.POST, produces= {"application/json; charset=UTF-8"})
+	@ResponseBody
+	public String editInventory(HttpSession sess, @RequestBody InventoryItem inv) throws JsonProcessingException {
+		User u = (User) sess.getAttribute("user");
+		if (u == null) {
+			return null;
+		}
+		if (u.getId() == inv.getUserId())
+			return om.writeValueAsString(is.updateInventoryItem(inv));
+		return null;
+	}
+	
+	@RequestMapping(value="/inventory/remove", method=RequestMethod.POST, produces= {"application/json; charset=UTF-8"})
+	@ResponseBody
+	public String removeInventory(HttpSession sess, @RequestBody InventoryItem inv) throws JsonProcessingException {
+		User u = (User) sess.getAttribute("user");
+		if (u == null)
+			return null;
+		if (u.getId() == inv.getUserId())
+			return om.writeValueAsString(is.removeInventoryItem(inv));
+		return null;
+	}
+	
 }

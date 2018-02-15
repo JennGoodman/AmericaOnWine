@@ -7,6 +7,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.apache.log4j.Logger;
+import org.hibernate.NonUniqueObjectException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -31,11 +32,15 @@ public class InventoryHibernate implements InventoryDao {
 		CriteriaBuilder critBuilder = s.getCriteriaBuilder();
 		CriteriaQuery<InventoryItem> query = critBuilder.createQuery(InventoryItem.class);
 		Root<InventoryItem> root = query.from(InventoryItem.class);
-		if (user.getRole() == Roles.numericalRepresentation(Roles.RETAILER)) {
-			log.trace("----- get's inside the if block");
-			query.select(root).where(critBuilder.equal(root.get("userId"), user.getId()));
+		if (user.getRole() == Roles.numericalRepresentation(Roles.RETAILER)) 
+		{
+			query.select(root).where(critBuilder.and(critBuilder.greaterThanOrEqualTo(root.get("quantity"), 0), 
+					critBuilder.equal(root.get("userId"), user.getId())));
+		} 
+		else 
+		{
+			query.select(root).where(critBuilder.greaterThan(root.get("quantity"), 0));
 		}
-		// query.select(root).where(critBuilder.greaterThanOrEqualTo(root.get("quantity"), 0));
 		Query<InventoryItem> q = s.createQuery(query);
 		List<InventoryItem> items = q.getResultList();
 		s.close();
@@ -49,9 +54,21 @@ public class InventoryHibernate implements InventoryDao {
 	}
 
 	@Override
-	public boolean updateItemByUser(User user, InventoryItem item) {
-		// TODO Auto-generated method stub
-		return false;
+	public InventoryItem updateItemByUser(InventoryItem item) {
+		Transaction tx = null;
+		tx = s.getTransaction();
+		try 
+		{
+			s.update(item);
+			tx.commit();
+			return item;
+		} 
+		catch (NonUniqueObjectException e) 
+		{
+			if (tx != null)
+				tx.rollback();
+			return null;
+		}
 	}
 
 	@Override
@@ -73,18 +90,9 @@ public class InventoryHibernate implements InventoryDao {
 	}
 
 	@Override
-	public boolean removeItemByUser(User user, InventoryItem item) {
-		// TODO Auto-generated method stub
-		Transaction tx = s.getTransaction();
-		if (item.getUserId() == user.getId()) {
-			item.setQuantity(-1);
-			
-		}
-		else {
-			
-		}
-			
-		return false;
+	public InventoryItem removeItemByUser(InventoryItem item) {
+		item.setQuantity(-1);
+		return updateItemByUser(item);
 	}
 
 }

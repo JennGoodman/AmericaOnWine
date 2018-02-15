@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Inventory } from '../../models/Inventory';
+import { InventoryService } from '../../services/inventory.service';
 
 @Component({
   selector: 'app-wine-item',
@@ -12,7 +13,7 @@ export class WineItemComponent implements OnInit {
 
   @Input() isCustomer: boolean;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private is: InventoryService) { }
 
   getColor() {
     if (this.invItem && this.invItem.subType && this.invItem.subType.type) {
@@ -52,8 +53,11 @@ export class WineItemComponent implements OnInit {
     }
   }
 
-  editPressed(): void {
+  editPressed(e): void {
     console.log('[---] Edit Pressed!!');
+    console.log(e);
+    // this.is.update(e.target)
+
   }
 
   removePressed(): void {
