@@ -1,6 +1,7 @@
 package com.revature.americaonwine.beans;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -39,7 +40,7 @@ public class InventoryItem {
 	private SubType subType;
 	private int year;
 	private double price;
-	private LocalDate submitted;
+	private Date submitted;
 	private String description;
 	@Column(name = "image_url")
 	private String imageUrl;
@@ -47,7 +48,7 @@ public class InventoryItem {
 	private double volume;
 
 	public InventoryItem(int id, String name, Brand brand, int userId, Country country, SubType subType, int year,
-			double price, LocalDate submitted, String description, String imageUrl, int quantity, double volume) {
+			double price, Date submitted, String description, String imageUrl, int quantity, double volume) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -62,6 +63,14 @@ public class InventoryItem {
 		this.imageUrl = imageUrl;
 		this.quantity = quantity;
 		this.volume = volume;
+	}
+
+	@Override
+	public String toString() {
+		return "InventoryItem [id=" + id + ", name=" + name + ", brand=" + brand + ", userId=" + userId + ", country="
+				+ country + ", subType=" + subType + ", year=" + year + ", price=" + price + ", submitted=" + submitted
+				+ ", description=" + description + ", imageUrl=" + imageUrl + ", quantity=" + quantity + ", volume="
+				+ volume + "]";
 	}
 
 	@Override
@@ -210,11 +219,11 @@ public class InventoryItem {
 		this.price = price;
 	}
 
-	public LocalDate getSubmitted() {
+	public Date getSubmitted() {
 		return submitted;
 	}
 
-	public void setSubmitted(LocalDate submitted) {
+	public void setSubmitted(Date submitted) {
 		this.submitted = submitted;
 	}
 

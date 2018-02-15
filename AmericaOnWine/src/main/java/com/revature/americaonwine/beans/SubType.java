@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -84,11 +85,11 @@ public class SubType {
 		this.id = id;
 	}
 
-	public String getSubType() {
+	public String getName() {
 		return name;
 	}
 
-	public void setSubType(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -98,6 +99,6 @@ public class SubType {
 
 	public void setType(Type type) {
 		this.type = type;
-	}
+	}	
 
 }
