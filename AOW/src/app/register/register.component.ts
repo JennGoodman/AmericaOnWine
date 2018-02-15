@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import {NgForm} from '@angular/forms';
-
+import {NgModule} from '@angular/core'; 
 
 import { User } from '../../models/User';
 import { UserService } from '../../services/user.service';

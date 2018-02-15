@@ -1,0 +1,27 @@
+<p>
+  admin-approve-inv works!
+</p>
+<form method="post" action="inventory"required>
+  <div *ngFor="let a of allInvApprovalItem">
+    <div class="item">
+      {{a.name}}<br>
+      {{a.brand.brand}}<br>
+      {{a.country.country}}<br>
+      {{a.subType.type.type}}<br>
+      {{a.subType.subType}}<br>
+      {{a.year}}<br>
+      {{a.description}}<br>
+      {{a.volume}} L<br>
+      ${{a.price}}<br>
+      {{a.quantity}} available<br>
+    </div>
+    <div>
+      <button (click)="approve(a)">Approve</button>
+      <button (click)="deny(a)">Deny</button>
+    </div>
+  </div>
+</form>
+
+
+
+
