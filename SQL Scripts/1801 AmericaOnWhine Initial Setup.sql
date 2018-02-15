@@ -83,6 +83,7 @@ create table aow_inventory (
     price       number(8,2)     not null,
     quantity    number(6)       not null,
     submitted   Date            not null,
+    status      number(1)       not null,
     description varchar2(256),
     image_url   varchar2(256)
 );
@@ -110,6 +111,8 @@ create table aow_inventory_audit (
     old_quantity    number(6),
     old_submitted   date,
     new_submitted   date,
+    old_status      number(1),
+    new_status      number(1),
     old_description varchar2(256),
     new_description varchar2(256),
     old_image_url   varchar2(256),
@@ -167,6 +170,7 @@ begin
             new_price,
             new_quantity,
             new_submitted,
+            new_status,
             new_description,
             new_image_url
         ) values (
@@ -182,6 +186,7 @@ begin
             :new.price,
             :new.quantity,
             :new.submitted,
+            :new.status,
             :new.description,
             :new.image_url
         );
@@ -199,6 +204,7 @@ begin
             new_price,          old_price,
             new_quantity,       old_quantity,
             new_submitted,      old_submitted,
+            new_status,         old_status,
             new_description,    old_description,
             new_image_url,      old_image_url
         ) values (
@@ -214,6 +220,7 @@ begin
             :new.price,         :old.price,
             :new.quantity,      :old.quantity,
             :new.submitted,     :old.submitted,
+            :new.status,        :old.status,
             :new.description,   :old.description,
             :new.image_url,     :old.image_url
         );
@@ -226,7 +233,7 @@ end;
 
 create or replace view aow_inventory_view as (
     select i.id, i.name, b.name as brand, user_id, c.name as country, st.name as sub_type, 
-            volume, year, price, quantity, submitted, description, image_url
+            volume, year, price, quantity, submitted, status, description, image_url
         from aow_inventory i
             join aow_brand b
                 on b.id = i.brand_id
