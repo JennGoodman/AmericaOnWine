@@ -1,3 +1,4 @@
+<br>
 <div class="container" id="inv-form">
   <span id="big-text">Please enter the details for the wine:</span>
   <br><br>
@@ -11,9 +12,9 @@
     <div class="input-group-prepend">
       <span class="input-group-text red-wine inv-form-prepend">Brand</span>
     </div>
-    <select (change)="changeBrand()" name="brand" class="form-control" required aria-label="Brand" aria-describedby="basic-addon1" [(ngModel)]="invItem.brand">
-      <option selected value=null *ngIf="brandChanged == false">What brand of wine is this?</option>
-      <option *ngFor="let brand of brandList" [value]="brand">{{brand.brand}}</option>
+    <select (change)="changeBrand()" name="brand" class="form-control" required aria-label="Brand" aria-describedby="basic-addon1" [(ngModel)]="curBrand">
+      <option selected disabled value=null>What brand of wine is this?</option>
+      <option *ngFor="let brand of brandList" [value]="brand.name">{{brand.name}}</option>
     </select>
     </div>
   <div class="input-group mb-3 small-bars">
@@ -21,27 +22,27 @@
       <span class="input-group-text red-wine inv-form-prepend">Type of wine</span>
     </div>
     <select (change)="resetType()" name="type" class="form-control" required aria-label="Type" aria-describedby="basic-addon1" [(ngModel)]="curType">
-      <option selected value="def" *ngIf="curType == 'def'">What type of wine is this?</option>
-      <option *ngFor="let type of typeList" [value]="type.type">{{type.type}}</option>
+      <option selected disabled value="def">What type of wine is this?</option>
+      <option *ngFor="let type of typeList" [value]="type.name">{{type.name}}</option>
     </select>
     </div>
     <div *ngIf="curType != 'def'" class="input-group mb-3 small-bars">
       <div class="input-group-prepend">
         <span class="input-group-text red-wine inv-form-prepend">Specific Type</span>
       </div>
-      <select (change)="changeType()" name="subType" class="form-control" required aria-label="SubType" aria-describedby="basic-addon1" [(ngModel)]="invItem.subType">
-        <option selected value=null *ngIf="typeChanged == false">What specific type of wine is this?</option>
+      <select (change)="changeType()" name="subType" class="form-control" required aria-label="SubType" aria-describedby="basic-addon1" [(ngModel)]="curSubType">
+        <option selected disabled value=null>What specific type of wine is this?</option>
         <ng-container *ngIf="curType == 'Red'">
-          <option *ngFor="let sub of redSubtypeList" value="sub">{{sub.subType}}</option>
+          <option *ngFor="let sub of redSubtypeList" [value]="sub.name">{{sub.name}}</option>
         </ng-container>
         <ng-container *ngIf="curType == 'White'">
-          <option *ngFor="let sub of whiteSubtypeList" value="sub">{{sub.subType}}</option>
+          <option *ngFor="let sub of whiteSubtypeList" [value]="sub.name">{{sub.name}}</option>
         </ng-container>
         <ng-container *ngIf="curType == 'Champagne'">
-          <option *ngFor="let sub of champSubtypeList" value="sub">{{sub.subType}}</option>
+          <option *ngFor="let sub of champSubtypeList" [value]="sub.name">{{sub.name}}</option>
         </ng-container>
         <ng-container *ngIf="curType == 'Rosé'">
-          <option *ngFor="let sub of roseSubtypeList" value="sub">{{sub.subType}}</option>
+          <option *ngFor="let sub of roseSubtypeList" [value]="sub.name">{{sub.name}}</option>
         </ng-container>
       </select>
       </div>
@@ -67,9 +68,9 @@
     <div class="input-group-prepend">
       <span class="input-group-text red-wine inv-form-prepend">Country of Origin</span>
     </div>
-    <select (change)="changeCountry()" name="country" class="form-control" required aria-label="Country" aria-describedby="basic-addon1" [(ngModel)]="invItem.country">
-      <option selected value=null *ngIf="countryChanged == false">What country does this wine come from?</option>
-      <option *ngFor="let country of countryList" [value]="country">{{country.country}}</option>
+    <select (change)="changeCountry()" name="country" class="form-control" required aria-label="Country" aria-describedby="basic-addon1" [(ngModel)]="curCountry">
+      <option selected value=null disabled>What country does this wine come from?</option>
+      <option *ngFor="let country of countryList" [value]="country.name">{{country.name}}</option>
     </select>
     </div>
     <div class="input-group mb-3 small-bars">

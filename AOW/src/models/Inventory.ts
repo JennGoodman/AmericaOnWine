@@ -8,7 +8,7 @@ export class Inventory {
     id: number;
     name: string;
     brand: Brand;
-    user: User;
+    userId: number;
     country: Country;
     subType: SubType;
     volume: number;
@@ -23,7 +23,7 @@ export class Inventory {
       this.id = null;
       this.name = null;
       this.brand = null;
-      this.user = null;
+      this.userId = null;
       this.country = null;
       this.subType = null;
       this.volume = null;

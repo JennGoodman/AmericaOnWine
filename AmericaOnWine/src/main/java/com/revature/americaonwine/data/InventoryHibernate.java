@@ -20,8 +20,7 @@ import com.revature.americaonwine.util.HibernateUtil;
 public class InventoryHibernate implements InventoryDao {
 	
 	private HibernateUtil hu = HibernateUtil.getInstance();
-	Session s = HibernateUtil.getInstance().getSession();
-	Logger log = Logger.getLogger(InventoryHibernate.class);
+	private Logger log = Logger.getLogger(InventoryHibernate.class);
 
 	@Override
 	public List<InventoryItem> getItemsForUser(User user) 
@@ -74,19 +73,27 @@ public class InventoryHibernate implements InventoryDao {
 	@Override
 	public InventoryItem addItem(InventoryItem item) {
 		log.trace("Saving new inventory item: \n" + item);
+		Session s = hu.getSession();
+		Transaction t = s.getTransaction();
+		t.begin();
 		s.save(item);
+		t.commit();
+		s.close();
 		return item;
 	}
 
 	@Override
 	public List<InventoryItem> getAll() {
-		log.trace("Getting all inventory items.");		
+		log.trace("Getting all inventory items.");
+		Session s = hu.getSession();
 		CriteriaBuilder builder = s.getCriteriaBuilder();
 		CriteriaQuery<InventoryItem> query = builder.createQuery(InventoryItem.class);
 		Root<InventoryItem> root = query.from(InventoryItem.class);
 		query.select(root);
 		Query<InventoryItem> q = s.createQuery(query);
-		return q.getResultList();
+		List<InventoryItem> qlist = q.getResultList();
+		s.close();
+		return qlist;
 	}
 
 	@Override
