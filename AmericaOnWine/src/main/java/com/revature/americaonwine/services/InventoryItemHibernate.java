@@ -33,12 +33,12 @@ public class InventoryItemHibernate implements InventoryService {
 
 	@Override
 	public InventoryItem updateInventoryItem(InventoryItem item) {
-		return id.updateItemByUser(item);
+		return id.updateItem(item);
 	}
 
 	@Override
 	public InventoryItem removeInventoryItem(InventoryItem item) {
-		return id.removeItemByUser(item);
+		return id.removeItem(item);
 	}
 	
 	

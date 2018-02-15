@@ -72,6 +72,10 @@ export class InventoryFormComponent implements OnInit {
     this.invItem = JSON.parse(localStorage.getItem("invItemClicked"));
       if (this.invItem)
       {
+          this.curCountry = this.invItem.country.name;
+          this.curBrand = this.invItem.brand.name;
+          this.curType = this.invItem.subType.type.name;
+          this.curSubType = this.invItem.subType.name;
           document.onreadystatechange = () =>
           {
               if(document.readyState === 'complete')
@@ -115,6 +119,33 @@ export class InventoryFormComponent implements OnInit {
      this.typeChanged = true;
    }
 
+    getSelectFields() {
+        this.invItem.brand = this.brandList.filter((item) => {
+           return this.curBrand === item.name;
+         })[0];
+
+        this.invItem.country = this.countryList.filter((item) => {
+          return this.curCountry === item.name;
+        })[0];
+
+        if (this.curType === 'Red') {
+          this.invItem.subType = this.redSubtypeList.filter((item) => {
+            return this.curSubType === item.name;
+          })[0];
+        }  else if (this.curType === 'White') {
+          this.invItem.subType = this.whiteSubtypeList.filter((item) => {
+            return this.curSubType === item.name;
+          })[0];
+        } else if (this.curType === 'Rosé') {
+          this.invItem.subType = this.roseSubtypeList.filter((item) => {
+            return this.curSubType === item.name;
+          })[0];
+        } else if (this.curType === 'Champagne') {
+          this.invItem.subType = this.champSubtypeList.filter((item) => {
+            return this.curSubType === item.name;
+          })[0];
+        }
+    }
    addWine() {
      this.invItem.id = 0;
      this.invItem.userId = JSON.parse(localStorage.getItem('user')).id;
