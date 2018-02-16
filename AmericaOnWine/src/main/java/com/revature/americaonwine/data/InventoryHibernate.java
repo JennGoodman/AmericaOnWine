@@ -12,12 +12,14 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.beans.Roles;
 import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.util.HibernateUtil;
 
+@Component
 public class InventoryHibernate implements InventoryDao {
 	
 	@Autowired
