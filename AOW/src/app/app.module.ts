@@ -30,6 +30,7 @@ import { TransactionService } from '../services/transaction.service';
 import { TypeService } from '../services/type.service';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
+import { ChangeDetectorRef } from '@angular/core';
 
 @NgModule({
   declarations: [
