@@ -496,7 +496,12 @@ insert into aow_country (id, abbrev, name) values (245, 'ZW', 'Zimbabwe');
 insert into aow_user (id, username, password, email, role, active, cancelled) values (1, 'admin', 'admin', 'admin@admin.net', 0, 1, 0);
 insert into aow_user (id, username, password, email, role, active, cancelled) values (2, 'retailer', 'retailer', 'retailer@retailer.net', 1, 1, 0);
 insert into aow_user (id, username, password, email, role, active, cancelled) values (3, 'customer', 'customer', 'customer@customer.net', 2, 1, 0);
-insert into aow_user (id, username, password, email, role, active, cancelled) values (4, 'retail', 'retail', 'ret@rd.ed', 1, 1, 0);
+insert into aow_user (id, username, password, email, role, active, cancelled) 
+    values (4, 'retail', 'retail', 'ret@rd.ed', 1, 1, 0);
+insert into aow_user (id, username, password, email, role, active, cancelled) 
+    values (5, 'retail2', 'retail2', 'ret2@rd.ed', 1, 0, 0);
+insert into aow_user (id, username, password, email, role, active, cancelled) 
+    values (6, 'retail3', 'retail3', 'ret3@rd.ed', 1, 1, 1);
 
 insert into aow_brand (id, name) values (1, 'Barefoot');
 insert into aow_brand (id, name) values (2, 'Max''s Favorites');
