@@ -17,7 +17,6 @@ import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.services.AdminService;
 
 @Controller
-//@CrossOrigin(origins= "http://localhost:4200")
 @CrossOrigin(origins="*")
 @RequestMapping(headers="Accept=application/json, text/plain")
 public class AdminController {
@@ -26,10 +25,13 @@ public class AdminController {
 	private AdminService as;
 	private ObjectMapper om = new ObjectMapper();
 	
-	@RequestMapping(value="/inventory", method=RequestMethod.POST)
+	@RequestMapping(value="inventory/approval", method=RequestMethod.PUT)
 	@ResponseBody
 	public String InventoryItemApproval(@RequestBody InventoryItem fromWeb, HttpSession session) throws JsonProcessingException {
-		return om.writeValueAsString(null);
+		log.trace("Got Request body and is : " + fromWeb);
+		InventoryItem fromDB = as.approval(fromWeb);
+		log.trace(fromDB);
+		return om.writeValueAsString(fromDB);
 	}
 	
 	//need to modify the value

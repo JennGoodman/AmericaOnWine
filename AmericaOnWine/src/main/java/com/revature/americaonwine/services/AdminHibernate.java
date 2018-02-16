@@ -6,24 +6,20 @@ import org.springframework.stereotype.Component;
 
 import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.data.InventoryDao;
+import com.revature.americaonwine.data.InventoryHibernate;
 
 @Component
 public class AdminHibernate implements AdminService {
 	
 	private Logger log = Logger.getLogger(AdminHibernate.class);
 	@Autowired
-	private InventoryDao ud;
+	private InventoryHibernate id;
 
 	@Override
-	public InventoryItem approve(InventoryItem inv) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public InventoryItem deny(InventoryItem inv) {
-		// TODO Auto-generated method stub
-		return null;
+	public InventoryItem approval(InventoryItem inv) {
+		id.updateItem(inv);
+		log.trace("approving item");
+		return inv;
 	}
 
 }

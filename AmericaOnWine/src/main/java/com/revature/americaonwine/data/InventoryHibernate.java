@@ -7,15 +7,18 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.apache.log4j.Logger;
+import org.hibernate.NonUniqueObjectException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Component;
 
 import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.beans.Roles;
 import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.util.HibernateUtil;
 
+@Component
 public class InventoryHibernate implements InventoryDao {
 	
 	private HibernateUtil hu = HibernateUtil.getInstance();
@@ -45,9 +48,17 @@ public class InventoryHibernate implements InventoryDao {
 	}
 
 	@Override
-	public boolean updateItemByUser(User user, InventoryItem item) {
-		// TODO Auto-generated method stub
-		return false;
+	public InventoryItem updateItem(InventoryItem item) {
+		log.trace(this.getClass() + " Called:  updateItem(item)");
+		Session su = hu.getSession();
+		Transaction tx = su.getTransaction();
+		tx.begin();
+		su.update(item);
+		tx.commit();
+		su.close();
+		
+		//su.update(item);
+		return item;
 	}
 
 	@Override

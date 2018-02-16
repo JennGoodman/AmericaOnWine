@@ -41,7 +41,7 @@ export class InventoryService {
 
   update(user: Inventory): Observable<Inventory> {
     const body = JSON.stringify(user);
-    return this.http.put(this.MyURL, body, {
+    return this.http.put(this.MyURL+ '/approval', body, {
       headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(

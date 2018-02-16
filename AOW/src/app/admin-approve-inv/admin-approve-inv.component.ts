@@ -12,6 +12,7 @@ import { Inventory } from '../../models/Inventory';
 export class AdminApproveInvComponent implements OnInit {
   allInvApprovalItem: Inventory[] = new Array();
   temp: Inventory[];
+  visible: boolean = false;
 
   constructor(private service: InventoryService, private router: Router) {
    }
@@ -19,49 +20,42 @@ export class AdminApproveInvComponent implements OnInit {
   ngOnInit() {
     this.service.getAll().subscribe(resp => {
       this.temp = resp as Inventory[];
-      console.log(this.allInvApprovalItem);
+      console.log(this.temp);
 
       for(let a of this.temp){
-          if(a.id==1){
+          if(a.status == 1){
+            console.log(a);
             this.allInvApprovalItem.push(a);
           }
       }
-    })
+      console.log(this.allInvApprovalItem);
+      if(this.allInvApprovalItem.length == 0){
+        this.visible = true;
+      }
+    });
   }
 
   approve(inv: Inventory){
-    console.log("Approving item with id of: " + inv);
+    console.log("Approving item with id of: ", inv.id, inv.status);
+    inv.status=2;
+    console.log("Approving item with id of: ", inv.id, inv.status);
     this.service.update(inv).subscribe(resp => {
-      this.router.navigate(['inventory/approval']);
+      inv= resp as Inventory;
+      console.log("returned inventory item is: ", inv);
     });
+    //this.router.navigate(['inventory/approval']);
+    window.location.reload();
   }
 
   deny(inv: Inventory){
-    console.log("Denying item with id of: " + inv);
+    console.log("Approving item with id of: ", inv.id, inv.status);
+    inv.status=0;
+    console.log("Approving item with id of: ", inv.id, inv.status);
     this.service.update(inv).subscribe(resp => {
-      this.router.navigate(['inventory/approval']);
+      inv= resp as Inventory;
+      console.log("returned inventory item is: ", inv);
     });
+    window.location.reload();
+    //this.router.navigate(['inventory/approval']);
   }
-
-  // this.service.register(user).subscribe(resp => {
-  //   this.userRegistered = resp as User;
-  //   console.log(this.userRegistered);
-  //   if (this.userRegistered == null) {
-  //     this.registerFailed = true;
-  //     console.log(this.registerFailed);
-  //   } else {
-  //     if(accountType === 'retailer'){
-  //       console.log(" " +accountType + " 1");
-  //       //go to retailer home page
-  //       localStorage.setItem('user', JSON.stringify(this.userRegistered));
-  //       this.router.navigate(['retailer/home']);
-  //     } else{
-  //       console.log(" " +accountType + " 2");
-  //       //go to customer home page
-  //       localStorage.setItem('user', JSON.stringify(this.userRegistered));
-  //       this.router.navigate(['']);
-  //     }
-  //   }
-  // });
-
 }
