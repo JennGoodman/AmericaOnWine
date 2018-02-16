@@ -1,10 +1,12 @@
 package com.revature.americaonwine.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 public class Brand {
 
 	@Id
-	@SequenceGenerator(name = "nameGen", sequenceName = "aow_name_seq", allocationSize = 1)
+	@SequenceGenerator(name = "nameGen", sequenceName = "aow_brand_seq", allocationSize = 1)
 	@GeneratedValue(generator = "nameGen", strategy = GenerationType.SEQUENCE)
 	private int id;
 	@Column
@@ -31,11 +33,17 @@ public class Brand {
 		this.id = id;
 	}
 
-	public String getBrand() {
+	public String getName() {
 		return name;
 	}
 
-	public void setBrand(String name) {
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public Brand(int id, String name) {
+		super();
+		this.id = id;
 		this.name = name;
 	}
 
