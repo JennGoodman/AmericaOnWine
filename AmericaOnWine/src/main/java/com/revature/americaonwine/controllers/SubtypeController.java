@@ -1,4 +1,4 @@
-package com.revature.americaonwine.delegates;
+package com.revature.americaonwine.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,16 +13,16 @@ import com.revature.americaonwine.services.WineFormService;
 
 @Controller
 @CrossOrigin(origins="*")
-@RequestMapping(value="/brand", headers="Accept=application/json, text/plain")
-public class BrandController {
+@RequestMapping(value="/subtype", headers="Accept=application/json, text/plain")
+public class SubtypeController {
+	
 	@Autowired
-	WineFormService wfs;
-	// @Autowired
+	private WineFormService wfs;
 
 	@RequestMapping(method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	@ResponseBody
-	public String getCountries(ObjectMapper om) throws JsonProcessingException {
-		return om.writeValueAsString(wfs.getBrands());
+	public String getSubTypes(ObjectMapper om) throws JsonProcessingException {
+		return om.writeValueAsString(wfs.getSubtypes());
 	}
-
+	
 }

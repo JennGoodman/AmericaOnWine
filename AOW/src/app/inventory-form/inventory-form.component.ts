@@ -85,15 +85,6 @@ export class InventoryFormComponent implements OnInit {
               {
                   let img = <HTMLInputElement> document.getElementById('img-input');
                   img.parentNode.parentNode.removeChild(img.parentNode);
-                  let submit = <HTMLButtonElement> document.getElementById('submitButton');
-                  submit.click = () =>
-                  {
-                      this.invService.update(this.invItem).subscribe(
-                          resp =>
-                          {
-                            console.log(resp as Inventory);
-                          });
-                  }
               }
 
           }
@@ -102,7 +93,21 @@ export class InventoryFormComponent implements OnInit {
       {
         this.invItem = new Inventory;
       }
-   }
+  }
+  updateItem()
+  {
+    this.invService.update(this.invItem).subscribe(
+        resp =>
+        {
+            console.log(resp as Inventory);
+            this.router.navigate['retailer/home'];
+            localStorage.removeItem('invItemClicked');
+        });
+  }
+  submitClicked()
+  {
+      localStorage.getItem('invItemClicked') ? this.updateItem() : this.addWine();
+  }
 
    resetType() {
      this.curSubType = null;

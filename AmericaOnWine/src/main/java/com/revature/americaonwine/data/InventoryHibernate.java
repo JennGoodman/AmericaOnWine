@@ -32,8 +32,6 @@ public class InventoryHibernate implements InventoryDao, HibernateSession {
 	@Override
 	public List<InventoryItem> getItemsForUser(User user) 
 	{
-		log.trace(".... get items for user is called ...---...");
-		
 		CriteriaBuilder critBuilder = s.getCriteriaBuilder();
 		CriteriaQuery<InventoryItem> query = critBuilder.createQuery(InventoryItem.class);
 		Root<InventoryItem> root = query.from(InventoryItem.class);
@@ -42,14 +40,14 @@ public class InventoryHibernate implements InventoryDao, HibernateSession {
 			query.select(root).where(critBuilder.and(critBuilder.greaterThanOrEqualTo(root.get("quantity"), 0), 
 					critBuilder.equal(root.get("userId"), user.getId())));
 		} 
-		else if (user.getRole() == Roles.numericalRepresentation(Roles.CUSTOMER))
+		if (user.getRole() == Roles.numericalRepresentation(Roles.CUSTOMER))
 		{
 			query.select(root).where(critBuilder.and(critBuilder.greaterThan(root.get("quantity"), 0),
 					critBuilder.equal(root.get("status"), 2)));
 		}
+		
 		Query<InventoryItem> q = s.createQuery(query);
 		List<InventoryItem> items = q.getResultList();
-		s.close();
 		return items;
 	}
 
@@ -84,7 +82,6 @@ public class InventoryHibernate implements InventoryDao, HibernateSession {
 		t.begin();
 		s.save(item);
 		t.commit();
-		s.close();
 		return item;
 	}
 
@@ -97,7 +94,6 @@ public class InventoryHibernate implements InventoryDao, HibernateSession {
 		query.select(root);
 		Query<InventoryItem> q = s.createQuery(query);
 		List<InventoryItem> qlist = q.getResultList();
-		s.close();
 		return qlist;
 	}
 

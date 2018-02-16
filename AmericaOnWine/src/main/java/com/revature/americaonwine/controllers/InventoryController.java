@@ -1,4 +1,4 @@
-package com.revature.americaonwine.delegates;
+package com.revature.americaonwine.controllers;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,8 +23,6 @@ import com.revature.americaonwine.services.InventoryService;
 public class InventoryController {
 	@Autowired
 	private InventoryService is;
-	@Autowired
-	private User user;
 	
 	private Logger log = Logger.getLogger(InventoryController.class);
 	
@@ -44,14 +42,13 @@ public class InventoryController {
 	@RequestMapping(method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	@ResponseBody
 	public String getAll(HttpSession ses, ObjectMapper om) throws JsonProcessingException {
-		log.trace("what");
 		User u = (User) ses.getAttribute("user");
 		if(u == null) {
-			user.setRole(0);
-			return om.writeValueAsString(is.getForUser(user));
-		} else {
-			return om.writeValueAsString(is.getForUser(u));
+			// u = new User();
+			// u.setRole(2);
+			return om.writeValueAsString(is.getAll());
 		}
+		return om.writeValueAsString(is.getForUser(u));
 	}
 	
 	@CrossOrigin

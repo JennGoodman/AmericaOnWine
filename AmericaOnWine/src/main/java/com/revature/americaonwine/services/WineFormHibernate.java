@@ -41,8 +41,5 @@ public class WineFormHibernate implements WineFormService {
 	public List<SubType> getSubtypes() {
 		return std.getAll();
 	}
-	public WineFormHibernate() {
-		super();
-	}
 
 }

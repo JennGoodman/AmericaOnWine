@@ -34,7 +34,10 @@ public class CountrySpring implements CountryDao, HibernateSession {
 		log.trace(this.getClass() + " Called: getAll()");
 		String query = "from com.revature.americaonwine.beans.Country";
 		Query<Country> q = s.createQuery(query, Country.class);
-		return q.getResultList();
+		log.trace("[---] Before Items");
+		List<Country> countries = (List<Country>) q.getResultList();
+		log.trace("[===] Countries : " + countries);
+		return countries;
 	}
 
 	@Override

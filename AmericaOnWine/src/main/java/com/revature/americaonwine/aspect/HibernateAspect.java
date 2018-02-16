@@ -1,13 +1,19 @@
-/*package com.revature.americaonwine.aspect;
+package com.revature.americaonwine.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import com.revature.americaonwine.data.HibernateSession;
 import com.revature.americaonwine.util.HibernateUtil;
 
+@Component
+@Aspect
 public class HibernateAspect {
 
 	@Autowired
@@ -18,8 +24,8 @@ public class HibernateAspect {
 		Object obj = null;
 		Session session = hu.getSession();
 		Transaction tx = session.beginTransaction();
-		// HibernateSession hs = (HibernateSession) pjp.getThis();
-		//hs.setSession(session);
+		HibernateSession hs = (HibernateSession) pjp.getThis();
+		hs.setSession(session);
 		try {
 			obj = pjp.proceed();
 		}
@@ -31,8 +37,11 @@ public class HibernateAspect {
 		
 		tx.commit();
 		session.close();
-		//hs.setSession(null);
+		hs.setSession(null);
 		return obj;
 	}
+	
+	@Pointcut("execution(* com.revature.americaonwine.data..*(..))"
+			+ "&& !execution(* com.revature.americaonwine.data..setSession(..))")
+	public void allDaoObjections() {}
 }
-*/

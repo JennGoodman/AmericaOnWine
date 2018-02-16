@@ -51,15 +51,12 @@ public class UserHibernate implements UserDao, HibernateSession {
 				tx.rollback();
 			log.warn(e.getMessage());
 			return false;
-		} finally {
-			session.close();
-		}
+		} 
 	}
 
 	@Override
 	public User getUser(int id) {
 		User u = session.get(User.class, id);
-		session.close();
 		return u;
 	}
 
@@ -79,12 +76,10 @@ public class UserHibernate implements UserDao, HibernateSession {
 			log.trace("Found at least one user");
 			log.trace("Getting user " + Hibernate.getClass(users.get(0)));
 			User user = (User) Hibernate.unproxy(users.get(0));
-			session.close();
 			return user;
 		}
 		else {
 			log.trace("Found nothing. NOTHING");
-			session.close();
 			return null;
 		}
 	}

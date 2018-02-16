@@ -1,4 +1,4 @@
-package com.revature.americaonwine.delegates;
+package com.revature.americaonwine.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.revature.americaonwine.services.TransactionService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.americaonwine.services.WineFormService;
 
 @Controller
 @CrossOrigin(origins="*")
-@RequestMapping(value="/orderno", headers="Accept=application/json, text/plain")
-public class OrderController {
+@RequestMapping(value="/type", headers="Accept=application/json, text/plain")
+public class TypeController {
 	@Autowired
-	private TransactionService ts;
-	
+	private WineFormService wfs;
+
 	@RequestMapping(method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	@ResponseBody
-	public String maxOrderNumber() throws JsonProcessingException {
-		return Integer.toString(ts.getMax());
+	public String getType(ObjectMapper om) throws JsonProcessingException {
+		return om.writeValueAsString(wfs.getTypes());
 	}
-
 }

@@ -1,4 +1,4 @@
-package com.revature.americaonwine.delegates;
+package com.revature.americaonwine.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,20 +9,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.americaonwine.services.WineFormHibernate;
+import com.revature.americaonwine.services.WineFormService;
 
 @Controller
-@CrossOrigin(origins="*")
-@RequestMapping(value="/subtype", headers="Accept=application/json, text/plain")
-public class SubtypeController {
-	
+@CrossOrigin()
+@RequestMapping(value="/country", headers="Accept=application/json, text/plain")
+public class CountryController {
 	@Autowired
-	private WineFormHibernate wfs;
+	private WineFormService wfs;
 
 	@RequestMapping(method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	@ResponseBody
-	public String getSubTypes(ObjectMapper om) throws JsonProcessingException {
-		return om.writeValueAsString(wfs.getSubtypes());
+	public String getCountries(ObjectMapper om) throws JsonProcessingException {
+		return om.writeValueAsString(wfs.getCountries());
 	}
 	
 }

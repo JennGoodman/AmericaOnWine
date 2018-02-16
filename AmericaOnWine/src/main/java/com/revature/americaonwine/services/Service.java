@@ -2,8 +2,6 @@ package com.revature.americaonwine.services;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.beans.User;
 
