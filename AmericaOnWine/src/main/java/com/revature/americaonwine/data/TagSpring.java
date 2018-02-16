@@ -4,15 +4,22 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 
 import com.revature.americaonwine.beans.Tag;
-import com.revature.americaonwine.util.HibernateUtil;
 
-public class TagSpring implements TagDao {
+@Component
+public class TagSpring implements TagDao, HibernateSession {
 
 	Logger log = Logger.getLogger(this.getClass());
-	Session s = HibernateUtil.getInstance().getSession();
+	Session s;
 
+	@Override
+	public void setSession(Session session)
+	{
+		this.s = session;
+	}
+	
 	@Override
 	public Tag save(Tag tag) {
 		log.trace(this.getClass() + " Called:  save(Tag tag)");

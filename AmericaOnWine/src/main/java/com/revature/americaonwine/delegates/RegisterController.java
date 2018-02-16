@@ -1,13 +1,7 @@
 package com.revature.americaonwine.delegates;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.http.MediaType;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,11 +24,10 @@ public class RegisterController {
 	private Logger log = Logger.getLogger(RegisterController.class);
 	    @Autowired
 		private LoginService ser;
-		private ObjectMapper om = new ObjectMapper();
 		
 		@RequestMapping(value="/register", method=RequestMethod.POST)
 		@ResponseBody
-		public String register(@RequestBody User fromWeb, HttpSession session) throws JsonProcessingException {
+		public String register(@RequestBody User fromWeb, ObjectMapper om, HttpSession session) throws JsonProcessingException {
 			log.trace("Got Request body and is : " + fromWeb);
 			User fromDB = ser.register(fromWeb);
 			

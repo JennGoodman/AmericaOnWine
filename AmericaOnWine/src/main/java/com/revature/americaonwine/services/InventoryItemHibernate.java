@@ -31,4 +31,16 @@ public class InventoryItemHibernate implements InventoryService {
 		return id.getItemsForUser(u);
 	}
 
+	@Override
+	public InventoryItem updateInventoryItem(InventoryItem item) {
+		return id.updateItem(item);
+	}
+
+	@Override
+	public InventoryItem removeInventoryItem(InventoryItem item) {
+		return id.removeItem(item);
+	}
+	
+	
+
 }

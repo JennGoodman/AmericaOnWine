@@ -5,14 +5,22 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Component;
 
 import com.revature.americaonwine.beans.Country;
-import com.revature.americaonwine.util.HibernateUtil;
 
-public class CountrySpring implements CountryDao {
+@Component
+public class CountrySpring implements CountryDao, HibernateSession {
 
 	Logger log = Logger.getLogger(this.getClass());
-	Session s = HibernateUtil.getInstance().getSession();
+	private Session s;
+	
+	
+	@Override
+	public void setSession(Session session) 
+	{
+		this.s = session;
+	}
 
 	@Override
 	public Country save(Country country) {
@@ -41,4 +49,5 @@ public class CountrySpring implements CountryDao {
 		log.trace(this.getClass() + " Called:  delete(Country country)");
 		s.delete(country);
 	}
+
 }

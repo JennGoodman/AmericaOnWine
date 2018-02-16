@@ -39,7 +39,6 @@ export class InventoryFormComponent implements OnInit {
   constructor(private countries: CountryService, private types: TypeService, private subtypes: SubTypeService,
      private brands: BrandService, private fileService: FileUploadService, private invService: InventoryService,
      private router: Router) {
-    this.invItem = new Inventory;
 
     this.countries.getAll().subscribe(items => {
       this.countryList = items;
@@ -73,6 +72,36 @@ export class InventoryFormComponent implements OnInit {
       });
 
     });
+    this.invItem = JSON.parse(localStorage.getItem("invItemClicked"));
+      if (this.invItem)
+      {
+          this.curCountry = this.invItem.country.name;
+          this.curBrand = this.invItem.brand.name;
+          this.curType = this.invItem.subType.type.name;
+          this.curSubType = this.invItem.subType.name;
+          document.onreadystatechange = () =>
+          {
+              if(document.readyState === 'complete')
+              {
+                  let img = <HTMLInputElement> document.getElementById('img-input');
+                  img.parentNode.parentNode.removeChild(img.parentNode);
+                  let submit = <HTMLButtonElement> document.getElementById('submitButton');
+                  submit.click = () =>
+                  {
+                      this.invService.update(this.invItem).subscribe(
+                          resp =>
+                          {
+                            console.log(resp as Inventory);
+                          });
+                  }
+              }
+
+          }
+      }
+      else
+      {
+        this.invItem = new Inventory;
+      }
    }
 
    resetType() {
@@ -94,8 +123,9 @@ export class InventoryFormComponent implements OnInit {
    }
 
    addWine() {
-     this.invItem.id = Math.floor((Math.random() * 1000));
      this.invItem.userId = JSON.parse(localStorage.getItem('user')) ? JSON.parse(localStorage.getItem('user')).id : null;
+     this.invItem.id = 0;
+     // console.log(this.invItem.userId);
      this.invItem.submitted = new Date();
 
     this.invItem.brand = this.brandList.filter((item) => {

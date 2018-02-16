@@ -28,11 +28,9 @@ public class LoginController {
 	@Autowired
 	private LoginService ls;
 	
-	private ObjectMapper om = new ObjectMapper();
-	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	@ResponseBody
-	public String login(@RequestBody User fromWeb, HttpSession session) throws JsonProcessingException {
+	public String login(@RequestBody User fromWeb, ObjectMapper om, HttpSession session) throws JsonProcessingException {
 		log.trace("Got Request body and is : " + fromWeb);
 		if ((User) session.getAttribute("user") != null) {
 			// this needs to change.

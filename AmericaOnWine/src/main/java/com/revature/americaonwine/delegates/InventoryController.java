@@ -23,13 +23,14 @@ import com.revature.americaonwine.services.InventoryService;
 public class InventoryController {
 	@Autowired
 	private InventoryService is;
+	@Autowired
+	private User user;
 	
 	private Logger log = Logger.getLogger(InventoryController.class);
-	private ObjectMapper om = new ObjectMapper();
 	
 	@RequestMapping(method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
 	@ResponseBody
-	public String addInventory(@RequestBody InventoryItem inv, HttpSession ses) throws JsonProcessingException {
+	public String addInventory(@RequestBody InventoryItem inv, ObjectMapper om, HttpSession ses) throws JsonProcessingException {
 		User u = (User) ses.getAttribute("user");
 		log.trace(u);
 		if(u != null) {
@@ -42,14 +43,40 @@ public class InventoryController {
 	
 	@RequestMapping(method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	@ResponseBody
-	public String getAll(HttpSession ses) throws JsonProcessingException {
+	public String getAll(HttpSession ses, ObjectMapper om) throws JsonProcessingException {
 		log.trace("what");
 		User u = (User) ses.getAttribute("user");
 		if(u == null) {
-			return om.writeValueAsString(is.getAll());
+			user.setRole(0);
+			return om.writeValueAsString(is.getForUser(user));
 		} else {
 			return om.writeValueAsString(is.getForUser(u));
 		}
 	}
-
+	
+	@CrossOrigin
+	@RequestMapping(value="inventory/edit",method=RequestMethod.POST, produces= {"application/json; charset=UTF-8"})
+	@ResponseBody
+	public String editInventory(HttpSession sess, @RequestBody InventoryItem inv, ObjectMapper om) throws JsonProcessingException {
+		User u = (User) sess.getAttribute("user");
+		if (u == null) {
+			return null;
+		}
+		if (u.getId() == inv.getUserId())
+			return om.writeValueAsString(is.updateInventoryItem(inv));
+		return null;
+	}
+	
+	@CrossOrigin
+	@RequestMapping(value="/inventory/remove", method=RequestMethod.POST, produces= {"application/json; charset=UTF-8"})
+	@ResponseBody
+	public String removeInventory(HttpSession sess, @RequestBody InventoryItem inv, ObjectMapper om) throws JsonProcessingException {
+		User u = (User) sess.getAttribute("user");
+		if (u == null)
+			return null;
+		if (u.getId() == inv.getUserId())
+			return om.writeValueAsString(is.removeInventoryItem(inv));
+		return null;
+	}
+	
 }

@@ -15,17 +15,21 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.revature.americaonwine.beans.User;
-import com.revature.americaonwine.util.HibernateUtil;
 
 @Component
-public class UserHibernate implements UserDao {
+public class UserHibernate implements UserDao, HibernateSession {
 
 	private static Logger log = Logger.getLogger(UserHibernate.class);
-	private static HibernateUtil hu = HibernateUtil.getInstance();
+	private Session session;
+	
+	@Override
+	public void setSession(Session session)
+	{
+		this.session = session;
+	}
 	
 	@Override
 	public boolean insertUser(User u) {
-		Session session = hu.getSession();
 		Transaction tx = null;
 		try{
 			tx = session.beginTransaction();
@@ -54,21 +58,19 @@ public class UserHibernate implements UserDao {
 
 	@Override
 	public User getUser(int id) {
-		Session su = hu.getSession();
-		User u = su.get(User.class, id);
-		su.close();
+		User u = session.get(User.class, id);
+		session.close();
 		return u;
 	}
 
 	@Override
 	public User getUserByUsername(String username) {
 		log.trace("Attempting to search for user with username " + username);
-		Session su = hu.getSession();
-		CriteriaBuilder builder = su.getCriteriaBuilder();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<User> query = builder.createQuery(User.class);
 		Root<User> root = query.from(User.class);
 		query.select(root).where(builder.equal(root.get("username"), username));
-		Query<User> q = su.createQuery(query);
+		Query<User> q = session.createQuery(query);
 		List<User> users = q.getResultList();
 		for (User user : users) {
 			log.trace(user.getUsername() + " is in users");
@@ -77,24 +79,23 @@ public class UserHibernate implements UserDao {
 			log.trace("Found at least one user");
 			log.trace("Getting user " + Hibernate.getClass(users.get(0)));
 			User user = (User) Hibernate.unproxy(users.get(0));
-			su.close();
+			session.close();
 			return user;
 		}
 		else {
 			log.trace("Found nothing. NOTHING");
-			su.close();
+			session.close();
 			return null;
 		}
 	}
 
 	@Override
 	public User getUserByEmail(String email) {
-		Session su = hu.getSession();
-		CriteriaBuilder builder = su.getCriteriaBuilder();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<User> query = builder.createQuery(User.class);
 		Root<User> root = query.from(User.class);
 		query.select(root).where(builder.equal(root.get("email"), email));
-		Query<User> q = su.createQuery(query);
+		Query<User> q = session.createQuery(query);
 		List<User> users = q.getResultList();
 		if (users != null && !users.isEmpty())
 			return users.get(0);
@@ -104,21 +105,19 @@ public class UserHibernate implements UserDao {
 
 	@Override
 	public List<User> getAll() {
-		Session su = hu.getSession();
-		CriteriaBuilder builder = su.getCriteriaBuilder();
+		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<User> query = builder.createQuery(User.class);
 		Root<User> root = query.from(User.class);
 		query.select(root);
-		Query<User> q = su.createQuery(query);
+		Query<User> q = session.createQuery(query);
 		return q.getResultList();
 	}
 
 	@Override
 	public boolean updateUser(User u) {
-		Session su = hu.getSession();
-		Transaction tx = su.beginTransaction();
+		Transaction tx = session.beginTransaction();
 		try {
-			su.update(u);
+			session.update(u);
 			tx.commit();
 			return true;
 		} catch (NonUniqueObjectException e) {
