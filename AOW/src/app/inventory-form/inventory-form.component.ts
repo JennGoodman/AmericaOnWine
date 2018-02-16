@@ -96,7 +96,6 @@ export class InventoryFormComponent implements OnInit {
    addWine() {
      this.invItem.id = Math.floor((Math.random() * 1000));
      this.invItem.userId = JSON.parse(localStorage.getItem('user')) ? JSON.parse(localStorage.getItem('user')).id : null;
-     console.log(this.invItem.userId);
      this.invItem.submitted = new Date();
 
     this.invItem.brand = this.brandList.filter((item) => {
