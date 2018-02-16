@@ -29,6 +29,9 @@ import { TagService } from '../services/tag.service';
 import { TransactionService } from '../services/transaction.service';
 import { TypeService } from '../services/type.service';
 import { HomeComponent } from './home/home.component';
+import { AdminViewAccountComponent } from './admin-view-account/admin-view-account.component';
+import { AdminService } from '../services/admin.service';
+import { YesNoPipe } from '../pipes/yes-no.pipe';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { HomeComponent } from './home/home.component';
     WineItemComponent,
     WineListComponent,
     BigWineItemComponent,
-    HomeComponent
+    HomeComponent,
+    AdminViewAccountComponent,
+    YesNoPipe
   ],
   imports: [
     HttpClientModule,
@@ -62,7 +67,8 @@ import { HomeComponent } from './home/home.component';
     SubTypeService,
     TagService,
     TransactionService,
-    TypeService
+    TypeService,
+    AdminService
   ],
   bootstrap: [AppComponent]
 })

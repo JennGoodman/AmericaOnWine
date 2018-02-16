@@ -17,7 +17,7 @@ public class LoginHibernate implements LoginService {
 	@Override
 	public User login(String username, String password) {
 		User u = ud.getUserByUsername(username);
-		if (u != null && u.getPassword().equals(password) )
+		if (u != null && u.getPassword().equals(password) && u.getActive() == 1)
 			return u;
 		else return null;
 	}

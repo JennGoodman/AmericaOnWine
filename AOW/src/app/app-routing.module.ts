@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { AdminViewAccountComponent } from './admin-view-account/admin-view-account.component';
 
 const routes: Routes = [
     {
@@ -49,6 +50,11 @@ const routes: Routes = [
     {
         path: 'form',
         component: InventoryFormComponent,
+        pathMatch: 'full'
+    },
+    { // Ayo matt don't forget to remove this
+        path: 'admin/viewaccounts',
+        component: AdminViewAccountComponent,
         pathMatch: 'full'
     }
 ];
