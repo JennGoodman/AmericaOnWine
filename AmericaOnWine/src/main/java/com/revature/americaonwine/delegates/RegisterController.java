@@ -1,13 +1,7 @@
 package com.revature.americaonwine.delegates;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.http.MediaType;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.americaonwine.beans.Roles;
 import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.services.LoginService;
 
@@ -40,8 +35,8 @@ public class RegisterController {
 			
 			if(fromDB != null) {
 				log.trace("Didn't find user in the DB, valid user");
-				fromDB = ser.register(fromWeb);
-				session.setAttribute("user", fromDB);
+				if (fromDB.getRole() != Roles.numericalRepresentation(Roles.RETAILER))
+					session.setAttribute("user", fromDB);
 				return om.writeValueAsString(fromDB);
 			}
 			else {

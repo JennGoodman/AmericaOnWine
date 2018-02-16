@@ -18,4 +18,13 @@ export class AdminService {
       resp => resp as User[]
     );
   }
+
+  activateRetailer(retailer: User): Observable<boolean> {
+    const body = JSON.stringify(retailer);
+    return this.http.post(this.config.appURL + 'activateRetailer', body, {
+      headers: this.config.defaultHeaders, withCredentials: true
+    }).map(
+      resp => resp as boolean
+    );
+  }
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,6 +28,7 @@ public class AdminAccountQueueController {
 	private ObjectMapper om = new ObjectMapper();
 	
 	@RequestMapping(value="pendingAccounts", method=RequestMethod.GET)
+	@ResponseBody
 	public String getPendingRetailerAccounts(HttpSession session) throws JsonProcessingException {
 		log.trace("getPendingRetailerAccounts handling request");
 		if (((User) session.getAttribute("user")).getRole() != Roles.numericalRepresentation(Roles.ADMIN)) {

@@ -12,6 +12,23 @@ export class AdminViewAccountComponent implements OnInit {
   users: User[];
 
   constructor(private adminService: AdminService) {
+    this.users = [];
+    this.updateUserList();
+  }
+
+  ngOnInit() {
+  }
+
+  activateRetailer(retailer: User): void {
+    this.adminService.activateRetailer(retailer).subscribe(resp => {
+      const success = resp as boolean;
+      const resultString = (success) ? 'success' : 'failure';
+      console.log('Activating retailer was a ' + resultString);
+      this.updateUserList();
+    });
+  }
+
+  updateUserList(): void {
     console.log('Constructing');
     this.adminService.getPendingRetailerAccounts().subscribe(resp => {
       console.log('Constructed. Got: ');
@@ -19,8 +36,4 @@ export class AdminViewAccountComponent implements OnInit {
       console.log(this.users);
     });
   }
-
-  ngOnInit() {
-  }
-
 }

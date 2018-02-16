@@ -33,30 +33,28 @@ export class RegisterComponent implements OnInit {
   register(email: string,
     username: string,
     password: string,
-    accountType: String){
-    if(email=="" || username=="" || password=="" || accountType==""){
-      //alert("Need to fill out all the fields");
+    accountType: String) {
+    if (email === '' || username === '' || password === '' || accountType === '') {
+      // alert("Need to fill out all the fields");
       this.fieldsIncomplete = true;
-    }
-    else{
-      const user: User =new User();
-      //const check: User = new User();
-      user.id =1;
-      user.email=email;
-      user.username=username;
-      user.password=password;
-      if(accountType === 'customer'){
+    } else {
+      const user: User = new User();
+      // const check: User = new User();
+      user.id = 1;
+      user.email = email;
+      user.username = username;
+      user.password = password;
+      if (accountType === 'customer') {
         user.role = 2;
-        user.active=1;
-      }
-      else {
+        user.active = 1;
+      } else {
         user.role = 1;
-        user.active=0;
+        user.active = 0;
       }
-      user.cancelled=0;
+      user.cancelled = 0;
       console.log(user);
 
-      //check current user accounts so that there is no duplicate
+      // check current user accounts so that there is no duplicate
       // this.service.getAll().subscribe(resp => {
       //   this.check = resp as User[];
       //   for(let a of this.check){
@@ -67,27 +65,27 @@ export class RegisterComponent implements OnInit {
       //   }
       // });
 
-      //tell yous username is taken if found
+      // tell yous username is taken if found
       // if(this.found){
       //   alert("Username is taken, try again");
       // }
-      //creates a new userand redirects them to proper home page
-      //else {
+      // creates a new userand redirects them to proper home page
+      // else {
         this.service.register(user).subscribe(resp => {
           this.userRegistered = resp as User;
           if (this.userRegistered == null) {
             this.registerFailed = true;
           } else {
-            if(accountType === 'retailer'){
-              //go to retailer home page
-              this.router.navigate(['retailer/home']);
-            } else{
-              //go to customer home page
+            if (accountType === 'retailer') {
+              // go to retailer home page
+              this.router.navigate(['login']);
+            } else {
+              // go to customer home page
               this.router.navigate(['']);
             }
           }
         });
-      //}
+      // }
     }
     }
   }
