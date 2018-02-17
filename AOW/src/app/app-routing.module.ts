@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { InventoryFormComponent } from './inventory-form/inventory-form.component';
 import { WineListComponent } from './wine-list/wine-list.component';
 import { AppComponent } from './app.component';
-
 import { RetailHomeComponent } from './retail-home/retail-home.component';
 import { LoginComponent } from './login/login.component';
 import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { SearchresultsComponent } from './searchresults/searchresults.component';
 
 const routes: Routes = [
     {
@@ -50,7 +51,12 @@ const routes: Routes = [
         path: 'form',
         component: InventoryFormComponent,
         pathMatch: 'full'
+    },
+    {
+        path: 'search:query',
+        component: SearchresultsComponent
     }
+
 ];
 
 @NgModule({

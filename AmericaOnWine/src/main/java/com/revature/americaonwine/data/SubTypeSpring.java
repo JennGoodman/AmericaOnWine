@@ -6,7 +6,6 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import com.revature.americaonwine.beans.Country;
 import com.revature.americaonwine.beans.SubType;
 import com.revature.americaonwine.util.HibernateUtil;
 

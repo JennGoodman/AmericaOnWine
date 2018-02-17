@@ -30,6 +30,7 @@ import { TransactionService } from '../services/transaction.service';
 import { TypeService } from '../services/type.service';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
+import { SearchresultsComponent } from './searchresults/searchresults.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { SearchComponent } from './search/search.component';
     WineListComponent,
     BigWineItemComponent,
     HomeComponent,
-    SearchComponent
+    SearchComponent,
+    SearchresultsComponent
   ],
   imports: [
     HttpClientModule,

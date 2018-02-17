@@ -1,3 +1,2 @@
-<p>
-  search works!
-</p>
+<input type="text" id="searchbox" class="searchbox form-control" name="searchbox" placeholder="Search Wines" 
+    ng-bind="query" (keyup)="doDropdown(e, this)" (focus)="loadInventory()"/>

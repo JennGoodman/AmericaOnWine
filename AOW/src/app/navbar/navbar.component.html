@@ -34,6 +34,7 @@
         </li>
       </ng-container>
     </ul>
+    <app-search></app-search>&nbsp;
     <button class="btn btn-outline btn-sm" *ngIf="user; else elseBlock" (click)="logout()">Log Out[{{user.username}}]</button>
     <ng-template #elseBlock>
       <button class="btn btn-outline btn-sm" (click)="login()">Log In</button>
