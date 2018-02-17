@@ -85,7 +85,6 @@ export class InventoryFormComponent implements OnInit {
               {
                   let img = <HTMLInputElement> document.getElementById('img-input');
                   img.parentNode.parentNode.removeChild(img.parentNode);
-                  localStorage.removeItem("invItemClicked");
               }
 
           }
@@ -101,7 +100,8 @@ export class InventoryFormComponent implements OnInit {
         resp =>
         {
             console.log(resp as Inventory);
-            this.router.navigate(['retailer/home']);
+            this.router.navigate(['items']);
+            localStorage.removeItem("invItemClicked");
         });
   }
   submitClicked()

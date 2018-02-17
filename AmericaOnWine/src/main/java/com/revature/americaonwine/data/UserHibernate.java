@@ -6,11 +6,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.apache.log4j.Logger;
-import org.hibernate.Hibernate;
-import org.hibernate.NonUniqueObjectException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
@@ -49,11 +45,8 @@ public class UserHibernate implements UserDao, HibernateSession {
 		query.select(root).where(builder.equal(root.get("username"), username));
 		Query<User> q = session.createQuery(query);
 		List<User> users = q.getResultList();
-		for (User user : users) {
-		}
 		if (users != null && users.size() > 0) {
-			User user = (User) Hibernate.unproxy(users.get(0));
-			return user;
+			return users.get(0);
 		}
 		else {
 			return null;

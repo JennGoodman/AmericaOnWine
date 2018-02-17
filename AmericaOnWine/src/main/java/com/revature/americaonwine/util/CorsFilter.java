@@ -7,18 +7,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-@Component
+@Controller
 public class CorsFilter extends OncePerRequestFilter {
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		response.addHeader("Access-Control-Allow-Origin", "*");
+		String ip = request.getHeader("X-FORWARDED-FOR");
+		if (ip == null || "".equals(ip))
+			ip = request.getRemoteAddr();
+		if ("0:0:0:0:0:0:0:1".equals(ip))
+			ip = "http://localhost:4200";
+		response.addHeader("Access-Control-Allow-Origin", ip);
 		response.addHeader("Vary", "Origin");
-		// response.addHeader("Access-Control-Allow-Credentials", "true");
+		response.addHeader("Access-Control-Allow-Credentials", "true");
 		response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
 		response.addHeader("Access-Control-Allow-Headers",
 				"X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");

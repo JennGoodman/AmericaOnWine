@@ -6,10 +6,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.apache.log4j.Logger;
-import org.hibernate.NonUniqueObjectException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
 
@@ -39,7 +36,11 @@ public class InventoryHibernate implements InventoryDao, HibernateSession {
 			query.select(root).where(critBuilder.and(critBuilder.greaterThanOrEqualTo(root.get("quantity"), 0), 
 					critBuilder.equal(root.get("userId"), user.getId())));
 		} 
-		if (user.getRole() == Roles.numericalRepresentation(Roles.CUSTOMER))
+		else if (user.getRole() == Roles.numericalRepresentation(Roles.ADMIN))
+		{
+			query.select(root);
+		}
+		else
 		{
 			query.select(root).where(critBuilder.and(critBuilder.greaterThan(root.get("quantity"), 0),
 					critBuilder.equal(root.get("status"), 2)));

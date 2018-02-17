@@ -20,7 +20,7 @@ export class CountryService {
   add(user: Country): Observable<Country> {
     const body = JSON.stringify(user);
     return this.http.post(this.MyURL, body, {
-      headers: this.config.defaultHeaders
+      headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
       resp => resp as Country
@@ -29,7 +29,7 @@ export class CountryService {
 
   getAll(): Observable<Country[]> {
     return this.http.get(this.MyURL, {
-      headers: this.config.defaultHeaders
+      headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
       resp => resp as Country[]
@@ -39,7 +39,7 @@ export class CountryService {
   update(user: Country): Observable<Country> {
     const body = JSON.stringify(user);
     return this.http.put(this.MyURL, body, {
-      headers: this.config.defaultHeaders
+      headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
       resp => resp as Country

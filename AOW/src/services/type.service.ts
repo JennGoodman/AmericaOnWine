@@ -20,7 +20,7 @@ export class TypeService {
   add(user: Type): Observable<Type> {
     const body = JSON.stringify(user);
     return this.http.post(this.MyURL, body, {
-      headers: this.config.defaultHeaders
+      headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
       resp => resp as Type
@@ -29,7 +29,7 @@ export class TypeService {
 
   getAll(): Observable<Type[]> {
     return this.http.get(this.MyURL, {
-      headers: this.config.defaultHeaders
+      headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
       resp => resp as Type[]
@@ -39,7 +39,7 @@ export class TypeService {
   update(user: Type): Observable<Type> {
     const body = JSON.stringify(user);
     return this.http.put(this.MyURL, body, {
-      headers: this.config.defaultHeaders
+      headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
       resp => resp as Type
