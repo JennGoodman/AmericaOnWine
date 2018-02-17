@@ -28,4 +28,14 @@ export class WineListComponent implements OnInit {
   ngOnInit() {
   }
 
+  getSpacing() {
+    const wid = document.getElementById('wine').clientWidth;
+    const num = Math.floor(wid / 270);
+    let space = wid - (num * 270);
+    if (space < 40) {
+      space = 40;
+    }
+    return (space / ((num + 2) * 2)).toString() + 'px 17px';
+  }
+
 }

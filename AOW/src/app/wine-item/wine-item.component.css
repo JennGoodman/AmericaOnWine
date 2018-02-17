@@ -1,12 +1,12 @@
 .wine-view {
     display: table-cell;
     text-align: center;
-    width: 270px;
+    width: 200px;
     -webkit-transition: .2s ease-in-out;
     -moz-transition: .2s ease-in-out;
     -o-transition: .2s ease-in-out;
     transition: .2s ease-in-out;
-    font-size: 14px;
+    font-size: 11px;
 }
 
 .row {
@@ -16,7 +16,7 @@
 .wine-img {
     margin: 0px auto 20px;
     width: 100%;
-    height: 375px;
+    height: 277px;
 }
 
 .wine-view:hover {
