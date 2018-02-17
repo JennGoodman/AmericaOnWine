@@ -27,7 +27,7 @@ public class InventoryItemHibernate implements InventoryService {
 	}
 
 	@Override
-	public Object getForUser(User u) {
+	public List<InventoryItem> getForUser(User u) {
 		return id.getItemsForUser(u);
 	}
 
