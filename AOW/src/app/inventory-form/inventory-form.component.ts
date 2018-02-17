@@ -42,22 +42,22 @@ export class InventoryFormComponent implements OnInit {
 
     this.countries.getAll().subscribe(items => {
       this.countryList = items;
-      console.log(items);
+      // console.log(items);
     });
 
     this.types.getAll().subscribe(items => {
       this.typeList = items;
-      console.log(items);
+      // console.log(items);
     });
 
     this.brands.getAll().subscribe(items => {
       this.brandList = items;
-      console.log(items);
+      // console.log(items);
     });
 
     this.subtypes.getAll().subscribe(items => {
       const stl = items;
-      console.log(stl);
+      // console.log(stl);
       this.redSubtypeList = stl.filter((sub) => {
         return sub.type.name === 'Red';
       });
@@ -85,6 +85,7 @@ export class InventoryFormComponent implements OnInit {
               {
                   let img = <HTMLInputElement> document.getElementById('img-input');
                   img.parentNode.parentNode.removeChild(img.parentNode);
+                  localStorage.removeItem("invItemClicked");
               }
 
           }
@@ -101,7 +102,6 @@ export class InventoryFormComponent implements OnInit {
         {
             console.log(resp as Inventory);
             this.router.navigate(['retailer/home']);
-            localStorage.removeItem('invItemClicked');
         });
   }
   submitClicked()
@@ -112,7 +112,7 @@ export class InventoryFormComponent implements OnInit {
    resetType() {
      this.curSubType = null;
      this.typeChanged = false;
-     console.log(this.curType);
+     // console.log(this.curType);
    }
 
    changeBrand() {
@@ -171,12 +171,12 @@ export class InventoryFormComponent implements OnInit {
      }
 
      if (nulled) {
-       console.log('SOMETHING WAS NULL!');
+       // console.log('SOMETHING WAS NULL!');
        this.error = true;
      } else {
       this.fileService.uploadFile(img.files[0]);
       this.invService.add(this.invItem).subscribe(item => {
-        console.log(item);
+        // console.log(item);
       });
       this.router.navigate(['']);
      }

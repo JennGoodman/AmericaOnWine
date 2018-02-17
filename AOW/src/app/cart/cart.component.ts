@@ -18,9 +18,9 @@ export class CartComponent implements OnInit {
   }
 
   updateCart() {
-    console.log('why isn\'t it calling me');
+    // console.log('why isn\'t it calling me');
     this.cartItems = JSON.parse(localStorage.getItem('cart'));
-    console.log(this.cartItems);
+    // console.log(this.cartItems);
   }
 
 }
