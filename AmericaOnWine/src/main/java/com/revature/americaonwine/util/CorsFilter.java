@@ -16,12 +16,12 @@ public class CorsFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		String ip = request.getHeader("X-FORWARDED-FOR");
+		/*String ip = request.getHeader("X-FORWARDED-FOR");
 		if (ip == null || "".equals(ip))
 			ip = request.getRemoteAddr();
 		if ("0:0:0:0:0:0:0:1".equals(ip))
-			ip = "http://localhost:4200";
-		response.addHeader("Access-Control-Allow-Origin", ip);
+			ip = "http://localhost:4200";*/
+		response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
 		response.addHeader("Vary", "Origin");
 		response.addHeader("Access-Control-Allow-Credentials", "true");
 		response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
