@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
-import { AdminViewAccountComponent } from './admin-view-account/admin-view-account.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 
 const routes: Routes = [
     {
@@ -52,9 +52,9 @@ const routes: Routes = [
         component: InventoryFormComponent,
         pathMatch: 'full'
     },
-    { // Ayo matt don't forget to remove this
-        path: 'admin/viewaccounts',
-        component: AdminViewAccountComponent,
+    {
+        path: 'admin/home',
+        component: AdminHomeComponent,
         pathMatch: 'full'
     }
 ];

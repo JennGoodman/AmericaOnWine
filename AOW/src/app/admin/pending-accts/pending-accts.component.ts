@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/User';
-import { AdminService } from '../../services/admin.service';
+import { User } from '../../../models/User';
+import { AdminService } from '../../../services/admin.service';
 
 @Component({
-  selector: 'app-admin-view-account',
-  templateUrl: './admin-view-account.component.html',
-  styleUrls: ['./admin-view-account.component.css']
+  selector: 'app-pending-accts',
+  templateUrl: './pending-accts.component.html',
+  styleUrls: ['./pending-accts.component.css']
 })
-export class AdminViewAccountComponent implements OnInit {
+export class PendingAccountComponent implements OnInit {
 
   users: User[];
 

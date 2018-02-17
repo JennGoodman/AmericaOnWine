@@ -35,7 +35,13 @@ export class LoginComponent implements OnInit {
       } else {
         // Redirect to home
         localStorage.setItem('user', JSON.stringify(this.loggedInUser));
-        this.router.navigate(['']);
+        if (this.loggedInUser.role === 0) {
+          this.router.navigate(['admin/viewaccounts']);
+        } else if (this.loggedInUser.role === 1) {
+          this.router.navigate(['retailer/home']);
+        } else {
+          this.router.navigate(['']);
+        }
         location.reload();
       }
     });

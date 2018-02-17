@@ -29,9 +29,11 @@ import { TagService } from '../services/tag.service';
 import { TransactionService } from '../services/transaction.service';
 import { TypeService } from '../services/type.service';
 import { HomeComponent } from './home/home.component';
-import { AdminViewAccountComponent } from './admin-view-account/admin-view-account.component';
+import { PendingAccountComponent } from './admin/pending-accts/pending-accts.component';
 import { AdminService } from '../services/admin.service';
 import { YesNoPipe } from '../pipes/yes-no.pipe';
+import { RetailerAccountsComponent } from './admin/retailer-accounts/retailer-accounts.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 
 @NgModule({
   declarations: [
@@ -47,8 +49,10 @@ import { YesNoPipe } from '../pipes/yes-no.pipe';
     WineListComponent,
     BigWineItemComponent,
     HomeComponent,
-    AdminViewAccountComponent,
-    YesNoPipe
+    PendingAccountComponent,
+    YesNoPipe,
+    RetailerAccountsComponent,
+    AdminHomeComponent
   ],
   imports: [
     HttpClientModule,

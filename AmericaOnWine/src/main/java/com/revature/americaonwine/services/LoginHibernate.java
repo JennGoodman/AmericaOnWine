@@ -27,14 +27,15 @@ public class LoginHibernate implements LoginService {
 		log.trace("Attempting to register; User: " + user);
 		User email = ud.getUserByEmail(user.getEmail());
 		User username = ud.getUserByUsername(user.getUsername());
-		if(email == null) {
+		if(email != null) {
 			return null;
-		}else if(username == null) {
+		}else if(username != null) {
 			return null;
 		}else {
-			ud.insertUser(user);
+			if (ud.insertUser(user))
+				return user;
+			else return null;
 		}
-		return user;
 	}
 	
 }

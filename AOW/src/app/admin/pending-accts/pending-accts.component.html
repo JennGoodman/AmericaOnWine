@@ -1,0 +1,22 @@
+<div class="container">
+  <h1 class="h1">Pending Retailer Accounts</h1>
+  <div class="row" *ngIf="users.length == 0;else usertable">
+    <p>There are no pending retailer accounts.</p>
+  </div>
+  <ng-template #usertable>
+    <div class="row">
+      <div class="col h5">Username</div>
+      <div class="col h5">Email</div>
+      <div class="col h5">Is Active</div>
+      <div class="col h5">Is Cancelled</div>
+      <div class="col"></div>
+    </div>
+    <div class="row" *ngFor="let retailer of users">
+      <div class="col">{{retailer.username}}</div>
+      <div class="col">{{retailer.email}}</div>
+      <div class="col">{{retailer.active | yesNo}}</div>
+      <div class="col">{{retailer.cancelled | yesNo}}</div>
+      <div class="col"><button (click)="activateRetailer(retailer)">Activate</button></div>
+    </div>
+  </ng-template>
+</div>
