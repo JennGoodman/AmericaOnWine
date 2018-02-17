@@ -23,7 +23,6 @@ public class HibernateUtil {
 	{
 		if(sessionFactory==null) 
 		{
-			// Actually make a sessionFactory
 			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder()
                     .configure().build();
             Metadata meta = new MetadataSources(standardRegistry)

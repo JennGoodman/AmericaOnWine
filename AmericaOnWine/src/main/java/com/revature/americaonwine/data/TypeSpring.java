@@ -12,8 +12,6 @@ import com.revature.americaonwine.beans.Type;
 @Component
 public class TypeSpring implements TypeDao, HibernateSession {
 
-	
-	Logger log = Logger.getLogger(this.getClass());
 	private Session s;
 
 	@Override
@@ -24,14 +22,12 @@ public class TypeSpring implements TypeDao, HibernateSession {
 	
 	@Override
 	public Type save(Type type) {
-		log.trace(this.getClass() + " Called:  save(Type type)");
 		s.save(type);
 		return type;
 	}
 
 	@Override
 	public List<Type> getAll() {
-		log.trace(this.getClass() + " Called: getAll()");
 		String query = "from com.revature.americaonwine.beans.Type";
 		Query<Type> q = s.createQuery(query, Type.class);
 		return q.getResultList();
@@ -39,14 +35,12 @@ public class TypeSpring implements TypeDao, HibernateSession {
 
 	@Override
 	public Type update(Type type) {
-		log.trace(this.getClass() + " Called:  update(Type type)");
 		s.update(type);
 		return type;
 	}
 
 	@Override
 	public void delete(Type type) {
-		log.trace(this.getClass() + " Called:  delete(Type type)");
 		s.delete(type);
 	}
 }

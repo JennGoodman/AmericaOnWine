@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class TransactionSpring implements TransactionDao, HibernateSession {
 	
-	private Logger log = Logger.getLogger(TransactionSpring.class);
 	private Session s;
 	
 	@Override

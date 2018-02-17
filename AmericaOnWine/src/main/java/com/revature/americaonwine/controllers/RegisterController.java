@@ -17,8 +17,6 @@ import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.services.LoginService;
 
 @Controller
-//@CrossOrigin(origins= "http://localhost:4200")
-@CrossOrigin(origins="*")
 @RequestMapping(headers="Accept=application/json, text/plain")
 public class RegisterController {
 	private Logger log = Logger.getLogger(RegisterController.class);

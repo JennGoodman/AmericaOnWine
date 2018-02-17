@@ -4,12 +4,11 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,8 +16,7 @@ import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.services.InventoryService;
 
-@Controller
-@CrossOrigin(origins="*")
+@RestController
 @RequestMapping(value="/inventory", headers="Accept=application/json, text/plain")
 public class InventoryController {
 	@Autowired
@@ -40,7 +38,6 @@ public class InventoryController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
-	@ResponseBody
 	public String getAll(HttpSession ses, ObjectMapper om) throws JsonProcessingException {
 		User u = (User) ses.getAttribute("user");
 		if(u == null) {
@@ -51,9 +48,7 @@ public class InventoryController {
 		return om.writeValueAsString(is.getForUser(u));
 	}
 	
-	@CrossOrigin
-	@RequestMapping(value="inventory/edit",method=RequestMethod.POST, produces= {"application/json; charset=UTF-8"})
-	@ResponseBody
+	@RequestMapping(value="/edit",method=RequestMethod.PUT, produces= {"application/json; charset=UTF-8"})
 	public String editInventory(HttpSession sess, @RequestBody InventoryItem inv, ObjectMapper om) throws JsonProcessingException {
 		User u = (User) sess.getAttribute("user");
 		if (u == null) {
@@ -64,9 +59,7 @@ public class InventoryController {
 		return null;
 	}
 	
-	@CrossOrigin
-	@RequestMapping(value="/inventory/remove", method=RequestMethod.POST, produces= {"application/json; charset=UTF-8"})
-	@ResponseBody
+	@RequestMapping(value="/remove", method=RequestMethod.PUT, produces= {"application/json; charset=UTF-8"})
 	public String removeInventory(HttpSession sess, @RequestBody InventoryItem inv, ObjectMapper om) throws JsonProcessingException {
 		User u = (User) sess.getAttribute("user");
 		if (u == null)
@@ -75,5 +68,4 @@ public class InventoryController {
 			return om.writeValueAsString(is.removeInventoryItem(inv));
 		return null;
 	}
-	
 }

@@ -13,7 +13,6 @@ import com.revature.americaonwine.data.InventoryDao;
 @Component
 public class InventoryItemHibernate implements InventoryService {
 	
-	private Logger log = Logger.getLogger(InventoryItemHibernate.class);
 	@Autowired
 	private InventoryDao id;
 
@@ -41,7 +40,4 @@ public class InventoryItemHibernate implements InventoryService {
 	public InventoryItem removeInventoryItem(InventoryItem item) {
 		return id.removeItem(item);
 	}
-	
-	
-
 }

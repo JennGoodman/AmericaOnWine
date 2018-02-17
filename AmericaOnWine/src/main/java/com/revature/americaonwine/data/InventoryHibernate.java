@@ -20,7 +20,6 @@ import com.revature.americaonwine.beans.User;
 @Component
 public class InventoryHibernate implements InventoryDao, HibernateSession {
 	
-	private Logger log = Logger.getLogger(InventoryHibernate.class);
 	private Session s;
 	
 	@Override
@@ -58,36 +57,20 @@ public class InventoryHibernate implements InventoryDao, HibernateSession {
 	}
 
 	@Override
-	public InventoryItem updateItem(InventoryItem item) {
-		Transaction tx = null;
-		tx = s.getTransaction();
-		try 
-		{
-			s.update(item);
-			tx.commit();
-			return item;
-		} 
-		catch (NonUniqueObjectException e) 
-		{
-			if (tx != null)
-				tx.rollback();
-			return null;
-		}
+	public InventoryItem updateItem(InventoryItem item) 
+	{
+		s.update(item);
+		return item;
 	}
 
 	@Override
 	public InventoryItem addItem(InventoryItem item) {
-		log.trace("Saving new inventory item: \n" + item);
-		Transaction t = s.getTransaction();
-		t.begin();
 		s.save(item);
-		t.commit();
 		return item;
 	}
 
 	@Override
 	public List<InventoryItem> getAll() {
-		log.trace("Getting all inventory items.");
 		CriteriaBuilder builder = s.getCriteriaBuilder();
 		CriteriaQuery<InventoryItem> query = builder.createQuery(InventoryItem.class);
 		Root<InventoryItem> root = query.from(InventoryItem.class);

@@ -19,7 +19,6 @@ import com.revature.americaonwine.beans.User;
 @Component
 public class UserHibernate implements UserDao, HibernateSession {
 
-	private static Logger log = Logger.getLogger(UserHibernate.class);
 	private Session session;
 	
 	@Override
@@ -30,28 +29,10 @@ public class UserHibernate implements UserDao, HibernateSession {
 	
 	@Override
 	public boolean insertUser(User u) {
-		Transaction tx = null;
-		try{
-			tx = session.beginTransaction();
-			int i = (Integer) session.save(u);
-			
-			StringBuilder sb = new StringBuilder();
-			sb.append("User ");
-			sb.append(sb.toString());
-			sb.append(" added to db with id ");
-			sb.append(i);
-			log.info(sb.toString());
-			
-			tx.commit();
-			
+		int id = (int) session.save(u);
+		if (session.get(User.class, id) != null)
 			return true;
-			
-		} catch(Exception e) {
-			if (tx != null)
-				tx.rollback();
-			log.warn(e.getMessage());
-			return false;
-		} 
+		return false;
 	}
 
 	@Override
@@ -62,7 +43,6 @@ public class UserHibernate implements UserDao, HibernateSession {
 
 	@Override
 	public User getUserByUsername(String username) {
-		log.trace("Attempting to search for user with username " + username);
 		CriteriaBuilder builder = session.getCriteriaBuilder();
 		CriteriaQuery<User> query = builder.createQuery(User.class);
 		Root<User> root = query.from(User.class);
@@ -70,16 +50,12 @@ public class UserHibernate implements UserDao, HibernateSession {
 		Query<User> q = session.createQuery(query);
 		List<User> users = q.getResultList();
 		for (User user : users) {
-			log.trace(user.getUsername() + " is in users");
 		}
 		if (users != null && users.size() > 0) {
-			log.trace("Found at least one user");
-			log.trace("Getting user " + Hibernate.getClass(users.get(0)));
 			User user = (User) Hibernate.unproxy(users.get(0));
 			return user;
 		}
 		else {
-			log.trace("Found nothing. NOTHING");
 			return null;
 		}
 	}
@@ -110,17 +86,10 @@ public class UserHibernate implements UserDao, HibernateSession {
 
 	@Override
 	public boolean updateUser(User u) {
-		Transaction tx = session.beginTransaction();
-		try {
-			session.update(u);
-			tx.commit();
+		session.update(u);
+		if(u.equals(session.get(User.class, u.getId())))
 			return true;
-		} catch (NonUniqueObjectException e) {
-			if (tx != null)
-				tx.rollback();
-			return false;
-		}
-		
+		return false;
 	}
 
 	@Override

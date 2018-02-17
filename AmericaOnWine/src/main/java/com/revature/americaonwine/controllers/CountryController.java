@@ -12,7 +12,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.americaonwine.services.WineFormService;
 
 @Controller
-@CrossOrigin()
 @RequestMapping(value="/country", headers="Accept=application/json, text/plain")
 public class CountryController {
 	@Autowired

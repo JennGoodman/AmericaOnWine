@@ -11,7 +11,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.revature.americaonwine.services.TransactionService;
 
 @Controller
-@CrossOrigin(origins="*")
 @RequestMapping(value="/orderno", headers="Accept=application/json, text/plain")
 public class OrderController {
 	@Autowired

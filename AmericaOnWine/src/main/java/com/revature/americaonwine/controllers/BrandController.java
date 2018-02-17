@@ -12,7 +12,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.americaonwine.services.WineFormService;
 
 @Controller
-@CrossOrigin(origins="*")
 @RequestMapping(value="/brand", headers="Accept=application/json, text/plain")
 public class BrandController {
 	@Autowired

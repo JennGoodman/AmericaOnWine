@@ -100,7 +100,7 @@ export class InventoryFormComponent implements OnInit {
         resp =>
         {
             console.log(resp as Inventory);
-            this.router.navigate['retailer/home'];
+            this.router.navigate(['retailer/home']);
             localStorage.removeItem('invItemClicked');
         });
   }

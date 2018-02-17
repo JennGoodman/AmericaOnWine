@@ -102,6 +102,10 @@ export class WineItemComponent implements OnInit {
 
   removePressed(): void {
     this.is.delete(this.invItem)
-    .subscribe( resp => console.log(resp as Inventory));
+      .subscribe( resp =>
+        {
+          console.log(resp as Inventory);
+          location.reload();
+      });
   }
 }

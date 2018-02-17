@@ -12,9 +12,7 @@ import com.revature.americaonwine.beans.Country;
 @Component
 public class CountrySpring implements CountryDao, HibernateSession {
 
-	Logger log = Logger.getLogger(this.getClass());
 	private Session s;
-	
 	
 	@Override
 	public void setSession(Session session) 
@@ -24,32 +22,26 @@ public class CountrySpring implements CountryDao, HibernateSession {
 
 	@Override
 	public Country save(Country country) {
-		log.trace(this.getClass() + " Called:  save(Country country)");
 		s.save(country);
 		return country;
 	}
 
 	@Override
 	public List<Country> getAll() {
-		log.trace(this.getClass() + " Called: getAll()");
 		String query = "from com.revature.americaonwine.beans.Country";
 		Query<Country> q = s.createQuery(query, Country.class);
-		log.trace("[---] Before Items");
 		List<Country> countries = (List<Country>) q.getResultList();
-		log.trace("[===] Countries : " + countries);
 		return countries;
 	}
 
 	@Override
 	public Country update(Country country) {
-		log.trace(this.getClass() + " Called:  update(Country country)");
 		s.update(country);
 		return country;
 	}
 
 	@Override
 	public void delete(Country country) {
-		log.trace(this.getClass() + " Called:  delete(Country country)");
 		s.delete(country);
 	}
 
