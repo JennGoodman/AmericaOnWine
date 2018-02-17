@@ -67,13 +67,13 @@ export class RegisterComponent implements OnInit {
             if(accountType === 'retailer'){
               console.log(" " +accountType + " 1");
               //go to retailer home page
-              localStorage.setItem('user', JSON.stringify(this.userRegistered));
-              this.router.navigate(['retailer/home']);
+              //localStorage.setItem('user', JSON.stringify(this.userRegistered));
+              this.router.navigate(['login']);
             } else{
               console.log(" " +accountType + " 2");
-              //go to customer home page
-              localStorage.setItem('user', JSON.stringify(this.userRegistered));
-              this.router.navigate(['']);
+              //go to login page
+              //localStorage.setItem('user', JSON.stringify(this.userRegistered));
+              this.router.navigate(['login']);
             }
           }
         });

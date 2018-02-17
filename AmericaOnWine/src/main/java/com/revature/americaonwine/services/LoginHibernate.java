@@ -34,7 +34,6 @@ public class LoginHibernate implements LoginService {
 		}else {
 			ud.insertUser(user);
 		}
-		//ud.insertUser(user);
 		return user;
 	}
 	
