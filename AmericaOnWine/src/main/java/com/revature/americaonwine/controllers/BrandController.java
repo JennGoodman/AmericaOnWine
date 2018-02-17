@@ -1,5 +1,6 @@
-package com.revature.americaonwine.delegates;
+package com.revature.americaonwine.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,20 +9,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.americaonwine.services.WineFormHibernate;
 import com.revature.americaonwine.services.WineFormService;
 
 @Controller
-@CrossOrigin(origins="*")
-@RequestMapping(value="/country", headers="Accept=application/json, text/plain")
-public class CountryController {
-	private WineFormService wfs = new WineFormHibernate();
-	private ObjectMapper om = new ObjectMapper();
+@RequestMapping(value="/brand", headers="Accept=application/json, text/plain")
+public class BrandController {
+	@Autowired
+	WineFormService wfs;
 
 	@RequestMapping(method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	@ResponseBody
-	public String getCountries() throws JsonProcessingException {
-		return om.writeValueAsString(wfs.getCountries());
+	public String getCountries(ObjectMapper om) throws JsonProcessingException {
+		return om.writeValueAsString(wfs.getBrands());
 	}
-	
+
 }

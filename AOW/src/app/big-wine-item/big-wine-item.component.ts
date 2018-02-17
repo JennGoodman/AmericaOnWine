@@ -17,7 +17,7 @@ export class BigWineItemComponent implements OnInit {
   }
 
   routeBack() {
-    this.router.navigate(['/items/']);
+    this.router.navigate(['']);
     document.getElementsByTagName('body')[0].style.background = '#ffffff';
   }
 

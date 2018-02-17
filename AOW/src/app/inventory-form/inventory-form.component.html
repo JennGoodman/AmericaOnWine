@@ -91,7 +91,7 @@
         <input id="img-input" name="image" placeholder="What does this product look like?" type="file" accept=".jpg,.png,.jpeg" class="form-control" required aria-label="Image" aria-describedby="basic-addon1" [(ngModel)]="invItem.image">
       </div>
 
-      <button (click)="addWine()" type="button" class="full-button red-wine btn">Submit New Inventory Item</button>
+      <button id="submitButton" (click)="submitClicked()" type="button" class="full-button red-wine btn">Submit New Inventory Item</button>
       <br>
       <div id="error-text" *ngIf="error"><br>There was an error in the info you inputted. Please ensure everything is correct and that you are logged in.</div>
       <br>

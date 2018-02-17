@@ -39,26 +39,25 @@ export class InventoryFormComponent implements OnInit {
   constructor(private countries: CountryService, private types: TypeService, private subtypes: SubTypeService,
      private brands: BrandService, private fileService: FileUploadService, private invService: InventoryService,
      private router: Router) {
-    this.invItem = new Inventory;
 
     this.countries.getAll().subscribe(items => {
       this.countryList = items;
-      console.log(items);
+      // console.log(items);
     });
 
     this.types.getAll().subscribe(items => {
       this.typeList = items;
-      console.log(items);
+      // console.log(items);
     });
 
     this.brands.getAll().subscribe(items => {
       this.brandList = items;
-      console.log(items);
+      // console.log(items);
     });
 
     this.subtypes.getAll().subscribe(items => {
       const stl = items;
-      console.log(stl);
+      // console.log(stl);
       this.redSubtypeList = stl.filter((sub) => {
         return sub.type.name === 'Red';
       });
@@ -73,12 +72,47 @@ export class InventoryFormComponent implements OnInit {
       });
 
     });
-   }
+    this.invItem = JSON.parse(localStorage.getItem("invItemClicked"));
+      if (this.invItem)
+      {
+          this.curCountry = this.invItem.country.name;
+          this.curBrand = this.invItem.brand.name;
+          this.curType = this.invItem.subType.type.name;
+          this.curSubType = this.invItem.subType.name;
+          document.onreadystatechange = () =>
+          {
+              if(document.readyState === 'complete')
+              {
+                  let img = <HTMLInputElement> document.getElementById('img-input');
+                  img.parentNode.parentNode.removeChild(img.parentNode);
+                  localStorage.removeItem("invItemClicked");
+              }
+
+          }
+      }
+      else
+      {
+        this.invItem = new Inventory;
+      }
+  }
+  updateItem()
+  {
+    this.invService.update(this.invItem).subscribe(
+        resp =>
+        {
+            console.log(resp as Inventory);
+            this.router.navigate(['retailer/home']);
+        });
+  }
+  submitClicked()
+  {
+      localStorage.getItem('invItemClicked') ? this.updateItem() : this.addWine();
+  }
 
    resetType() {
      this.curSubType = null;
      this.typeChanged = false;
-     console.log(this.curType);
+     // console.log(this.curType);
    }
 
    changeBrand() {
@@ -94,9 +128,9 @@ export class InventoryFormComponent implements OnInit {
    }
 
    addWine() {
-     this.invItem.id = Math.floor((Math.random() * 1000));
      this.invItem.userId = JSON.parse(localStorage.getItem('user')) ? JSON.parse(localStorage.getItem('user')).id : null;
-     console.log(this.invItem.userId);
+     this.invItem.id = 0;
+     // console.log(this.invItem.userId);
      this.invItem.submitted = new Date();
 
     this.invItem.brand = this.brandList.filter((item) => {
@@ -137,12 +171,12 @@ export class InventoryFormComponent implements OnInit {
      }
 
      if (nulled) {
-       console.log('SOMETHING WAS NULL!');
+       // console.log('SOMETHING WAS NULL!');
        this.error = true;
      } else {
       this.fileService.uploadFile(img.files[0]);
       this.invService.add(this.invItem).subscribe(item => {
-        console.log(item);
+        // console.log(item);
       });
       this.router.navigate(['']);
      }

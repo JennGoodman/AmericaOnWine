@@ -20,7 +20,7 @@ export class BrandService {
   add(user: Brand): Observable<Brand> {
     const body = JSON.stringify(user);
     return this.http.post(this.MyURL, body, {
-      headers: this.config.defaultHeaders, withCredentials: true
+      headers: this.config.defaultHeaders
     })
       .map(
       resp => resp as Brand
@@ -29,7 +29,7 @@ export class BrandService {
 
   getAll(): Observable<Brand[]> {
     return this.http.get(this.MyURL, {
-      headers: this.config.defaultHeaders, withCredentials: true
+      headers: this.config.defaultHeaders
     })
       .map(
       resp => resp as Brand[]
@@ -39,7 +39,7 @@ export class BrandService {
   update(user: Brand): Observable<Brand> {
     const body = JSON.stringify(user);
     return this.http.put(this.MyURL, body, {
-      headers: this.config.defaultHeaders, withCredentials: true
+      headers: this.config.defaultHeaders
     })
       .map(
       resp => resp as Brand

@@ -23,7 +23,7 @@ export class InventoryService {
     console.log('body is ' + body);
     console.log(JSON.stringify(user.brand));
     return this.http.post(this.MyURL, body, {
-      headers: this.config.defaultHeaders, withCredentials: true
+      headers: this.config.defaultHeaders
     })
       .map(
       resp => resp as Inventory
@@ -32,7 +32,7 @@ export class InventoryService {
 
   getAll(): Observable<Inventory[]> {
     return this.http.get(this.MyURL, {
-      headers: this.config.defaultHeaders, withCredentials: true
+      headers: this.config.defaultHeaders
     })
       .map(
       resp => resp as Inventory[]
@@ -41,11 +41,21 @@ export class InventoryService {
 
   update(user: Inventory): Observable<Inventory> {
     const body = JSON.stringify(user);
-    return this.http.put(this.MyURL, body, {
-      headers: this.config.defaultHeaders, withCredentials: true
+    return this.http.put(this.MyURL+'/edit', body, {
+      headers: this.config.defaultHeaders
     })
       .map(
       resp => resp as Inventory
       );
   }
+
+  delete(inv: Inventory): Observable<Inventory> {
+    const body = JSON.stringify(inv);
+    return this.http.put(this.MyURL+'/remove', body, {
+      headers: this.config.defaultHeaders
+    })
+      .map(
+      resp => resp as Inventory
+      );
+    }
 }
