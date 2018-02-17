@@ -19,24 +19,19 @@ import com.revature.americaonwine.services.LoginService;
 @Controller
 @RequestMapping(headers="Accept=application/json, text/plain")
 public class RegisterController {
-	private Logger log = Logger.getLogger(RegisterController.class);
 	    @Autowired
 		private LoginService ser;
 		
 		@RequestMapping(value="/register", method=RequestMethod.POST)
 		@ResponseBody
 		public String register(@RequestBody User fromWeb, ObjectMapper om, HttpSession session) throws JsonProcessingException {
-			log.trace("Got Request body and is : " + fromWeb);
 			User fromDB = ser.register(fromWeb);
 			
 			if(fromDB != null) {
-				log.trace("Didn't find user in the DB, valid user");
 				fromDB = ser.register(fromWeb);
-				session.setAttribute("user", fromDB);
 				return om.writeValueAsString(fromDB);
 			}
 			else {
-				log.trace("Found user in the DB, return null");
 				return null;
 			}
 			
