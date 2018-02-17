@@ -20,7 +20,7 @@ export class TagService {
   add(user: Tag): Observable<Tag> {
     const body = JSON.stringify(user);
     return this.http.post(this.MyURL, body, {
-      headers: this.config.defaultHeaders
+      headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
       resp => resp as Tag
@@ -29,7 +29,7 @@ export class TagService {
 
   getAll(): Observable<Tag[]> {
     return this.http.get(this.MyURL, {
-      headers: this.config.defaultHeaders
+      headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
       resp => resp as Tag[]
@@ -39,7 +39,7 @@ export class TagService {
   update(user: Tag): Observable<Tag> {
     const body = JSON.stringify(user);
     return this.http.put(this.MyURL, body, {
-      headers: this.config.defaultHeaders
+      headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
       resp => resp as Tag

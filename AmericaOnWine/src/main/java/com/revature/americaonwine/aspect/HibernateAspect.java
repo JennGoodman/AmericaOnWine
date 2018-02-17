@@ -34,7 +34,6 @@ public class HibernateAspect {
 				tx.rollback();
 			throw e;
 		}
-		
 		tx.commit();
 		session.close();
 		hs.setSession(null);

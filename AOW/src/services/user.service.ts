@@ -21,7 +21,7 @@ export class UserService {
   add(user: User): Observable<User> {
     const body = JSON.stringify(user);
     return this.http.post(this.MyURL, body, {
-      headers: this.config.defaultHeaders
+      headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
       resp => resp as User
@@ -30,7 +30,7 @@ export class UserService {
 
   getAll(): Observable<User[]> {
     return this.http.get(this.MyURL, {
-      headers: this.config.defaultHeaders
+      headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
       resp => resp as User[]
@@ -40,7 +40,7 @@ export class UserService {
   login(user: Object): Observable<User> {
     const body = JSON.stringify(user);
     return this.http.post(this.config.appURL + 'login', body, {
-      headers: this.config.defaultHeaders
+      headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
       resp => resp as User
@@ -50,7 +50,7 @@ export class UserService {
   update(user: User): Observable<User> {
     const body = JSON.stringify(user);
     return this.http.put(this.MyURL, body, {
-      headers: this.config.defaultHeaders
+      headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
       resp => resp as User
