@@ -5,7 +5,8 @@
     {{invItem.country.name}}<br>
     {{invItem.year}}<br>
     {{invItem.subType.type.name}} - {{invItem.subType.name}}<br>
-    ${{invItem.price}} - {{invItem.volume}} L<br>
+    {{invItem.price | currency}} - {{invItem.volume}} L<br>
+    {{invItem.quantity}} available<br>
     <div *ngIf="isCustomer == true">
         <span class="add" (click)="addToCart($event)">+</span>
         <input (click)="endEvent($event)" [(ngModel)]="num" id="add-num" class="to-cart" type="number" max=999 min=1 value=1>
