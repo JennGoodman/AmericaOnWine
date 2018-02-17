@@ -6,6 +6,7 @@
     -moz-transition: .2s ease-in-out;
     -o-transition: .2s ease-in-out;
     transition: .2s ease-in-out;
+    font-size: 14px;
 }
 
 .row {
