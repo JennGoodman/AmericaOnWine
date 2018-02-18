@@ -35,6 +35,7 @@ import { YesNoPipe } from '../pipes/yes-no.pipe';
 import { RetailerAccountsComponent } from './admin/retailer-accounts/retailer-accounts.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { CartComponent } from './cart/cart.component';
+import { AdminApproveInvComponent } from './admin-approve-inv/admin-approve-inv.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { CartComponent } from './cart/cart.component';
     YesNoPipe,
     RetailerAccountsComponent,
     AdminHomeComponent,
-    CartComponent
+    CartComponent,
+    AdminApproveInvComponent
   ],
   imports: [
     HttpClientModule,

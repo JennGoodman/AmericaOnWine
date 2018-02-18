@@ -41,7 +41,11 @@ export class InventoryService {
 
   update(user: Inventory): Observable<Inventory> {
     const body = JSON.stringify(user);
+<<<<<<< HEAD
     return this.http.put(this.MyURL+'/edit', body, {
+=======
+    return this.http.put(this.MyURL+ '/approval', body, {
+>>>>>>> 146c71c15c566b62a3e1fbf6e188ade4be687816
       headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(

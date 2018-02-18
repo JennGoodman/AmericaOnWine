@@ -3,12 +3,13 @@ package com.revature.americaonwine.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.beans.Roles;
 import com.revature.americaonwine.beans.User;
+import com.revature.americaonwine.data.InventoryHibernate;
 import com.revature.americaonwine.data.UserDao;
 
 @Component
@@ -16,6 +17,8 @@ public class AdminHibernate implements AdminService {
 	
 	@Autowired
 	private UserDao ud;
+	@Autowired
+	private InventoryDao id;
 	
 	@Override
 	public List<User> getPendingRetailerAccounts() {
@@ -52,5 +55,10 @@ public class AdminHibernate implements AdminService {
 	public boolean reactivateRetailerAccount(User u) {
 		u.setCancelled(0);
 		return ud.updateUser(u);
+	}
+	@Override
+	public InventoryItem approval(InventoryItem inv) {
+		id.updateItem(inv);
+		return inv;
 	}
 }
