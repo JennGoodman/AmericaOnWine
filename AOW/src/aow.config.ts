@@ -5,12 +5,8 @@ export class Config {
     defaultHeaders: HttpHeaders;
 
     constructor() {
-<<<<<<< HEAD
         // this.appURL = 'http://localhost:8081/AmericaOnWine/';
-=======
-        // this.appURL = 'http://localhost:8080/AmericaOnWine/';
->>>>>>> 7c82da57c2fadac24be3fd8760464d9d8881f80e
-        this.appURL = 'http://18.219.46.59:8080/americaonwine/';
+        this.appURL = 'http://52.15.193.90:8080/americaonwine/';
         this.defaultHeaders = new HttpHeaders();
         this.defaultHeaders = this.defaultHeaders.append('Content-Type', 'application/json');
         // this.defaultHeaders = this.defaultHeaders.append('Access-Control-Allow-Origin', '*');
