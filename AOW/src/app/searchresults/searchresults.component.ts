@@ -51,4 +51,9 @@ export class SearchresultsComponent implements OnInit {
       }
     });
   }
+
+  showDetail(inv: Inventory) {
+    localStorage.setItem('item', JSON.stringify(inv));
+    this.router.navigate(['item']);
+  }
 }

@@ -1,8 +1,8 @@
 <br>
 <ng-container *ngIf="results.length > 0; else elseBlock">
-  <table class="table table-striped table-hover table-condensed table-bordered">
+  <table class="table table-striped table-hover table-condensed table-bordered" width="100%">
     <tr>
-      <td></td>
+      <td width="8%"></td>
       <td>Name</td>
       <td>Brand</td>
       <td>Category</td>
@@ -11,9 +11,9 @@
       <td>Volume</td>
       <td>Stock</td>
       <td>Price</td>
-      <td width=30%>Description</td>
+      <td width="30%">Description</td>
     </tr>
-    <tr *ngFor="let i of results">
+    <tr *ngFor="let i of results" (click)="showDetail(i)">
       <td>
         <img class="img-thumbnail" src={{i.imageUrl}}>
       </td>
@@ -32,6 +32,6 @@
 </ng-container>
 <ng-template #elseBlock>
   <div align="center">
-    <h1 class="">No Results Found!</h1>
+    No Results Found!
   </div>
 </ng-template>
