@@ -1,0 +1,18 @@
+<p>
+  checkout-cart works!
+</p>
+
+<div id="checkout">
+  <div *ngFor="let item of cartItems" class="cart-item">
+      <div>{{item.inventoryId}}</div><div>Quantity: {{item.quantity}}</div><div>Price: {{item.total | number}}</div>
+  </div>
+  <!-- {{this.sum | number}} -->
+</div>
+<div>
+    <label >Credit/Debit Card Info:</label>
+    <input id="cardInfo" #cardInfo type="text" name="cardInfo" required>
+    <div *ngIf="invalidLen">Invalid Card Entry, Try Again</div>
+</div>
+<div>
+    <button (click)="verify(cardInfo.value)">Confirm Purchase</button>
+</div>

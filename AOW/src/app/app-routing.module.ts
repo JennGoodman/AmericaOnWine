@@ -10,6 +10,7 @@ import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { CustomerHomeComponent } from './customer-home/customer-home.component';
+import { CheckoutCartComponent } from './checkout-cart/checkout-cart.component';
 
 const routes: Routes = [
     {
@@ -56,7 +57,13 @@ const routes: Routes = [
         path: 'customer/home',
         component: CustomerHomeComponent,
         pathMatch: 'full'
+    },
+    {
+        path: 'checkout',
+        component: CheckoutCartComponent,
+        pathMatch: 'full'
     }
+    
 ];
 
 @NgModule({
