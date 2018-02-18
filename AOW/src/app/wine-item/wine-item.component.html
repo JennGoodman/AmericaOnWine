@@ -1,18 +1,19 @@
 <div (click)="viewItem()" [style.background-color]="getColor()" [style.color]="textColor()" id="beaker" class="card wine-view">
     <img class="card-img-top wine-img" src="{{invItem.imageUrl}}"/><br>
     <div class="card-body">{{invItem.name}}<br>
-    {{invItem.brand.brand}}<br>
-    {{invItem.country.country}}<br>
+    {{invItem.brand.name}}<br>
+    {{invItem.country.name}}<br>
     {{invItem.year}}<br>
-    {{invItem.subType.type.type}} - {{invItem.subType.subType}}<br>
+    {{invItem.subType.type.name}} - {{invItem.subType.name}}<br>
     ${{invItem.price}} - {{invItem.volume}} L<br>
     <div *ngIf="isCustomer == true">
         <span class="add" (click)="addToCart($event)">+</span>
-        <input class="to-cart" type="number" max=999 min=1 value=1>
+        <input (click)="endEvent($event)" [(ngModel)]="num" id="add-num" class="to-cart" type="number" max=999 min=1 value=1>
     </div>
     <div *ngIf="isCustomer == false">
-        <button (click)='editPressed()' class="btn btn-outline-info btn-sm">Edit</button>
-        <button (click)='removePressed()' class="btn btn-outline-info btn-sm">Remove</button>
+        <br>
+        <button (click)='editPressed($event)' class="btn btn-sm">Edit</button>
+        <button (click)='removePressed()' class="btn btn-sm">Remove</button>
     </div>
     <br>
     </div>

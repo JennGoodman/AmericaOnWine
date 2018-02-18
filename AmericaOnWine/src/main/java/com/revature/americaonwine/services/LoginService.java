@@ -1,7 +1,5 @@
 package com.revature.americaonwine.services;
 
-import org.springframework.stereotype.Component;
-
 import com.revature.americaonwine.beans.User;
 
 

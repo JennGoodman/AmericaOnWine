@@ -35,7 +35,8 @@ export class LoginComponent implements OnInit {
       } else {
         // Redirect to home
         localStorage.setItem('user', JSON.stringify(this.loggedInUser));
-        this.router.navigate(['form']);
+        this.router.navigate(['']);
+        location.reload();
       }
     });
   }

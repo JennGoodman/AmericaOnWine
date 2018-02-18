@@ -1,13 +1,7 @@
-package com.revature.americaonwine.delegates;
+package com.revature.americaonwine.controllers;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.http.MediaType;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,27 +17,20 @@ import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.services.LoginService;
 
 @Controller
-//@CrossOrigin(origins= "http://localhost:4200")
-@CrossOrigin(origins="*")
 @RequestMapping(headers="Accept=application/json, text/plain")
 public class RegisterController {
-	private Logger log = Logger.getLogger(RegisterController.class);
 	    @Autowired
 		private LoginService ser;
-		private ObjectMapper om = new ObjectMapper();
 		
 		@RequestMapping(value="/register", method=RequestMethod.POST)
 		@ResponseBody
-		public String register(@RequestBody User fromWeb, HttpSession session) throws JsonProcessingException {
-			log.trace("Got Request body and is : " + fromWeb);
+		public String register(@RequestBody User fromWeb, ObjectMapper om, HttpSession session) throws JsonProcessingException {
 			User fromDB = ser.register(fromWeb);
-			log.trace(fromDB);
 			if(fromDB != null) {
-				log.trace("Didn't find user in the DB, valid user");
+				fromDB = ser.register(fromWeb);
 				return om.writeValueAsString(fromDB);
 			}
 			else {
-				log.trace("Found user in the DB, return null");
 				return null;
 			}
 			

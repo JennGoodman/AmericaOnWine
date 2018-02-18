@@ -2,17 +2,19 @@ package com.revature.americaonwine.services;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.data.InventoryDao;
-import com.revature.americaonwine.data.InventoryHibernate;
 
 @Component
 public class InventoryItemHibernate implements InventoryService {
 	
-	private InventoryDao id = new InventoryHibernate();
+	@Autowired
+	private InventoryDao id;
 
 	@Override
 	public List<InventoryItem> getAll() {
@@ -25,8 +27,17 @@ public class InventoryItemHibernate implements InventoryService {
 	}
 
 	@Override
-	public Object getForUser(User u) {
+	public List<InventoryItem> getForUser(User u) {
 		return id.getItemsForUser(u);
 	}
 
+	@Override
+	public InventoryItem updateInventoryItem(InventoryItem item) {
+		return id.updateItem(item);
+	}
+
+	@Override
+	public InventoryItem removeInventoryItem(InventoryItem item) {
+		return id.removeItem(item);
+	}
 }

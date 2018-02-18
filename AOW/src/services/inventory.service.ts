@@ -18,7 +18,10 @@ export class InventoryService {
   constructor(private http: HttpClient) { }
 
   add(user: Inventory): Observable<Inventory> {
+    console.log('add in inventory.service called');
     const body = JSON.stringify(user);
+    console.log('body is ' + body);
+    console.log(JSON.stringify(user.brand));
     return this.http.post(this.MyURL, body, {
       headers: this.config.defaultHeaders, withCredentials: true
     })
@@ -38,11 +41,21 @@ export class InventoryService {
 
   update(user: Inventory): Observable<Inventory> {
     const body = JSON.stringify(user);
-    return this.http.put(this.MyURL, body, {
+    return this.http.put(this.MyURL+'/edit', body, {
       headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
       resp => resp as Inventory
       );
   }
+
+  delete(inv: Inventory): Observable<Inventory> {
+    const body = JSON.stringify(inv);
+    return this.http.put(this.MyURL+'/remove', body, {
+      headers: this.config.defaultHeaders, withCredentials: true
+    })
+      .map(
+      resp => resp as Inventory
+      );
+    }
 }

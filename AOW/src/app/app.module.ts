@@ -31,6 +31,7 @@ import { TypeService } from '../services/type.service';
 import { HomeComponent } from './home/home.component';
 import { CustomerHomeComponent } from './customer-home/customer-home.component';
 import { CheckoutCartComponent } from './checkout-cart/checkout-cart.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CheckoutCartComponent } from './checkout-cart/checkout-cart.component';
     BigWineItemComponent,
     HomeComponent,
     CustomerHomeComponent,
-    CheckoutCartComponent
+    CheckoutCartComponent,
+    CartComponent
   ],
   imports: [
     HttpClientModule,
@@ -66,7 +68,8 @@ import { CheckoutCartComponent } from './checkout-cart/checkout-cart.component';
     SubTypeService,
     TagService,
     TransactionService,
-    TypeService
+    TypeService,
+    CartComponent
   ],
   bootstrap: [AppComponent]
 })

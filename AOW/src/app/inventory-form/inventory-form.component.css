@@ -1,10 +1,30 @@
 #inv-form {
+    position: relative;
+    top: -85px;
     background-color: #dddddd;
     color: #ffffff;
+    -webkit-transform: scale(.75);
+    -moz-transform: scale(.75);
+    -ms-transform: scale(.75);
+    -o-transform: scale(.75);
+    transform: scale(.75);
+    -webkit-transition: 0s ease-in-out;
+    -moz-transition: 0s ease-in-out;
+    -o-transition: 0s ease-in-out;
+    transition: 0s ease-in-out;
 }
 
 #big-text {
     font-size: 28px;
+}
+
+.input-group {
+    font-size: 10px;
+    height: 43px;
+}
+
+select {
+    height: 43px !important;
 }
 
 .small-bars {
@@ -41,4 +61,16 @@
 .tall-text {
     height: 100px;
     resize: none;
+}
+
+#error-text {
+    color: red;
+    font-size: 20px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+html {
+    overflow: hidden;
 }
