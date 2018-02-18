@@ -13,7 +13,6 @@ import { Inventory } from '../../models/Inventory';
 export class SearchresultsComponent implements OnInit {
 
   results = new Array<Inventory>();
-  query: string;
 
   constructor(
     private iService: InventoryService,
@@ -21,33 +20,58 @@ export class SearchresultsComponent implements OnInit {
     private router: Router) { }
 
   async ngOnInit() {
-    await this.route.params.subscribe(params => this.query = params['query'].toLowerCase());
+    let query: string;
+    await this.route.params.subscribe(params => query = params['query'].toLowerCase());
     await this.iService.getAll().subscribe(inventory => {
-      if (inventory.length > 0) {
-        for (let index = 0; index < inventory.length; index++) {
-          const element = inventory[index];
-          if (element.status === 2) {
-            if (element.name.toLowerCase().indexOf(this.query) >= 0) {
-              this.results.push(element);
-            } else if (element.brand.name.toLowerCase().indexOf(this.query) >= 0) {
-              this.results.push(element);
-            } else if (element.country.name.toLowerCase().indexOf(this.query) >= 0) {
-              this.results.push(element);
-            } else if (element.description.toLowerCase().indexOf(this.query) >= 0) {
-              this.results.push(element);
-            } else if (element.subType.name.toLowerCase().indexOf(this.query) >= 0) {
-              this.results.push(element);
-            } else if (element.subType.type.name.toLowerCase().indexOf(this.query) >= 0) {
-              this.results.push(element);
-            } else if (element.year.toString().toLowerCase().indexOf(this.query) >= 0) {
-              this.results.push(element);
-            } else if (element.price.toString().toLowerCase().indexOf(this.query) >= 0) {
-              this.results.push(element);
+      if (query.length > 0) {
+        const searchTerms = query.split(' ');
+        if (inventory.length > 0) {
+          searchTerms.forEach(term => {
+            for (let index = 0; index < inventory.length; index++) {
+              const element = inventory[index];
+              if (element.status === 2) {
+                if (element.name.toLowerCase().indexOf(term) >= 0) {
+                  if (!this.results.includes(element)) {
+                    this.results.push(element);
+                  }
+                } else if (element.brand.name.toLowerCase().indexOf(term) >= 0) {
+                  if (!this.results.includes(element)) {
+                    this.results.push(element);
+                  }
+                } else if (element.country.name.toLowerCase().indexOf(term) >= 0) {
+                  if (!this.results.includes(element)) {
+                    this.results.push(element);
+                  }
+                } else if (element.description.toLowerCase().indexOf(term) >= 0) {
+                  if (!this.results.includes(element)) {
+                    this.results.push(element);
+                  }
+                } else if (element.subType.name.toLowerCase().indexOf(term) >= 0) {
+                  if (!this.results.includes(element)) {
+                    this.results.push(element);
+                  }
+                } else if (element.subType.type.name.toLowerCase().indexOf(term) >= 0) {
+                  if (!this.results.includes(element)) {
+                    this.results.push(element);
+                  }
+                } else if (element.year.toString().toLowerCase().indexOf(term) >= 0) {
+                  if (!this.results.includes(element)) {
+                    this.results.push(element);
+                  }
+                } else if (element.price.toString().toLowerCase().indexOf(term) >= 0) {
+                  if (!this.results.includes(element)) {
+                    this.results.push(element);
+                  }
+                }
+              }
             }
-          }
+          });
+        } else {
+          console.log('Inventory Returned NULL or Empty!');
         }
+
       } else {
-        console.log('Inventory returned NULL or empty!');
+        console.log('No Search Terms!');
       }
     });
   }
