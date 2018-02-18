@@ -40,6 +40,10 @@ public class InventoryController {
 	@RequestMapping(method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	public String getAll(HttpSession ses, ObjectMapper om) throws JsonProcessingException {
 		User u = (User) ses.getAttribute("user");
+		if (u == null) {
+			u = new User();
+			u.setRole(2);
+		}
 		return om.writeValueAsString(is.getForUser(u));
 	}
 	
