@@ -4,19 +4,21 @@
     <p>There are no pending retailer accounts.</p>
   </div>
   <ng-template #usertable>
-    <div class="row">
-      <div class="col h5">Username</div>
-      <div class="col h5">Email</div>
-      <div class="col h5">Is Active</div>
-      <div class="col h5">Is Cancelled</div>
-      <div class="col"></div>
-    </div>
-    <div class="row" *ngFor="let retailer of users">
-      <div class="col">{{retailer.username}}</div>
-      <div class="col">{{retailer.email}}</div>
-      <div class="col">{{retailer.active | yesNo}}</div>
-      <div class="col">{{retailer.cancelled | yesNo}}</div>
-      <div class="col"><button (click)="activateRetailer(retailer)">Activate</button></div>
-    </div>
+    <table class="table table-striped table-hover table-condensed table-bordered">
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Is Active</th>
+        <th>Is Cancelled</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let retailer of users">
+        <td>{{retailer.username}}</td>
+        <td>{{retailer.email}}</td>
+        <td>{{retailer.active | yesNo}}</td>
+        <td>{{retailer.cancelled | yesNo}}</td>
+        <td><button (click)="activateRetailer(retailer)">Activate</button></td>
+      </tr>
+    </table>
   </ng-template>
 </div>

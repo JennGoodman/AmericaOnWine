@@ -1,25 +1,27 @@
 <div class="container">
-  <h1 class="h1">Activated Retailer Accounts</h1>
-  <div class="row" *ngIf="users.length == 0;else usertable">
-    <p>There are no activated retailer accounts.</p>
-  </div>
-  <ng-template #usertable>
-    <div class="row">
-      <div class="col h5">Username</div>
-      <div class="col h5">Email</div>
-      <div class="col h5">Is Active</div>
-      <div class="col h5">Is Cancelled</div>
-      <div class="col"></div>
-    </div>
-    <div class="row" *ngFor="let retailer of users">
-      <div class="col">{{retailer.username}}</div>
-      <div class="col">{{retailer.email}}</div>
-      <div class="col">{{retailer.active | yesNo}}</div>
-      <div class="col">{{retailer.cancelled | yesNo}}</div>
-      <div class="col" *ngIf="retailer.active == 1;else reactivateAcctButton"><button (click)="cancelRetailer(retailer)">Cancel Account</button></div>
-      <ng-template #reactivateAcctButton>
-        <div class="col"><button (click)="reactivateRetailer(retailer)">Reactivate Account</button></div>
+<h1 class="h1">Activated Retailer Accounts</h1>
+<div class="row" *ngIf="users.length == 0;else usertable">
+  <p>There are no activated retailer accounts.</p>
+</div>
+<ng-template #usertable>
+  <table class="table table-striped table-hover table-condensed table-bordered">
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Is Active</th>
+      <th>Is Cancelled</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let retailer of users">
+      <td>{{retailer.username}}</td>
+      <td>{{retailer.email}}</td>
+      <td>{{retailer.active | yesNo}}</td>
+      <td>{{retailer.cancelled | yesNo}}</td>
+      <td *ngIf="retailer.cancelled === 0;else reactivateButton"><button (click)="cancelRetailer(retailer)">Cancel Account</button></td>
+      <ng-template #reactivateButton>
+        <td><button (click)="reactivateRetailer(retailer)">Reactivate Account</button></td>
       </ng-template>
-    </div>
-  </ng-template>
+    </tr>
+  </table>
+</ng-template>
 </div>

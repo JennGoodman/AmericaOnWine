@@ -12,7 +12,7 @@ import { Inventory } from '../../models/Inventory';
 export class AdminApproveInvComponent implements OnInit {
   allInvApprovalItem: Inventory[] = new Array();
   temp: Inventory[];
-  visible: boolean = false;
+  visible = false;
 
   constructor(private service: InventoryService, private router: Router) {
    }
@@ -22,40 +22,40 @@ export class AdminApproveInvComponent implements OnInit {
       this.temp = resp as Inventory[];
       console.log(this.temp);
 
-      for(let a of this.temp){
-          if(a.status == 1){
+      for (const a of this.temp) {
+          if (a.status === 1) {
             console.log(a);
             this.allInvApprovalItem.push(a);
           }
       }
       console.log(this.allInvApprovalItem);
-      if(this.allInvApprovalItem.length == 0){
+      if (this.allInvApprovalItem.length === 0) {
         this.visible = true;
       }
     });
   }
 
-  approve(inv: Inventory){
-    console.log("Approving item with id of: ", inv.id, inv.status);
-    inv.status=2;
-    console.log("Approving item with id of: ", inv.id, inv.status);
-    this.service.update(inv).subscribe(resp => {
-      inv= resp as Inventory;
-      console.log("returned inventory item is: ", inv);
+  approve(inv: Inventory) {
+    console.log('Approving item with id of: ', inv.id, inv.status);
+    inv.status = 2;
+    console.log('Approving item with id of: ', inv.id, inv.status);
+    this.service.approve(inv).subscribe(resp => {
+      inv = resp as Inventory;
+      console.log('returned inventory item is: ', inv);
     });
-    //this.router.navigate(['inventory/approval']);
+    // this.router.navigate(['inventory/approval']);
     window.location.reload();
   }
 
-  deny(inv: Inventory){
-    console.log("Approving item with id of: ", inv.id, inv.status);
-    inv.status=0;
-    console.log("Approving item with id of: ", inv.id, inv.status);
-    this.service.update(inv).subscribe(resp => {
-      inv= resp as Inventory;
-      console.log("returned inventory item is: ", inv);
+  deny(inv: Inventory) {
+    console.log('Approving item with id of: ', inv.id, inv.status);
+    inv.status = 0;
+    console.log('Approving item with id of: ', inv.id, inv.status);
+    this.service.approve(inv).subscribe(resp => {
+      inv = resp as Inventory;
+      console.log('returned inventory item is: ', inv);
     });
     window.location.reload();
-    //this.router.navigate(['inventory/approval']);
+    // this.router.navigate(['inventory/approval']);
   }
 }

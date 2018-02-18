@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.beans.Roles;
 import com.revature.americaonwine.beans.User;
-import com.revature.americaonwine.data.InventoryHibernate;
+import com.revature.americaonwine.data.InventoryDao;
 import com.revature.americaonwine.data.UserDao;
 
 @Component
