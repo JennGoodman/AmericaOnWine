@@ -25,7 +25,6 @@ public class InventoryController {
 	private Logger log = Logger.getLogger(InventoryController.class);
 	
 	@RequestMapping(method=RequestMethod.POST, produces={"application/json; charset=UTF-8"})
-	@ResponseBody
 	public String addInventory(@RequestBody InventoryItem inv, ObjectMapper om, HttpSession ses) throws JsonProcessingException {
 		User u = (User) ses.getAttribute("user");
 		log.trace(u);
