@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   getWidth() {
     if (this.isCustomer) {
-      return '85%';
+      return '80%';
     } else {
       return '100%';
     }

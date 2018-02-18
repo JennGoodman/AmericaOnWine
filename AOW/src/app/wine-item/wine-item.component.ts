@@ -57,7 +57,7 @@ export class WineItemComponent implements OnInit {
 
       let exists = false;
       ts.forEach((transaction) => {
-        if (transaction.inventoryId === this.invItem.id) {
+        if (transaction.inventory.id === this.invItem.id) {
           transaction.quantity += this.num;
           transaction.total += this.invItem.price * this.num;
           exists = true;
@@ -65,13 +65,14 @@ export class WineItemComponent implements OnInit {
       });
 
       if (!exists) {
-        const tmp = new Transaction().setVals(ts[0].orderNumber, this.invItem.id, this.num, userId, this.invItem.price * this.num);
+        const tmp = new Transaction().setVals(ts[0].orderNumber, this.invItem, this.num, userId, this.invItem.price * this.num);
         const tmpa: Transaction[] = [tmp].concat(ts);
         localStorage.setItem('cart', JSON.stringify(tmpa));
+        this.cart.updateCart();
       } else {
         localStorage.setItem('cart', JSON.stringify(ts));
+        this.cart.updateCart();
       }
-      this.cart.updateCart();
     } else {
       let ordernum;
       this.tranService.maxOrder().subscribe((val) => {
@@ -79,7 +80,7 @@ export class WineItemComponent implements OnInit {
       });
       ordernum = ordernum ? ordernum : 0;
 
-      const t = [new Transaction().setVals(ordernum, this.invItem.id, this.num, userId, this.invItem.price * this.num)];
+      const t = [new Transaction().setVals(ordernum, this.invItem, this.num, userId, this.invItem.price * this.num)];
       localStorage.setItem('cart', JSON.stringify(t));
       this.cart.updateCart();
     }
