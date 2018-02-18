@@ -13,7 +13,7 @@
     </div>
     <div *ngIf="isCustomer == false">
         <br>
-        <button (click)='editPressed()' class="btn btn-sm">Edit</button>
+        <button (click)='editPressed($event)' class="btn btn-sm">Edit</button>
         <button (click)='removePressed()' class="btn btn-sm">Remove</button>
     </div>
     <br>

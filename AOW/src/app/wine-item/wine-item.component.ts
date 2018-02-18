@@ -5,6 +5,7 @@ import { Transaction } from '../../models/Transaction';
 import { User } from '../../models/User';
 import { TransactionService } from '../../services/transaction.service';
 import { CartComponent } from '../cart/cart.component';
+import { InventoryService } from '../../services/inventory.service';
 
 @Component({
   selector: 'app-wine-item',
@@ -17,7 +18,11 @@ export class WineItemComponent implements OnInit {
   @Input() isCustomer: boolean;
   num = 1;
 
-  constructor(private router: Router, private tranService: TransactionService, private cart: CartComponent) { }
+  constructor(private router: Router,
+    private tranService: TransactionService,
+    private cart: CartComponent,
+    private is: InventoryService
+  ) { }
 
   getColor() {
     if (this.invItem && this.invItem.subType && this.invItem.subType.type) {
@@ -92,11 +97,18 @@ export class WineItemComponent implements OnInit {
     }
   }
 
-  editPressed(): void {
-    console.log('[---] Edit Pressed!!');
+  editPressed(e): void {
+    localStorage.setItem("invItemClicked", JSON.stringify(this.invItem));
+    this.router.navigate(['/retailer/form']);
+    location.reload();
   }
 
   removePressed(): void {
-      console.log('[---] Remove Pressed!!');
+    this.is.delete(this.invItem)
+      .subscribe( resp =>
+        {
+          console.log(resp as Inventory);
+          location.reload();
+      });
   }
 }
