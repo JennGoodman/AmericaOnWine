@@ -1,2 +1,7 @@
-<input type="text" id="searchbox" class="searchbox form-control" name="searchbox" placeholder="Search Wines" 
-    [(ngModel)]="query" (keyup)="doDropdown()" (keyup.enter)="doSearch($event)" (focus)="loadInventory()"/>
+<form class="form-inline">
+  <div class="form-group">
+    <input type="text" class="searchbox form-control" name="searchbox" placeholder="Search Wines" [(ngModel)]="query" (keyup)="doDropdown()" (keyup.enter)="doSearch()"
+      (focus)="loadInventory()">
+    <input type="button" class="btn form-control search-text" value="Search" (click)="doSearch()">
+  </div>
+</form>

@@ -29,11 +29,12 @@ export class SearchComponent implements OnInit {
   }
 
   doDropdown() {
-    console.log('Inventory: ');
-    console.log(this.inventory);
   }
 
-  doSearch(e: Event) {
+  doSearch() {
+    if (this.router.isActive('search', false)) {
+      location.reload();
+    }
     this.router.navigate(['search/' + this.query]);
   }
 }
