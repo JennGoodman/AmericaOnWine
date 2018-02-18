@@ -1,6 +1,5 @@
 package com.revature.americaonwine.services;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +9,6 @@ import com.revature.americaonwine.data.UserDao;
 @Component
 public class LoginHibernate implements LoginService {
 
-	private Logger log = Logger.getLogger(LoginHibernate.class);
 	@Autowired
 	private UserDao ud;
 	
@@ -24,7 +22,6 @@ public class LoginHibernate implements LoginService {
 
 	@Override
 	public User register(User user) {
-		log.trace("Attempting to register; User: " + user);
 		User email = ud.getUserByEmail(user.getEmail());
 		User username = ud.getUserByUsername(user.getUsername());
 		if(email != null) {

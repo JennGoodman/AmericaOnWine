@@ -1,7 +1,7 @@
 <div class="container">
-  <h1 class="h1">Active Retailer Accounts</h1>
+  <h1 class="h1">Activated Retailer Accounts</h1>
   <div class="row" *ngIf="users.length == 0;else usertable">
-    <p>There are no active retailer accounts.</p>
+    <p>There are no activated retailer accounts.</p>
   </div>
   <ng-template #usertable>
     <div class="row">
@@ -16,7 +16,10 @@
       <div class="col">{{retailer.email}}</div>
       <div class="col">{{retailer.active | yesNo}}</div>
       <div class="col">{{retailer.cancelled | yesNo}}</div>
-      <div class="col"><button (click)="cancelRetailer(retailer)">Cancel Account</button></div>
+      <div class="col" *ngIf="retailer.active == 1;else reactivateAcctButton"><button (click)="cancelRetailer(retailer)">Cancel Account</button></div>
+      <ng-template #reactivateAcctButton>
+        <div class="col"><button (click)="reactivateRetailer(retailer)">Reactivate Account</button></div>
+      </ng-template>
     </div>
   </ng-template>
 </div>

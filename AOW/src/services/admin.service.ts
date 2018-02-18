@@ -27,4 +27,30 @@ export class AdminService {
       resp => resp as boolean
     );
   }
+
+  getAllRetailers(): Observable<User[]> {
+    return this.http.get(this.config.appURL + 'retailerAccounts', {
+      headers: this.config.defaultHeaders, withCredentials: true
+    }).map(
+      resp => resp as User[]
+    );
+  }
+
+  cancelRetailer(retailer: User): Observable<boolean> {
+    const body = JSON.stringify(retailer);
+    return this.http.post(this.config.appURL + 'cancelRetailer', body, {
+      headers: this.config.defaultHeaders, withCredentials: true
+    }).map(
+      resp => resp as boolean
+    );
+  }
+
+  reactivateRetailer(retailer: User): Observable<boolean> {
+    const body = JSON.stringify(retailer);
+    return this.http.post(this.config.appURL + 'reactivateRetailer', body, {
+      headers: this.config.defaultHeaders, withCredentials: true
+    }).map(
+      resp => resp as boolean
+    );
+  }
 }

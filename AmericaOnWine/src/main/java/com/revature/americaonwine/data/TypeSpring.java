@@ -5,26 +5,29 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Component;
 
-import com.revature.americaonwine.beans.Country;
 import com.revature.americaonwine.beans.Type;
-import com.revature.americaonwine.util.HibernateUtil;
 
-public class TypeSpring implements TypeDao {
+@Component
+public class TypeSpring implements TypeDao, HibernateSession {
 
-	Logger log = Logger.getLogger(this.getClass());
-	Session s = HibernateUtil.getInstance().getSession();
+	private Session s;
 
 	@Override
+	public void setSession(Session session)
+	{
+		this.s = session;
+	}
+	
+	@Override
 	public Type save(Type type) {
-		log.trace(this.getClass() + " Called:  save(Type type)");
 		s.save(type);
 		return type;
 	}
 
 	@Override
 	public List<Type> getAll() {
-		log.trace(this.getClass() + " Called: getAll()");
 		String query = "from com.revature.americaonwine.beans.Type";
 		Query<Type> q = s.createQuery(query, Type.class);
 		return q.getResultList();
@@ -32,14 +35,12 @@ public class TypeSpring implements TypeDao {
 
 	@Override
 	public Type update(Type type) {
-		log.trace(this.getClass() + " Called:  update(Type type)");
 		s.update(type);
 		return type;
 	}
 
 	@Override
 	public void delete(Type type) {
-		log.trace(this.getClass() + " Called:  delete(Type type)");
 		s.delete(type);
 	}
 }

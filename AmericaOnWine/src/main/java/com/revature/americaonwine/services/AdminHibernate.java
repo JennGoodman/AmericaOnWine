@@ -13,8 +13,6 @@ import com.revature.americaonwine.data.UserDao;
 
 @Component
 public class AdminHibernate implements AdminService {
-
-	private Logger log = Logger.getLogger(AdminHibernate.class);
 	
 	@Autowired
 	private UserDao ud;
@@ -22,9 +20,6 @@ public class AdminHibernate implements AdminService {
 	@Override
 	public List<User> getPendingRetailerAccounts() {
 		List<User> users = ud.getAll();
-		log.debug("Users contains:");
-		for (User u : users)
-			log.debug(u.toString());
 		List<User> retailers = new ArrayList<>();
 		for (User u : users)
 			if (u.getRole() == Roles.numericalRepresentation(Roles.RETAILER) && u.getActive() == 0)
@@ -32,4 +27,30 @@ public class AdminHibernate implements AdminService {
 		return retailers;
 	}
 
+	@Override
+	public List<User> getActivatedRetailerAccounts() {
+		List<User> users = ud.getAll();
+		List<User> retailers = new ArrayList<>();
+		for (User u : users)
+			if (u.getRole() == Roles.numericalRepresentation(Roles.RETAILER) && u.getActive() == 1)
+				retailers.add(u);
+		return retailers;
+	}
+
+	@Override
+	public boolean activateRetailerAccount(User u) {
+		u.setActive(1);
+		return ud.updateUser(u);
+	}
+
+	@Override
+	public boolean cancelRetailerAccount(User u) {
+		return ud.cancelUser(u);
+	}
+
+	@Override
+	public boolean reactivateRetailerAccount(User u) {
+		u.setCancelled(0);
+		return ud.updateUser(u);
+	}
 }

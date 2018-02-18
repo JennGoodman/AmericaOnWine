@@ -1,4 +1,4 @@
-package com.revature.americaonwine.delegates;
+package com.revature.americaonwine.controllers;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,29 +18,23 @@ import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.services.LoginService;
 
 @Controller
-//@CrossOrigin(origins= "http://localhost:4200")
-@CrossOrigin(origins="*")
 @RequestMapping(headers="Accept=application/json, text/plain")
 public class RegisterController {
-	private Logger log = Logger.getLogger(RegisterController.class);
 	    @Autowired
 		private LoginService ser;
-		private ObjectMapper om = new ObjectMapper();
 		
 		@RequestMapping(value="/register", method=RequestMethod.POST)
 		@ResponseBody
-		public String register(@RequestBody User fromWeb, HttpSession session) throws JsonProcessingException {
-			log.trace("Got Request body and is : " + fromWeb);
+		public String register(@RequestBody User fromWeb, ObjectMapper om, HttpSession session) throws JsonProcessingException {
 			User fromDB = ser.register(fromWeb);
 			
 			if(fromDB != null) {
-				log.trace("Didn't find user in the DB, valid user");
 				if (fromDB.getRole() != Roles.numericalRepresentation(Roles.RETAILER))
 					session.setAttribute("user", fromDB);
+				fromDB = ser.register(fromWeb);
 				return om.writeValueAsString(fromDB);
 			}
 			else {
-				log.trace("Found user in the DB, return null");
 				return null;
 			}
 			

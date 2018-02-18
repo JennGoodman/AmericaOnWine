@@ -34,6 +34,7 @@ import { AdminService } from '../services/admin.service';
 import { YesNoPipe } from '../pipes/yes-no.pipe';
 import { RetailerAccountsComponent } from './admin/retailer-accounts/retailer-accounts.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
     PendingAccountComponent,
     YesNoPipe,
     RetailerAccountsComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    CartComponent
   ],
   imports: [
     HttpClientModule,
@@ -72,7 +74,8 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
     TagService,
     TransactionService,
     TypeService,
-    AdminService
+    AdminService,
+    CartComponent
   ],
   bootstrap: [AppComponent]
 })

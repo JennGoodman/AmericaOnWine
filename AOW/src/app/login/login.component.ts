@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         // Redirect to home
         localStorage.setItem('user', JSON.stringify(this.loggedInUser));
         if (this.loggedInUser.role === 0) {
-          this.router.navigate(['admin/viewaccounts']);
+          this.router.navigate(['admin/home']);
         } else if (this.loggedInUser.role === 1) {
           this.router.navigate(['retailer/home']);
         } else {
