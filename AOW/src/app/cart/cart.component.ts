@@ -1,6 +1,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Transaction } from '../../models/Transaction';
 import { ApplicationRef } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -11,7 +12,7 @@ export class CartComponent implements OnInit {
   cartItems: Transaction[] = JSON.parse(localStorage.getItem('cart')) || [];
   sum: number;
 
-  constructor(private ref: ApplicationRef) {
+  constructor(private ref: ApplicationRef, private router: Router) {
     this.cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     let val = 0;
     for (let a = 0; a < this.cartItems.length; a++) {
@@ -52,6 +53,10 @@ export class CartComponent implements OnInit {
 
   endEvent(e) {
     e.stopPropagation();
+  }
+
+  checkout(){
+    this.router.navigate(['checkout']);
   }
 
 }

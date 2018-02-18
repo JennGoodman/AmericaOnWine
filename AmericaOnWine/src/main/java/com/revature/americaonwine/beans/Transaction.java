@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-@Component
+
 @Entity
 @Table(name = "aow_transaction")
 public class Transaction {
@@ -28,7 +28,7 @@ public class Transaction {
 	private String orderNumber;
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "inventory_id")
-	private InventoryItem inv;
+	private int inv;
 	@Column
 	private int quantity;
 	@Column(name = "user_id")
@@ -56,11 +56,11 @@ public class Transaction {
 		this.orderNumber = orderNumber;
 	}
 
-	public InventoryItem getInv() {
+	public int getInv() {
 		return inv;
 	}
 
-	public void setInv(InventoryItem inv) {
+	public void setInv(int inv) {
 		this.inv = inv;
 	}
 
@@ -104,13 +104,22 @@ public class Transaction {
 		this.comments = comments;
 	}
 
+	
+
+	@Override
+	public String toString() {
+		return "Transaction [id=" + id + ", orderNumber=" + orderNumber + ", inv=" + inv + ", quantity=" + quantity
+				+ ", userId=" + userId + ", rating=" + rating + ", transactionDate=" + transactionDate + ", comments="
+				+ comments + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((inv == null) ? 0 : inv.hashCode());
+		result = prime * result + inv;
 		result = prime * result + ((orderNumber == null) ? 0 : orderNumber.hashCode());
 		result = prime * result + quantity;
 		result = prime * result + rating;
@@ -135,10 +144,7 @@ public class Transaction {
 			return false;
 		if (id != other.id)
 			return false;
-		if (inv == null) {
-			if (other.inv != null)
-				return false;
-		} else if (!inv.equals(other.inv))
+		if (inv != other.inv)
 			return false;
 		if (orderNumber == null) {
 			if (other.orderNumber != null)
@@ -162,14 +168,7 @@ public class Transaction {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Transaction [id=" + id + ", orderNumber=" + orderNumber + ", inv=" + inv + ", quantity=" + quantity
-				+ ", userId=" + userId + ", rating=" + rating + ", transactionDate=" + transactionDate + ", comments="
-				+ comments + "]";
-	}
-
-	public Transaction(int id, String orderNumber, InventoryItem inv, int quantity, String userId, int rating,
+	public Transaction(int id, String orderNumber, int inv, int quantity, String userId, int rating,
 			Date transactionDate, String comments) {
 		super();
 		this.id = id;
