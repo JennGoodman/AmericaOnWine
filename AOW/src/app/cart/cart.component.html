@@ -6,6 +6,7 @@
         <div class="mult">x</div><div class="cart-item">{{item.inventory.name}} = {{item.total | currency}}</div>
     </ng-container>
   <div>Total: {{this.sum | currency}}</div>
+  <button (click)="empty($event)" id="empty" class="btn btn-sm mult">Empty</button><br>
   </ng-container>
   <div *ngIf="cartItems.length == 0" id="no-cart">There is nothing in your cart</div>
   <br>

@@ -6,6 +6,7 @@ import { User } from '../../models/User';
 import { TransactionService } from '../../services/transaction.service';
 import { CartComponent } from '../cart/cart.component';
 import { InventoryService } from '../../services/inventory.service';
+import { ApplicationRef } from '@angular/core';
 
 @Component({
   selector: 'app-wine-item',
@@ -21,7 +22,8 @@ export class WineItemComponent implements OnInit {
   constructor(private router: Router,
     private tranService: TransactionService,
     private cart: CartComponent,
-    private is: InventoryService
+    private is: InventoryService,
+    private ref: ApplicationRef
   ) { }
 
   getColor() {
@@ -56,6 +58,7 @@ export class WineItemComponent implements OnInit {
       this.num = this.invItem.quantity;
     }
     this.cart.updateCart(this.invItem, this.num);
+    this.ref.tick();
   }
 
   endEvent(e) {

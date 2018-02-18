@@ -78,6 +78,7 @@ export class CartComponent implements OnInit {
     }
     this.sum = val;
     localStorage.setItem('cart', JSON.stringify(this.cartItems));
+    this.router.navigate(['']);
   }
 
   valEvent(e) {
@@ -92,6 +93,12 @@ export class CartComponent implements OnInit {
 
   endEvent(e) {
     e.stopPropagation();
+  }
+
+  empty(e) {
+    e.stopPropagation();
+    this.cartItems = [];
+    localStorage.setItem('cart', JSON.stringify(this.cartItems));
   }
 
 }
