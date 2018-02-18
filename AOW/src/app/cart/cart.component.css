@@ -11,6 +11,7 @@
     -o-transition: .2s ease-in-out;
     transition: .2s ease-in-out;
     width: 100%;
+    font-size: 13px;
 }
 
 .cart-item {
@@ -19,15 +20,6 @@
     -moz-transition: .2s ease-in-out;
     -o-transition: .2s ease-in-out;
     transition: .2s ease-in-out;
-}
-
-.cart-item:hover {
-    -webkit-transform: scale(1.03);
-    -moz-transform: scale(1.03);
-    -ms-transform: scale(1.03);
-    -o-transform: scale(1.03);
-    transform: scale(1.03);
-    background-color: #8bdcfc;
 }
 
 #cart:hover {
@@ -40,4 +32,16 @@
 
 div {
     padding: 8px;
+}
+
+.mult {
+    float: left;
+}
+
+.to-cart {
+    width: 35%;
+    text-align: center;
+    float: left;
+    position: relative;
+    top: 4px;
 }
