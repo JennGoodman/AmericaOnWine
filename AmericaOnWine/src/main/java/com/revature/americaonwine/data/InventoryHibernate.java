@@ -6,7 +6,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
@@ -48,14 +47,7 @@ public class InventoryHibernate implements InventoryDao, HibernateSession {
 		}
 		
 		Query<InventoryItem> q = s.createQuery(query);
-		List<InventoryItem> items = q.getResultList();
-		return items;
-	}
-
-	@Override
-	public boolean addItemByUser(User user, InventoryItem item) {
-		// TODO Auto-generated method stub
-		return false;
+		return q.getResultList();
 	}
 
 	@Override
