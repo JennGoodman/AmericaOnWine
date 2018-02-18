@@ -2,7 +2,6 @@ package com.revature.americaonwine.data;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 
@@ -26,12 +25,12 @@ public class TagSpring implements TagDao, HibernateSession {
 	}
 
 	@Override
-	public List<?> getAll() {
+	public List<Tag> getAll() {
 		return s.createQuery("From com.revature.beans.Tag").list();
 	}
 
 	@Override
-	public List<?> getAllByInventory(int inventoryId) {
+	public List<Tag> getAllByInventory(int inventoryId) {
 		String q = "From com.revature.beans.Tag Where inventory_id = " + inventoryId;
 		return s.createQuery(q).list();
 	}

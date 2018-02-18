@@ -47,14 +47,7 @@ public class InventoryHibernate implements InventoryDao, HibernateSession {
 		}
 		
 		Query<InventoryItem> q = s.createQuery(query);
-		List<InventoryItem> items = q.getResultList();
-		return items;
-	}
-
-	@Override
-	public boolean addItemByUser(User user, InventoryItem item) {
-		// TODO Auto-generated method stub
-		return false;
+		return q.getResultList();
 	}
 
 	@Override
