@@ -29,6 +29,8 @@ import { TagService } from '../services/tag.service';
 import { TransactionService } from '../services/transaction.service';
 import { TypeService } from '../services/type.service';
 import { HomeComponent } from './home/home.component';
+import { CustomerHomeComponent } from './customer-home/customer-home.component';
+import { CheckoutCartComponent } from './checkout-cart/checkout-cart.component';
 import { CartComponent } from './cart/cart.component';
 import { ChangeDetectorRef } from '@angular/core';
 
@@ -46,6 +48,8 @@ import { ChangeDetectorRef } from '@angular/core';
     WineListComponent,
     BigWineItemComponent,
     HomeComponent,
+    CustomerHomeComponent,
+    CheckoutCartComponent,
     CartComponent
   ],
   imports: [

@@ -24,7 +24,6 @@ public class RegisterController {
 		@ResponseBody
 		public String register(@RequestBody User fromWeb, ObjectMapper om, HttpSession session) throws JsonProcessingException {
 			User fromDB = ser.register(fromWeb);
-			
 			if(fromDB != null) {
 				fromDB = ser.register(fromWeb);
 				return om.writeValueAsString(fromDB);
