@@ -31,6 +31,7 @@ import { TypeService } from '../services/type.service';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { SearchresultsComponent } from './searchresults/searchresults.component'
     BigWineItemComponent,
     HomeComponent,
     SearchComponent,
-    SearchresultsComponent
+    SearchresultsComponent,
+    CartComponent
   ],
   imports: [
     HttpClientModule,
@@ -66,7 +68,8 @@ import { SearchresultsComponent } from './searchresults/searchresults.component'
     SubTypeService,
     TagService,
     TransactionService,
-    TypeService
+    TypeService,
+    CartComponent
   ],
   bootstrap: [AppComponent]
 })

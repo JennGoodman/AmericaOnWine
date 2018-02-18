@@ -53,7 +53,7 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'search:query',
+        path: 'search/:query',
         component: SearchresultsComponent
     }
 

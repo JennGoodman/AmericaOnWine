@@ -1,3 +1,19 @@
-<p>
-  searchresults works!
-</p>
+<div class="container">
+  <div class="row">
+      <div class="col-sm-1">Image</div>
+      <div class="col-sm-1">Name</div>
+      <div class="col-sm-1">Brand</div>
+      <div class="col-sm-1">Type</div>
+      <div class="col-sm-1">Country</div>
+      <div class="col-sm-1">Year</div>
+      <div class="col-sm-1">Volume</div>
+      <div class="col-sm-1">Quantity</div>
+      <div class="col-sm-1">Price</div>
+      <div class="col-sm-1">Description</div>
+  </div>
+  <div class="row" *ngFor="let i of results">
+    <div class="col-sm-3">
+      <img src={{i.imageUrl}}
+    </div>
+  </div>
+</div>

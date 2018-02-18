@@ -20,4 +20,13 @@ export class Transaction {
       this.transactionDate = null;
       this.comments = null;
     }
+
+    setVals(on: number, invId: number, quantity: number, userId: number, total: number) {
+      this.orderNumber = on;
+      this.inventoryId = invId;
+      this.quantity = quantity;
+      this.userId = userId;
+      this.total = total;
+      return this;
+    }
   }

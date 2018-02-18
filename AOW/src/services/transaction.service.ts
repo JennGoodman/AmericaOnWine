@@ -45,4 +45,13 @@ export class TransactionService {
       resp => resp as Transaction
       );
   }
+
+  maxOrder(): Observable<number> {
+    return this.http.get(this.config.appURL + 'orderno', {
+      headers: this.config.defaultHeaders, withCredentials: true
+    })
+      .map(
+        resp => resp as number
+      );
+  }
 }
