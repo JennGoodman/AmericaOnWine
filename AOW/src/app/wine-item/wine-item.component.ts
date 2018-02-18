@@ -49,41 +49,13 @@ export class WineItemComponent implements OnInit {
 
   addToCart(e) {
     e.stopPropagation();
-
-    const ts = <Transaction[]> JSON.parse(localStorage.getItem('cart'));
-    const curUser: User = JSON.parse(localStorage.getItem('user'));
-    const userId = curUser ? curUser.id : null;
-    if (ts && ts.length > 0) {
-
-      let exists = false;
-      ts.forEach((transaction) => {
-        if (transaction.inventory.id === this.invItem.id) {
-          transaction.quantity += this.num;
-          transaction.total += this.invItem.price * this.num;
-          exists = true;
-        }
-      });
-
-      if (!exists) {
-        const tmp = new Transaction().setVals(ts[0].orderNumber, this.invItem, this.num, userId, this.invItem.price * this.num);
-        const tmpa: Transaction[] = [tmp].concat(ts);
-        localStorage.setItem('cart', JSON.stringify(tmpa));
-        this.cart.updateCart();
-      } else {
-        localStorage.setItem('cart', JSON.stringify(ts));
-        this.cart.updateCart();
-      }
-    } else {
-      let ordernum;
-      this.tranService.maxOrder().subscribe((val) => {
-        ordernum = val;
-      });
-      ordernum = ordernum ? ordernum : 0;
-
-      const t = [new Transaction().setVals(ordernum, this.invItem, this.num, userId, this.invItem.price * this.num)];
-      localStorage.setItem('cart', JSON.stringify(t));
-      this.cart.updateCart();
+    if (this.num < 0) {
+      return;
     }
+    if (this.num > this.invItem.quantity) {
+      this.num = this.invItem.quantity;
+    }
+    this.cart.updateCart(this.invItem, this.num);
   }
 
   endEvent(e) {

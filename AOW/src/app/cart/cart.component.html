@@ -1,12 +1,12 @@
 <div id="cart">
   <br>
   <ng-container *ngIf="cartItems.length > 0">
-    <ng-container *ngFor="let item of cartItems">
-        <input (change)="valEvent($event)" (click)="endEvent($event)" id="add-num" class="to-cart" type="number" max=999 min=0 value="{{item.quantity}}" [(ngModel)]="item.quantity">
+    <ng-container *ngFor="let item of cartItems" (click)="bigItem($item)">
+        <input (change)="valEvent($event)" (click)="endEvent($event)" id="add-num" class="to-cart" type="number" max="{{item.quantity}}" min=0 value="{{item.quantity}}" [(ngModel)]="item.quantity">
         <div class="mult">x</div><div class="cart-item">{{item.inventory.name}} = {{item.total | currency}}</div>
     </ng-container>
   <div>Total: {{this.sum | currency}}</div>
   </ng-container>
-  <div *ngIf="cartItems.length == 0">There is nothing in your cart</div>
+  <div *ngIf="cartItems.length == 0" id="no-cart">There is nothing in your cart</div>
   <br>
 </div>
