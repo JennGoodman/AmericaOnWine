@@ -1,2 +1,2 @@
-<app-cart></app-cart>
-<app-wine-list></app-wine-list>
+<app-wine-list id="wine-list" [style.width]="getWidth()"></app-wine-list>
+<app-cart id="cart" *ngIf="isCustomer == true"></app-cart>

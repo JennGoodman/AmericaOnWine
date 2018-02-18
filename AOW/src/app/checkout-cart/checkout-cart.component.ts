@@ -21,17 +21,7 @@ export class CheckoutCartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.someArray.id = 2;
-      this.someArray.orderNumber = 123;
-      this.someArray.inventoryId = 4;
-      this.someArray.quantity = 2;
-      this.someArray.userId = 7;
-      this.someArray.total = 50;
-      this.someArray.rating = 8;
-      this.someArray.transactionDate = null;
-      this.someArray.comments = 'GOOD';
-      this.cartItems.push(this.someArray);
-    //this.cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    this.cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     let total = 0;
     for (let a = 0; a < this.cartItems.length; a++) {
       total += this.cartItems[a].total;

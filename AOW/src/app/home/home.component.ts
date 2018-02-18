@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  isCustomer: boolean;
+  constructor() {
+    if (localStorage.getItem('user') != null) {
+      this.isCustomer = JSON.parse(localStorage.getItem('user')).role === 2;
+    } else {
+      this.isCustomer = true;
+    }
+  }
 
   ngOnInit() {
+  }
+
+  getWidth() {
+    if (this.isCustomer) {
+      return '85%';
+    } else {
+      return '100%';
+    }
   }
 
 }

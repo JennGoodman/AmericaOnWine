@@ -1,5 +1,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Transaction } from '../../models/Transaction';
+import { ApplicationRef } from '@angular/core';
+import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-cart',
@@ -8,19 +10,34 @@ import { Transaction } from '../../models/Transaction';
 })
 @Injectable()
 export class CartComponent implements OnInit {
-  cartItems: Transaction[];
+  cartItems: Transaction[] = JSON.parse(localStorage.getItem('cart')) || [];
+  sum: number;
 
-  constructor() {
-    this.cartItems = JSON.parse(localStorage.getItem('cart'));
+  constructor(private ref: ApplicationRef, private zone: NgZone) {
+    this.cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    let val = 0;
+    for (let a = 0; a < this.cartItems.length; a++) {
+      val += this.cartItems[a].total;
+    }
+    this.sum = val;
   }
 
   ngOnInit() {
   }
 
   updateCart() {
-    // console.log('why isn\'t it calling me');
-    this.cartItems = JSON.parse(localStorage.getItem('cart'));
-    // console.log(this.cartItems);
+    this.zone.run(() => {
+      this.cartItems = [];
+      const items = [].concat(JSON.parse(localStorage.getItem('cart')));
+      this.cartItems = items;
+      console.log(this.cartItems);
+      let val = 0;
+      for (let a = 0; a < this.cartItems.length; a++) {
+        val += this.cartItems[a].total;
+      }
+      this.sum = val;
+      this.ref.tick();
+    });
   }
 
 }

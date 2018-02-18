@@ -41,7 +41,7 @@ export class InventoryService {
 
   update(user: Inventory): Observable<Inventory> {
     const body = JSON.stringify(user);
-    return this.http.put(this.MyURL+'/edit', body, {
+    return this.http.put(this.MyURL + '/edit', body, {
       headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
@@ -51,7 +51,7 @@ export class InventoryService {
 
   delete(inv: Inventory): Observable<Inventory> {
     const body = JSON.stringify(inv);
-    return this.http.put(this.MyURL+'/remove', body, {
+    return this.http.put(this.MyURL + '/remove', body, {
       headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(

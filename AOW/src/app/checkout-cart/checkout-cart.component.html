@@ -1,14 +1,15 @@
 <div id="checkout">
     <div>Order Number: {{cartItems[0].orderNumber}}</div>
     <div *ngFor="let item of cartItems" class="checkout-items">
-        <div>ID: {{item.inventoryId}}</div><div>Quantity: {{item.quantity}}</div><div>Price of units: ${{item.total}}</div>
+        <div>ID: {{item.inventoryId}}</div><div>Quantity: {{item.quantity}}</div><div>Price per unit: {{item.total/item.quantity}}</div>
+        <div>Price of units: ${{item.total}}</div><br>
     </div>
-    <div>Total: ${{this.sum}}</div>
+    <div>Total: ${{this.sum}}</div><br>
 </div>
 <div>
     <div>Credit/Debit Card Info</div>
     <input id="cardInfo" #cardInfo type="text" name="cardInfo" required>
-    <div *ngIf="invalidLen">Invalid Card Entry, Try Again</div><br>
+    <div *ngIf="invalidLen">Invalid Card Entry, Try Again</div>
     <button (click)="verify(cardInfo.value)">Confirm Purchase</button>
 </div>
 

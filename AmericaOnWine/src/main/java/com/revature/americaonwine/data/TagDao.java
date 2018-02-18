@@ -20,14 +20,14 @@ public interface TagDao {
 	 * 
 	 * @return List<Tag> of tags
 	 */
-	public List<?> getAll();
+	public List<Tag> getAll();
 
 	/**
 	 * Get a list of tags belonging to a specific inventory item
 	 * 
 	 * @return List <Tag> of tags belonging to the given inventory id.
 	 */
-	public List<?> getAllByInventory(int inventoryId);
+	public List<Tag> getAllByInventory(int inventoryId);
 
 	/**
 	 * Updates an existing tag in the db by ID.
