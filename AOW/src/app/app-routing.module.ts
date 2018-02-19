@@ -64,6 +64,11 @@ const routes: Routes = [
         path: 'inventory/approval',
         component: AdminApproveInvComponent,
         pathMatch: 'full'
+    },
+    {
+        path: 'admin/home',
+        component: AdminHomeComponent,
+        pathMatch: 'full'
     }
 
 ];
