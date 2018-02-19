@@ -40,6 +40,7 @@ import { YesNoPipe } from '../pipes/yes-no.pipe';
 import { RetailerAccountsComponent } from './admin/retailer-accounts/retailer-accounts.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminApproveInvComponent } from './admin-approve-inv/admin-approve-inv.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,6 @@ import { AdminApproveInvComponent } from './admin-approve-inv/admin-approve-inv.
     FakeHomeComponent,
     SearchComponent,
     SearchresultsComponent,
-    CartComponent,
     PendingAccountComponent,
     YesNoPipe,
     RetailerAccountsComponent,

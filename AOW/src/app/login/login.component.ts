@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         // Redirect to home
         localStorage.setItem('user', JSON.stringify(this.loggedInUser));
 
-        const cart = <Transaction[]> JSON.parse(localStorage.getItem('cart'));
+        const cart = <Transaction[]> JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : [];
         cart.forEach((item) => {
           item.userId = this.loggedInUser.id;
         });

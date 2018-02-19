@@ -1,9 +1,6 @@
 import { Component, OnInit, Injectable, Input } from '@angular/core';
 import { Transaction } from '../../models/Transaction';
-
-import { ApplicationRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-
+import { Router } from '@angular/router';
 import { Inventory } from '../../models/Inventory';
 import { User } from '../../models/User';
 import { TransactionService } from '../../services/transaction.service';
@@ -15,10 +12,10 @@ import { TransactionService } from '../../services/transaction.service';
 })
 @Injectable()
 export class CartComponent implements OnInit {
-  cartItems: Transaction[];
+  cartItems: Transaction[] = JSON.parse(localStorage.getItem('cart')) || [];
   sum: number;
 
-  constructor(private ref: ApplicationRef, private router: Router, private tranService: TransactionService) {
+  constructor(private router: Router, private tranService: TransactionService) {
     this.cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     let val = 0;
     for (let a = 0; a < this.cartItems.length; a++) {
