@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../../models/Transaction';
-import {NgModule} from '@angular/core'; 
+import {NgModule} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Inventory } from '../../models/Inventory';
 
 @Component({
   selector: 'app-checkout-cart',
@@ -9,16 +10,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./checkout-cart.component.css']
 })
 export class CheckoutCartComponent implements OnInit {
-  //cartItems: Transaction[] = JSON.parse(localStorage.getItem('cart')) || [];
+  // cartItems: Transaction[] = JSON.parse(localStorage.getItem('cart')) || [];
   cartItems: Transaction[] = [];
-  invalidLen: boolean =false;
+  invalidLen = false;
   newVal: String;
   sum: number;
   someArray: Transaction = new Transaction();
-  
 
-  constructor(private router: Router) { 
-  }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.cartItems = JSON.parse(localStorage.getItem('cart')) || [];
@@ -29,15 +28,34 @@ export class CheckoutCartComponent implements OnInit {
     this.sum = total;
   }
 
-  verify(num: number){
-    console.log(num);
-    this.newVal= num.toString();
-    console.log(num.toString().length);
-    if(this.newVal.length == 16){
+  verify() {
+    this.newVal = (<HTMLInputElement> document.getElementById('card-info')).value;
+
+    if (this.newVal.length === 16) {
       localStorage.removeItem('cart');
-      this.router.navigate(['items']);
-    }else {
+      this.router.navigate(['']);
+    } else {
       this.invalidLen = true;
+    }
+  }
+
+  backgroundColor(item: Inventory) {
+    if (item && item.subType && item.subType.type) {
+      switch (item.subType.type.name) {
+        case 'Red': return '#660033';
+        case 'White': return '#ffff99';
+        case 'Rosé': return '#ffcce6';
+        case 'Champagne': return '#ffffe6';
+      }
+    }
+  }
+
+  textColor(item: Inventory) {
+    if (item && item.subType && item.subType.type) {
+      switch (item.subType.type.name) {
+        case 'Red': return '#ffffff';
+        default: return '#000000';
+      }
     }
   }
 }

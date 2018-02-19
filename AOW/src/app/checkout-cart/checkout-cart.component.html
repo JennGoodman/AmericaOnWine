@@ -1,16 +1,33 @@
-<div id="checkout">
-    <div>Order Number: {{cartItems[0].orderNumber}}</div>
-    <div *ngFor="let item of cartItems" class="checkout-items">
-        <div>ID: {{item.inventoryId}}</div><div>Quantity: {{item.quantity}}</div><div>Price per unit: {{item.total/item.quantity}}</div>
-        <div>Price of units: ${{item.total}}</div><br>
+<div id="checkout" class="container">
+    <br>
+    <div class="centered">Order Number: {{cartItems[0].orderNumber}}</div>
+    <br>
+    <div *ngFor="let item of cartItems">
+        <div class="checkout-items" [style.background-color]="backgroundColor(item.inventory)" [style.color]="textColor(item.inventory)">
+        <img class="left-img" src="{{item.inventory.imageUrl}}">
+        <div class="right-text">
+        <br>
+        <br>
+        <div>Name: {{item.inventory.name}}</div>
+        <div>Quantity: {{item.quantity}}</div>
+        <div>Price per unit: {{item.inventory.price | currency}}</div>
+        <div>Price of units: {{item.total | currency}}</div>
+        </div><br>
+        </div><br>
     </div>
-    <div>Total: ${{this.sum}}</div><br>
-</div>
-<div>
-    <div>Credit/Debit Card Info</div>
-    <input id="cardInfo" #cardInfo type="text" name="cardInfo" required>
-    <div *ngIf="invalidLen">Invalid Card Entry, Try Again</div>
-    <button (click)="verify(cardInfo.value)">Confirm Purchase</button>
+    <div class="centered">Total: {{sum | currency}}</div><br>
+    <div class="centered">
+            <div class="input-group mb-3 small-bars">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text red-wine inv-form-prepend">Credit Card Number</span>
+                    </div>
+                    <input id="card-info" name="cardInfo" placeholder="NNNN-NNNN-NNNN-NNNN" type="text" class="form-control" required aria-label="CardInfo" aria-describedby="basic-addon1">
+            </div>
+            <div *ngIf="invalidLen">Invalid Card Entry, Try Again</div>
+            <button class="btn btn-secondary" (click)="verify()">Confirm Purchase</button>
+    </div>
+    <br>
+        
 </div>
 
 

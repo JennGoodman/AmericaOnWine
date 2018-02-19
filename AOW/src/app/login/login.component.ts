@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/User';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountAccessService } from '../../services/account-access.service';
+import { Transaction } from '../../models/Transaction';
 
 @Component({
   selector: 'app-login',
@@ -21,12 +22,10 @@ export class LoginComponent implements OnInit {
   }
 
   login(username: string, password: string) {
-    console.log(username + ' ' + password);
     this.loginFailed = false;
     const user: User = new User();
     user.username = username;
     user.password = password;
-    console.log(JSON.stringify(user));
 
     this.service.login(user).subscribe(resp => {
       this.loggedInUser = resp as User;
@@ -35,6 +34,12 @@ export class LoginComponent implements OnInit {
       } else {
         // Redirect to home
         localStorage.setItem('user', JSON.stringify(this.loggedInUser));
+
+        const cart = <Transaction[]> JSON.parse(localStorage.getItem('cart'));
+        cart.forEach((item) => {
+          item.userId = this.loggedInUser.id;
+        });
+        localStorage.setItem('cart', JSON.stringify(cart));
         this.router.navigate(['']);
         location.reload();
       }

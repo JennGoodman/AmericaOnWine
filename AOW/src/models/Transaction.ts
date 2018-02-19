@@ -12,7 +12,7 @@ export class Transaction {
     comments: string;
 
     constructor() {
-      this.id = null;
+      this.id = 0;
       this.orderNumber = null;
       this.inventory = null;
       this.quantity = null;
