@@ -1,0 +1,9 @@
+#wine-list {
+    float: left;
+}
+
+#cart {
+    float: right;
+    position: fixed;
+    width: 20%;
+}

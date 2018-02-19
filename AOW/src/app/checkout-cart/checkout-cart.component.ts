@@ -3,6 +3,7 @@ import { Transaction } from '../../models/Transaction';
 import {NgModule} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TransactionService } from '../../services/transaction.service';
+import { Inventory } from '../../models/Inventory';
 
 @Component({
   selector: 'app-checkout-cart',
@@ -12,7 +13,7 @@ import { TransactionService } from '../../services/transaction.service';
 export class CheckoutCartComponent implements OnInit {
   // cartItems: Transaction[] = JSON.parse(localStorage.getItem('cart')) || [];
   cartItems: Transaction[] = [];
-  invalidLen: boolean =false;
+  invalidLen = false;
   newVal: String;
   sum: number;
   returnTransaction: Transaction;
@@ -21,6 +22,8 @@ export class CheckoutCartComponent implements OnInit {
 
   constructor(private router: Router, private service: TransactionService) {
   }
+  someArray: Transaction = new Transaction();
+
 
   ngOnInit() {
     this.service.getAll().subscribe(resp => {
@@ -35,34 +38,34 @@ export class CheckoutCartComponent implements OnInit {
     this.sum = total;
   }
 
-  verify(num: number){
-    console.log(num);
-    this.newVal= num.toString();
-    console.log(num.toString().length);
-    if(this.newVal.length == 16){
-      for(let tran of this.cartItems){
-        console.log("What about this ? " + tran.inventory);
-        console.log(tran);
-        tran.id=4;
-        tran.orderNumber=3;
-        tran.transactionDate= new Date('02-MAR-2018');
-        console.log(tran);
-        this.service.add(tran).subscribe(resp => {
-          this.returnTransaction = resp as Transaction;
-          console.log(this.returnTransaction);
-          if(this.returnTransaction == null){
-            console.log("failed");
-            this.failed = true;
-          }
-        }
-      );
-      }
-      if(this.failed == false){
-        localStorage.removeItem('cart');
-      this.router.navigate(['items']);
-      }
-    }else {
+  verify() {
+    this.newVal = (<HTMLInputElement> document.getElementById('card-info')).value;
+
+    if (this.newVal.length === 16) {
+      localStorage.removeItem('cart');
+      this.router.navigate(['']);
+    } else {
       this.invalidLen = true;
+    }
+  }
+
+  backgroundColor(item: Inventory) {
+    if (item && item.subType && item.subType.type) {
+      switch (item.subType.type.name) {
+        case 'Red': return '#660033';
+        case 'White': return '#ffff99';
+        case 'Rosé': return '#ffcce6';
+        case 'Champagne': return '#ffffe6';
+      }
+    }
+  }
+
+  textColor(item: Inventory) {
+    if (item && item.subType && item.subType.type) {
+      switch (item.subType.type.name) {
+        case 'Red': return '#ffffff';
+        default: return '#000000';
+      }
     }
   }
 }

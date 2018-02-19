@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, Input } from '@angular/core';
 import { Transaction } from '../../models/Transaction';
 
 import { ApplicationRef } from '@angular/core';
@@ -60,6 +60,11 @@ export class CartComponent implements OnInit {
     }
 
     this.update();
+    if (document.getElementById('fake-home')) {
+      this.router.navigate(['']);
+    } else {
+      this.router.navigate(['fakehome']);
+    }
   }
 
   update() {
@@ -81,31 +86,38 @@ export class CartComponent implements OnInit {
     }
     this.sum = val;
     localStorage.setItem('cart', JSON.stringify(this.cartItems));
-    this.router.navigate(['']);
   }
 
-  valEvent(e) {
-    e.stopPropagation();
+  valEvent(event: Event) {
+    event.stopPropagation();
     this.update();
   }
 
-  bigItem(item) {
-    localStorage.setItem('item', JSON.stringify(item));
-    this.router.navigate(['/item/']);
+  stopRoute(event: Event) {
+    event.stopPropagation();
   }
 
-  endEvent(e) {
-    e.stopPropagation();
+  bigItem(item: Inventory) {
+    localStorage.setItem('item', JSON.stringify(item));
+    this.router.navigate(['/item/']);
   }
 
   checkout() {
     this.router.navigate(['checkout']);
   }
 
-  empty(e) {
-    e.stopPropagation();
+  empty() {
     this.cartItems = [];
     localStorage.setItem('cart', JSON.stringify(this.cartItems));
+  }
+
+  checkout() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      this.router.navigate(['checkout']);
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 
 }

@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { CustomerHomeComponent } from './customer-home/customer-home.component';
 import { CheckoutCartComponent } from './checkout-cart/checkout-cart.component';
+import { FakeHomeComponent } from './fake-home/fake-home.component';
 
 const routes: Routes = [
     {
@@ -62,8 +63,12 @@ const routes: Routes = [
         path: 'checkout',
         component: CheckoutCartComponent,
         pathMatch: 'full'
+    },
+    {
+        path: 'fakehome',
+        component: FakeHomeComponent,
+        pathMatch: 'full'
     }
-    
 ];
 
 @NgModule({

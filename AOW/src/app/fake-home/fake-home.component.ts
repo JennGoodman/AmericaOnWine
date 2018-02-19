@@ -1,13 +1,14 @@
 import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-fake-home',
+  templateUrl: './fake-home.component.html',
+  styleUrls: ['./fake-home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class FakeHomeComponent implements OnInit {
 
   isCustomer: boolean;
+  @Output() home = false;
   constructor() {
     if (localStorage.getItem('user') != null) {
       this.isCustomer = JSON.parse(localStorage.getItem('user')).role === 2;

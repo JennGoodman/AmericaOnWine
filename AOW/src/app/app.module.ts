@@ -32,7 +32,7 @@ import { HomeComponent } from './home/home.component';
 import { CustomerHomeComponent } from './customer-home/customer-home.component';
 import { CheckoutCartComponent } from './checkout-cart/checkout-cart.component';
 import { CartComponent } from './cart/cart.component';
-import { ChangeDetectorRef } from '@angular/core';
+import { FakeHomeComponent } from './fake-home/fake-home.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,8 @@ import { ChangeDetectorRef } from '@angular/core';
     HomeComponent,
     CustomerHomeComponent,
     CheckoutCartComponent,
-    CartComponent
+    CartComponent,
+    FakeHomeComponent
   ],
   imports: [
     HttpClientModule,
