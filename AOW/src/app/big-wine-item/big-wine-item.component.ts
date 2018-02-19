@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./big-wine-item.component.css']
 })
 export class BigWineItemComponent implements OnInit {
-
+  num = 1;
   invItem: Inventory = JSON.parse(localStorage.getItem('item'));
 
   constructor(private router: Router) { }

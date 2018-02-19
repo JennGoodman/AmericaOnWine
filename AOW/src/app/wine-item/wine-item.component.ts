@@ -47,7 +47,7 @@ export class WineItemComponent implements OnInit {
     }
   }
 
-  addToCart(e) {
+  addToCart(e: Event) {
     e.stopPropagation();
     if (this.num < 0) {
       return;
@@ -58,7 +58,7 @@ export class WineItemComponent implements OnInit {
     this.cart.updateCart(this.invItem, this.num);
   }
 
-  endEvent(e) {
+  endEvent(e: Event) {
     e.stopPropagation();
   }
 

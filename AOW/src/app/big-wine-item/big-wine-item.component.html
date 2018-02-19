@@ -1,7 +1,5 @@
 <div class="full-color" [style.background-color]="setColor()" [style.color]="textColor()">
-        <div id="route" (click)="routeBack()">
-                <<
-        </div>
+        <div id="route" (click)="routeBack()"><<</div>
             <br>
             <div class="left-side">
                 <img src="{{invItem.imageUrl}}" class="big-wine-img">
@@ -16,8 +14,12 @@
                 <br> {{invItem.year}}
                 <br> {{invItem.description}}
                 <br> {{invItem.volume}} L
-                <br> ${{invItem.price}}
+                <br> {{invItem.price | currency}}
                 <br> {{invItem.quantity}} available
                 <br>
             </div>
+        <div class="my-3 add-to-cart">
+            <input (click)="endEvent($event)" [(ngModel)]="num" id="add-num" class="to-cart" type="number" max="{{invItem.quantity}}" min=1 value=1>
+            <span class="add" (click)="addToCart($event)">Add to cart</span>
+        </div>
 </div>
