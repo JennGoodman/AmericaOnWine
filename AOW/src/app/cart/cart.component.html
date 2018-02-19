@@ -5,7 +5,7 @@
   <div>Total: {{this.sum | currency}}</div>
   <button (click)="checkout()">Checkout</button>
     <ng-container *ngFor="let item of cartItems" (click)="bigItem($item)">
-        <input (change)="valEvent($event)" (click)="endEvent($event)" id="add-num" class="to-cart" type="number" max="{{item.inventory.quantity}}" min=0 value="{{item.quantity}}" [(ngModel)]="item.quantity">
+        <input (change)="valEvent($event)" (click)="endEvent($event)" id="add-num" class="to-cart" type="number" max="99" min=0 value="{{item}}" [(ngModel)]="item.quantity">
         <div class="mult">x</div><div class="cart-item">{{item.inventory.name}} = {{item.total | currency}}</div>
     </ng-container>
   <div>Total: {{this.sum | currency}}</div>

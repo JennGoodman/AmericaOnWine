@@ -4,7 +4,6 @@ import { Transaction } from '../../models/Transaction';
 import { ApplicationRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Router } from '@angular/router';
 import { Inventory } from '../../models/Inventory';
 import { User } from '../../models/User';
 import { TransactionService } from '../../services/transaction.service';

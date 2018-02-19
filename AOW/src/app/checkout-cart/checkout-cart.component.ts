@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../../models/Transaction';
 import {NgModule} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TransactionService} from '../../services/transaction.service';
+import { TransactionService } from '../../services/transaction.service';
 
 @Component({
   selector: 'app-checkout-cart',
