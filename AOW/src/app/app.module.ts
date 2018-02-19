@@ -35,13 +35,10 @@ import { CheckoutCartComponent } from './checkout-cart/checkout-cart.component';
 import { FakeHomeComponent } from './fake-home/fake-home.component';
 import { SearchComponent } from './search/search.component';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
-
 import { PendingAccountComponent } from './admin/pending-accts/pending-accts.component';
 import { YesNoPipe } from '../pipes/yes-no.pipe';
 import { RetailerAccountsComponent } from './admin/retailer-accounts/retailer-accounts.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
-
-import { CartComponent } from './cart/cart.component';
 import { AdminApproveInvComponent } from './admin-approve-inv/admin-approve-inv.component';
 
 @NgModule({

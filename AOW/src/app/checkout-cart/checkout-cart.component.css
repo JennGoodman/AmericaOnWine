@@ -33,3 +33,14 @@
     width: 50%;
     margin: 0 auto;
 }
+
+.btn {
+    border-color: #660033;
+    background-color: #660033;
+    color: #ffffff;
+}
+
+.btn:hover {
+    background-color: #99004d;
+    border-color: #99004d;
+}

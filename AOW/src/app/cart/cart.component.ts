@@ -31,6 +31,7 @@ export class CartComponent implements OnInit {
   }
 
   updateCart(item: Inventory, num: number) {
+    this.cartItems = JSON.parse(localStorage.getItem('cart'));
     const curUser: User = JSON.parse(localStorage.getItem('user'));
     const userId = curUser ? curUser.id : null;
     if (this.cartItems && this.cartItems.length > 0) {
@@ -60,11 +61,14 @@ export class CartComponent implements OnInit {
     }
 
     this.update();
-    if (document.getElementById('fake-home')) {
-      this.router.navigate(['']);
-    } else {
-      this.router.navigate(['fakehome']);
-    }
+    setTimeout(() => {
+      localStorage.setItem('cart', JSON.stringify(this.cartItems));
+      if (document.getElementById('fake-home')) {
+        this.router.navigate(['']);
+      } else {
+        this.router.navigate(['fakehome']);
+      }
+    }, 200);
   }
 
   update() {

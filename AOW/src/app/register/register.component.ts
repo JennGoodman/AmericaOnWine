@@ -64,7 +64,7 @@ export class RegisterComponent implements OnInit {
           } else {
             if (accountType === 'retailer') {
               // go to retailer home page
-              this.router.navigate(['login']);
+              this.router.navigate(['']);
             } else {
               // go to customer home page
               localStorage.setItem('user', JSON.stringify(this.userRegistered));
