@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import {NgForm} from '@angular/forms';
-
+import {NgModule} from '@angular/core';
 
 import { User } from '../../models/User';
 import { UserService } from '../../services/user.service';
@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
     this.fieldsIncomplete = false;
     this.found = false;
     this.registerFailed = false;
+    this.userRegistered = null;
   }
 
   ngOnInit() {
@@ -33,62 +34,45 @@ export class RegisterComponent implements OnInit {
   register(email: string,
     username: string,
     password: string,
-    accountType: String){
-    if(email=="" || username=="" || password=="" || accountType==""){
-      //alert("Need to fill out all the fields");
+    accountType: String) {
+    if (email === '' || username === '' || password === '' || accountType === '') {
+      // alert("Need to fill out all the fields");
       this.fieldsIncomplete = true;
-    }
-    else{
-      const user: User =new User();
-      //const check: User = new User();
-      user.id =1;
-      user.email=email;
-      user.username=username;
-      user.password=password;
-      if(accountType === 'customer'){
+    } else {
+      const user: User = new User();
+      // const check: User = new User();
+      user.id = 1;
+      user.email = email;
+      user.username = username;
+      user.password = password;
+      if (accountType === 'customer') {
         user.role = 2;
-        user.active=1;
-      }
-      else {
+        user.active = 1;
+      } else {
         user.role = 1;
-        user.active=0;
+        user.active = 0;
       }
-      user.cancelled=0;
+      user.cancelled = 0;
       console.log(user);
 
-      //check current user accounts so that there is no duplicate
-      // this.service.getAll().subscribe(resp => {
-      //   this.check = resp as User[];
-      //   for(let a of this.check){
-      //     if(a.username === user.username){
-      //       this.found = true;
-
-      //     }
-      //   }
-      // });
-
-      //tell yous username is taken if found
-      // if(this.found){
-      //   alert("Username is taken, try again");
-      // }
-      //creates a new userand redirects them to proper home page
-      //else {
         this.service.register(user).subscribe(resp => {
           this.userRegistered = resp as User;
+          console.log(this.userRegistered);
           if (this.userRegistered == null) {
             this.registerFailed = true;
+            console.log(this.registerFailed);
           } else {
-            if(accountType === 'retailer'){
-              //go to retailer home page
-              this.router.navigate(['retailer/home']);
-            } else{
-              //go to customer home page
+            if (accountType === 'retailer') {
+              // go to retailer home page
+              this.router.navigate(['login']);
+            } else {
+              // go to customer home page
+              localStorage.setItem('user', JSON.stringify(this.userRegistered));
               this.router.navigate(['']);
             }
           }
         });
-      //}
-    }
+      }
     }
   }
 

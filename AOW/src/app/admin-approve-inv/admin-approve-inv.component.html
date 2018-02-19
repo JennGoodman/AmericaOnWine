@@ -1,0 +1,43 @@
+<div class="container">
+  <h1 class="h1">Stock Pending Approval</h1>
+  <div class="row" *ngIf="visible;else itemtable">
+    <p>No Request at this time.</p>
+  </div>
+  <ng-template #itemtable>
+    <table class="table table-striped table-hover table-condensed table-bordered">
+      <tr>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>User ID</th>
+        <th>Country</th>
+        <th>Subtype</th>
+        <th>Year</th>
+        <th>Status</th>
+        <th>Description</th>
+        <th>Volume</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let a of allInvApprovalItem">
+        <td>{{a.name}}</td>
+        <td>{{a.brand.name}}</td>
+        <td>{{a.userId}}</td>
+        <td>{{a.country.name}}</td>
+        <td>{{a.subType.name}}</td>
+        <td>{{a.year}}</td>
+        <td>{{a.status}}</td>
+        <td>{{a.description}}</td>
+        <td>{{a.volume}} L</td>
+        <td>{{a.price | currency:'USD':'symbol'}}</td>
+        <td>{{a.quantity}} available</td>
+        <td><button (click)="approve(a)">Approve</button><br>
+        <button (click)="deny(a)">Deny</button></td>
+      </tr>
+    </table>
+  </ng-template>
+</div>
+
+
+
+
