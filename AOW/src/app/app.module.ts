@@ -41,6 +41,7 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 
 import { CartComponent } from './cart/cart.component';
 import { AdminApproveInvComponent } from './admin-approve-inv/admin-approve-inv.component';
+import { RateComponent } from './rate/rate.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { AdminApproveInvComponent } from './admin-approve-inv/admin-approve-inv.
     YesNoPipe,
     RetailerAccountsComponent,
     AdminHomeComponent,
-    AdminApproveInvComponent
+    AdminApproveInvComponent,
+    RateComponent
   ],
   imports: [
     HttpClientModule,
