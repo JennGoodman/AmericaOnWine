@@ -7,7 +7,6 @@
     float: right;
     text-align: left;
     width: 50%;
-    height: 391.2px;
 }
 
 .big-wine-img {
@@ -30,4 +29,8 @@
 
 .add-to-cart {
     margin: 0 auto;
+}
+
+#item-display {
+    height: 400px;
 }
