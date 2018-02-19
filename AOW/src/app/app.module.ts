@@ -42,6 +42,7 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { CartComponent } from './cart/cart.component';
 import { AdminApproveInvComponent } from './admin-approve-inv/admin-approve-inv.component';
 import { RateComponent } from './rate/rate.component';
+import { RateShowComponent } from './rate-show/rate-show.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { RateComponent } from './rate/rate.component';
     RetailerAccountsComponent,
     AdminHomeComponent,
     AdminApproveInvComponent,
-    RateComponent
+    RateComponent,
+    RateShowComponent
   ],
   imports: [
     HttpClientModule,
