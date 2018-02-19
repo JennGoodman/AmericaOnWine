@@ -42,7 +42,15 @@ export class CheckoutCartComponent implements OnInit {
     this.newVal = (<HTMLInputElement> document.getElementById('card-info')).value;
 
     if (this.newVal.length === 16) {
-      localStorage.removeItem('cart');
+        let items = JSON.parse(localStorage.getItem('cart'));
+        items.forEach((item) => {
+            console.log(item.inventory);
+            this.service.add(item).subscribe(
+                resp => console.log(resp)
+            );
+        });
+        localStorage.removeItem('cart');
+
       this.router.navigate(['']);
     } else {
       this.invalidLen = true;
