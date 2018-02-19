@@ -33,9 +33,5 @@ public class LoginHibernate implements LoginService {
 				return user;
 			else return null;
 		}
-<<<<<<< HEAD
-		return user;
-=======
->>>>>>> c76798e566126a741a785d7c26b81f836c3cebdf
 	}
 }
