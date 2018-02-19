@@ -56,6 +56,10 @@ public class InventoryHibernate implements InventoryDao, HibernateSession {
 		s.update(item);
 		return item;
 	}
+	public boolean addItemByUser(User user, InventoryItem item) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	@Override
 	public InventoryItem addItem(InventoryItem item) {

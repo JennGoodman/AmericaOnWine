@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import {NgForm} from '@angular/forms';
-
+import {NgModule} from '@angular/core';
 
 import { User } from '../../models/User';
 import { UserService } from '../../services/user.service';
@@ -34,27 +34,25 @@ export class RegisterComponent implements OnInit {
   register(email: string,
     username: string,
     password: string,
-    accountType: String){
-    if(email=="" || username=="" || password=="" || accountType==""){
-      //alert("Need to fill out all the fields");
+    accountType: String) {
+    if (email === '' || username === '' || password === '' || accountType === '') {
+      // alert("Need to fill out all the fields");
       this.fieldsIncomplete = true;
-    }
-    else{
-      const user: User =new User();
-      //const check: User = new User();
-      user.id =1;
-      user.email=email;
-      user.username=username;
-      user.password=password;
-      if(accountType === 'customer'){
+    } else {
+      const user: User = new User();
+      // const check: User = new User();
+      user.id = 1;
+      user.email = email;
+      user.username = username;
+      user.password = password;
+      if (accountType === 'customer') {
         user.role = 2;
-        user.active=1;
-      }
-      else {
+        user.active = 1;
+      } else {
         user.role = 1;
-        user.active=0;
+        user.active = 0;
       }
-      user.cancelled=0;
+      user.cancelled = 0;
       console.log(user);
 
         this.service.register(user).subscribe(resp => {
@@ -64,20 +62,17 @@ export class RegisterComponent implements OnInit {
             this.registerFailed = true;
             console.log(this.registerFailed);
           } else {
-            if(accountType === 'retailer'){
-              console.log(" " +accountType + " 1");
-              //go to retailer home page
-              //localStorage.setItem('user', JSON.stringify(this.userRegistered));
-              this.router.navigate(['login']);
-            } else{
-              console.log(" " +accountType + " 2");
-              //go to login page
-              //localStorage.setItem('user', JSON.stringify(this.userRegistered));
-              this.router.navigate(['login']);
+            if (accountType === 'retailer') {
+              // go to retailer home page
+              this.router.navigate(['']);
+            } else {
+              // go to customer home page
+              localStorage.setItem('user', JSON.stringify(this.userRegistered));
+              this.router.navigate(['']);
             }
           }
         });
-    }
+      }
     }
   }
 

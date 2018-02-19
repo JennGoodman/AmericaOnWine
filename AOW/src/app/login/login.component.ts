@@ -40,7 +40,14 @@ export class LoginComponent implements OnInit {
           item.userId = this.loggedInUser.id;
         });
         localStorage.setItem('cart', JSON.stringify(cart));
-        this.router.navigate(['']);
+
+        if (this.loggedInUser.role === 0) {
+          this.router.navigate(['admin/home']);
+        } else if (this.loggedInUser.role === 1) {
+          this.router.navigate(['']);
+        } else {
+          this.router.navigate(['']);
+        }
         location.reload();
       }
     });

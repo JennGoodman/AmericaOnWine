@@ -13,7 +13,6 @@ import { User } from '../models/User';
 export class AccountAccessService {
 
   private config = new Config();
-  private MyURL = this.config.appURL + 'user';
   constructor(private http: HttpClient) { }
 
   login(user: User): Observable<User> {

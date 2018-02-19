@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <a class="navbar-brand" routerLink="">America On Wine</a>
+  <a class="navbar-brand navbar-text" routerLink="">America On Wine</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -34,9 +34,10 @@
         </li>
       </ng-container>
     </ul>
-    <button class="btn btn-outline btn-sm" *ngIf="user; else elseBlock" (click)="logout()">Log Out[{{user.username}}]</button>
+    <button class="btn btn-link navbar-btn btn-default navbar-text" *ngIf="user; else elseBlock" (click)="logout()">Log Out: {{user.username}}</button>
     <ng-template #elseBlock>
-      <button class="btn btn-outline btn-sm" (click)="login()">Log In</button>
+      <button class="btn btn-link navbar-btn btn-default navbar-text" (click)="login()">Log In</button>
     </ng-template>
+    <app-search></app-search>
   </div>
 </nav>
