@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.americaonwine.beans.Roles;
 import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.services.LoginService;
 
@@ -31,7 +32,5 @@ public class RegisterController {
 			else {
 				return null;
 			}
-			
 		}
-
 }

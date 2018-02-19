@@ -8,6 +8,7 @@
 */servers/
 */node_modules/
 */e2e/
+.vscode/
 
 # Package Files #
 /AssociateEvaluationSystem/*.jar

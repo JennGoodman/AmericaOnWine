@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { InventoryFormComponent } from './inventory-form/inventory-form.component';
 import { WineListComponent } from './wine-list/wine-list.component';
 import { AppComponent } from './app.component';
-
 import { RetailHomeComponent } from './retail-home/retail-home.component';
 import { LoginComponent } from './login/login.component';
 import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
-import { CustomerHomeComponent } from './customer-home/customer-home.component';
 import { CheckoutCartComponent } from './checkout-cart/checkout-cart.component';
 import { FakeHomeComponent } from './fake-home/fake-home.component';
+
+import { SearchresultsComponent } from './searchresults/searchresults.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { AdminApproveInvComponent} from './admin-approve-inv/admin-approve-inv.component';
 
 const routes: Routes = [
     {
@@ -55,8 +58,18 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'customer/home',
-        component: CustomerHomeComponent,
+        path: 'search/:query',
+        component: SearchresultsComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'inventory/approval',
+        component: AdminApproveInvComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'admin/home',
+        component: AdminHomeComponent,
         pathMatch: 'full'
     },
     {
@@ -69,6 +82,7 @@ const routes: Routes = [
         component: FakeHomeComponent,
         pathMatch: 'full'
     }
+
 ];
 
 @NgModule({

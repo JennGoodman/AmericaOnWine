@@ -28,11 +28,21 @@ import { SubTypeService } from '../services/sub-type.service';
 import { TagService } from '../services/tag.service';
 import { TransactionService } from '../services/transaction.service';
 import { TypeService } from '../services/type.service';
+import { AdminService } from '../services/admin.service';
+
 import { HomeComponent } from './home/home.component';
-import { CustomerHomeComponent } from './customer-home/customer-home.component';
 import { CheckoutCartComponent } from './checkout-cart/checkout-cart.component';
-import { CartComponent } from './cart/cart.component';
 import { FakeHomeComponent } from './fake-home/fake-home.component';
+import { SearchComponent } from './search/search.component';
+import { SearchresultsComponent } from './searchresults/searchresults.component';
+
+import { PendingAccountComponent } from './admin/pending-accts/pending-accts.component';
+import { YesNoPipe } from '../pipes/yes-no.pipe';
+import { RetailerAccountsComponent } from './admin/retailer-accounts/retailer-accounts.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+
+import { CartComponent } from './cart/cart.component';
+import { AdminApproveInvComponent } from './admin-approve-inv/admin-approve-inv.component';
 
 @NgModule({
   declarations: [
@@ -48,10 +58,17 @@ import { FakeHomeComponent } from './fake-home/fake-home.component';
     WineListComponent,
     BigWineItemComponent,
     HomeComponent,
-    CustomerHomeComponent,
     CheckoutCartComponent,
     CartComponent,
-    FakeHomeComponent
+    FakeHomeComponent,
+    SearchComponent,
+    SearchresultsComponent,
+    CartComponent,
+    PendingAccountComponent,
+    YesNoPipe,
+    RetailerAccountsComponent,
+    AdminHomeComponent,
+    AdminApproveInvComponent
   ],
   imports: [
     HttpClientModule,
@@ -71,6 +88,7 @@ import { FakeHomeComponent } from './fake-home/fake-home.component';
     TagService,
     TransactionService,
     TypeService,
+    AdminService,
     CartComponent
   ],
   bootstrap: [AppComponent]
