@@ -29,7 +29,13 @@ import { TagService } from '../services/tag.service';
 import { TransactionService } from '../services/transaction.service';
 import { TypeService } from '../services/type.service';
 import { HomeComponent } from './home/home.component';
+import { PendingAccountComponent } from './admin/pending-accts/pending-accts.component';
+import { AdminService } from '../services/admin.service';
+import { YesNoPipe } from '../pipes/yes-no.pipe';
+import { RetailerAccountsComponent } from './admin/retailer-accounts/retailer-accounts.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { CartComponent } from './cart/cart.component';
+import { AdminApproveInvComponent } from './admin-approve-inv/admin-approve-inv.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +51,12 @@ import { CartComponent } from './cart/cart.component';
     WineListComponent,
     BigWineItemComponent,
     HomeComponent,
-    CartComponent
+    PendingAccountComponent,
+    YesNoPipe,
+    RetailerAccountsComponent,
+    AdminHomeComponent,
+    CartComponent,
+    AdminApproveInvComponent
   ],
   imports: [
     HttpClientModule,
@@ -65,6 +76,7 @@ import { CartComponent } from './cart/cart.component';
     TagService,
     TransactionService,
     TypeService,
+    AdminService,
     CartComponent
   ],
   bootstrap: [AppComponent]

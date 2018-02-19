@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { AdminApproveInvComponent} from './admin-approve-inv/admin-approve-inv.component';
 
 const routes: Routes = [
     {
@@ -49,6 +51,16 @@ const routes: Routes = [
     {
         path: 'form',
         component: InventoryFormComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'admin/home',
+        component: AdminHomeComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'inventory/approval',
+        component: AdminApproveInvComponent,
         pathMatch: 'full'
     }
 ];

@@ -15,24 +15,23 @@ public class LoginHibernate implements LoginService {
 	@Override
 	public User login(String username, String password) {
 		User u = ud.getUserByUsername(username);
-		if (u != null && u.getPassword().equals(password) )
+		if (u != null && u.getPassword().equals(password) && u.getActive() == 1)
 			return u;
 		else return null;
 	}
 
 	@Override
 	public User register(User user) {
-//		User email = ud.getUserByEmail(user.getEmail());
-//		User username = ud.getUserByUsername(user.getUsername());
-//		if(email == null) {
-//			return null;
-//		}else if(username == null) {
-//			return null;
-//		}else {
-//			ud.insertUser(user);
-//		}
-		ud.insertUser(user);
-		return user;
+		User email = ud.getUserByEmail(user.getEmail());
+		User username = ud.getUserByUsername(user.getUsername());
+		if (email != null) {
+			return null;
+		} else if(username != null) {
+			return null;
+		} else {
+			if (ud.insertUser(user))
+				return user;
+			else return null;
+		}
 	}
-	
 }
