@@ -11,7 +11,7 @@
     -o-transition: .2s ease-in-out;
     transition: .2s ease-in-out;
     width: 100%;
-    font-size: 13px;
+    font-size: 11px;
 }
 
 .cart-item {
@@ -30,6 +30,10 @@
     transform: scale(1.03);
 }
 
+#no-cart {
+    text-align: center;
+}
+
 div {
     padding: 8px;
 }
@@ -39,9 +43,15 @@ div {
 }
 
 .to-cart {
-    width: 35%;
+    width: 18%;
     text-align: center;
     float: left;
     position: relative;
     top: 4px;
+}
+
+#empty {
+    position: relative;
+    left: 10px;
+    bottom: 0px;
 }

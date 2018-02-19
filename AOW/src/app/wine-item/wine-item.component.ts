@@ -6,6 +6,7 @@ import { User } from '../../models/User';
 import { TransactionService } from '../../services/transaction.service';
 import { CartComponent } from '../cart/cart.component';
 import { InventoryService } from '../../services/inventory.service';
+import { ApplicationRef } from '@angular/core';
 
 @Component({
   selector: 'app-wine-item',
@@ -21,7 +22,8 @@ export class WineItemComponent implements OnInit {
   constructor(private router: Router,
     private tranService: TransactionService,
     private cart: CartComponent,
-    private is: InventoryService
+    private is: InventoryService,
+    private ref: ApplicationRef
   ) { }
 
   getColor() {
@@ -49,6 +51,7 @@ export class WineItemComponent implements OnInit {
 
   addToCart(e) {
     e.stopPropagation();
+<<<<<<< HEAD
 
     const ts = <Transaction[]> JSON.parse(localStorage.getItem('cart'));
     const curUser: User = JSON.parse(localStorage.getItem('user'));
@@ -84,7 +87,16 @@ export class WineItemComponent implements OnInit {
       const t = [new Transaction().setVals(ordernum, this.invItem, this.num, userId, this.invItem.price * this.num)];
       localStorage.setItem('cart', JSON.stringify(t));
       this.cart.updateCart();
+=======
+    if (this.num < 0) {
+      return;
     }
+    if (this.num > this.invItem.quantity) {
+      this.num = this.invItem.quantity;
+>>>>>>> 9492c890eadc896e4fcfd28d80978a21ff647bb9
+    }
+    this.cart.updateCart(this.invItem, this.num);
+    this.ref.tick();
   }
 
   endEvent(e) {
