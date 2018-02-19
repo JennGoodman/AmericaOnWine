@@ -1,7 +1,7 @@
 <div id="checkout">
     <div>Order Number: {{cartItems[0].orderNumber}}</div>
     <div *ngFor="let item of cartItems" class="checkout-items">
-        <div>{{item.inventory.name}}</div><div>Quantity: {{item.quantity}}</div><div>Price per unit: ${{item.total/item.quantity}}</div>
+        <div>{{item.inventory}}</div><div>Quantity: {{item.quantity}}</div><div>Price per unit: ${{item.total/item.quantity}}</div>
         <div>Price of units: ${{item.total}}</div><br>
     </div>
     <div>Total: ${{this.sum}}</div><br>

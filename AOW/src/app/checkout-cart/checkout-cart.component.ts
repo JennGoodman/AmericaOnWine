@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../../models/Transaction';
-import {NgModule} from '@angular/core'; 
+import {NgModule} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TransactionService} from '../../services/transaction.service';
 
@@ -10,16 +10,16 @@ import { TransactionService} from '../../services/transaction.service';
   styleUrls: ['./checkout-cart.component.css']
 })
 export class CheckoutCartComponent implements OnInit {
-  //cartItems: Transaction[] = JSON.parse(localStorage.getItem('cart')) || [];
+  // cartItems: Transaction[] = JSON.parse(localStorage.getItem('cart')) || [];
   cartItems: Transaction[] = [];
   invalidLen: boolean =false;
   newVal: String;
   sum: number;
   returnTransaction: Transaction;
   failed: boolean;
-  
 
-  constructor(private router: Router, private service: TransactionService) { 
+
+  constructor(private router: Router, private service: TransactionService) {
   }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class CheckoutCartComponent implements OnInit {
       console.log(resp);
     });
 
-    //this.cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    this.cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     let total = 0;
     for (let a = 0; a < this.cartItems.length; a++) {
       total += this.cartItems[a].total;
@@ -41,7 +41,7 @@ export class CheckoutCartComponent implements OnInit {
     console.log(num.toString().length);
     if(this.newVal.length == 16){
       for(let tran of this.cartItems){
-        console.log(tran.inventory);
+        console.log("What about this ? " + tran.inventory);
         console.log(tran);
         tran.id=4;
         tran.orderNumber=3;

@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 @Injectable()
 export class CartComponent implements OnInit {
-  cartItems: Transaction[] = JSON.parse(localStorage.getItem('cart')) || [];
+  cartItems: Transaction[];
   sum: number;
 
   constructor(private ref: ApplicationRef, private router: Router) {

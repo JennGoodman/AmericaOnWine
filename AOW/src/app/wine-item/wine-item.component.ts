@@ -65,6 +65,7 @@ export class WineItemComponent implements OnInit {
       });
 
       if (!exists) {
+        console.log("[---] Inventory item is : " + this.invItem);
         const tmp = new Transaction().setVals(ts[0].orderNumber, this.invItem, this.num, userId, this.invItem.price * this.num);
         const tmpa: Transaction[] = [tmp].concat(ts);
         localStorage.setItem('cart', JSON.stringify(tmpa));
