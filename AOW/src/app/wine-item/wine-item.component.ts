@@ -91,7 +91,6 @@ export class WineItemComponent implements OnInit {
       this.num = this.invItem.quantity;
     }
     this.cart.updateCart(this.invItem, this.num);
-    this.ref.tick();
     }
   }
 

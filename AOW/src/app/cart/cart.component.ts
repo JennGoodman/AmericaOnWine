@@ -102,10 +102,6 @@ export class CartComponent implements OnInit {
     this.router.navigate(['/item/']);
   }
 
-  checkout() {
-    this.router.navigate(['checkout']);
-  }
-
   empty() {
     this.cartItems = [];
     localStorage.setItem('cart', JSON.stringify(this.cartItems));
