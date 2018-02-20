@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminApproveInvComponent} from './admin-approve-inv/admin-approve-inv.component';
+import { RetailAlertsComponent } from './retail-alerts/retail-alerts.component';
 
 const routes: Routes = [
     {
@@ -68,6 +69,11 @@ const routes: Routes = [
     {
         path: 'admin/home',
         component: AdminHomeComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'retailer/alerts',
+        component: RetailAlertsComponent,
         pathMatch: 'full'
     }
 
