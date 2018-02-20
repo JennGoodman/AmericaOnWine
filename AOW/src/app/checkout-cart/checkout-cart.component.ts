@@ -47,6 +47,9 @@ export class CheckoutCartComponent implements OnInit {
             item.transactionDate = new Date();
             console.log(JSON.stringify(item));
             console.log(item.inv);
+            console.log(item.quantity);
+            console.log(item.inv.quantity);
+
             this.service.add(item).subscribe(
                 resp => console.log(resp)
             );
