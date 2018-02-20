@@ -6,17 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.beans.Roles;
 import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.services.AdminService;
 
 @RestController
 @RequestMapping(headers="Accept=application/json, text/plain")
-public class AdminAccountQueueController {
+public class AdminController {
 	
 	@Autowired
 	private AdminService as;
@@ -64,5 +66,12 @@ public class AdminAccountQueueController {
 		} else {
 			return as.reactivateRetailerAccount(u);
 		}
+	}
+	
+	@RequestMapping(value="inventory/approval", method=RequestMethod.PUT)
+	@ResponseBody
+	public String inventoryItemApproval(@RequestBody InventoryItem fromWeb, HttpSession session, ObjectMapper om) throws JsonProcessingException {
+		InventoryItem fromDB = as.approval(fromWeb);
+		return om.writeValueAsString(fromDB);
 	}
 }
