@@ -1,34 +1,46 @@
-<div>
-  <h2>Registration</h2>
-
-  <form method="post" action="register"required>
-    <div>
-        <label > Email:</label>
-        <input id="emailInput" #emailInput type="text" name="email" required>
-    </div>
-    <div>
-      <label> Username:</label>
-      <input id="usernameInput" #usernameInput type="text" name="username" required>
-    </div>
-    <div>
-      <label> Password:</label>
-      <input id="passwordInput" #passwordInput type="password" name="password" required>
-    </div>
-    <div>
-      <label> Type of account:</label>
-      <select id="accountTypeInput" #accountTypeInput  name="accountType" required>
-          <option value="customer">Customer</option>
-          <option value="retailer">Retailer</option>
-        </select>
-    </div>
-    <div *ngIf="fieldsIncomplete">
-      Need to fill out all fields
-    </div>
-    <div *ngIf="registerFailed">
-      Registration Failed
-    </div>
-    <div>
-        <button (click)="register(emailInput.value, usernameInput.value, passwordInput.value, accountTypeInput.value)">Register</button>
-    </div>
-  </form>
-</div>
+<div class="container-fluid py-5" id="loginContainer">
+    <div class="row justify-content-center">
+      <div class="col-5 border border-primary centerContents">
+        <div class="row no-gutters centerContents">
+            <div class="input-group col-12 my-4 justify-content-center">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Email</span>
+                </div>
+                <input class="col-9" type="text" id="emailInput" #emailInput name="emailInpit" placeholder="Enter your email here...">
+              </div>
+          <div class="input-group col-12 justify-content-center">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Username</span>
+            </div>
+            <input class="col-9" type="text" id="usernameInput" #usernameInput name="usernameInput" placeholder="Enter your username here...">
+          </div>
+          <div class="input-group my-4 col-12 justify-content-center">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Password</span>
+            </div>
+            <input class="col-9" type="password" id="passwordInput" #passwordInput name="passwordInput" placeholder="Enter your password here...">
+          </div>
+          <div class="input-group col-12 justify-content-center">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Type</span>
+              </div>
+              <select class="col-9" id="accountTypeInput" #accountTypeInput  name="accountType" required>
+                  <option value="customer">Customer</option>
+                  <option value="retailer">Retailer</option>
+                </select>
+            </div>
+        </div>
+        <div class="row justify-content-center my-3">
+            <button class="btn btn-primary" (click)="register(emailInput.value, usernameInput.value, passwordInput.value, accountTypeInput.value)">Register</button>
+        </div>
+        <div *ngIf="fieldsIncomplete">
+            Need to fill out all fields
+          </div>
+          <div *ngIf="registerFailed">
+            Registration Failed
+          </div>
+        </div>
+      </div>
+  </div>
+  
+  
