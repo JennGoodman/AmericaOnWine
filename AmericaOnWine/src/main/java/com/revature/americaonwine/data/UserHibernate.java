@@ -28,11 +28,9 @@ public class UserHibernate implements UserDao, HibernateSession {
 		int id = (int) session.save(u);
 		if (session.get(User.class, id) != null)
 		{
-			System.out.println("[+++] get's to here? " + id);
 			u.setId(id);
 			return u;
 		}
-		System.out.println("[---] failed with id " + id);
 		return null;
 	}
 
