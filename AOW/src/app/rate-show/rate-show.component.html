@@ -1,25 +1,33 @@
 <ng-container *ngIf="tx">
-  <div class="container" *ngFor="let t of tx">
-    <div class="container" style="background-color: grey">
-      <div class="row">
+  <div class="container my-3" *ngFor="let t of tx">
+    <div class="container" style="background-color:grey">
+      <div class="row" *ngIf="t.rating > 0">
         <div class="col-md-12 text-right">
-          Rating: ({{t.rating}})
-          <label class="radio-inline" *ngIf="t.rating === 1">
-            <input type="radio" name="rate1">1</label>
-          <label class="radio-inline" *ngIf="t.rating === 2">
-            <input type="radio" name="rate2">2</label>
-          <label class="radio-inline" *ngIf="t.rating === 3">
-            <input type="radio" name="rate3">3</label>
-          <label class="radio-inline" *ngIf="t.rating === 4">
-            <input type="radio" name="rate4">4</label>
-          <label class="radio-inline" *ngIf="t.rating === 5">
-            <input type="radio" name="rate5">5</label>
+          <img *ngIf="t.rating >= 1; else r1" src="../../assets/star-filled.png">
+          <ng-template #r1>
+            <img src="../../assets/star-empty.png">
+          </ng-template>
+          <img *ngIf="t.rating >= 2; else r2" src="../../assets/star-filled.png">
+          <ng-template #r2>
+            <img src="../../assets/star-empty.png">
+          </ng-template>
+          <img *ngIf="t.rating >= 3; else r3" src="../../assets/star-filled.png">
+          <ng-template #r3>
+            <img src="../../assets/star-empty.png">
+          </ng-template>
+          <img *ngIf="t.rating >= 4; else r4" src="../../assets/star-filled.png">
+          <ng-template #r4>
+            <img src="../../assets/star-empty.png">
+          </ng-template>
+          <img *ngIf="t.rating >= 5; else r5" src="../../assets/star-filled.png">
+          <ng-template #r5>
+            <img src="../../assets/star-empty.png">
+          </ng-template>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-12">
-          Comment:
-          <br> {{t.comments}}
+      <div class="row" *ngIf="t.rating > 0 && t.comments.length > 0">
+        <div class="col-lg-12" style="background-color:beige; color:black">
+          {{t?.comments}}
         </div>
       </div>
     </div>
