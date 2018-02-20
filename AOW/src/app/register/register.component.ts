@@ -67,7 +67,6 @@ export class RegisterComponent implements OnInit {
               this.router.navigate(['']);
             } else {
               // go to customer home page
-              localStorage.setItem('user', JSON.stringify(this.userRegistered));
               this.router.navigate(['']);
             }
           }
