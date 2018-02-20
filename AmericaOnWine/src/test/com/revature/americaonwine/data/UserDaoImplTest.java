@@ -89,27 +89,56 @@ public class UserDaoImplTest {
 
 	@Test
 	public void testGetUserByEmail() {
-		fail("Not yet implemented");
+		ud.insertUser(c1);
+		User u = ud.getUserByEmail(c1.getEmail());
+		
+		assertEquals(c1.getUsername(), u.getUsername());
+		assertEquals(c1.getPassword(), u.getPassword());
+		assertEquals(c1.getEmail(), u.getEmail());
+		assertEquals(c1.getRole(), u.getRole());
+		assertEquals(c1.getActive(), u.getActive());
+		assertEquals(c1.getCancelled(), u.getCancelled());
 	}
 
 	@Test
 	public void testGetAll() {
-		fail("Not yet implemented");
+		assertEquals(true, ud.getAll() != null);
 	}
 
 	@Test
 	public void testUpdateUser() {
-		fail("Not yet implemented");
+		ud.insertUser(c1);
+		c1.setActive(0);
+		
+		assertEquals(true, ud.updateUser(c1));
+		User u = ud.getUserByEmail(c1.getEmail());
+		
+		assertEquals(c1.getUsername(), u.getUsername());
+		assertEquals(c1.getPassword(), u.getPassword());
+		assertEquals(c1.getEmail(), u.getEmail());
+		assertEquals(c1.getRole(), u.getRole());
+		assertEquals(c1.getActive(), u.getActive());
+		assertEquals(c1.getCancelled(), u.getCancelled());
 	}
 
 	@Test
 	public void testCancelUserUser() {
-		fail("Not yet implemented");
+		ud.insertUser(c1);
+		ud.cancelUser(c1);
+		User u = ud.getUserByUsername(c1.getUsername());
+		
+		
+		assertEquals(1, u.getCancelled());
 	}
 
 	@Test
 	public void testCancelUserInt() {
-		fail("Not yet implemented");
+		ud.insertUser(c1);
+		ud.cancelUser(c1.getId());
+		User u = ud.getUserByUsername(c1.getUsername());
+		
+		
+		assertEquals(1, u.getCancelled());
 	}
 
 }
