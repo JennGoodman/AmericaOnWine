@@ -3,7 +3,7 @@ import { Inventory } from './Inventory';
 export class Transaction {
     id: number;
     orderNumber: number;
-    inventory: Inventory;
+    inv: Inventory;
     quantity: number;
     userId: number;
     total: number;
@@ -14,7 +14,7 @@ export class Transaction {
     constructor() {
       this.id = 0;
       this.orderNumber = null;
-      this.inventory = null;
+      this.inv = null;
       this.quantity = null;
       this.userId = null;
       this.total = null;
@@ -25,7 +25,7 @@ export class Transaction {
 
     setVals(on: number, invId: Inventory, quantity: number, userId: number, total: number) {
       this.orderNumber = on;
-      this.inventory = invId;
+      this.inv = invId;
       this.quantity = quantity;
       this.userId = userId;
       this.total = total;

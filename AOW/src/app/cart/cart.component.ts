@@ -35,7 +35,7 @@ export class CartComponent implements OnInit {
 
       let exists = false;
       this.cartItems.forEach((transaction) => {
-        if (transaction.inventory.id === item.id) {
+        if (transaction.inv.id === item.id) {
           transaction.quantity += num;
           transaction.total += item.price * num;
           exists = true;
@@ -73,13 +73,13 @@ export class CartComponent implements OnInit {
     const userId = curUser ? curUser.id : null;
     this.cartItems.forEach((item) => {
       item.userId = userId;
-      if (item.quantity > item.inventory.quantity) {
-        item.quantity = item.inventory.quantity;
+      if (item.quantity > item.inv.quantity) {
+        item.quantity = item.inv.quantity;
       }
       if (item.quantity <= 0) {
         this.cartItems.splice(this.cartItems.indexOf(item), 1);
       }
-      item.total = item.inventory.price * item.quantity;
+      item.total = item.inv.price * item.quantity;
     });
     let val = 0;
     for (let a = 0; a < this.cartItems.length; a++) {

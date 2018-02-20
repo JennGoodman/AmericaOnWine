@@ -24,6 +24,7 @@ public class CheckoutController {
 	
 	@RequestMapping(value="/transaction", method=RequestMethod.POST)
 	public String addTransaction(@RequestBody Transaction fromWeb, ObjectMapper om, HttpSession session) throws JsonProcessingException {
+		
 		Transaction fromDB = cs.newTransaction(fromWeb);
 		
 		if(fromDB != null) {
