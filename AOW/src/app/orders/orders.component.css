@@ -27,3 +27,8 @@
     resize: none;
     width: 45%; 
 }
+
+.centered {
+    font-size: 28px;
+    text-align: center;
+}
