@@ -88,7 +88,8 @@ import { RateShowComponent } from './rate-show/rate-show.component';
     TransactionService,
     TypeService,
     AdminService,
-    CartComponent
+    CartComponent,
+    BigWineItemComponent
   ],
   bootstrap: [AppComponent]
 })

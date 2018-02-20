@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import { Config } from '../aow.config';
 
 import { Transaction } from '../models/Transaction';
+import { Inventory } from '../models/Inventory';
 
 @Injectable()
 export class TransactionService {
@@ -55,12 +56,13 @@ export class TransactionService {
       );
   }
 
-  getByItemId(id: number): Observable<number> {
-    return this.http.get(this.config.appURL + 'order/' + id, {
+  getByItemId(inv: Inventory): Observable<Transaction[]> {
+    const body = JSON.stringify(inv);
+    return this.http.post(this.config.appURL + 'orderno', body, {
       headers: this.config.defaultHeaders, withCredentials: true
     })
       .map(
-        resp => resp as number
+        resp => resp as Transaction[]
       );
   }
 }

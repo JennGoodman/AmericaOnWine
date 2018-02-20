@@ -95,15 +95,14 @@ export class WineItemComponent implements OnInit {
   }
 
   editPressed(e): void {
-    localStorage.setItem("invItemClicked", JSON.stringify(this.invItem));
+    localStorage.setItem('invItemClicked', JSON.stringify(this.invItem));
     this.router.navigate(['/retailer/form']);
     location.reload();
   }
 
   removePressed(): void {
     this.is.delete(this.invItem)
-      .subscribe( resp =>
-        {
+      .subscribe( resp => {
           console.log(resp as Inventory);
           location.reload();
       });

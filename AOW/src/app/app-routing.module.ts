@@ -71,16 +71,7 @@ const routes: Routes = [
         path: 'admin/home',
         component: AdminHomeComponent,
         pathMatch: 'full'
-    },
-    {
-        path: 'rate',
-        component: RateComponent
-    },
-    {
-        path: 'rate-show',
-        component: RateShowComponent
     }
-
 ];
 
 @NgModule({
