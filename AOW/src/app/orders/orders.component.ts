@@ -51,7 +51,9 @@ export class OrdersComponent implements OnInit {
   }
 
   submitChanges(item: Transaction) {
-    this.tranService.update(item);
+    this.tranService.update(item).subscribe((it) => {
+      console.log(it);
+    });
   }
 
   checked(item: Transaction, num: number): string {
