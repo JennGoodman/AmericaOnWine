@@ -53,14 +53,12 @@ export class RegisterComponent implements OnInit {
         user.active = 0;
       }
       user.cancelled = 0;
-      console.log(user);
 
         this.service.register(user).subscribe(resp => {
-          this.userRegistered = resp as User;
-          console.log(this.userRegistered);
+          console.log(resp);
+          this.userRegistered = resp;
           if (this.userRegistered == null) {
             this.registerFailed = true;
-            console.log(this.registerFailed);
           } else {
             if (accountType === 'retailer') {
               // go to retailer home page

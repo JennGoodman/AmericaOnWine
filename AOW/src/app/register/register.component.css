@@ -1,0 +1,32 @@
+.centerContents{
+    text-align: center;
+}
+
+#loginContainer {
+    height: 100%;
+}
+
+.border {
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #dfdfdf;
+    border-color: #efefef !important;
+}
+
+.input-group-prepend {
+    width: 100px;
+}
+
+.input-group-text {
+    width: 100px;
+}
+
+.btn-primary {
+    border-color: #660033;
+    background-color: #660033;
+}
+
+.btn-primary:hover {
+    background-color: #99004d;
+    border-color: #99004d;
+}
