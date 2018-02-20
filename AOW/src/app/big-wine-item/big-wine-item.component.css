@@ -1,18 +1,25 @@
+#reviews {
+    width: 625px;
+    margin: 0 auto;
+    text-align: left;
+}
+
 .left-side {
     float: left;
     width: 50%;
+    text-align: right;
 }
 
 .right-side {
     float: right;
     text-align: left;
     width: 50%;
+    padding-left: 10px;
 }
 
 .big-wine-img {
-    width: 40%;
-    height: auto;
-    margin: 25px 35px 0px 50%;
+    width: 300px;
+    height: 415px;
     border: 1px solid black;
 }
 
@@ -32,5 +39,6 @@
 }
 
 #item-display {
-    height: 400px;
+    height: 415px;
 }
+
