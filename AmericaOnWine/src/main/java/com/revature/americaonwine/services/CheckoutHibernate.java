@@ -29,5 +29,10 @@ public class CheckoutHibernate implements CheckoutService {
 	public List<Transaction> getTransactionsForUser(User u) {
 		return td.getForUser(u);
 	}
+
+	@Override
+	public Transaction updateTransaction(Transaction t) {
+		return td.updateTransaction(t);
+	}
 	
 }

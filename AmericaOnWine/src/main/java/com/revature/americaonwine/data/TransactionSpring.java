@@ -10,7 +10,6 @@ import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 
-import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.beans.Transaction;
 import com.revature.americaonwine.beans.User;
 
@@ -54,6 +53,12 @@ public class TransactionSpring implements TransactionDao, HibernateSession {
 		Query q = s.createQuery(query);
 		List<Transaction> qlist = q.getResultList();
 		return qlist;
+	}
+
+	@Override
+	public Transaction updateTransaction(Transaction t) {
+		s.update(t);
+		return t;
 	}
 
 
