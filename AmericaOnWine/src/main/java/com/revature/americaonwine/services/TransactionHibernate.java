@@ -13,8 +13,8 @@ public class TransactionHibernate implements TransactionService {
 	
 	@Override
 	public int getMax() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return td.nextOrderNum() + 1;
 	}
 
 }

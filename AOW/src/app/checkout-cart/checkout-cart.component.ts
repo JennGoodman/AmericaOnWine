@@ -43,13 +43,18 @@ export class CheckoutCartComponent implements OnInit {
 
     if (this.newVal.length === 16) {
         let items = JSON.parse(localStorage.getItem('cart'));
-        items.forEach((item) => {
-            item.transactionDate = new Date();
-            console.log(JSON.stringify(item));
-            console.log(item.inv);
-            this.service.add(item).subscribe(
-                resp => console.log(resp)
-            );
+        this.service.maxOrder().subscribe(resp => {
+            console.log("resp is " + resp);
+            items.forEach((item) => {
+                item.transactionDate = new Date();
+                item.orderNumber = resp as number;
+                console.log(JSON.stringify(item));
+                console.log(item.inv);
+                this.service.add(item).subscribe(
+                    resp => console.log(resp)
+                );
+        });
+
         });
         localStorage.removeItem('cart');
 
