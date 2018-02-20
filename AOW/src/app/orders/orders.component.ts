@@ -14,9 +14,11 @@ export class OrdersComponent implements OnInit {
 
   constructor(private tranService: TransactionService) {
       this.tranService.getAll().subscribe((items) => {
-        this.orders = items.sort((t1, t2) => {
-          return t2.orderNumber - t1.orderNumber;
-        });
+        if (items) {
+          this.orders = items.sort((t1, t2) => {
+            return t2.orderNumber - t1.orderNumber;
+          });
+        }
       });
    }
 
