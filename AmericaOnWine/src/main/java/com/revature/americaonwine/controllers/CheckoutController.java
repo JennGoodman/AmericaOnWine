@@ -14,6 +14,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.americaonwine.beans.Transaction;
 import com.revature.americaonwine.beans.User;
+import com.revature.americaonwine.data.InventoryDao;
 import com.revature.americaonwine.services.CheckoutService;
 
 @RestController
@@ -21,6 +22,8 @@ import com.revature.americaonwine.services.CheckoutService;
 public class CheckoutController {
 	@Autowired
 	private CheckoutService cs;
+	@Autowired
+	private InventoryDao id;
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public String addTransaction(@RequestBody Transaction fromWeb, ObjectMapper om, HttpSession session) throws JsonProcessingException {
@@ -28,6 +31,9 @@ public class CheckoutController {
 		Transaction fromDB = cs.newTransaction(fromWeb);
 		
 		if(fromDB != null) {
+			int num= fromWeb.getInv().getQuantity()-fromWeb.getQuantity();
+			fromWeb.getInv().setQuantity(num);
+			id.updateItem(fromWeb.getInv());
 			return om.writeValueAsString(fromDB);
 		}else {
 			return null;

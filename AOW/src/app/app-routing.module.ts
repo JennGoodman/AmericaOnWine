@@ -16,6 +16,8 @@ import { SearchresultsComponent } from './searchresults/searchresults.component'
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminApproveInvComponent} from './admin-approve-inv/admin-approve-inv.component';
 import { OrdersComponent } from './orders/orders.component';
+import { RateComponent } from './rate/rate.component';
+import { RateShowComponent } from './rate-show/rate-show.component';
 
 const routes: Routes = [
     {
@@ -74,6 +76,16 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
+        path: 'rate',
+        component: RateComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'rate-show',
+        component: RateShowComponent,
+        pathMatch: 'full'
+    },
+    {
         path: 'checkout',
         component: CheckoutCartComponent,
         pathMatch: 'full'
@@ -88,7 +100,6 @@ const routes: Routes = [
         component: OrdersComponent,
         pathMatch: 'full'
     }
-
 ];
 
 @NgModule({

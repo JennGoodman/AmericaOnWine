@@ -1,4 +1,4 @@
-<div class="full-color" [style.background-color]="setColor()" [style.color]="textColor()" [style.height]="getHeight()">
+<div class="full-color" [style.background-color]="setColor()" [style.color]="textColor()">
         <div id="route" (click)="routeBack()"><<</div>
             <br>
             <div id="item-display">
@@ -21,5 +21,6 @@
                 <input [(ngModel)]="num" id="add-num" class="to-cart" type="number" max="{{invItem.quantity}}" min=1 value=1>
                 <span class="add" (click)="addToCart()">Add to cart</span>
             </div>
+                <app-rate-show></app-rate-show>
             </div>
 </div>

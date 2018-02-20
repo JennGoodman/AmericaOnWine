@@ -41,6 +41,8 @@ import { RetailerAccountsComponent } from './admin/retailer-accounts/retailer-ac
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminApproveInvComponent } from './admin-approve-inv/admin-approve-inv.component';
 import { OrdersComponent } from './orders/orders.component';
+import { RateComponent } from './rate/rate.component';
+import { RateShowComponent } from './rate-show/rate-show.component';
 import { CartComponent } from './cart/cart.component';
 
 @NgModule({
@@ -67,7 +69,9 @@ import { CartComponent } from './cart/cart.component';
     RetailerAccountsComponent,
     AdminHomeComponent,
     AdminApproveInvComponent,
-    OrdersComponent
+    OrdersComponent,
+    RateComponent,
+    RateShowComponent
   ],
   imports: [
     HttpClientModule,
@@ -88,7 +92,8 @@ import { CartComponent } from './cart/cart.component';
     TransactionService,
     TypeService,
     AdminService,
-    CartComponent
+    CartComponent,
+    BigWineItemComponent
   ],
   bootstrap: [AppComponent]
 })
