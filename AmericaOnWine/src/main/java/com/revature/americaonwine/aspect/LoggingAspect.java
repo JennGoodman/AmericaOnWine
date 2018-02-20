@@ -35,5 +35,7 @@ public class LoggingAspect {
 	}
 	
 	@Pointcut("execution(* com.revature..*(..))")
-	public void everything() {}
+	public void everything() {
+		// sonarqube requires that we have a comment in here
+	}
 }

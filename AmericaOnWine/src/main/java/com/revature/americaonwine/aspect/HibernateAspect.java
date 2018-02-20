@@ -42,5 +42,7 @@ public class HibernateAspect {
 	
 	@Pointcut("execution(* com.revature.americaonwine.data..*(..))"
 			+ "&& !execution(* com.revature.americaonwine.data..setSession(..))")
-	public void allDaoObjections() {}
+	public void allDaoObjections() {
+		// sonarqube requires a comment here
+	}
 }

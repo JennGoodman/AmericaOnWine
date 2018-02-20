@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { Inventory } from '../../models/Inventory';
 import { Router } from '@angular/router';
 import { Transaction } from '../../models/Transaction';
@@ -10,6 +10,7 @@ import { TransactionService } from '../../services/transaction.service';
   templateUrl: './big-wine-item.component.html',
   styleUrls: ['./big-wine-item.component.css']
 })
+@Injectable()
 export class BigWineItemComponent implements OnInit {
   num = 1;
   invItem: Inventory = JSON.parse(localStorage.getItem('item'));

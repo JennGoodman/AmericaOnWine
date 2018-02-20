@@ -44,7 +44,7 @@ export class AdminApproveInvComponent implements OnInit {
       console.log('returned inventory item is: ', inv);
     });
     // this.router.navigate(['inventory/approval']);
-    window.location.reload();
+    setTimeout(window.location.reload(), 200);
   }
 
   deny(inv: Inventory) {
@@ -55,7 +55,7 @@ export class AdminApproveInvComponent implements OnInit {
       inv = resp as Inventory;
       console.log('returned inventory item is: ', inv);
     });
-    window.location.reload();
+    setTimeout(window.location.reload(), 200);
     // this.router.navigate(['inventory/approval']);
   }
 }

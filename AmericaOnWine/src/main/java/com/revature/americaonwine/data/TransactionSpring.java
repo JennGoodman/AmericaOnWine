@@ -8,11 +8,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Property;
 import org.springframework.stereotype.Component;
 
+import com.revature.americaonwine.beans.InventoryItem;
 import com.revature.americaonwine.beans.Transaction;
 import com.revature.americaonwine.beans.User;
 
@@ -55,9 +53,20 @@ public class TransactionSpring implements TransactionDao, HibernateSession {
 		Root<Transaction> root = query.from(Transaction.class);
 		query.select(root).where(builder.equal(root.get("userId"), u.getId()));
 		Query q = s.createQuery(query);
-		List<Transaction> qlist = q.getResultList();
-		return qlist;
+	    return q.getResultList();
 	}
+	
+	@Override
+	public List<Transaction> getTransByInv(InventoryItem inv) 
+	{
+		CriteriaBuilder builder = s.getCriteriaBuilder();
+		CriteriaQuery<Transaction> query = builder.createQuery(Transaction.class);
+		Root<Transaction> root = query.from(Transaction.class);
+		query.select(root).where(builder.equal(root.get("inv"), inv));
+		Query q = s.createQuery(query);
+		return q.getResultList();
+	}
+	
 	@Override
 	public Transaction updateTransaction(Transaction t) {
 		s.update(t);
