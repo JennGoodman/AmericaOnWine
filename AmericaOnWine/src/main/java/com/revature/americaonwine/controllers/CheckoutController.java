@@ -18,14 +18,14 @@ import com.revature.americaonwine.data.InventoryDao;
 import com.revature.americaonwine.services.CheckoutService;
 
 @RestController
-@RequestMapping(headers="Accept=application/json, text/plain")
+@RequestMapping(value="/transaction", headers="Accept=application/json, text/plain")
 public class CheckoutController {
 	@Autowired
 	private CheckoutService cs;
 	@Autowired
 	private InventoryDao id;
 	
-	@RequestMapping(value="/transaction", method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.POST)
 	public String addTransaction(@RequestBody Transaction fromWeb, ObjectMapper om, HttpSession session) throws JsonProcessingException {
 		
 		Transaction fromDB = cs.newTransaction(fromWeb);
@@ -41,7 +41,7 @@ public class CheckoutController {
 		
 	}
 	
-	@RequestMapping(value="/transaction", method=RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	public String getTransaction(ObjectMapper om, HttpSession session) throws JsonProcessingException {
 		User u = (User) session.getAttribute("user");
 		List<Transaction> fromDB = cs.getTransactionsForUser(u);
@@ -52,5 +52,14 @@ public class CheckoutController {
 			return null;
 		}
 
+	}
+	
+	@RequestMapping(method=RequestMethod.PUT, produces= {"application/json; charset=UTF-8"})
+	public Transaction updateTransaction(@RequestBody Transaction t, HttpSession session) throws JsonProcessingException 
+	{
+		User u = (User) session.getAttribute("user");
+		if (u == null)
+			return null;
+		return cs.updateTransaction(t);
 	}
 }

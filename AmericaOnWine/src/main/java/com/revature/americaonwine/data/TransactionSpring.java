@@ -58,5 +58,9 @@ public class TransactionSpring implements TransactionDao, HibernateSession {
 		List<Transaction> qlist = q.getResultList();
 		return qlist;
 	}
-
+	@Override
+	public Transaction updateTransaction(Transaction t) {
+		s.update(t);
+		return t;
+	}
 }

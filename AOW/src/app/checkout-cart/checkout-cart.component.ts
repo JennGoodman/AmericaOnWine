@@ -44,12 +44,10 @@ export class CheckoutCartComponent implements OnInit {
     this.newVal = (<HTMLInputElement> document.getElementById('card-info')).value;
 
     if (this.newVal.length === 16) {
-        let items = JSON.parse(localStorage.getItem('cart'));
+        const items = JSON.parse(localStorage.getItem('cart'));
         items.forEach((item) => {
             item.transactionDate = new Date();
             item.orderNumber = this.orderNum;
-            console.log(JSON.stringify(item));
-            console.log(item.inv);
             this.service.add(item).subscribe(
                 resp => console.log(resp)
             );

@@ -8,5 +8,5 @@ import com.revature.americaonwine.beans.User;
 public interface CheckoutService {
 	public Transaction newTransaction(Transaction tran);
 	public List<Transaction> getTransactionsForUser(User u);
-
+	public Transaction updateTransaction(Transaction t);
 }

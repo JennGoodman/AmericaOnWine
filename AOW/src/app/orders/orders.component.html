@@ -1,0 +1,26 @@
+<div *ngIf="orders.length == 0" class="centered"><br>You have no orders.</div>
+<ng-container *ngIf="orders.length > 0">
+  <div *ngFor="let item of orders" class="mt-3">
+    <div class="checkout-items" [style.background-color]="backgroundColor(item.inv)" [style.color]="textColor(item.inv)">
+    <img class="left-img" src="{{item.inv.imageUrl}}">
+    <div class="right-text">
+    <br>
+    <div>Name: {{item.inv.name}}</div>
+    <div>Quantity: {{item.quantity}}</div>
+    <div>Order No: {{item.orderNumber}}</div>
+    <div>Price per unit: {{item.inv.price | currency}}</div>
+    <div>Price of units: {{item.inv.price * item.quantity | currency}}</div><br>
+    <form>
+      <label class="mx-1" for="1">1</label><input (click)="rated(item, 1)" [checked]="checked(item, 1)" type="radio" value=1 name="rating" id="1">
+      <label class="mx-1" for="2">2</label><input (click)="rated(item, 2)" [checked]="checked(item, 2)" type="radio" value=2 name="rating" id="2">
+      <label class="mx-1" for="3">3</label><input (click)="rated(item, 3)" [checked]="checked(item, 3)" type="radio" value=3 name="rating" id="3">
+      <label class="mx-1" for="4">4</label><input (click)="rated(item, 4)" [checked]="checked(item, 4)" type="radio" value=4 name="rating" id="4">
+      <label class="mx-1" for="5">5</label><input (click)="rated(item, 5)" [checked]="checked(item, 5)" type="radio" value=5 name="rating" id="5">
+    </form>
+    <div>Comments:</div>
+    <textarea class="comment-box" (change)="submitChanges(item)" type="text" [(ngModel)]="item.comments"></textarea>
+    <div></div>
+    </div><br>
+    </div><br>
+  </div>
+</ng-container>

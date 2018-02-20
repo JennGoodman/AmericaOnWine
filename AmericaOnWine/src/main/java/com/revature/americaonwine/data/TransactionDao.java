@@ -9,5 +9,6 @@ public interface TransactionDao {
 	public int nextOrderNum();
 	public Transaction addTransaction(Transaction tran);
 	public List<Transaction> getForUser(User u);
+	public Transaction updateTransaction(Transaction t);
 
 }

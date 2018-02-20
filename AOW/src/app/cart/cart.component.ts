@@ -28,7 +28,7 @@ export class CartComponent implements OnInit {
   }
 
   updateCart(item: Inventory, num: number) {
-    this.cartItems = JSON.parse(localStorage.getItem('cart'))? JSON.parse(localStorage.getItem('cart')):[];
+    this.cartItems = JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : [];
     const curUser: User = JSON.parse(localStorage.getItem('user'));
     const userId = curUser ? curUser.id : null;
     if (this.cartItems && this.cartItems.length > 0) {
