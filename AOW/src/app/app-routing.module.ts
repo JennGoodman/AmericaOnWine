@@ -14,6 +14,7 @@ import { SearchresultsComponent } from './searchresults/searchresults.component'
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminApproveInvComponent} from './admin-approve-inv/admin-approve-inv.component';
 import { RateComponent } from './rate/rate.component';
+import { RateShowComponent } from './rate-show/rate-show.component';
 
 const routes: Routes = [
     {
@@ -74,6 +75,10 @@ const routes: Routes = [
     {
         path: 'rate',
         component: RateComponent
+    },
+    {
+        path: 'rate-show',
+        component: RateShowComponent
     }
 
 ];

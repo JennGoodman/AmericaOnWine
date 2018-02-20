@@ -54,4 +54,13 @@ export class TransactionService {
         resp => resp as number
       );
   }
+
+  getByItemId(id: number): Observable<number> {
+    return this.http.get(this.config.appURL + 'order/' + id, {
+      headers: this.config.defaultHeaders, withCredentials: true
+    })
+      .map(
+        resp => resp as number
+      );
+  }
 }
