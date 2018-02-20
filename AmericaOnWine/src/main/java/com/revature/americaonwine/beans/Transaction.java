@@ -24,7 +24,7 @@ public class Transaction {
 	private int id;
 	@Column(name = "order_number")
 	private String orderNumber;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "inventory_id")
 	private InventoryItem inv;
 	@Column
@@ -112,6 +112,7 @@ public class Transaction {
 	}
 
 	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

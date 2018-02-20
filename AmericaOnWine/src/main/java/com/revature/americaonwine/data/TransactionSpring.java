@@ -45,15 +45,15 @@ public class TransactionSpring implements TransactionDao, HibernateSession {
 	}
 	
 	@Override
-	public List<Transaction> getAll(){
+	public List<Transaction> getForUser(User u) {
+		
 		CriteriaBuilder builder = s.getCriteriaBuilder();
 		CriteriaQuery<Transaction> query = builder.createQuery(Transaction.class);
 		Root<Transaction> root = query.from(Transaction.class);
-		query.select(root);
+		query.select(root).where(builder.equal(root.get("userId"), u.getId()));
 		Query q = s.createQuery(query);
 		List<Transaction> qlist = q.getResultList();
 		return qlist;
-		
 	}
 
 

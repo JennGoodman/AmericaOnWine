@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.revature.americaonwine.beans.Transaction;
+import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.data.TransactionDao;
 
 @Component
@@ -25,13 +26,8 @@ public class CheckoutHibernate implements CheckoutService {
 	}
 	
 	@Override
-	public List<Transaction> getTransaction() {
-		List<Transaction> result = td.getAll();
-		if(result != null) {
-			return result;
-		}else {
-			return null;
-		}	
+	public List<Transaction> getTransactionsForUser(User u) {
+		return td.getForUser(u);
 	}
 	
 }

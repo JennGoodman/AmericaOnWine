@@ -44,7 +44,7 @@ export class CheckoutCartComponent implements OnInit {
     if (this.newVal.length === 16) {
         let items = JSON.parse(localStorage.getItem('cart'));
         items.forEach((item) => {
-            console.log(item);
+            console.log(JSON.stringify(item));
             console.log(item.inventory);
             this.service.add(item).subscribe(
                 resp => console.log(resp)

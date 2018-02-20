@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.americaonwine.beans.Transaction;
+import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.services.CheckoutService;
 
 @RestController
@@ -36,7 +36,8 @@ public class CheckoutController {
 	
 	@RequestMapping(value="/transaction", method=RequestMethod.GET)
 	public String getTransaction(ObjectMapper om, HttpSession session) throws JsonProcessingException {
-		List<Transaction> fromDB = cs.getTransaction();
+		User u = (User) session.getAttribute("user");
+		List<Transaction> fromDB = cs.getTransactionsForUser(u);
 		
 		if(fromDB != null) {
 			return om.writeValueAsString(fromDB);

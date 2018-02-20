@@ -7,10 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-@Controller
+@Component
 public class CorsFilter extends OncePerRequestFilter {
 
 	@Override
