@@ -3,14 +3,14 @@
     <div class="centered">Order Number: {{cartItems[0].orderNumber}}</div>
     <br>
     <div *ngFor="let item of cartItems">
-        <div class="checkout-items" [style.background-color]="backgroundColor(item.inventory)" [style.color]="textColor(item.inventory)">
-        <img class="left-img" src="{{item.inventory.imageUrl}}">
+        <div class="checkout-items" [style.background-color]="backgroundColor(item.inv)" [style.color]="textColor(item.inv)">
+        <img class="left-img" src="{{item.inv.imageUrl}}">
         <div class="right-text">
         <br>
         <br>
-        <div>Name: {{item.inventory.name}}</div>
+        <div>Name: {{item.inv.name}}</div>
         <div>Quantity: {{item.quantity}}</div>
-        <div>Price per unit: {{item.inventory.price | currency}}</div>
+        <div>Price per unit: {{item.inv.price | currency}}</div>
         <div>Price of units: {{item.total | currency}}</div>
         </div><br>
         </div><br>
@@ -27,7 +27,6 @@
             <button class="btn btn-secondary" (click)="verify()">Confirm Purchase</button>
     </div>
     <br>
-        
 </div>
 
 

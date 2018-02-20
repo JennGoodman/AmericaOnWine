@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
           item.userId = this.loggedInUser.id;
         });
         localStorage.setItem('cart', JSON.stringify(cart));
-
         if (this.loggedInUser.role === 0) {
           this.router.navigate(['admin/home']);
         } else if (this.loggedInUser.role === 1) {

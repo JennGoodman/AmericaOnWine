@@ -14,9 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Component;
 
-@Component
 @Entity
 @Table(name = "aow_transaction")
 public class Transaction {
@@ -104,6 +102,17 @@ public class Transaction {
 		this.comments = comments;
 	}
 
+	
+
+	@Override
+	public String toString() {
+		return "Transaction [id=" + id + ", orderNumber=" + orderNumber + ", inv=" + inv + ", quantity=" + quantity
+				+ ", userId=" + userId + ", rating=" + rating + ", transactionDate=" + transactionDate + ", comments="
+				+ comments + "]";
+	}
+
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -160,13 +169,6 @@ public class Transaction {
 		} else if (!userId.equals(other.userId))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Transaction [id=" + id + ", orderNumber=" + orderNumber + ", inv=" + inv + ", quantity=" + quantity
-				+ ", userId=" + userId + ", rating=" + rating + ", transactionDate=" + transactionDate + ", comments="
-				+ comments + "]";
 	}
 
 	public Transaction(int id, String orderNumber, InventoryItem inv, int quantity, String userId, int rating,

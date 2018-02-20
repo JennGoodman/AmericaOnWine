@@ -32,7 +32,6 @@ import { AdminService } from '../services/admin.service';
 
 import { HomeComponent } from './home/home.component';
 import { CheckoutCartComponent } from './checkout-cart/checkout-cart.component';
-import { CartComponent } from './cart/cart.component';
 import { FakeHomeComponent } from './fake-home/fake-home.component';
 import { SearchComponent } from './search/search.component';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
@@ -42,6 +41,7 @@ import { RetailerAccountsComponent } from './admin/retailer-accounts/retailer-ac
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminApproveInvComponent } from './admin-approve-inv/admin-approve-inv.component';
 import { OrdersComponent } from './orders/orders.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +62,6 @@ import { OrdersComponent } from './orders/orders.component';
     FakeHomeComponent,
     SearchComponent,
     SearchresultsComponent,
-    CartComponent,
     PendingAccountComponent,
     YesNoPipe,
     RetailerAccountsComponent,

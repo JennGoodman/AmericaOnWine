@@ -25,5 +25,6 @@
 		<mapping class="com.revature.americaonwine.beans.Country"></mapping>
 		<mapping class="com.revature.americaonwine.beans.SubType"></mapping>
 		<mapping class="com.revature.americaonwine.beans.Type"></mapping>
+		<mapping class="com.revature.americaonwine.beans.Transaction"></mapping>
 	</session-factory>
 </hibernate-configuration>

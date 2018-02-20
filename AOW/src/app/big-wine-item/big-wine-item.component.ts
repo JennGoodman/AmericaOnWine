@@ -57,10 +57,10 @@ export class BigWineItemComponent implements OnInit {
 
       let exists = false;
       ts.forEach((transaction) => {
-        if (transaction.inventory.id === this.invItem.id) {
+        if (transaction.inv.id === this.invItem.id) {
           transaction.quantity += this.num;
-          if (transaction.quantity > transaction.inventory.quantity) {
-            transaction.quantity = transaction.inventory.quantity;
+          if (transaction.quantity > transaction.inv.quantity) {
+            transaction.quantity = transaction.inv.quantity;
           }
           transaction.total += this.invItem.price * this.num;
           exists = true;
