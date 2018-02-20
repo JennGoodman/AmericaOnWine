@@ -18,6 +18,7 @@ export class CheckoutCartComponent implements OnInit {
   sum: number;
   returnTransaction: Transaction;
   failed: boolean;
+  orderNum = 0;
 
 
   constructor(private router: Router, private service: TransactionService) {
@@ -29,6 +30,7 @@ export class CheckoutCartComponent implements OnInit {
     this.service.getAll().subscribe(resp => {
       console.log(resp);
     });
+    this.service.maxOrder().subscribe( resp => this.orderNum = resp );
 
     this.cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     let total = 0;
@@ -43,22 +45,19 @@ export class CheckoutCartComponent implements OnInit {
 
     if (this.newVal.length === 16) {
         let items = JSON.parse(localStorage.getItem('cart'));
-        this.service.maxOrder().subscribe(resp => {
-            console.log("resp is " + resp);
-            items.forEach((item) => {
-                item.transactionDate = new Date();
-                item.orderNumber = resp as number;
-                console.log(JSON.stringify(item));
-                console.log(item.inv);
-                this.service.add(item).subscribe(
-                    resp => console.log(resp)
-                );
+        items.forEach((item) => {
+            item.transactionDate = new Date();
+            item.orderNumber = this.orderNum;
+            console.log(JSON.stringify(item));
+            console.log(item.inv);
+            this.service.add(item).subscribe(
+                resp => console.log(resp)
+            );
         });
 
             localStorage.removeItem('cart');
             location.reload();
             this.router.navigate(['']);
-        })
     } else {
       this.invalidLen = true;
     }
