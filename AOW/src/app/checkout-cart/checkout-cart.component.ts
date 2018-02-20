@@ -55,10 +55,10 @@ export class CheckoutCartComponent implements OnInit {
                 );
         });
 
-        });
-        localStorage.removeItem('cart');
-
-      this.router.navigate(['']);
+            localStorage.removeItem('cart');
+            location.reload();
+            this.router.navigate(['']);
+        })
     } else {
       this.invalidLen = true;
     }
