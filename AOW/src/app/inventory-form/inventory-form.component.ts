@@ -27,9 +27,6 @@ export class InventoryFormComponent implements OnInit {
   countryList: Country[] = [];
   brandList: Brand[] = [];
   curType = 'def';
-  brandChanged = false;
-  countryChanged = false;
-  typeChanged = false;
   curSubType: string = null;
   curCountry: string = null;
   curBrand: string = null;
@@ -72,62 +69,42 @@ export class InventoryFormComponent implements OnInit {
       });
 
     });
-    this.invItem = JSON.parse(localStorage.getItem("invItemClicked"));
-      if (this.invItem)
-      {
+    this.invItem = JSON.parse(localStorage.getItem('invItemClicked'));
+      if (this.invItem) {
           this.curCountry = this.invItem.country.name;
           this.curBrand = this.invItem.brand.name;
           this.curType = this.invItem.subType.type.name;
           this.curSubType = this.invItem.subType.name;
-          document.onreadystatechange = () =>
-          {
-              if(document.readyState === 'complete')
-              {
-                  let img = <HTMLInputElement> document.getElementById('img-input');
+          document.onreadystatechange = () => {
+              if (document.readyState === 'complete') {
+                  const img = <HTMLInputElement> document.getElementById('img-input');
                   img.parentNode.parentNode.removeChild(img.parentNode);
               }
-
-          }
-      }
-      else
-      {
+          };
+      } else {
         this.invItem = new Inventory;
       }
   }
-  updateItem()
-  {
+
+  updateItem() {
     this.invService.update(this.invItem).subscribe(
-        resp =>
-        {
+        resp => {
             console.log(resp as Inventory);
             this.router.navigate(['items']);
-            localStorage.removeItem("invItemClicked");
+            localStorage.removeItem('invItemClicked');
         });
   }
-  submitClicked()
-  {
+
+  submitClicked() {
       localStorage.getItem('invItemClicked') ? this.updateItem() : this.addWine();
   }
 
    resetType() {
      this.curSubType = null;
-     this.typeChanged = false;
-     // console.log(this.curType);
-   }
-
-   changeBrand() {
-     this.brandChanged = true;
-   }
-
-   changeCountry() {
-     this.countryChanged = true;
-   }
-
-   changeType() {
-     this.typeChanged = true;
    }
 
    addWine() {
+     this.invItem.status = 1;
      this.invItem.userId = JSON.parse(localStorage.getItem('user')) ? JSON.parse(localStorage.getItem('user')).id : null;
      this.invItem.id = 0;
      // console.log(this.invItem.userId);

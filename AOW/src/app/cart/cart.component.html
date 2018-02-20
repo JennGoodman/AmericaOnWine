@@ -1,3 +1,16 @@
+
 <div id="cart">
-  <div *ngFor="let item of cartItems" class="cart-item">{{item.quantity}} x {{item.inventoryId}}</div>
+  <br>
+  <ng-container *ngIf="cartItems.length > 0">
+    <div class="cart-row" *ngFor="let item of cartItems" (click)="bigItem(item.inv)">
+        <input (change)="valEvent($event)" (click)="stopRoute($event)" id="add-num" class="to-cart" type="number" max="{{item.inv.quantity}}" min=0 value="{{item.quantity}}" [(ngModel)]="item.quantity">
+        <div class="mult cart-text">x</div>
+        <div class="cart-item cart-text">{{item.inv.name}} = {{item.total | currency}}</div>
+    </div>
+  <div class="cart-text">Total: {{this.sum | currency}}</div>
+  <button (click)="empty()" id="empty" class="btn btn-sm mult">Empty</button>
+  <button (click)="checkout()" id="check" class="btn btn-sm divide">Check-out</button><br>
+  </ng-container>
+  <div *ngIf="cartItems.length == 0" id="no-cart">There is nothing in your cart</div>
+  <br>
 </div>

@@ -18,10 +18,7 @@ export class InventoryService {
   constructor(private http: HttpClient) { }
 
   add(user: Inventory): Observable<Inventory> {
-    console.log('add in inventory.service called');
     const body = JSON.stringify(user);
-    console.log('body is ' + body);
-    console.log(JSON.stringify(user.brand));
     return this.http.post(this.MyURL, body, {
       headers: this.config.defaultHeaders, withCredentials: true
     })

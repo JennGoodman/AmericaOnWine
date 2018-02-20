@@ -16,16 +16,24 @@ export class WineListComponent implements OnInit {
     this.invService.getAll().subscribe(items => {
       this.items = items;
     });
-    console.log(localStorage.getItem('user'));
     if (localStorage.getItem('user') != null) {
       this.isCustomer = JSON.parse(localStorage.getItem('user')).role === 2;
     } else {
       this.isCustomer = true;
     }
-    console.log(this.isCustomer);
   }
 
   ngOnInit() {
+  }
+
+  getSpacing() {
+    const wid = document.getElementById('wine').clientWidth;
+    const num = Math.floor(wid / 270);
+    let space = wid - (num * 270);
+    if (space < 40) {
+      space = 40;
+    }
+    return (space / ((num + 2) * 2)).toString() + 'px 17px';
   }
 
 }

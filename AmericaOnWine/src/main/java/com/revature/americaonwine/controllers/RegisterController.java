@@ -18,23 +18,19 @@ import com.revature.americaonwine.services.LoginService;
 @Controller
 @RequestMapping(headers="Accept=application/json, text/plain")
 public class RegisterController {
-	@Autowired
-	private LoginService ser;
-	
-	@RequestMapping(value="/register", method=RequestMethod.POST)
-	@ResponseBody
-	public String register(@RequestBody User fromWeb, ObjectMapper om, HttpSession session) throws JsonProcessingException {
-		User fromDB = ser.register(fromWeb);
-		if(fromDB != null) {
-			if (fromDB.getRole() != Roles.numericalRepresentation(Roles.RETAILER))
-				session.setAttribute("user", fromDB);
-			fromDB = ser.register(fromWeb);
-			return om.writeValueAsString(fromDB);
-		}
-		else {
-			return null;
-		}
+	    @Autowired
+		private LoginService ser;
 		
-	}
-
+		@RequestMapping(value="/register", method=RequestMethod.POST)
+		@ResponseBody
+		public String register(@RequestBody User fromWeb, ObjectMapper om, HttpSession session) throws JsonProcessingException {
+			User fromDB = ser.register(fromWeb);
+			if(fromDB != null) {
+				fromDB = ser.register(fromWeb);
+				return om.writeValueAsString(fromDB);
+			}
+			else {
+				return null;
+			}
+		}
 }
