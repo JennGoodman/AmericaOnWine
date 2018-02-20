@@ -11,7 +11,7 @@
         <div>Name: {{item.inv.name}}</div>
         <div>Quantity: {{item.quantity}}</div>
         <div>Price per unit: {{item.inv.price | currency}}</div>
-        <div>Price of units: {{item.total | currency}}</div>
+        <div>Price of units: {{item.inv.price * item.quantity | currency}}</div>
         </div><br>
         </div><br>
     </div>

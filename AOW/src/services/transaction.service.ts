@@ -54,13 +54,4 @@ export class TransactionService {
         resp => resp as number
       );
   }
-
-  getForUser(): Observable<Transaction[]> {
-    return this.http.get(this.config.appURL + 'orders', {
-      headers: this.config.defaultHeaders, withCredentials: true
-    })
-      .map(
-        resp => resp as Transaction[]
-      );
-  }
 }

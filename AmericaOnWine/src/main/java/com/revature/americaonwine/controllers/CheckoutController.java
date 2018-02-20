@@ -35,7 +35,7 @@ public class CheckoutController {
 		
 	}
 	
-	@RequestMapping(value="/transaction", method=RequestMethod.GET)
+	@RequestMapping(value="/transaction", method=RequestMethod.GET, produces={"application/json; charset=UTF-8"})
 	public String getTransaction(ObjectMapper om, HttpSession session) throws JsonProcessingException {
 		User u = (User) session.getAttribute("user");
 		List<Transaction> fromDB = cs.getTransactionsForUser(u);

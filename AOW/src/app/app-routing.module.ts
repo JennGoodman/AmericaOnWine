@@ -15,6 +15,7 @@ import { FakeHomeComponent } from './fake-home/fake-home.component';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminApproveInvComponent} from './admin-approve-inv/admin-approve-inv.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
     {
@@ -80,6 +81,11 @@ const routes: Routes = [
     {
         path: 'fakehome',
         component: FakeHomeComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'orders',
+        component: OrdersComponent,
         pathMatch: 'full'
     }
 

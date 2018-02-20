@@ -1,0 +1,16 @@
+<div *ngIf="orders.length == 0">You have no orders.</div>
+<ng-container *ngIf="orders.length > 0">
+  <div *ngFor="let item of orders" class="mt-3">
+    <div class="checkout-items" [style.background-color]="backgroundColor(item.inv)" [style.color]="textColor(item.inv)">
+    <img class="left-img" src="{{item.inv.imageUrl}}">
+    <div class="right-text">
+    <br>
+    <div>Name: {{item.inv.name}}</div>
+    <div>Quantity: {{item.quantity}}</div>
+    <div>Order No: {{item.orderNumber}}</div>
+    <div>Price per unit: {{item.inv.price | currency}}</div>
+    <div>Price of units: {{item.inv.price * item.quantity | currency}}</div>
+    </div><br>
+    </div><br>
+  </div>
+</ng-container>

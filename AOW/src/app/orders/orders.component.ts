@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../../models/Transaction';
 import { TransactionService } from '../../services/transaction.service';
+import { Inventory } from '../../models/Inventory';
 
 @Component({
   selector: 'app-orders',
@@ -12,12 +13,32 @@ export class OrdersComponent implements OnInit {
   orders: Transaction[] = [];
 
   constructor(private tranService: TransactionService) {
-      this.tranService.getForUser().subscribe((items) => {
+      this.tranService.getAll().subscribe((items) => {
         this.orders = items;
       });
    }
 
   ngOnInit() {
+  }
+
+  backgroundColor(item: Inventory) {
+    if (item && item.subType && item.subType.type) {
+      switch (item.subType.type.name) {
+        case 'Red': return '#660033';
+        case 'White': return '#ffff99';
+        case 'Rosé': return '#ffcce6';
+        case 'Champagne': return '#ffffe6';
+      }
+    }
+  }
+
+  textColor(item: Inventory) {
+    if (item && item.subType && item.subType.type) {
+      switch (item.subType.type.name) {
+        case 'Red': return '#ffffff';
+        default: return '#000000';
+      }
+    }
   }
 
 }
