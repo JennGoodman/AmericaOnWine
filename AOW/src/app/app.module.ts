@@ -40,8 +40,10 @@ import { YesNoPipe } from '../pipes/yes-no.pipe';
 import { RetailerAccountsComponent } from './admin/retailer-accounts/retailer-accounts.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminApproveInvComponent } from './admin-approve-inv/admin-approve-inv.component';
+
 import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
+import { RetailAlertsComponent } from './retail-alerts/retail-alerts.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,8 @@ import { CartComponent } from './cart/cart.component';
     RetailerAccountsComponent,
     AdminHomeComponent,
     AdminApproveInvComponent,
-    OrdersComponent
+    OrdersComponent,
+    RetailAlertsComponent
   ],
   imports: [
     HttpClientModule,
