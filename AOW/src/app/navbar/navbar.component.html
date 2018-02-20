@@ -11,7 +11,17 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="items">Items
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
       <ng-container *ngIf="user">
+        <li class="nav-item active" *ngIf="user.role == 4">
+          <a class="nav-link" routerLink="retailer/home" >Retailer
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
         <li class="nav-item active" *ngIf="user.role == 1">
           <a class="nav-link" routerLink="retailer/form">Retailer Form
             <span class="sr-only">(current)</span>
@@ -22,16 +32,12 @@
             <span class="sr-only">(current)</span>
           </a>
         </li>
-        <li class="nav-item active" *ngIf="user.role == 1">
-          <a class="nav-link" routerLink="retailer/alerts">Alerts
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
       </ng-container>
     </ul>
-    <button class="btn btn-outline btn-sm" *ngIf="user; else elseBlock" (click)="logout()">Log Out[{{user.username}}]</button>
+    <button class="btn btn-link navbar-btn btn-default navbar-text" *ngIf="user; else elseBlock" (click)="logout()">Log Out: {{user.username}}</button>
     <ng-template #elseBlock>
-      <button class="btn btn-outline btn-sm" (click)="login()">Log In</button>
+      <button class="btn btn-link navbar-btn btn-default navbar-text" (click)="login()">Log In</button>
     </ng-template>
+    <app-search></app-search>
   </div>
 </nav>
