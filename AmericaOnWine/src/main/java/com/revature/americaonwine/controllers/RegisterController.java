@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.americaonwine.beans.Roles;
 import com.revature.americaonwine.beans.User;
 import com.revature.americaonwine.services.LoginService;
 
@@ -27,6 +26,7 @@ public class RegisterController {
 			User fromDB = ser.register(fromWeb);
 			if(fromDB != null) {
 				fromDB = ser.register(fromWeb);
+				System.out.println("[===] GOt what? " + fromDB);
 				return om.writeValueAsString(fromDB);
 			}
 			else {

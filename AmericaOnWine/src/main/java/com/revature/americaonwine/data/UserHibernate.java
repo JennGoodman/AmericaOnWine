@@ -24,11 +24,16 @@ public class UserHibernate implements UserDao, HibernateSession {
 	}
 	
 	@Override
-	public boolean insertUser(User u) {
+	public User insertUser(User u) {
 		int id = (int) session.save(u);
 		if (session.get(User.class, id) != null)
-			return true;
-		return false;
+		{
+			System.out.println("[+++] get's to here? " + id);
+			u.setId(id);
+			return u;
+		}
+		System.out.println("[---] failed with id " + id);
+		return null;
 	}
 
 	@Override

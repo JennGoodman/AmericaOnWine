@@ -6,7 +6,7 @@ import com.revature.americaonwine.beans.User;
 
 public interface UserDao {
 	// Create
-	boolean insertUser(User u);
+	User insertUser(User u);
 	// Read
 	User getUser(int id);
 	User getUserByUsername(String username);
