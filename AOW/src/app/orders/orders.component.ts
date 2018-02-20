@@ -14,7 +14,9 @@ export class OrdersComponent implements OnInit {
 
   constructor(private tranService: TransactionService) {
       this.tranService.getAll().subscribe((items) => {
-        this.orders = items;
+        this.orders = items.sort((t1, t2) => {
+          return t2.orderNumber - t1.orderNumber;
+        });
       });
    }
 
@@ -38,6 +40,23 @@ export class OrdersComponent implements OnInit {
         case 'Red': return '#ffffff';
         default: return '#000000';
       }
+    }
+  }
+
+  rated(item: Transaction, num: number) {
+    item.rating = num;
+    this.submitChanges(item);
+  }
+
+  submitChanges(item: Transaction) {
+    this.tranService.update(item);
+  }
+
+  checked(item: Transaction, num: number): string {
+    if (item.rating === num) {
+      return 'checked';
+    } else {
+      return '';
     }
   }
 

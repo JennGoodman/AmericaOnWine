@@ -18,4 +18,12 @@
     height: 279px;
     width: 450px;
     margin: 0 auto;
+    font-size: 13px;
+}
+
+.comment-box {
+    font-size: 12px;
+    height: 84px !important;
+    resize: none;
+    width: 45%; 
 }
