@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Router } from '@angular/router';
 import { InventoryService } from '../../services/inventory.service';
 import { Inventory } from '../../models/Inventory';
 
@@ -10,7 +11,7 @@ import { Inventory } from '../../models/Inventory';
 export class RetailAlertsComponent implements OnInit {
 
   items: Inventory[];
-  constructor(private service: InventoryService) {
+  constructor(private service: InventoryService, private router: Router) {
     this.items = [];
   }
 
@@ -30,5 +31,10 @@ export class RetailAlertsComponent implements OnInit {
         }
       });
     });
+  }
+
+  routeToItem(item: Inventory) {
+    localStorage.setItem('invItemClicked', JSON.stringify(item));
+    this.router.navigate(['/retailer/form']);
   }
 }

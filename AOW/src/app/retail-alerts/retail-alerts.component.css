@@ -1,0 +1,12 @@
+.centered {
+    text-align: center;
+    font-size: 28px;
+}
+
+.list-group {
+    border-top: 1px solid #efefef;
+}
+
+.container {
+    text-align: center;
+}
