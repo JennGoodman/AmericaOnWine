@@ -32,9 +32,14 @@ public class LoginHibernate implements LoginService {
 		}else if(username != null) {
 			return null;
 		}else {
-			ud.insertUser(user);
+			if(ud.insertUser(user)) {
+				return user;
+			}else {
+				return null;
+			}
+			//ud.insertUser(user);
 		}
-		return user;
+		//return user;
 	}
 	
 }
