@@ -17,11 +17,6 @@
         </a>
       </li>
       <ng-container *ngIf="user">
-        <li class="nav-item active" *ngIf="user.role == 4">
-          <a class="nav-link" routerLink="retailer/home" >Retailer
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
         <li class="nav-item active" *ngIf="user.role == 1">
           <a class="nav-link" routerLink="retailer/form">Retailer Form
             <span class="sr-only">(current)</span>
@@ -29,6 +24,11 @@
         </li>
         <li class="nav-item active" *ngIf="user.role == 1">
           <a class="nav-link" routerLink="form">Inventory
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item active" *ngIf="user.role == 1">
+          <a class="nav-link" routerLink="retailer/alerts">Alerts
             <span class="sr-only">(current)</span>
           </a>
         </li>
