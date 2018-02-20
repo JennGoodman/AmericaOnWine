@@ -1,8 +1,8 @@
 #inv-form {
     position: relative;
     top: -85px;
-    background-color: #dddddd;
-    color: #ffffff;
+    background-color: #dfdfdf;
+    color: #660033;
     -webkit-transform: scale(.75);
     -moz-transform: scale(.75);
     -ms-transform: scale(.75);
@@ -21,6 +21,7 @@
 .input-group {
     font-size: 10px;
     height: 43px;
+    color: #ffffff;
 }
 
 select {
@@ -33,9 +34,16 @@ select {
 }
 
 .full-button {
-    width: 65%;
+    width: 35%;
     margin: 0 auto;
-    border-color: #E1C5F2;
+    border-color: #660033;
+    background-color: #660033;
+    color: #ffffff;
+}
+
+.full-button:hover {
+    background-color: #99004d;
+    border-color: #99004d;
 }
 
 .inv-form-prepend {
@@ -43,14 +51,9 @@ select {
     text-align: right;
 }
 
-.red-wine {
-    background-color: #B87690;
-    color: #ffffff;
-}
-
 .container {
-    padding: 20px; 
-    border-radius: 20px;
+    padding: 8px; 
+    border-radius: 8px;
     text-align: center;
 }
 
@@ -64,13 +67,8 @@ select {
 }
 
 #error-text {
-    color: red;
     font-size: 20px;
     margin: 0 auto;
     text-align: center;
     width: 100%;
-}
-
-html {
-    overflow: hidden;
 }

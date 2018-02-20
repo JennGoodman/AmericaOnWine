@@ -11,7 +11,7 @@
     <div class="input-group-prepend">
       <span class="input-group-text red-wine inv-form-prepend">Brand</span>
     </div>
-    <select (change)="changeBrand()" name="brand" class="form-control" required aria-label="Brand" aria-describedby="basic-addon1" [(ngModel)]="curBrand">
+    <select name="brand" class="form-control" required aria-label="Brand" aria-describedby="basic-addon1" [(ngModel)]="curBrand">
       <option selected disabled value=null>What brand of wine is this?</option>
       <option *ngFor="let brand of brandList" [value]="brand.name">{{brand.name}}</option>
     </select>
@@ -29,7 +29,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text red-wine inv-form-prepend">Specific Type</span>
       </div>
-      <select (change)="changeType()" name="subType" class="form-control" required aria-label="SubType" aria-describedby="basic-addon1" [(ngModel)]="curSubType">
+      <select name="subType" class="form-control" required aria-label="SubType" aria-describedby="basic-addon1" [(ngModel)]="curSubType">
         <option selected disabled value=null>What specific type of wine is this?</option>
         <ng-container *ngIf="curType == 'Red'">
           <option *ngFor="let sub of redSubtypeList" [value]="sub.name">{{sub.name}}</option>
@@ -67,7 +67,7 @@
     <div class="input-group-prepend">
       <span class="input-group-text red-wine inv-form-prepend">Country of Origin</span>
     </div>
-    <select (change)="changeCountry()" name="country" class="form-control" required aria-label="Country" aria-describedby="basic-addon1" [(ngModel)]="curCountry">
+    <select name="country" class="form-control" required aria-label="Country" aria-describedby="basic-addon1" [(ngModel)]="curCountry">
       <option selected value=null disabled>What country does this wine come from?</option>
       <option *ngFor="let country of countryList" [value]="country.name">{{country.name}}</option>
     </select>
@@ -91,8 +91,7 @@
         <input id="img-input" name="image" placeholder="What does this product look like?" type="file" accept=".jpg,.png,.jpeg" class="form-control" required aria-label="Image" aria-describedby="basic-addon1" [(ngModel)]="invItem.image">
       </div>
 
-      <button id="submitButton" (click)="submitClicked()" type="button" class="full-button red-wine btn">Submit New Inventory Item</button>
-      <br>
+      <button id="submitButton" (click)="submitClicked()" type="button" class="my-1 full-button red-wine btn">Submit New Inventory Item</button><br>
       <div id="error-text" *ngIf="error"><br>There was an error in the info you inputted. Please ensure everything is correct and that you are logged in.</div>
       <br>
 </div>

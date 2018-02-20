@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { BigWineItemComponent } from './big-wine-item/big-wine-item.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { CheckoutCartComponent } from './checkout-cart/checkout-cart.component';
+import { FakeHomeComponent } from './fake-home/fake-home.component';
 
 import { SearchresultsComponent } from './searchresults/searchresults.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
@@ -70,6 +72,26 @@ const routes: Routes = [
     {
         path: 'admin/home',
         component: AdminHomeComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'rate',
+        component: RateComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'rate-show',
+        component: RateShowComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'checkout',
+        component: CheckoutCartComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'fakehome',
+        component: FakeHomeComponent,
         pathMatch: 'full'
     }
 ];

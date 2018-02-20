@@ -31,18 +31,19 @@ import { TypeService } from '../services/type.service';
 import { AdminService } from '../services/admin.service';
 
 import { HomeComponent } from './home/home.component';
+import { CheckoutCartComponent } from './checkout-cart/checkout-cart.component';
+import { FakeHomeComponent } from './fake-home/fake-home.component';
 import { SearchComponent } from './search/search.component';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
-
 import { PendingAccountComponent } from './admin/pending-accts/pending-accts.component';
 import { YesNoPipe } from '../pipes/yes-no.pipe';
 import { RetailerAccountsComponent } from './admin/retailer-accounts/retailer-accounts.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
-
-import { CartComponent } from './cart/cart.component';
 import { AdminApproveInvComponent } from './admin-approve-inv/admin-approve-inv.component';
+
 import { RateComponent } from './rate/rate.component';
 import { RateShowComponent } from './rate-show/rate-show.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -58,9 +59,11 @@ import { RateShowComponent } from './rate-show/rate-show.component';
     WineListComponent,
     BigWineItemComponent,
     HomeComponent,
+    CheckoutCartComponent,
+    CartComponent,
+    FakeHomeComponent,
     SearchComponent,
     SearchresultsComponent,
-    CartComponent,
     PendingAccountComponent,
     YesNoPipe,
     RetailerAccountsComponent,

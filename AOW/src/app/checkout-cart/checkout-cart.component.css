@@ -1,0 +1,46 @@
+.left-img {
+    float: left;
+    width: 200px;
+    height: 277px;
+    position: relative;
+    left: 1px;
+    top: 1px;
+    bottom: 1px;
+}
+
+.right-text {
+    height: 277px;
+    position: relative;
+    left: 30px;
+}
+
+.checkout-items {
+    height: 279px;
+    width: 450px;
+    margin: 0 auto;
+}
+
+.centered {
+    text-align: center;
+    font-size: 28px;
+}
+
+#checkout {
+    width: 100%;
+}
+
+.small-bars {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.btn {
+    border-color: #660033;
+    background-color: #660033;
+    color: #ffffff;
+}
+
+.btn:hover {
+    background-color: #99004d;
+    border-color: #99004d;
+}
