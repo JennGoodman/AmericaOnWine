@@ -595,7 +595,7 @@ insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id,
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
     values (aow_inventory_seq.nextVal, 'Mountain Wine', 18, 2, 100, 15, 2.5, 2013, 17.59, 16, sysdate, 2, 'Comme le montagne.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_58770.jpg');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
-    values (aow_inventory_seq.nextVal, 'Starry Wine', 19, 2, 102, 14, 2, 2014, 12.23, 6, sysdate, 2, 'Comme les astres.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_59301.jpg');
+    values (aow_inventory_seq.nextVal, 'Starry Wine', 19, 2, 102, 14, 2, 2014, 12.23, 6, sysdate, 2, 'Comme les astres.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_59301.png');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
     values (aow_inventory_seq.nextVal, 'Deep Champagne', 12, 2, 104, 29, 2, 1997, 42.23, 9, sysdate, 2, 'Deep.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_60212.jpg');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
