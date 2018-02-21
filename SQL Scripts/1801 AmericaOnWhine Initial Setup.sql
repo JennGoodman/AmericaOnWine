@@ -1,5 +1,5 @@
 /*******************************************************************************
-   America On Whine Initial Database Installation and reset Script - Version 1
+   America On Whine Initial Database Installation and reset Script - Version 1.4
    Script: 1801 AmericaOnWhine Initial Setup.sql
    Description: Creates and populates the AmericaOnWhine database.
    DB Server: Oracle
@@ -604,7 +604,16 @@ insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id,
     values (aow_inventory_seq.nextVal, 'Crisp Rose', 2, 2, 15, 21, 2, 1997, 16.99, 59, sysdate, 2, 'Delicious to the last drop.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_62005.jpg');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
     values (aow_inventory_seq.nextVal, 'Lovely Champagne', 12, 2, 114, 29, 2, 1997, 42.23, 92, sysdate, 2, 'Deep.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_veuve_clicquot_yellow_label_3d99da125d8c84f1.jpeg');
-
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (aow_inventory_seq.nextVal, 'Blood Red', 8, 2, 112, 8, 2, 2017, 11.01, 2, sysdate, 2, 'An great, deep red that pairs well with anything.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_720.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (aow_inventory_seq.nextVal, 'Deep Red', 7, 2, 62, 7, 1.5, 2018, 13.01, 2, sysdate, 2, 'An amazing, tart red that pairs well with potatoes.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_235.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (aow_inventory_seq.nextVal, 'Delicious Red', 8, 2, 14, 11, .5, 2016, 16.12, 2, sysdate, 2, 'A delicious, sweet red that pairs well with potatoes.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_910.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (aow_inventory_seq.nextVal, 'Delicious Red', 9, 2, 14, 27, .5, 2016, 13.52, 2, sysdate, 2, 'A great champagne for all occasions.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_1354.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (aow_inventory_seq.nextVal, 'Delicious Red', 1, 2, 14, 30, .5, 2014, 13.52, 2, sysdate, 2, 'An amazing rose champagne for all occasions.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_1829.jpg');
 
 insert into aow_transaction (id, order_number, inventory_id, quantity, user_id, rating, transaction_date, comments) 
     values (aow_transaction_seq.nextVal, 1, 1, 1, 2, 1, sysdate, 'Comments? Your wine sucks!');
