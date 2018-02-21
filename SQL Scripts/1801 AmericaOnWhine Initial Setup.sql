@@ -557,7 +557,7 @@ insert into aow_sub_type (id, type_id, name) values (aow_sub_type_seq.nextVal, 4
 insert into aow_sub_type (id, type_id, name) values (aow_sub_type_seq.nextVal, 4, 'Rosé Champagne');
 
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
-    values (aow_inventory_seq.nextVal, 'Blood Red', 3, 2, 112, 8, 2, 2017, 11.01, 20, sysdate, 2, 'An great, deep red that pairs well with anything.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_720.jpg');
+    values (aow_inventory_seq.nextVal, 'Blood Red', 3, 2, 112, 8, 2, 2017, 11.01, 20, sysdate, 2, 'A great, deep red that pairs well with anything.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_720.jpg');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
     values (aow_inventory_seq.nextVal, 'Deep Red', 2, 2, 62, 7, 1.5, 2018, 13.01, 3, sysdate, 2, 'An amazing, tart red that pairs well with potatoes.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_235.jpg');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
