@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <a class="navbar-brand" routerLink=""><img class="logo" src="../../assets/aowlogo.png">&nbsp;America On Wine</a>
+  <a class="navbar-brand" routerLink="">
+    <img class="logo" src="../../assets/aowlogo.png">&nbsp;America On Wine</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -17,21 +18,35 @@
         </a>
       </li>
       <ng-container *ngIf="user">
-        <li class="nav-item active" *ngIf="user.role == 4">
-          <a class="nav-link" routerLink="retailer/home" >Retailer
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active" *ngIf="user.role == 1">
-          <a class="nav-link" routerLink="retailer/form">Retailer Form
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active" *ngIf="user.role == 1">
-          <a class="nav-link" routerLink="form">Inventory
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
+        <ng-container *ngIf="user === 0">
+          <!-- Admin Block -->
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/admin/home">Admin Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="user === 1">
+          <!-- Retailer Block -->
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/retailer/form">Retailer
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/retailer/alerts">Alerts!
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="user === 2">
+          <!-- Customer Block -->
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/orders">My Orders
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ng-container>
       </ng-container>
     </ul>
     <button class="btn btn-link navbar-btn btn-default navbar-text" *ngIf="user; else elseBlock" (click)="logout()">Log Out: {{user.username}}</button>
