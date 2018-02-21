@@ -1,5 +1,5 @@
 /*******************************************************************************
-   America On Whine Initial Database Installation and reset Script - Version 1
+   America On Whine Initial Database Installation and reset Script - Version 1.4
    Script: 1801 AmericaOnWhine Initial Setup.sql
    Description: Creates and populates the AmericaOnWhine database.
    DB Server: Oracle
@@ -496,16 +496,16 @@ insert into aow_country (id, abbrev, name) values (aow_country_seq.nextVal, 'ZW'
 insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'admin', 'admin', 'admin@admin.net', 0, 1, 0);
 insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'retailer', 'retailer', 'retailer@retailer.net', 1, 1, 0);
 insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'customer', 'customer', 'customer@customer.net', 2, 1, 0);
-insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'retail', 'retail', 'ret@rd.ed', 1, 1, 0);
-insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'retail2', 'retail2', 'ret2@rd.ed', 1, 0, 0);
-insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'retail3', 'retail3', 'ret3@rd.ed', 1, 1, 1);
+insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'retail', 'retail', 'limabeans@outlook.com', 1, 1, 0);
+insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'retail2', 'retail2', 'unicorn@hotmail.com', 1, 0, 0);
+insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'retail3', 'retail3', 'retailer3@gmail.com', 1, 1, 1);
 
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Barefoot');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'The Pinot Project');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Apothic Red');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'LaMarca');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Chandon');
-insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'DeMerlin and Charles');
+insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'DeMerlin {&} Charles');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Oyster Bay');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Riunite');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Santa Margheritta');
@@ -593,7 +593,7 @@ insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id,
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
     values (aow_inventory_seq.nextVal, 'Sun Wine', 17, 2, 84, 21, .5, 2018, 8.47, 1, sysdate, 2, 'Like the South of France!', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_57577.jpg');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
-    values (aow_inventory_seq.nextVal, 'Mountain Wine', 18, 2, 100, 15, 2.5, 2013, 17.59, 16, sysdate, 2, 'Comme le montagne.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_58770.jpg');
+    values (aow_inventory_seq.nextVal, 'Mountain Wine', 18, 2, 100, 14, 2.5, 2013, 17.59, 16, sysdate, 2, 'Comme le montagne.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_58770.jpg');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
     values (aow_inventory_seq.nextVal, 'Starry Wine', 19, 2, 102, 14, 2, 2014, 12.23, 6, sysdate, 2, 'Comme les astres.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_59301.png');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
@@ -603,7 +603,8 @@ insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id,
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
     values (aow_inventory_seq.nextVal, 'Crisp Rose', 2, 2, 15, 21, 2, 1997, 16.99, 59, sysdate, 2, 'Delicious to the last drop.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_62005.jpg');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
-    values (aow_inventory_seq.nextVal, 'Lovely Champagne', 12, 2, 114, 29, 2, 1997, 42.23, 92, sysdate, 2, 'Deep.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_veuve_clicquot_yellow_label_3d99da125d8c84f1.jpeg');
+    values (aow_inventory_seq.nextVal, 'Lovely Champagne', 12, 2, 114, 29, 2, 1997, 42.23, 92, sysdate, 1, 'Deep.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_veuve_clicquot_yellow_label_3d99da125d8c84f1.jpeg');
+
 
 
 insert into aow_transaction (id, order_number, inventory_id, quantity, user_id, rating, transaction_date, comments) 
