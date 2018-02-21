@@ -88,7 +88,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text red-wine inv-form-prepend">Image</span>
         </div>
-        <input id="img-input" name="image" placeholder="What does this product look like?" type="file" accept=".jpg,.png,.jpeg" class="form-control" required aria-label="Image" aria-describedby="basic-addon1" [(ngModel)]="invItem.image">
+        <input id="img-input" name="image" placeholder="What does this product look like?" type="file" accept=".jpg,.png,.jpeg" class="form-control" required aria-label="Image" aria-describedby="basic-addon1" [(ngModel)]="invItem.imageUrl">
       </div>
 
       <button id="submitButton" (click)="submitClicked()" type="button" class="my-1 full-button red-wine btn">Submit New Inventory Item</button><br>
