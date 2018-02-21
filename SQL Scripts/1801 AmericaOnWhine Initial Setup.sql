@@ -497,15 +497,15 @@ insert into aow_user (id, username, password, email, role, active, cancelled) va
 insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'retailer', 'retailer', 'retailer@retailer.net', 1, 1, 0);
 insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'customer', 'customer', 'customer@customer.net', 2, 1, 0);
 insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'retail', 'retail', 'ret@rd.ed', 1, 1, 0);
-insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'retail2', 'retail2', 'ret2@rd.ed', 1, 0, 0);
-insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'retail3', 'retail3', 'ret3@rd.ed', 1, 1, 1);
+insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'retail2', 'retail2', 'ret@ail.er', 1, 0, 0);
+insert into aow_user (id, username, password, email, role, active, cancelled) values (aow_user_seq.nextVal, 'retail3', 'retail3', 'r@ce.me', 1, 1, 1);
 
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Barefoot');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'The Pinot Project');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Apothic Red');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'LaMarca');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Chandon');
-insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'DeMerlin {&} Charles');
+insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'DeMerlin and Charles');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Oyster Bay');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Riunite');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Santa Margheritta');
@@ -616,10 +616,10 @@ insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id,
     values (aow_inventory_seq.nextVal, 'Delicious Red', 1, 2, 14, 30, .5, 2014, 13.52, 2, sysdate, 2, 'An amazing rose champagne for all occasions.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_1829.jpg');
 
 insert into aow_transaction (id, order_number, inventory_id, quantity, user_id, rating, transaction_date, comments) 
-    values (aow_transaction_seq.nextVal, 1, 1, 1, 2, 1, sysdate, 'Comments? Your wine sucks!');
+    values (aow_transaction_seq.nextVal, 1, 1, 1, 2, 5, sysdate, 'This is the best wine ever. I have never had such tasty and delicous wine in my whole life. I want more of this! Please give me the option to buy cases of this so I can buy all that you have to offer!');
 insert into aow_transaction (id, order_number, inventory_id, quantity, user_id, rating, transaction_date, comments) 
-    values (aow_transaction_seq.nextVal, 1, 2, 1, 2, 3, sysdate, 'Comments? Your wine sucks!');
+    values (aow_transaction_seq.nextVal, 1, 2, 1, 2, 3, sysdate, 'I bought this wine for Richard but he hated it. He said it tasted like it was grape juice that had gone bad. I will probably buy this again so I can keep a bottle in the fridge just for him. Thanks for having the best wine ever!');
 insert into aow_transaction (id, order_number, inventory_id, quantity, user_id, rating, transaction_date, comments) 
-    values (aow_transaction_seq.nextVal, 1, 3, 1, 2, 2, sysdate, 'Comments? Your wine sucks!');
+    values (aow_transaction_seq.nextVal, 1, 3, 1, 2, 1, sysdate, 'I bought this wine for my wife on our anniversary. We''re divorced now. I hope your wine turns to vinegar like my life. I need to buy more wine now to drown my sorrows. Woe is me.');
 
 commit; -- Jenn Rocks!
