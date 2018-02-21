@@ -8,17 +8,12 @@
   <div class="collapse navbar-collapse" id="navbarsExample04">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="">Home
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="items">Items
+        <a class="nav-link" routerLink="items">Wine Selection
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <ng-container *ngIf="user">
-        <ng-container *ngIf="user === 0">
+        <ng-container *ngIf="user.role === 0">
           <!-- Admin Block -->
           <li class="nav-item active">
             <a class="nav-link" routerLink="/admin/home">Admin Home
@@ -26,10 +21,10 @@
             </a>
           </li>
         </ng-container>
-        <ng-container *ngIf="user === 1">
+        <ng-container *ngIf="user.role === 1">
           <!-- Retailer Block -->
           <li class="nav-item active">
-            <a class="nav-link" routerLink="/retailer/form">Retailer
+            <a class="nav-link" routerLink="/retailer/form">Manage Account
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -39,7 +34,7 @@
             </a>
           </li>
         </ng-container>
-        <ng-container *ngIf="user === 2">
+        <ng-container *ngIf="user.role == 2">
           <!-- Customer Block -->
           <li class="nav-item active">
             <a class="nav-link" routerLink="/orders">My Orders
