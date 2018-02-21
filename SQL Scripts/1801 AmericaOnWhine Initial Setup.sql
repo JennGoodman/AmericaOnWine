@@ -506,6 +506,10 @@ insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'H');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Golden Boy');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'HooKed');
 insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'My Wine');
+insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'The Pinot Project');
+insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Apothic Red');
+insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'LaMarca');
+insert into aow_brand (id, name) values (aow_brand_seq.nextVal, 'Chandon');
 
 insert into aow_type (id, name) values (aow_type_seq.nextVal, 'White');
 insert into aow_type (id, name) values (aow_type_seq.nextVal, 'Red');
@@ -563,6 +567,17 @@ insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id,
     values (aow_inventory_seq.nextVal, 'Robot Oil', 4, 4, 79, 27, 1.0, 1800, 10.99, 12, sysdate, 1, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
 insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
     values (aow_inventory_seq.nextVal, 'Broken Pages', 3, 2, 68, 30, 1.0, 2018, 99.01, 2, sysdate, 1, 'It''s good Wine Bront!', 'https://s3.us-east-2.amazonaws.com/americaonwine/wine.jpg');
+
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (aow_inventory_seq.nextVal, 'Blood Red', 8, 2, 112, 8, 2, 2017, 11.01, 2, sysdate, 2, 'An great, deep red that pairs well with anything.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_720.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (aow_inventory_seq.nextVal, 'Deep Red', 7, 2, 62, 7, 1.5, 2018, 13.01, 2, sysdate, 2, 'An amazing, tart red that pairs well with potatoes.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_235.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (aow_inventory_seq.nextVal, 'Delicious Red', 8, 2, 14, 11, .5, 2016, 16.12, 2, sysdate, 2, 'A delicious, sweet red that pairs well with potatoes.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_910.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (aow_inventory_seq.nextVal, 'Delicious Red', 9, 2, 14, 27, .5, 2016, 13.52, 2, sysdate, 2, 'A great champagne for all occasions.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_1354.jpg');
+insert into aow_inventory (id, name, brand_id, user_id, country_id, sub_type_id, volume, year, price, quantity, submitted, status, description, image_url) 
+    values (aow_inventory_seq.nextVal, 'Delicious Red', 1, 2, 14, 30, .5, 2014, 13.52, 2, sysdate, 2, 'An amazing rose champagne for all occasions.', 'https://s3.us-east-2.amazonaws.com/americaonwine/ci_1829.jpg');
 
 insert into aow_transaction (id, order_number, inventory_id, quantity, user_id, rating, transaction_date, comments) 
     values (aow_transaction_seq.nextVal, 1, 1, 1, 2, 1, sysdate, 'Comments? Your wine sucks!');

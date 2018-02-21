@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container my-3">
   <h1>Items Out of Stock</h1>
   <div *ngIf="items?.length != 0;else allStocked">
     <ul class="list-group list-group-flush">
-      <li class="list-group-item" *ngFor="let item of items">Your item {{item.name}} is out of stock!</li>
+      <li class="list-group-item" *ngFor="let item of items" (click)="routeToItem(item)">Your item {{item.name}} is out of stock!</li>
     </ul>
   </div>
-  <ng-template #allStocked>
+  <ng-template #allStocked class="centered-text my-2">
     <p>No alerts to show.</p>
   </ng-template>
 </div>
