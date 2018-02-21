@@ -154,8 +154,9 @@ export class InventoryFormComponent implements OnInit {
       this.fileService.uploadFile(img.files[0]);
       this.invService.add(this.invItem).subscribe(item => {
         // console.log(item);
+          this.router.navigate(['']);
+          location.reload();
       });
-      this.router.navigate(['']);
      }
    }
 

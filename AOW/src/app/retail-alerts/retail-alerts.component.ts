@@ -36,5 +36,6 @@ export class RetailAlertsComponent implements OnInit {
   routeToItem(item: Inventory) {
     localStorage.setItem('invItemClicked', JSON.stringify(item));
     this.router.navigate(['/retailer/form']);
+    location.reload()
   }
 }
